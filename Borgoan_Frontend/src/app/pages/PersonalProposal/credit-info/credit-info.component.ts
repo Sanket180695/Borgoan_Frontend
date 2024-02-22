@@ -26,7 +26,7 @@ export class CreditInfoComponent implements OnInit {
   @Input() APPLICANT_ID: number
   @Input() oldIndex: number
   @Output() indexChanged: EventEmitter<number> = new EventEmitter();
-  bank = 'Shri Jyoti Multipurpose Souhard Sahakari Nyt., Examba'
+  bank = 'Borgaon Urban Co-op Credit Society Ltd;Borgaon'
   isSpinning = false;
   isSpinning1 = false;
   checked = false;
