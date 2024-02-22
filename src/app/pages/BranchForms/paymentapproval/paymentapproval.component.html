@@ -1,0 +1,47 @@
+<div nz-row>
+
+    <nz-spin [nzSpinning]="isSpinning1">
+        <!-- <div nz-row>
+          <a (click)="getUrlDocument()">डॉक्युमेंट बघा</a>
+          </div> -->
+        <div nz-row>
+            <ngx-image-viewer style="width:550px;height:350px;" [src]="images" [(index)]="imageIndex">
+            </ngx-image-viewer>
+
+        </div>
+        <br />
+
+        <div nz-row>
+
+            <div nz-col nzSpan="10">
+                <nz-radio-group name="status" [(ngModel)]="data.STATUS">
+                    <label nz-radio nzValue="A"> {{'paymentapproval.paymentapproval'| translate}}</label>
+                    <label nz-radio nzValue="R">{{'paymentapproval.paymentreject'| translate}} </label>
+                </nz-radio-group>
+
+            </div>
+
+
+        </div>
+
+<br/>
+        <div nz-row>
+            <div nz-col nzSpan="24" *ngIf="data.STATUS=='R'">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'paymentapproval.messgetitle'| translate}} </nz-form-label>
+                    <nz-form-control nzHasFeedback nzErrorTip="{{'paymentapproval.errortip'| translate}}">
+                        <textarea nz-input [nzAutosize]="{ minRows: 2, maxRows: 2 }" name="remark"
+                            [(ngModel)]="data.FAILURE_LOG" required></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+    </nz-spin>
+
+
+    <div class="footer">
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span> {{'paymentapproval.saveclosebutton'| translate}} </span></button>
+    </div>
+</div>

@@ -1,0 +1,1041 @@
+<div>
+    <!-- <h2>रिअल इस्टेट लोन - निवासी</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+
+            <!-- <div nz-row class="my-box">
+                <div nz-col nzSpan="7"> 
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PURPOSE_OF_LOAN'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-select name="PURPOSE_OF_LOAN" [(ngModel)]="data.PURPOSE_OF_LOAN"
+                                nzPlaceHolder="{{'realestate-residential.PURPOSE_OF_LOAN_PLACEHOLDER'| translate}}">
+                                <nz-option [nzValue]="'1'" nzLabel="{{'realestate-residential.SUB_LABEL5'| translate}}"></nz-option>
+                                <nz-option [nzValue]="'2'" nzLabel="{{'realestate-residential.SUB_LABEL6'| translate}}"></nz-option>
+                                <nz-option [nzValue]="'3'" nzLabel="{{'realestate-residential.SUB_LABEL7'| translate}}"></nz-option>
+                                <nz-option [nzValue]="'4'" nzLabel="{{'realestate-residential.SUB_LABEL8'| translate}}"></nz-option>
+                                <nz-option [nzValue]="'5'" nzLabel="{{'realestate-residential.SUB_LABEL9'| translate}}"></nz-option>
+
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div> -->
+            <div nz-row class="my-box" *ngIf="data.PURPOSE_OF_LOAN=='1'">
+                <!-- <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.OWNER_NAME'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="OWNER_NAME" type="text" [(ngModel)]="data.OWNER_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div> -->
+
+
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PLOT_AREA2'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PLOT_AREA"
+                                nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.PLOT_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required>
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.TOTAL_CONSTRUCTION_AREA'|
+                            translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_CONSTRUCTION_AREA"
+                                nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.TOTAL_CONSTRUCTION_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+              
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.TOTAL_CONSTRUCTION_COST'|
+                            translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_CONSTRUCTION_COST"
+                                nzPlaceHolder="{{'realestate-residential.TOTAL_CONSTRUCTION_COST_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.TOTAL_CONSTRUCTION_COST" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.EXPECTED_COMPLETION_TIME'|
+                            translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="EXPECTED_COMPLETION_TIME"
+                                nzPlaceHolder="{{'realestate-residential.EXPECTED_COMPLETION_TIME_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.EXPECTED_COMPLETION_TIME" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'agri_info.AKAR_title' |
+                            translate}}
+                        </nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-input-number name="AKAR" style="width: 100%;" [(ngModel)]="data.AKAR_RS" [nzMin]="1">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.NAME_OF_BUILDER_DEVELOPER'|
+                            translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <textarea nz-input name="NAME_OF_BUILDER_DEVELOPER"
+                                [(ngModel)]="data.NAME_OF_BUILDER_DEVELOPER" [nzAutosize]="{ minRows: 1, maxRows: 6 }"
+                                required [attr.maxlength]="250" (ngModelChange)="wordCounter($event)"></textarea>
+                                <small style="font-weight: bolder;">{{numberOfCharacters1}} / 250</small>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.CONSTRUCTION_MATERIAL_DETAILS'|
+                            translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <textarea nz-input name="CONSTRUCTION_MATERIAL_DETAILS"
+                                [(ngModel)]="data.CONSTRUCTION_MATERIAL_DETAILS" [nzAutosize]="{ minRows: 1, maxRows: 6 }"
+                                required [attr.maxlength]="250" (ngModelChange)="wordCounter2($event)"></textarea>
+                                <small style="font-weight: bolder;">{{numberOfCharacters2}} / 250</small>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <!-- <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'realestate-residential.IS_PLOT_NA_OR_NA_ORDERED'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-radio-group name="IS_PLOT_NA_OR_NA_ORDERED" [(ngModel)]="data.IS_PLOT_NA_OR_NA_ORDERED"
+                                nzButtonStyle="solid">
+                                <label nz-radio nzValue="N">{{'realestate-residential.TYPE1'| translate}}</label>
+                                <label nz-radio nzValue="O">{{'realestate-residential.TYPE2'| translate}}</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div> -->
+                <!-- <div nz-col nzSpan="6" *ngIf="data.PURPOSE_OF_LOAN=='1'">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'realestate-residential.IS_CONSTRUCTION_PLAN_READY'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_CONSTRUCTION_PLAN_READY" [(ngModel)]="data.IS_CONSTRUCTION_PLAN_READY"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div> -->
+                <!-- <div nz-col nzSpan="7" *ngIf="data.PURPOSE_OF_LOAN=='1'">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'realestate-residential.IS_PERMISSION_OBTAINED'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_PERMISSION_OBTAINED" [(ngModel)]="data.IS_PERMISSION_OBTAINED"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div> -->
+                <!-- <div nz-col nzSpan="8">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'realestate-residential.IS_PAID_GOVERNMENT_DUES'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_PAID_GOVERNMENT_DUES" [(ngModel)]="data.IS_PAID_GOVERNMENT_DUES"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div> -->
+            </div>
+            <div nz-row class="my-box" *ngIf="data.PURPOSE_OF_LOAN=='2'">
+                <div nz-col nzSpan="24">
+                    <div nz-row>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PROPERTY_TYPE'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-radio-group name="TYPE OF PROPERTY" [(ngModel)]="data.TYPE_OF_PROPERTY"
+                                        nzButtonStyle="solid">
+                                        <label nz-radio nzValue="F">{{'realestate-residential.TYPE3'| translate}}
+                                        </label>
+                                        <label nz-radio nzValue="R">{{'realestate-residential.TYPE4'|
+                                            translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="10" *ngIf=" data.TYPE_OF_PROPERTY=='R'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.OWNER_NAME1'| translate}}
+                                </nz-form-label>
+
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="OWNER_NAME" type="text" [(ngModel)]="data.OWNER_NAME"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="9" *ngIf=" (data.TYPE_OF_PROPERTY=='R')">
+                            <div nz-row>
+                                <div nz-col nzSpan="24">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.text1'|
+                                            translate}}
+                                        </nz-form-label>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="11">
+                                    <nz-form-item>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-switch name="IS_ANY_EXISTING_LOAN"
+                                                [(ngModel)]="data.IS_ANY_EXISTING_LOAN"
+                                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PLOT_AREA'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PLOT_AREA"
+                                nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.PLOT_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required>
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.CARPET_AREA'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="CARPET_AREA"
+                                nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.CARPET_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required>
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.SELLABLE_AREA'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="SELLABLE_AREA"
+                                nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.SELLABLE_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required>
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.TENTETIVE_POSSESSION_DATE'|
+                            translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-date-picker name="TENTETIVE_POSSESSION_DATE" style="width: 100%;"
+                                [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                [(ngModel)]="data.TENTETIVE_POSSESSION_DATE"
+                                nzPlaceHolder="{{'realestate-residential.TENTETIVE_POSSESSION_DATE_PLACEHOLDER'| translate}}">
+                            </nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PROPERY_VALUE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PROPERY_VALUE"
+                                nzPlaceHolder="{{'realestate-residential.PROPERY_VALUE_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.PROPERY_VALUE" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PER_SQ_FEET_RATE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PER_SQ_FEET_RATE"
+                                nzPlaceHolder="{{'realestate-residential.PER_SQ_FEET_RATE_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.PER_SQ_FEET_RATE" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.AGREEMENT_VALUE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="AGREEMENT_VALUE"
+                                nzPlaceHolder="{{'realestate-residential.AGREEMENT_VALUE_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.AGREEMENT_VALUE" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'realestate-residential.IS_PAID_ADVANCE_AMOUNT'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_PAID_ADVANCE_AMOUNT" [(ngModel)]="data.IS_PAID_ADVANCE_AMOUNT"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4" *ngIf="data.IS_PAID_ADVANCE_AMOUNT">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.ADVANCE_PAYMENT'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="ADVANCE_PAYMENT"
+                                nzPlaceHolder="{{'realestate-residential.ADVANCE_PAYMENT'| translate}}"
+                                [(ngModel)]="data.ADVANCE_PAYMENT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_PLOT_NA_OR_NA_ORDERED'|
+                            translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-radio-group name="IS_PLOT_NA_OR_NA_ORDERED" [(ngModel)]="data.IS_PLOT_NA_OR_NA_ORDERED"
+                                nzButtonStyle="solid">
+                                <label nz-radio nzValue="N">{{'realestate-residential.TYPE1'| translate}}</label>
+                                <label nz-radio nzValue="O">{{'realestate-residential.TYPE2'| translate}}</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_SOCIETY_FORMED'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-switch name="IS_SOCIETY_FORMED" [(ngModel)]="data.IS_SOCIETY_FORMED"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="9" *ngIf="data.TYPE_OF_PROPERTY=='F'">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_DONE_AGREEMENT'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-switch name="IS_DONE_AGREEMENT" [(ngModel)]="data.IS_DONE_AGREEMENT"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="9" *ngIf="data.TYPE_OF_PROPERTY=='R'">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_PAID_ALL_GOVERNMENT_FEES'|
+                            translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-switch name="IS_PAID_GOVERNMENT_DUES" [(ngModel)]="data.IS_PAID_GOVERNMENT_DUES"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'realestate-residential.IS_VALUATION_DONE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_VALUATION_DONE" [(ngModel)]="data.IS_VALUATION_DONE"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="10" *ngIf="data.IS_VALUATION_DONE">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATOR_NAME'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input type="text" name="VALUATOR_NAME" [(ngModel)]="data.VALUATOR_NAME" required>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4" *ngIf="data.IS_VALUATION_DONE">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATION_DATE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-date-picker name="VALUATION_DATE" style="width: 100%;"
+                                (keydown.backspace)="focusss($event)" (keydown.delete)="focusss($event)"
+                                [nzDisabledDate]="disabledDate3" nzFormat="dd-MM-yyyy" [(ngModel)]="data.VALUATION_DATE"
+                                nzPlaceHolder="{{'realestate-residential.VALUATION_DATE'| translate}}">
+                            </nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4" *ngIf="data.IS_VALUATION_DONE">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATION_AMOUNT'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT" type="text"
+                                nzPlaceHolder="{{'realestate-residential.VALUATION_AMOUNT'| translate}}"
+                                [(ngModel)]="data.VALUATION_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row class="my-box" *ngIf="data.PURPOSE_OF_LOAN=='3'">
+                <div nz-col nzSpan="24">
+                    <div nz-row>
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.OWNER_NAME2'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="OWNER_NAME" type="text" [(ngModel)]="data.OWNER_NAME"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="8">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_TAKEN_ESTIMATION'|
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_TAKEN_ESTIMATION" [(ngModel)]="data.IS_TAKEN_ESTIMATION"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.COST_OF_REPAIRY'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="COST_OF_REPAIRY"
+                                        nzPlaceHolder="{{'realestate-residential.COST_OF_REPAIRY_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.COST_OF_REPAIRY" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.ESTIMATION_DETAILS'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <textarea nz-input name="ESTIMATION_DETAILS" [(ngModel)]="data.ESTIMATION_DETAILS"
+                                        [nzAutosize]="{ minRows: 1, maxRows: 4 }" required></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div nz-row class="my-box" *ngIf="data.PURPOSE_OF_LOAN=='4'">
+                <div nz-col nzSpan="24">
+                    <div nz-row>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PROPERTY_TYPE'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-radio-group name="TYPE OF PROPERTY" [(ngModel)]="data.TYPE_OF_PROPERTY"
+                                        nzButtonStyle="solid">
+                                        <label nz-radio nzValue="F">{{'realestate-residential.TYPE3'| translate}}
+                                        </label>
+                                        <label nz-radio nzValue="R">{{'realestate-residential.TYPE4'|
+                                            translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="10" *ngIf="data.TYPE_OF_PROPERTY=='R'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.OWNER_NAME1'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="OWNER_NAME" type="text" [(ngModel)]="data.OWNER_NAME"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="9" *ngIf=" (data.TYPE_OF_PROPERTY=='R' )">
+                            <div nz-row>
+                                <div nz-col nzSpan="24">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.text1'|
+                                            translate}}
+                                        </nz-form-label>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="11">
+                                    <nz-form-item>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-switch name="IS_ANY_EXISTING_LOAN"
+                                                [(ngModel)]="data.IS_ANY_EXISTING_LOAN"
+                                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="5" *ngIf="data.TYPE_OF_PROPERTY=='R'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.BOOKED_FLAT_NUMBER'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="BOOKED_FLAT_NUMBER"
+                                        nzPlaceHolder="{{'realestate-residential.IS_ANY_EXISTING_LOAN_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.BOOKED_FLAT_NUMBER" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.CARPET_AREA'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="CARPET_AREA"
+                                        nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.CARPET_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.SELLABLE_AREA'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="SELLABLE_AREA"
+                                        nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.SELLABLE_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>
+                                    {{'realestate-residential.TENTETIVE_POSSESSION_DATE'| translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-date-picker name="TENTETIVE_POSSESSION_DATE" style="width: 100%;"
+                                        [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                        (keydown.backspace)="focusss1($event)" (keydown.delete)="focusss1($event)"
+                                        [(ngModel)]="data.TENTETIVE_POSSESSION_DATE"
+                                        nzPlaceHolder="{{'realestate-residential.TENTETIVE_POSSESSION_DATE_PLACEHOLDER'| translate}}">
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PROPERY_VALUE'|
+                                    translate}} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="PROPERY_VALUE"
+                                        nzPlaceHolder="{{'realestate-residential.PROPERY_VALUE_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.PROPERY_VALUE" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PER_SQ_FEET_RATE'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="PER_SQ_FEET_RATE"
+                                        nzPlaceHolder="'प{{'realestate-residential.PER_SQ_FEET_RATE_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.PER_SQ_FEET_RATE" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.AGREEMENT_VALUE'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="AGREEMENT_VALUE"
+                                        nzPlaceHolder="{{'realestate-residential.AGREEMENT_VALUE_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.AGREEMENT_VALUE" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'realestate-residential.IS_PAID_ADVANCE_AMOUNT'| translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_PAID_ADVANCE_AMOUNT" [(ngModel)]="data.IS_PAID_ADVANCE_AMOUNT"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="4" *ngIf="data.IS_PAID_ADVANCE_AMOUNT">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.ADVANCE_PAYMENT'|
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="ADVANCE_PAYMENT"
+                                        nzPlaceHolder="{{'realestate-residential.ADVANCE_PAYMENT'| translate}} '"
+                                        [(ngModel)]="data.ADVANCE_PAYMENT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_SOCIETY_FORMED'|
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_SOCIETY_FORMED" [(ngModel)]="data.IS_SOCIETY_FORMED"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'realestate-residential.IS_VALUATION_DONE'| translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_VALUATION_DONE" [(ngModel)]="data.IS_VALUATION_DONE"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="8" *ngIf="data.TYPE_OF_PROPERTY=='F'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_DONE_AGREEMENT'|
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_DONE_AGREEMENT" [(ngModel)]="data.IS_DONE_AGREEMENT"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="8" *ngIf="data.TYPE_OF_PROPERTY=='R'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>
+                                    {{'realestate-residential.IS_PAID_ALL_GOVERNMENT_FEES'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_PAID_GOVERNMENT_DUES" [(ngModel)]="data.IS_PAID_GOVERNMENT_DUES"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="10" *ngIf="data.IS_VALUATION_DONE">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'realestate-residential.VALUATOR_NAME'|
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input type="text" name="VALUATOR_NAME" [(ngModel)]="data.VALUATOR_NAME"
+                                        required>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5" *ngIf="data.IS_VALUATION_DONE">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATION_DATE'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-date-picker name="VALUATION_DATE" style="width: 100%;"
+                                        (keydown.backspace)="focusss2($event)" (keydown.delete)="focusss2($event)"
+                                        [nzDisabledDate]="disabledDate3" nzFormat="dd-MM-yyyy"
+                                        [(ngModel)]="data.VALUATION_DATE"
+                                        nzPlaceHolder="{{'realestate-residential.VALUATION_DATE'| translate}}">
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5" *ngIf="data.IS_VALUATION_DONE">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATION_AMOUNT'|
+                                    translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT" type="text"
+                                        nzPlaceHolder="{{'realestate-residential.VALUATION_AMOUNT'| translate}}"
+                                        [(ngModel)]="data.VALUATION_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-row class="my-box" *ngIf="data.PURPOSE_OF_LOAN=='5'">
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PLEDGED_TYPE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-select name="PLEDGED_TYPE" [(ngModel)]="data.PLEDGED_TYPE"
+                                nzPlaceHolder="{{'realestate-residential.PLEDGED_TYPE_PLACEHOLDER'| translate}}">
+                                <nz-option [nzValue]="'1'" nzLabel="{{'realestate-residential.SUB_LABEL1'| translate}}">
+                                </nz-option>
+                                <nz-option [nzValue]="'2'" nzLabel="{{'realestate-residential.SUB_LABEL2'| translate}}">
+                                </nz-option>
+                                <nz-option [nzValue]="'3'" nzLabel="{{'realestate-residential.SUB_LABEL3'| translate}}">
+                                </nz-option>
+                                <nz-option [nzValue]="'4'" nzLabel="{{'realestate-residential.SUB_LABEL4'| translate}}">
+                                </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="8">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.OWNER_NAME2'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="OWNER_NAME" type="text" [(ngModel)]="data.OWNER_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.OWNER_NAME3'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PLOT_AREA"
+                                nzPlaceHolder="{{'realestate-residential.PLOT_AREA_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.PLOT_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required>
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.PROPERY_VALUE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PROPERY_VALUE"
+                                nzPlaceHolder="{{'realestate-residential.PROPERY_VALUE_PLACEHOLDER'| translate}}"
+                                [(ngModel)]="data.PROPERY_VALUE" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="12">
+                    <div nz-row>
+                        <div nz-col nzSpan="14">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.IS_ANY_EXISTING_LOAN1'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_ANY_EXISTING_LOAN" [(ngModel)]="data.IS_ANY_EXISTING_LOAN"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="10" *ngIf="data.IS_ANY_EXISTING_LOAN">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-residential.TOTAL_AMOUNT_OF_DEBTS'|
+                                    translate}} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="TOTAL_AMOUNT_OF_DEBTS"
+                                        nzPlaceHolder="{{'realestate-residential.TOTAL_AMOUNT_OF_DEBTS_PLACEHOLDER'| translate}}"
+                                        [(ngModel)]="data.TOTAL_AMOUNT_OF_DEBTS" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="12">
+                    <div nz-row>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'realestate-residential.IS_VALUATION_DONE'| translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_VALUATION_DONE" [(ngModel)]="data.IS_VALUATION_DONE"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <!-- <div nz-col nzSpan="14">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>इतर कोणत्या बँकेचे/संस्थेचे देय आहे काय ?
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_DEBT_AMOUNT_PAYABLE_TO_OTHER_BANK"
+                                        [(ngModel)]="data.IS_DEBT_AMOUNT_PAYABLE_TO_OTHER_BANK"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="10" *ngIf="data.IS_DEBT_AMOUNT_PAYABLE_TO_OTHER_BANK">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>देय रक्कम</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="EXISTING_LOAN_AMOUNT"
+                                        nzPlaceHolder="'देय रक्कम नमूद करा'" [(ngModel)]="data.EXISTING_LOAN_AMOUNT"
+                                        [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <div nz-col nzSpan="12" *ngIf="data.IS_VALUATION_DONE">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'realestate-residential.VALUATOR_NAME'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input type="text" name="VALUATOR_NAME" [(ngModel)]="data.VALUATOR_NAME" required>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4" *ngIf="data.IS_VALUATION_DONE">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATION_DATE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-date-picker name="VALUATION_DATE" style="width: 100%;" [nzDisabledDate]="disabledDate3"
+                                nzFormat="dd-MM-yyyy" [(ngModel)]="data.VALUATION_DATE"
+                                nzPlaceHolder="{{'realestate-residential.VALUATION_DATE'| translate}}">
+                            </nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="3" *ngIf="data.IS_VALUATION_DONE">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-residential.VALUATION_AMOUNT'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT" type="text"
+                                nzPlaceHolder="{{'realestate-residential.VALUATION_AMOUNT'| translate}}"
+                                [(ngModel)]="data.VALUATION_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div *ngIf="data.PURPOSE_OF_LOAN != undefined ">
+                <!-- <nz-divider *ngIf="data.PURPOSE_OF_LOAN=='4' ||data.PURPOSE_OF_LOAN=='5' " nzText="{{'realestate-residential.PROPERTY_PLACE'| translate}}">
+                </nz-divider>
+                <nz-divider *ngIf="data.PURPOSE_OF_LOAN=='3' || data.PURPOSE_OF_LOAN=='2'" nzText="{{'realestate-residential.HOME_FLAT_PLACE'| translate}}"></nz-divider> -->
+                <nz-divider *ngIf="data.PURPOSE_OF_LOAN=='1'"
+                    nzText="{{'realestate-residential.PLOT_PLACE'| translate}} "></nz-divider>
+                <div nz-row class="my-box">
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label   nzNoColon>{{'realestate-residential.label1'| translate}}
+                            </nz-form-label>
+                            <nz-form-control  >
+                                <input nz-input name="houseno1" type="text" [(ngModel)]="addressinfo.HOUSE_NO"
+                                    required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label   nzNoColon> {{'realestate-residential.label2'| translate}}
+                            </nz-form-label>
+                            <nz-form-control  >
+                                <input nz-input name="building1" type="text" [(ngModel)]="addressinfo.BUILDING"
+                                    required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label   nzNoColon>{{'realestate-residential.label3'| translate}}
+                            </nz-form-label>
+                            <nz-form-control  >
+                                <input nz-input name="landmark1" type="text" [(ngModel)]="addressinfo.LANDMARK"
+                                    required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.label4'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="village1" type="text" [(ngModel)]="addressinfo.VILLAGE"
+                                    required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.label5'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="taluka1" type="text" [(ngModel)]="addressinfo.TALUKA" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.label6'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="distrcict1" type="text" [(ngModel)]="addressinfo.DISTRICT"
+                                    required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.label7'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="state1" type="text" [(ngModel)]="addressinfo.STATE" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.label8'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'cash-credit-loan.label25.nzErrorTip'| translate}}">
+                                <input nz-input name="pincode1" pattern="^[1-9][0-9]{5}$" type="text"
+                                    [(ngModel)]="addressinfo.PINCODE" maxlength="6" minlength="6" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+                <div nz-row class="my-box">
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.east'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="EAST" type="text" [(ngModel)]="data.EAST" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.west'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="WEST" type="text" [(ngModel)]="data.WEST" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.south'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="SOUTH" type="text" [(ngModel)]="data.SOUTH" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'realestate-residential.north'| translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="NORTH" type="text" [(ngModel)]="data.NORTH" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'agri_info.REMARK_label' | translate}}
+                            </nz-form-label>
+                            <nz-form-control nzHasFeedback>
+                                <textarea nz-input name="NATURE_OF_PROPERTY" type="text" [(ngModel)]="data.NATURE_OF_PROPERTY"
+                                    [nzAutosize]="{ minRows: 2, maxRows: 5 }"></textarea>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div style="margin-left:900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button>
+    </div>
+</div>

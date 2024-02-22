@@ -1,0 +1,330 @@
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-form-item>
+            <nz-radio-group name="status" [(ngModel)]="STATUS">
+                <label nz-radio nzValue="A"> {{'basicinfo.m22'| translate}}</label>
+                <label nz-radio nzValue="R">{{'basicinfo.m24'| translate}} </label>
+            </nz-radio-group>
+        </nz-form-item>
+
+    </div>
+</div>
+
+<div nz-col nzSpan="24" *ngIf="data.LOAN_TYPE_ID == 17">
+    <div nz-row>
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item>
+                <nz-form-label nzNoColon>{{ 'basicinfo.t2' | translate}}
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="RESOLUTION_NO" [(ngModel)]="data2.RESOLUTION_NO"
+                        [nzMin]="1" [nzStep]="1" disabled>
+                    </nz-input-number>
+
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+       
+
+
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item>
+                <nz-form-label nzNoColon>Committee No.
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="Commitee" [(ngModel)]="data2.COMMITTEE_NO" [nzMin]="1"
+                        [nzStep]="1" disabled>
+                    </nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th22'| translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}" disabled
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data2.BOARD_MEETING_DATE" name="BOARD_MEETING_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <!-- <img height="100" width="450" [src]="selectedValue.avatar"/> -->
+            <nz-form-item>
+                <nz-form-label nzNoColon>
+                    Sanctioned By
+                </nz-form-label>
+                <nz-select nzShowSearch nzAllowClear [(ngModel)]="data2.SIGNATURE" style="width: 100%;" disabled>
+    
+                    <nz-option *ngFor="let option of optionList" [nzValue]="option.value"
+                        [nzLabel]="option.label"></nz-option>
+    
+                </nz-select>
+            </nz-form-item>
+    
+    
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>Outward Number
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="OUTWARD_NUMBER" [(ngModel)]="data2.OUTWARD_NUMBER" [nzMin]="1"
+                        [nzStep]="1" disabled>
+                    </nz-input-number>
+    
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>Outward Date</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}" disabled
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data2.OUTWARD_DATE" name="OUTWARD_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- <div nz-col nzSpan="8" *ngIf="STATUS=='A' && (data.LOAN_TYPE_ID != 15 && data.LOAN_TYPE_ID != 9 && data.LOAN_TYPE_ID != 10 
+            && data.LOAN_TYPE_ID != 11 && data.LOAN_TYPE_ID != 8)">
+            <nz-form-item>
+                <nz-form-label nzNoColon>{{'gcreditinfo.th22'| translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input
+                        [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.SANCTION_DATE" name="SANCTION_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>  -->
+
+
+
+    </div>
+</div>
+
+
+
+
+<div nz-col nzSpan="24" *ngIf="data.LOAN_TYPE_ID == 9 || data.LOAN_TYPE_ID == 10 || data.LOAN_TYPE_ID == 11">
+    <div nz-row>
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item>
+                <nz-form-label nzNoColon>{{ 'basicinfo.t2' | translate}}
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="RESOLUTION_NO" [(ngModel)]="data2.RESOLUTION_NO"
+                        [nzMin]="1" [nzStep]="1" disabled>
+                    </nz-input-number>
+
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+       
+
+
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item>
+                <nz-form-label nzNoColon>Committee No.
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="Commitee" [(ngModel)]="data2.COMMITTEE_NO" [nzMin]="1"
+                        [nzStep]="1" disabled>
+                    </nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th22'| translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}" disabled
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data2.BOARD_MEETING_DATE" name="BOARD_MEETING_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            
+            <nz-form-item>
+                <nz-form-label nzNoColon>
+                    Sanctioned By
+                </nz-form-label>
+                <nz-select nzShowSearch nzAllowClear [(ngModel)]="data2.SIGNATURE" style="width: 100%;" disabled>
+    
+                    <nz-option *ngFor="let option of optionList" [nzValue]="option.value"
+                        [nzLabel]="option.label"></nz-option>
+    
+                </nz-select>
+            </nz-form-item>
+    
+    
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>Outward Number
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="OUTWARD_NUMBER" [(ngModel)]="data2.OUTWARD_NUMBER" [nzMin]="1"
+                        [nzStep]="1" disabled>
+                    </nz-input-number>
+    
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>Outward Date</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}" disabled
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data2.OUTWARD_DATE" name="OUTWARD_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+       
+
+
+
+    </div>
+</div>
+
+
+
+<div nz-col nzSpan="24" *ngIf="data.LOAN_TYPE_ID == 8">
+    <div nz-row>
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item>
+                <nz-form-label nzNoColon>{{ 'basicinfo.t2' | translate}}
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="RESOLUTION_NO" [(ngModel)]="data2.RESOLUTION_NO"
+                        [nzMin]="1" [nzStep]="1" disabled>
+                    </nz-input-number>
+
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+       
+
+
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item>
+                <nz-form-label nzNoColon>Committee No.
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="Commitee" [(ngModel)]="data2.COMMITTEE_NO" [nzMin]="1"
+                        [nzStep]="1" disabled>
+                    </nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th22'| translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}" disabled
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data2.BOARD_MEETING_DATE" name="BOARD_MEETING_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <!-- <img height="100" width="450" [src]="selectedValue.avatar"/> -->
+            <nz-form-item>
+                <nz-form-label nzNoColon>
+                    Sanctioned By
+                </nz-form-label>
+                <nz-select nzShowSearch nzAllowClear [(ngModel)]="data2.SIGNATURE" style="width: 100%;" disabled>
+    
+                    <nz-option *ngFor="let option of optionList" [nzValue]="option.value"
+                        [nzLabel]="option.label"></nz-option>
+    
+                </nz-select>
+            </nz-form-item>
+    
+    
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>Outward Number
+                </nz-form-label>
+                <nz-form-control>
+                    <nz-input-number style="width: 100%;" name="OUTWARD_NUMBER" [(ngModel)]="data2.OUTWARD_NUMBER" [nzMin]="1"
+                        [nzStep]="1" disabled>
+                    </nz-input-number>
+    
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    
+        <div nz-col nzSpan="8" *ngIf="STATUS=='A'">
+            <nz-form-item >
+                <nz-form-label nzRequired nzNoColon>Outward Date</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}" disabled
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data2.OUTWARD_DATE" name="OUTWARD_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- <div nz-col nzSpan="8" *ngIf="STATUS=='A' && (data.LOAN_TYPE_ID != 15 && data.LOAN_TYPE_ID != 9 && data.LOAN_TYPE_ID != 10 
+            && data.LOAN_TYPE_ID != 11 && data.LOAN_TYPE_ID != 8)">
+            <nz-form-item>
+                <nz-form-label nzNoColon>{{'gcreditinfo.th22'| translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input
+                        [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.SANCTION_DATE" name="SANCTION_DATE" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>  -->
+
+
+
+    </div>
+</div>
+
+<div nz-col nzSpan="8" *ngIf="STATUS=='A' && (data.LOAN_TYPE_ID != 17 && data.LOAN_TYPE_ID != 9 && data.LOAN_TYPE_ID != 10 
+    && data.LOAN_TYPE_ID != 11 && data.LOAN_TYPE_ID != 8)">
+    <nz-form-item>
+        <nz-form-label nzRequired nzNoColon>Disbursement Date
+        </nz-form-label>
+        <nz-form-control nzHasFeedback>
+            <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                placeholder="dd/mm/yyyy" type="text" [(ngModel)]="MATURITY_DUE" name="MATURITY_DUE" />
+        </nz-form-control>
+    </nz-form-item>
+</div>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{'passtomainbranch.lebel3'| translate}} </nz-form-label>
+            <nz-form-control>
+                <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARKS" required></textarea>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+</div>
+
+
+<div class="footer">
+    <button type="button" nz-button (click)="close()" class="ant-btn"
+        style="margin-right: 8px;"><span>{{'common.button1'|translate}}
+        </span></button>
+    <button type="button" *ngIf="STATUS == 'A'" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'paymentapproval.saveclosebutton'|translate}}</span></button>
+
+    <button type="button" *ngIf="STATUS == 'R'" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="reject()"><span>{{'paymentapproval.saveclosebutton'|translate}}</span></button>
+
+</div>

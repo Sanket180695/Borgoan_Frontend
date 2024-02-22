@@ -1,0 +1,169 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header2'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="NAME_OF_PRODUCT" type="text" [(ngModel)]="data1.NAME_OF_PRODUCT"
+                                required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header3'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <textarea nz-input name="USE_OF_PRODUCT_IN_DETAILS" type="text"
+                                [(ngModel)]="data1.USE_OF_PRODUCT_IN_DETAILS" required
+                                [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'business_info.manufacturingProcessData_header4'|translate }} </nz-form-label>
+                        <nz-form-control>
+                            <textarea nz-input name="FINAL_USE_OF_PRODUCT" type="text"
+                                [(ngModel)]="data1.FINAL_USE_OF_PRODUCT" required
+                                [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header5'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <textarea nz-input name="DETAILS_OF_MANUFACTURING_PROCESS" type="text"
+                            [(ngModel)]="data1.DETAILS_OF_MANUFACTURING_PROCESS"
+                            [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            </div>
+
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header6'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <textarea nz-input name="MANUFACTURED_PRODUCT_OTHER_INFO" type="text"
+                            [(ngModel)]="data1.MANUFACTURED_PRODUCT_OTHER_INFO"
+                            [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header7'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <textarea nz-input name="DETAILS_OF_MANUFACTURED_PRODUCT" type="text"
+                            [(ngModel)]="data1.DETAILS_OF_MANUFACTURED_PRODUCT"
+                            [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header11'|translate }} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <textarea nz-input name="RAW_PRODUCT_DETAILS" type="text"
+                            [(ngModel)]="data1.RAW_PRODUCT_DETAILS"
+                            [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header12'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number name="CREDIT_TERMS_DETAILS" style="width: 100%;"
+                                [(ngModel)]="data1.CREDIT_TERMS_DETAILS"
+                                [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            </div>
+
+           
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'business_info.manufacturingProcessData_header8'|translate }} </nz-form-label>
+                        <nz-form-control>
+                            <nz-radio-group name="AVAILABILITY_OF_MARKET" [(ngModel)]="data1.AVAILABILITY_OF_MARKET"
+                                nzButtonStyle="solid">
+                                <label nz-radio nzValue="{{'business_info.AVAILABILITY_OF_MARKET_title1'|translate }}" style=" margin-right: 10px; ">{{'business_info.AVAILABILITY_OF_MARKET_title1'|translate }}</label>
+                                <label nz-radio nzValue="{{'business_info.AVAILABILITY_OF_MARKET_title2'|translate }}" style=" margin-right: 0px; ">{{'business_info.AVAILABILITY_OF_MARKET_title2'|translate }}</label>
+                                <label nz-radio nzValue="{{'business_info.AVAILABILITY_OF_MARKET_title3'|translate }}" style=" margin-right: 0px; ">{{'business_info.AVAILABILITY_OF_MARKET_title3'|translate }}</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.manufacturingProcessData_header9'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <textarea nz-input name="PLACE_OF_MARKET" type="text" [(ngModel)]="data1.PLACE_OF_MARKET"
+                                required [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item> 
+                        <label style="color:black">{{'business_info.manufacturingProcessData_header10'|translate }}
+                        </label>
+                        <nz-form-control>
+                            <nz-switch name="IS_ANCILILLARY_PRODUCT" [(ngModel)]="data1.IS_ANCILILLARY_PRODUCT"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data1.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data1.ID"
+            (click)="save(false)"><span>{{'common_text.footer_btn3'|translate}}</span></button>
+    </div>
+</div>

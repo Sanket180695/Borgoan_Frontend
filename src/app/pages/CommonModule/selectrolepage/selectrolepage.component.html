@@ -1,0 +1,23 @@
+<div *ngIf="roleId==0">
+<div nz-row style="padding: 10px;">
+    <div style="display: flex;justify-content: flex-end">
+        <span>
+          <button nz-button nzType="primary" (click)="logout()">{{'selectrolepage.logoutbutton'| translate}}</button>
+        </span>
+    </div>
+    <h2 style="text-align: center;">{{'selectrolepage.title'| translate}}</h2>
+    <div style="background: #ECECEC">
+        <div nz-col [nzSpan]="6" *ngFor="let val of roles" style="padding: 10px;">
+            <nz-card style="width:300px;" [nzLoading]="loadingRoles" >
+                <a (click)="chooseRole(val.ROLE_ID)">
+                    <nz-card-meta style="text-align: center;" nzTitle="{{val.ROLE_NAME}}"></nz-card-meta>
+                </a>
+            </nz-card>
+        </div>
+    </div>
+</div>
+</div>
+
+<app-dashboard *ngIf="roleId>0"></app-dashboard>
+
+

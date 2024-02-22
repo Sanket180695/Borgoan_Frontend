@@ -1,0 +1,111 @@
+[
+    {
+        "SUB_CHAPTER_ID": 1,
+        "QUESTION_TYPE_ID": 1,
+        "LEVEL_ID": 1,
+        "GROUP_TYPE": "C",
+        "PARAGRAPH_ID": 1,
+        "DIRECTION": "DIRECTION",
+        "DIRECTION_URL": "KBJHLAKB",
+        "DESCRIPTION": "DESCRIPTION",
+        "DESCRIPTION_URL": "SFLKJFLK",
+        "RANDOMIZE_OPTIONS": 1,
+        "IS_SEQUENCE_MARKING": 1,
+        "QUESTION": "This is question?",
+        "QUESTION_URL": "anlbkhbs",
+        "SOLUTION": "SNDLAKJ",
+        "SOLUTION_IMAGE_URL": "KLAJDNC",
+        "SOLUTION_VIDEO_URL": "KAJBDLK",
+        "ANSWER_TEXT": "LAKBL",
+        "CLIENT_ID": 1,
+        "OPTIONS": [
+            {
+                "OPTION_TEXT": "KJSBDKAJ",
+                "OPTION_IMAGE_URL": "SDADVADS",
+                "IS_CORRECT": 1,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            },
+            {
+                "OPTION_TEXT": "saasfs",
+                "OPTION_IMAGE_URL": "SADFSD",
+                "IS_CORRECT": 0,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            },
+            {
+                "OPTION_TEXT": "TEWYTGF",
+                "OPTION_IMAGE_URL": "DGBSDGD",
+                "IS_CORRECT": 0,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            },
+            {
+                "OPTION_TEXT": "EDADF",
+                "OPTION_IMAGE_URL": "DSAFSDVSA",
+                "IS_CORRECT": 0,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            }
+        ]
+    },
+    {
+        "SUB_CHAPTER_ID": 1,
+        "QUESTION_TYPE_ID": 1,
+        "LEVEL_ID": 1,
+        "GROUP_TYPE": "C",
+        "PARAGRAPH_ID": 1,
+        "DIRECTION": "DIRECTION",
+        "DIRECTION_URL": "KBJHLAKB",
+        "DESCRIPTION": "DESCRIPTION",
+        "DESCRIPTION_URL": "SFLKJFLK",
+        "RANDOMIZE_OPTIONS": 1,
+        "IS_SEQUENCE_MARKING": 1,
+        "QUESTION": "This is question?",
+        "QUESTION_URL": "anlbkhbs",
+        "SOLUTION": "SNDLAKJ",
+        "SOLUTION_IMAGE_URL": "KLAJDNC",
+        "SOLUTION_VIDEO_URL": "KAJBDLK",
+        "ANSWER_TEXT": "LAKBL",
+        "CLIENT_ID": 1,
+        "OPTIONS": [
+            {
+                "OPTION_TEXT": "KJSBDKAJ",
+                "OPTION_IMAGE_URL": "SDADVADS",
+                "IS_CORRECT": 1,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            },
+            {
+                "OPTION_TEXT": "saasfs",
+                "OPTION_IMAGE_URL": "SADFSD",
+                "IS_CORRECT": 0,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            },
+            {
+                "OPTION_TEXT": "TEWYTGF",
+                "OPTION_IMAGE_URL": "DGBSDGD",
+                "IS_CORRECT": 0,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            },
+            {
+                "OPTION_TEXT": "EDADF",
+                "OPTION_IMAGE_URL": "DSAFSDVSA",
+                "IS_CORRECT": 0,
+                "SEQUENCE_NO": 1,
+                "WEIGHTAGE": 20,
+                "CLIENT_ID": 1
+            }
+        ]
+    }
+]
+

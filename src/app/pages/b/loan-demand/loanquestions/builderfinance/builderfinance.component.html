@@ -1,0 +1,532 @@
+<div>
+    <!-- <h2>बिल्डर फायनान्स</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child1'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="NAME_OF_PROJECT" type="text" [(ngModel)]="data.NAME_OF_PROJECT"
+                                required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child2'| translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-select name="PROJECT_TYPE" [(ngModel)]="data.PROJECT_TYPE"
+                                nzPlaceHolder="{{'builderfinance.label.child3'| translate}}">
+                                <nz-option [nzValue]="'1'" nzLabel="{{'builderfinance.label.child4'| translate}}"></nz-option>
+                                <nz-option [nzValue]="'2'" nzLabel="{{'builderfinance.label.child5'| translate}}"></nz-option>
+                                <nz-option [nzValue]="'3'" nzLabel="{{'builderfinance.label.child6'| translate}}">
+                                </nz-option>
+
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child7'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="AREA_OF_PLOT"
+                                nzPlaceHolder="{{'builderfinance.label.child8'| translate}}" [(ngModel)]="data.AREA_OF_PLOT" [nzMin]="1"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child9'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="PLOT_VALUATION"
+                                nzPlaceHolder="{{'builderfinance.label.child10'| translate}}" [(ngModel)]="data.PLOT_VALUATION" [nzMin]="1"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child11'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="NAME_OF_OWNER" type="text" [(ngModel)]="data.NAME_OF_OWNER"
+                                required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child12'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_COST_OF_CONSTRUCTION"
+                                nzPlaceHolder="{{'builderfinance.label.child13'| translate}}" [(ngModel)]="data.TOTAL_COST_OF_CONSTRUCTION"
+                                [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="8">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child14'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_AREA_OF_CONSTRUCTION"
+                                nzPlaceHolder="{{'builderfinance.label.child15'| translate}}"
+                                [(ngModel)]="data.TOTAL_AREA_OF_CONSTRUCTION" [nzMin]="1" [nzMax]="99999999999999999999999999"
+                                [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child16'| translate}}
+                            घेतली आहे</nz-form-label>
+                        <nz-form-control>
+                            <nz-radio-group name="PROPERTY_BELONGS_TO" [(ngModel)]="data.PROPERTY_BELONGS_TO"
+                                nzButtonStyle="solid">
+                                <label nz-radio nzValue="O">{{'builderfinance.label.child17'| translate}}</label>
+                                <label nz-radio nzValue="D">{{'builderfinance.label.child18'| translate}}</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child19'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_READY_CONSTRUCTION_PLAN" [(ngModel)]="data.IS_READY_CONSTRUCTION_PLAN"
+                                nzCheckedChildren="{{'builderfinance.label.child20'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child21'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="8">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child22'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="EXPECTED_COMPLETION_TIME"
+                                nzPlaceHolder="{{'builderfinance.label.child23'| translate}}" [(ngModel)]="data.EXPECTED_COMPLETION_TIME"
+                                [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child24'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-radio-group name="IS_PLOT_NA_OR_NA_ORDERED" [(ngModel)]="data.IS_PLOT_NA_OR_NA_ORDERED"
+                                nzButtonStyle="solid">
+                                <label nz-radio nzValue="N">{{'builderfinance.label.child25'| translate}}</label>
+                                <label nz-radio nzValue="O">{{'builderfinance.label.child26'| translate}}</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5" >
+                    <nz-form-item>
+                        <label>{{'builderfinance.label.child27'| translate}}
+                        </label>
+                        <nz-form-control>
+                            <nz-switch name="IS_PAID_GOVERNMENT_DUES" [(ngModel)]="data.IS_PAID_GOVERNMENT_DUES"
+                                nzCheckedChildren="{{'builderfinance.label.child28'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child29'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child30'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_REGISTERED_UNDER_RERA" [(ngModel)]="data.IS_REGISTERED_UNDER_RERA"
+                                nzCheckedChildren="{{'builderfinance.label.child31'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child32'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="8" *ngIf="data.IS_REGISTERED_UNDER_RERA">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child33'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="RERA_REGISTRATION_NUMBER" type="text"
+                                [(ngModel)]="data.RERA_REGISTRATION_NUMBER" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child34'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_PERMISSION_OBTAINED" [(ngModel)]="data.IS_PERMISSION_OBTAINED"
+                                nzCheckedChildren="{{'builderfinance.label.child35'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child36'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>
+                            {{'builderfinance.label.child37'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_PROJECT_WORK_STARTED" [(ngModel)]="data.IS_PROJECT_WORK_STARTED"
+                                nzCheckedChildren="{{'builderfinance.label.child38'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child39'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="8" *ngIf="data.IS_PROJECT_WORK_STARTED">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child40'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_COST_OF_WORK_IN_PROGRESS"
+                                nzPlaceHolder="{{'builderfinance.label.child41'| translate}}" [(ngModel)]="data.TOTAL_COST_OF_WORK_IN_PROGRESS"
+                                [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child42'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_ANY_FINANCER_INVESTED" [(ngModel)]="data.IS_ANY_FINANCER_INVESTED"
+                                nzCheckedChildren="{{'builderfinance.label.child43'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child44'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <!-- <div nz-col nzSpan="10">
+                    <div nz-row> -->
+                    
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <label >{{'builderfinance.label.child45'| translate}}
+                                </label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_TAKEN_UNSECURED_LOAN" [(ngModel)]="data.IS_TAKEN_UNSECURED_LOAN"
+                                        nzCheckedChildren="{{'builderfinance.label.child46'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child47'| translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="8" *ngIf="data.IS_TAKEN_UNSECURED_LOAN">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child48'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="REMAINING_LOAN_AMOUNT"
+                                        nzPlaceHolder="{{'builderfinance.label.child49'| translate}}"
+                                        [(ngModel)]="data.REMAINING_LOAN_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    <!-- </div>
+                </div> -->
+                
+            </div>
+
+            <nz-divider nzText="{{'builderfinance.label.child50'| translate}}"></nz-divider>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child51'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="FLATS_COUNT"
+                                nzPlaceHolder="{{'builderfinance.label.child52'| translate}}" [(ngModel)]="data.FLATS_COUNT" [nzMin]="0"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child53'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="SELLING_RATE_FLATS"
+                                nzPlaceHolder="{{'builderfinance.label.child54'| translate}}" [(ngModel)]="data.SELLING_RATE_FLATS"
+                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="0" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child55'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="NUMBER_OF_COMMERCIAL_PLACES"
+                                nzPlaceHolder="{{'builderfinance.label.child56'| translate}}" [(ngModel)]="data.NUMBER_OF_COMMERCIAL_PLACES"
+                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child57'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="SELLING_RATE_COMMERCIAL_OFFICES"
+                                nzPlaceHolder="{{'builderfinance.label.child58'| translate}}"
+                                [(ngModel)]="data.SELLING_RATE_COMMERCIAL_OFFICES" [nzMin]="" [nzMax]="99999999999999999999999999"
+                                [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+
+            <nz-divider nzText="{{'builderfinance.label.child59'| translate}}" *ngIf="data.PROPERTY_BELONGS_TO =='D'"></nz-divider>
+            <div nz-row class="my-box" *ngIf="data.PROPERTY_BELONGS_TO =='D'">
+
+                <div nz-col nzSpan="4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>
+                            {{'builderfinance.label.child60'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="NUMBER_OF_FLATS_GIVEN_TO_OWNER"
+                                nzPlaceHolder="{{'builderfinance.label.child61'| translate}}" [(ngModel)]="data.NUMBER_OF_FLATS_GIVEN_TO_OWNER"
+                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child62'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_SELLEBLE_AREA_GIVEN_TO_OWNER_FLATS"
+                                nzPlaceHolder="{{'builderfinance.label.child63'| translate}}"
+                                [(ngModel)]="data.TOTAL_SELLEBLE_AREA_GIVEN_TO_OWNER_FLATS" [nzMin]="0"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child64'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="NUMBER_OF_SHOPS_OFFICES_GIVEN_TO_OWNER"
+                                nzPlaceHolder="{{'builderfinance.label.child65'| translate}}"
+                                [(ngModel)]="data.NUMBER_OF_SHOPS_OFFICES_GIVEN_TO_OWNER" [nzMin]="0"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child66'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;"
+                                name="TOTAL_SELLEBLE_AREA_GIVEN_TO_OWNER_SHOPS_OFFICES"
+                                nzPlaceHolder="{{'builderfinance.label.child67'| translate}}"
+                                [(ngModel)]="data.TOTAL_SELLEBLE_AREA_GIVEN_TO_OWNER_SHOPS_OFFICES" [nzMin]="0"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+
+            <nz-divider nzText="{{'builderfinance.label.child68'| translate}}"></nz-divider>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child69'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_OTHER_FLATS_SELLING_RATE"
+                                nzPlaceHolder="{{'builderfinance.label.child70'| translate}}"
+                                [(ngModel)]="data.TOTAL_OTHER_FLATS_SELLING_RATE" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child71'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="OTHER_TOTAL_SELLABLE_AREA"
+                                nzPlaceHolder="{{'builderfinance.label.child72'| translate}}"
+                                [(ngModel)]="data.OTHER_TOTAL_SELLABLE_AREA" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+
+
+
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child73'| translate}}
+
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_AREA_OF_OTHER_COMMERCIAL_PLACES"
+                                nzPlaceHolder="{{'builderfinance.label.child74'| translate}}"
+                                [(ngModel)]="data.TOTAL_AREA_OF_OTHER_COMMERCIAL_PLACES" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child75'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_SELLING_PRICE_OF_COMMERCIAL_OFFICES"
+                                nzPlaceHolder="{{'builderfinance.label.child76'| translate}}"
+                                [(ngModel)]="data.TOTAL_SELLING_PRICE_OF_COMMERCIAL_OFFICES" [nzMin]="0"
+                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child77'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="TOTAL_SELL_PRICE_OTHER"
+                                nzPlaceHolder="{{'builderfinance.label.child78'| translate}}" [(ngModel)]="data.TOTAL_SELL_PRICE_OTHER"
+                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child79'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_STARTED_BOOKING" [(ngModel)]="data.IS_STARTED_BOOKING"
+                                nzCheckedChildren="{{'builderfinance.label.child80'| translate}}" nzUnCheckedChildren="{{'builderfinance.label.child81'| translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="7" *ngIf="data.IS_STARTED_BOOKING">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child82'|translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="COLLECTED_AMOUNT"
+                                nzPlaceHolder="{{'builderfinance.label.child83'|translate}}"
+                                [(ngModel)]="data.COLLECTED_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6" *ngIf="data.IS_STARTED_BOOKING">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child84'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="SALE_DEEDS_EXECUTED_COUNT"
+                                nzPlaceHolder="{{'builderfinance.label.child85'| translate}}"
+                                [(ngModel)]="data.SALE_DEEDS_EXECUTED_COUNT" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <nz-divider nzText="{{'builderfinance.label.child86'| translate}}"></nz-divider>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child87'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="houseno1" type="text" [(ngModel)]="addressinfo.HOUSE_NO" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'builderfinance.label.child88'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="building1" type="text" [(ngModel)]="addressinfo.BUILDING" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child89'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="landmark1" type="text" [(ngModel)]="addressinfo.LANDMARK" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child90'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="village1" type="text" [(ngModel)]="addressinfo.VILLAGE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child91'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="taluka1" type="text" [(ngModel)]="addressinfo.TALUKA" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child92'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="distrcict1" type="text" [(ngModel)]="addressinfo.DISTRICT" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child93'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="state1" type="text" [(ngModel)]="addressinfo.STATE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'builderfinance.label.child94'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'builderfinance.label.child95'| translate}}">
+                            <input nz-input name="pincode1" pattern="^[1-9][0-9]{5}$" type="text"
+                                [(ngModel)]="addressinfo.PINCODE" maxlength="6" minlength="6" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px;"  *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'| translate}}</span></button>
+
+    </div>
+</div>

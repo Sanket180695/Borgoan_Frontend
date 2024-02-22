@@ -1,0 +1,149 @@
+<div>
+    <!-- <h2>उत्कर्ष कर्ज</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="7" >
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>प्लॉट एन ए आहे की गुंठेवारी मध्ये?
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-radio-group name="IS_PLOT_NA_OR_NA_ORDERED"
+                                        [(ngModel)]="data.IS_PLOT_NA_OR_NA_ORDERED" nzButtonStyle="solid">
+                                        <label nz-radio nzValue="N">एन ए</label>
+                                        <label nz-radio nzValue="O">गुंठेवारी</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>खरेदी करणाऱ्या प्लॉटचे क्षेत्रफळ(चौ.फूट) </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="AREA_OF_PLOT"
+                                        [nzPlaceHolder]="'चौरस फूट मध्ये नमूद करा'" [(ngModel)]="data.AREA_OF_PLOT"
+                                        [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number> 
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>आपण प्लॉट वर निवासी इमारत बांधकाम कधी करणार आहात?</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-date-picker name="date" style="width: 100%;" [nzDisabledDate]="disabledDate"
+                                        nzFormat="dd-MM-yyyy" [(ngModel)]="data.PLANNING_DATE" (keydown.backspace)="focusss($event)" (keydown.delete)="focusss($event)"
+                                        nzPlaceHolder="तारीख निवडा" required>
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        
+                        
+                        <div nz-col nzSpan="7" >
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>प्लॉटची सरकारी देणी देय आहेत का ?
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_ALL_GOVERNMENT_DUTIES_PAID"
+                                        [(ngModel)]="data.IS_ALL_GOVERNMENT_DUTIES_PAID"  nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                         nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>आपण बिल्डर/डेव्हलपर आहे का ?</nz-form-label>
+                                <nz-form-control>
+                                <nz-switch name="TYPE"
+                                    [(ngModel)]="data.IS_BUILDER_OR_DEVELOPER"  nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                     nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nz-divider nzText="खरेदी करावयाच्या प्लॉटचा पत्ता"></nz-divider>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>बिल्डिंगचे नाव/फ्लॅट/प्लॉट नं.</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="houseno1" type="text" [(ngModel)]="addressinfo.HOUSE_NO" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> एरिया/भाग </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="building1" type="text" [(ngModel)]="addressinfo.BUILDING" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>जवळची खूण </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="landmark1" type="text" [(ngModel)]="addressinfo.LANDMARK" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>गाव/शहर </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="village1" type="text" [(ngModel)]="addressinfo.VILLAGE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>तालुका</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="taluka1" type="text" [(ngModel)]="addressinfo.TALUKA" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>जिल्हा</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="distrcict1" type="text" [(ngModel)]="addressinfo.DISTRICT" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>राज्य</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="state1" type="text" [(ngModel)]="addressinfo.STATE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>पिन कोड</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'cash-credit-loan.label25.nzErrorTip'| translate}}">
+                            <input nz-input name="pincode1" pattern="^[1-9][0-9]{5}$" type="text"
+                                [(ngModel)]="addressinfo.PINCODE" maxlength="6" minlength="6" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+       
+            <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                (click)="save()"><span>{{'common.Save'|translate}}</span></button>
+       
+    </div>
+</div>

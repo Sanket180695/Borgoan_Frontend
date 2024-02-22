@@ -1,0 +1,26 @@
+table {
+    width: 100%
+}
+
+th {
+    border: 1px solid grey;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+}
+
+td {
+    border: 1px solid grey;
+    text-align: left;
+    padding: 5px;
+    font-size: 12px;
+    height: 25px;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+}
+
+.user_input {
+    font-weight: bold;
+    text-transform: uppercase;
+}

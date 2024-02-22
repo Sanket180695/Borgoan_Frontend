@@ -1,0 +1,144 @@
+<div>
+    <!-- <h2>गृहउपयोगी वस्तूसाठीचे कर्ज</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="12" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label1'|translate }}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-select name="DURABLE_NAME" [(ngModel)]="data.DURABLE_NAME" required
+                                        nzPlaceHolder="{{'consumer-durables-loan.placeholder1'|translate }}">
+                                        <nz-option *ngFor="let p of durableData" [nzValue]="p.ID" [nzLabel]="p.NAME">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" *ngIf="data.DURABLE_NAME == '9'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label2'|translate }}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="OTHER_DURABLE_NAME" type="text"
+                                        [(ngModel)]="data.OTHER_DURABLE_NAME" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label3'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="DURABLE_TYPE" [(ngModel)]="data.DURABLE_TYPE"
+                                        nzButtonStyle="solid">
+                                        <label nz-radio nzValue="R">{{'consumer-durables-loan.label4'|translate }} </label>
+                                        <label nz-radio nzValue="L">{{'consumer-durables-loan.label5'|translate }} </label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" >
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label6'|translate }} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="BRAND_NAME" type="text"
+                                        [(ngModel)]="data.BRAND_NAME" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label7'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="LIFE_OF_PRODUCT" type="text"
+                                        [(ngModel)]="data.LIFE_OF_PRODUCT" [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                    </div>
+                </div> 
+                <div nz-col nzSpan="11" class="my-box" nzOffset='1'>
+                    <div nz-row>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label8'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="DEALER_NAME" type="text" [(ngModel)]="data.DEALER_NAME" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <div nz-row>
+                                <div nz-col nzSpan="24">
+                                    <nz-form-item style=" margin-bottom: 0px; ">
+                                        <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label9'|translate }}
+                                        </nz-form-label>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="12">
+                                    <nz-form-item>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-switch name="IS_QUOTATION_TAKEN" [(ngModel)]="data.IS_QUOTATION_TAKEN"
+                                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                         
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="12" *ngIf="data.IS_QUOTATION_TAKEN">
+                                    <nz-form-item>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="QUOTATION_AMOUNT" type="text"
+                                                nzPlaceHolder= "{{'consumer-durables-loan.placeholder2'|translate }}"
+                                                [(ngModel)]="data.QUOTATION_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999"
+                                                [nzStep]="1"></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <div nz-row>
+                                <div nz-col nzSpan="24">
+                                    <nz-form-item style=" margin-bottom: 0px; ">
+                                        <nz-form-label nzRequired nzNoColon>{{'consumer-durables-loan.label10'|translate }}</nz-form-label>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="12">
+                                    <nz-form-item>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-switch name="IS_GIVEN_ADVANCE" [(ngModel)]="data.IS_GIVEN_ADVANCE"
+                                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                         
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="12" *ngIf="data.IS_GIVEN_ADVANCE">
+                                    <nz-form-item>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="ADVANCE_AMOUNT" type="text"
+                                                nzPlaceHolder= "{{'consumer-durables-loan.placeholder3'|translate }}" [(ngModel)]="data.ADVANCE_AMOUNT" [nzMin]="1"
+                                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px"  *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+            <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                (click)="save()"><span>{{'consumer-durables-loan.button1'|translate }}</span></button>
+    </div>
+</div>

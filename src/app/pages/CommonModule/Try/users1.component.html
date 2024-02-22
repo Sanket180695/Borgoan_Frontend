@@ -1,0 +1,132 @@
+<!--div>
+<nz-table #columnTable [nzData]="listOfData" [nzScroll]="{ x: '1100px' }">
+    <thead>
+      <tr>
+        <th nzWidth="100px" nzLeft="0px">Full Name</th>
+        <th nzWidth="100px" nzLeft="100px">Age</th>
+        <th nzWidth="100px">Column 1</th>
+        <th nzWidth="100px">Column 2</th>
+        <th nzWidth="100px">Column 3</th>
+        <th nzWidth="100px">Column 4</th>
+        <th nzWidth="100px">Column 5</th>
+        <th nzWidth="100px">Column 6</th>
+        <th nzWidth="100px">Column 7</th>
+        <th nzRight="100px" nzWidth="100px">Column 8</th>
+        <th nzWidth="100px" nzRight="0px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of columnTable.data">
+        <td nzLeft="0px">{{ data.name }}</td>
+        <td nzLeft="100px">{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.address }}</td>
+        <td nzRight="100px">{{ data.address }}</td>
+        <td nzRight="0px">
+          <a>action</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-cascader [nzOptions]="options" [(ngModel)]="values" [nzShowSearch]="true" >
+  </nz-cascader>
+  <button type="button" (click)="Submit()">Submit</button>
+  <br>
+  <nz-radio-group [(ngModel)]="nzTabPosition">
+    <label nz-radio-button [nzValue]="'top'">Horizontal</label>
+    <label nz-radio-button [nzValue]="'left'">Vertical</label>
+  </nz-radio-group>
+  <nz-input-number style="float:right;" [nzMin]="0" [nzMax]="50" [(ngModel)]="selectedIndex"></nz-input-number>
+  <nz-tabset
+    style="height:500px;width: 1000px;"
+    [nzTabPosition]="nzTabPosition"
+    [(nzSelectedIndex)]="selectedIndex"
+  >
+    <nz-tab
+      *ngFor="let tab of dataList"
+      [nzTitle]="tab.NAME"
+      (nzSelect)="log(['select', tab])"
+      (nzClick)="log(['click', tab])"
+    >
+  <nz-table #basicTable [nzFooter]="footer ? + totalCount  : null" [nzData]="dataSet">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Sequence No</th>
+      <th>Part Weightage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td> <nz-switch name="is_allowed" [(ngModel)]="data.IS_ACTIVE"></nz-switch> </td>  
+      <td>{{data.NAME}}</td>
+      <td><nz-input-number [nzMin]="0" (ngModelChange)="get($event)" [(ngModel)]="data.SEQUENCE_NO"></nz-input-number></td>
+      <td><nz-input-number [nzMin]="0" [(ngModel)]="data.PART_WEIGHTAGE"></nz-input-number></td>
+    </tr>
+  </tbody>
+</nz-table>
+    </nz-tab>
+  </nz-tabset>
+
+  <button type="button" (click)="save()">save</button>
+
+
+
+  <div style="border-bottom: 1px solid rgb(233, 233, 233);">
+    <label
+      nz-checkbox
+      [(ngModel)]="allChecked"
+      (ngModelChange)="updateAllChecked()"
+      [nzIndeterminate]="indeterminate"
+    >
+      Check all
+    </label>
+  </div>
+  <br />
+  <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="updateSingleChecked()"></nz-checkbox-group>
+
+
+  <nz-table [nzData]="listOfData" nzBordered [nzWidthConfig]="widthConfig" [nzFrontPagination]="false" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th rowspan="4">Name</th>
+        <th colspan="2">Info</th>
+      </tr>
+      <tr>
+        <th rowspan="2">Age</th>
+        <th rowspan="2">Address</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listOfData">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+      </tr>
+     
+    </tbody>
+  </nz-table>
+</div-->
+
+
+<button type="button" (click)="Submit1()">Submit</button>
+
+<!-- <nz-calendar [(ngModel)]="date" (nzSelectChange)="selectChange($event)" (nzPanelChange)="panelChange($event)" >
+<ng-container [ngSwitch]="date.getDate()">
+  <li *ngFor="let item of myData">
+       <nz-badge class="ant-badge-status" [nzStatus]="item.type"  *ngIf="date.getDate()==item.date" [nzText]="item.content"></nz-badge>
+       </li>
+    </ng-container>
+  
+  
+ </nz-calendar> -->
+
+

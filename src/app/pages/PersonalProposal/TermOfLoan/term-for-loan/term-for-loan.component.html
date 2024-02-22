@@ -1,0 +1,33 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>Term For Loan</nz-form-label>
+                        <nz-form-control   nzErrorTip="{{'incomeyear.start_year.nzErrorTip' | translate}} ">
+                            <input nz-input name="start_year" ty pe="text" [(ngModel)]="data.NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+           
+
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>Close</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>Save </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">Save</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>Close</span></button>
+    </div>
+</div>

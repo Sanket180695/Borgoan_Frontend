@@ -1,0 +1,119 @@
+<div>
+    <div nz-row>
+
+        <!-- <div nz-col nzSpan="11">
+            <iframe scrolling="no" width="490px" height="515px" frameBorder="0" [src]="urlSafe"></iframe>
+        </div>
+
+        <div nz-col nzSpan="1"></div> -->
+        <div nz-col nzSpan="24">
+            <div nz-row style="border-bottom: 1px solid rgb(37, 37, 37);">
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label>{{'cibilchecking.lebel1'|translate }} </nz-form-label>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label>{{'cibilchecking.lebel2'|translate }} </nz-form-label>
+                    </nz-form-item>
+                    <!-- <nz-form-item>
+                        <nz-form-label>{{'cibilchecking.lebel3'|translate }} </nz-form-label>
+                    </nz-form-item> -->
+                    <nz-form-item>
+                        <nz-form-label>{{'cibilchecking.lebel4'|translate }} </nz-form-label>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label>{{'cibilchecking.lebel5'|translate }} </nz-form-label>
+                    </nz-form-item>
+
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item >
+                        <span *ngIf="browserLang == 'mr'"> <b> {{data.BRANCH_NAME}}</b> </span>
+                        <span *ngIf="browserLang == 'kn'"> <b> {{data.BRANCH_NAME_KN}}</b> </span>
+                        <span *ngIf="browserLang == 'en'"> <b> {{data.BRANCH_NAME_EN}}</b> </span>
+                    </nz-form-item>
+                    <!-- <nz-form-item>
+                        <nz-form-label nzNoColon>{{data.BRANCH_NAME}}</nz-form-label>
+                    </nz-form-item> -->
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{data.APPLICANT_NAME}}</nz-form-label>
+                    </nz-form-item>
+                    <!-- <nz-form-item>
+                        <nz-form-label nzNoColon>{{data.PAN}}</nz-form-label>
+                    </nz-form-item> -->
+                    <nz-form-item>
+                        <nz-input-number name="sequence_number" style="width: 100%;" [(ngModel)]="CIBIL_SCORE"
+                            [nzMin]="1"></nz-input-number>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <input type="file" #file1 accept="application/pdf"
+                            (change)="onFileSelectedCIBIL_REPRT_URL($event)" />
+                    </nz-form-item>
+
+
+                </div>
+            </div>
+         
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-radio-group name="status" [(ngModel)]="STATUS">
+                        <label nz-radio nzValue="P">{{'cibilchecking.lebel6'|translate }} </label>
+                        <label nz-radio nzValue="S">{{'cibilchecking.lebel13'|translate }} </label>
+                        <label nz-radio nzValue="H">{{'basicinfo.action3'|translate }} </label>
+                        <label nz-radio nzValue="R">{{'cibilchecking.lebel8'|translate }}</label>
+                    </nz-radio-group>
+                </div>
+            </div>
+            <br />
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzRequired nzNoColon> {{getStatusName(STATUS)}}</nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARK" required></textarea>
+                    </nz-form-control>
+                </div>
+
+
+            </div>
+            <br />
+            <div class="footer" style="bottom: -45px;">
+                <button type="button" *ngIf="STATUS=='P' || STATUS=='S'" style="margin-right: 8px;" class="ant-btn ant-btn-primary"
+                    nz-button [nzLoading]="isSpinning" (click)="save('C')"><span>{{'cibilchecking.button1'|translate }}
+                    </span></button>
+
+                <!-- <button type="button" *ngIf="STATUS=='P'" class="ant-btn ant-btn-primary" nz-button
+                    [nzLoading]="isSpinning1" (click)="save('O')"><span>{{'cibilchecking.button2'|translate }}
+                    </span></button> -->
+
+                <button type="button" *ngIf="STATUS=='H'" class="ant-btn ant-btn-primary" nz-button
+                    [nzLoading]="isSpinning2" (click)="save('H')"><span>{{'cibilchecking.button1'|translate }}
+                    </span></button>
+                <button type="button" *ngIf="STATUS=='R'" class="ant-btn ant-btn-primary" nz-button
+                    [nzLoading]="isSpinning3" (click)="save('R')"><span>{{'cibilchecking.button4'|translate }}
+                    </span></button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="container">
+    <div class="section"><span class="link" (click)="documents()">{{'cibilchecking.link1'|translate }}</span> </div>
+    <div class="section"><span class="link" (click)="statusLogs()">{{'cibilchecking.link2'|translate }}</span> </div>
+</div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+    [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerVisible"
+    [nzTitle]="drawerTitle" (nzOnClose)="drawerClose1()" (nzKeyboard)="true">
+    <app-proposaldocument [drawerClose]="closeCallback" [data]="drawerData"></app-proposaldocument>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+    [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerStattusVisible"
+    [nzTitle]="drawerStattusTitle" (nzOnClose)="drawerStattusClose()" (nzKeyboard)="true">
+    <app-statuslogs [drawerClose]="closeCallbackStattus" [data]="drawerData"></app-statuslogs>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+    [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerDocumentVisible"
+    [nzTitle]="drawerDocumentTitle" (nzOnClose)="drawerDocumentClose()" (nzKeyboard)="true">
+    <app-documents2 [drawerClose]="closeCallbackDocument" TYPE="B" [data]="drawerData"></app-documents2>
+</nz-drawer>

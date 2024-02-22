@@ -1,0 +1,83 @@
+<div>
+
+    <form nz-form>
+            <nz-spin [nzSpinning]="isSpinning">
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'notificationmaster.label1.name' | translate}}  </nz-form-label>
+                <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="title" [(ngModel)]="data.TITLE" required />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+                <nz-form-label nzNoColon>{{'notificationmaster.label2.name' | translate}} </nz-form-label>
+                <nz-form-control>
+                    <textarea nz-input rows="2" name="description" [(ngModel)]="data.DESCRIPTION"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+            <nz-form-label nzNoColon>{{'notificationmaster.label3.name' | translate}}  </nz-form-label>
+            <nz-select name="type" nzShowSearch style="width: 100%"
+                            [(ngModel)]="data.TYPE">
+                            <nz-option nzValue="I" nzLabel="Image"></nz-option>
+                            <nz-option nzValue="V" nzLabel="Video"></nz-option>
+                            <nz-option nzValue="T" nzLabel="Text"></nz-option>
+                            <nz-option nzValue="L" nzLabel="Link"></nz-option>
+            </nz-select>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item *ngIf="data.TYPE!='V' && data.TYPE!='T' && data.TYPE!='L'">
+                <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+            </nz-form-item> 
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="24">
+                <nz-form-item  *ngIf="data.TYPE!='V' && data.TYPE!='T' && data.TYPE!='L' && data.ID">
+                    <img src="{{data.URL}}" style="width:50px;height:50px;">
+                </nz-form-item> 
+        </div>
+    </div>
+
+        <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item *ngIf="data.TYPE!='I' && data.TYPE!='T'" >
+                        <nz-form-label nzNoColon>{{data.TYPE=='V'?"Video":"Link"}} </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="url" [(ngModel)]="data.URL" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+        </div>
+
+ </nz-spin>
+</form>
+
+<div class="footer" >
+        <button type="button"  nz-button  (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>{{'common.cancel' | translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown [nzDropdownMenu]="menu" (click)="save(false)" ><span>{{'common.Save_&_Close' | translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu" >
+            <ul nz-menu >
+              <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                <a (click)="save(true)">{{'common.Save_&_New' | translate}}</a>
+              </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID" (click)="save(false)"><span>{{'common.Update_&_close' | translate}}</span></button>
+        </div>
+</div>
+
+

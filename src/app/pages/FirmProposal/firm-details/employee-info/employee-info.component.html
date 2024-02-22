@@ -1,0 +1,57 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_employee_header2'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <nz-select name="EMPLOYEE_CATEGORY" [(ngModel)]="data5.EMPLOYEE_CATEGORY" required nzPlaceHolder="कामगार प्रकार निवडा">
+                                    <nz-option *ngFor="let p of categoryTypes" [nzValue]="p.ID" [nzLabel]="p.NAME"></nz-option>
+                                </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_employee_header3'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number [nzMax]="9999999999999999999999" style="width: 100%;" name="COUNT" [(ngModel)]="data5.COUNT" [nzMin]="1" [nzStep]="1" >
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'business_info.business_info_employee_header4'| translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="EDUCATINALLY_QUALIFIED" [(ngModel)]="data5.EDUCATINALLY_QUALIFIED"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data5.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data5.ID"
+            (click)="save(false)"><span>{{'common_text.footer_btn3'|translate}}</span></button>
+    </div>
+</div>

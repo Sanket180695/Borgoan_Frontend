@@ -1,0 +1,1618 @@
+<div nz-row *ngIf="isSaved==0 && proposalType==1">
+    <div nz-col nzSpan="7"></div>
+    <div nz-col nzSpan="10" style="text-align: center;border: 1px solid;font-size: 26px">
+        {{'gfinancialinfo.title'|translate }}
+    </div>
+</div>
+
+
+<div *ngIf="isSaved==1 && proposalType==1">
+    <nz-spin [nzSpinning]="isSpinning">
+        <form nz-form>
+            <div nz-row
+                *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+                style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+                <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+                        style="color: rgb(32, 119, 250);"></i></div>
+                <div nz-col nzSpan="23">
+                    <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+                    {{extraApplicantInformation.REMARK}}
+
+                </div>
+            </div><br>
+            <div nz-row>
+                <div nz-col nzSpan="12" class="my-box">
+
+                    <div nz-row>
+                        <div nz-col nzSpan="8">
+                            <nz-form-label nzNoColon>{{'gfinancialinfo.label1'|translate }} <br />
+                                {{'gfinancialinfo.label2'|translate }} ?</nz-form-label>
+                            <nz-form-control>
+                                <nz-switch name="isincometaxfilled"
+                                    nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                    nzUnCheckedChildren="{{'common.switch.no'|translate}}"
+                                    [(ngModel)]="data.IS_INCOME_TAX_FILED">
+                                </nz-switch>
+
+                            </nz-form-control>
+                        </div>
+                        <div nz-col nzSpan="1"></div>
+
+
+                        <div nz-col nzSpan="6" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label3'|translate }}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="FINANCIAL_YEAR" style="width: 100%;"
+                                        [(ngModel)]="data.FINANCIAL_YEAR"
+                                        nzPlaceHolder="{{'gfinancialinfo.placeholder1'|translate }}">
+                                        <nz-option *ngFor="let p of incomeYears" [nzValue]="p.ID"
+                                            [nzLabel]="p.TEXTUAL_YEAR">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <!-- [disabled]="true" -->
+                        <div nz-col nzSpan="1"></div>
+
+                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label4'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number name="incomeamount" style="width: 100%;"
+                                        [(ngModel)]="data.INCOME_AMOUNT" [nzMax]="99999999999999999999999999"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+
+
+                    </div>
+
+                    <div nz-row>
+                        <div nz-col nzSpan="16"></div>
+                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'gfinancialinfo.label5'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number name="taxpaidamount" style="width: 100%;"
+                                        [(ngModel)]="data.TAX_PAID_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="11" class="my-box"
+                    *ngIf="(incomeSourceId==2 || incomeSourceId==4 || otherincomeSourceId==2 || otherincomeSourceId==4 || otherincomeSourceId2==2 || otherincomeSourceId2==4)">
+                    <div nz-row>
+                        <div nz-col nzSpan="9">
+                            <nz-form-label nzNoColon>{{'gfinancialinfo.label6'|translate }}?</nz-form-label>
+                            <nz-form-control>
+                                <nz-switch name="ispigmy" [(ngModel)]="data.IS_PIGMY"
+                                    nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                    nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                </nz-switch>
+                            </nz-form-control>
+                        </div>
+                        <div nz-col nzSpan="1"></div>
+                        <div nz-col nzSpan="14" *ngIf="data.IS_PIGMY">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.label7'|translate }} </nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="bankName" type="text" [(ngModel)]="data.BANK_NAME" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    <div nz-row>
+
+                        <div nz-col nzSpan="11" *ngIf="data.IS_PIGMY">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon> {{'gfinancialinfo.label8'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="dailypigmyamount" style="width: 100%;"
+                                        [(ngModel)]="data.DAILY_PIGMY_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="2"></div>
+
+                        <div nz-col nzSpan="11" *ngIf="data.IS_PIGMY">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.label9'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="pigmynalace" style="width: 100%;"
+                                        [(ngModel)]="data.PIGMY_BALANCE" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl1'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="CC_LOAN_TERNOVER" style="width: 100%;"
+                                        [(ngModel)]="data.CC_LOAN_TERNOVER" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl2'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="INCOME_SOURCE_AMOUNT" type="text" [(ngModel)]="data.INCOME_SOURCE_AMOUNT" />
+                                    
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl3'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="YEARLY_INCOME" style="width: 100%;"
+                                        [(ngModel)]="data.YEARLY_INCOME" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl7'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="BALANCE_AMOUNT" style="width: 100%;"
+                                        [(ngModel)]="data.BALANCE_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl4'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="SAVING_ACCOUNT_NO" style="width: 100%;"
+                                        [(ngModel)]="data.SAVING_ACCOUNT_NO" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl5'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="SAVING_AMOUNT" style="width: 100%;"
+                                        [(ngModel)]="data.SAVING_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.ttl6'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="OTHER_DEPOSIT_ACC_NO" style="width: 100%;"
+                                        [(ngModel)]="data.OTHER_DEPOSIT_ACC_NO" [nzMin]="0" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="4" class="my-box">
+                    <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label10'|translate }}</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="monthlyhouseholdexpanse" style="width: 100%;"
+                            [(ngModel)]="data.MONTHLY_HOUSEHOLD_EXPENSES" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                        </nz-input-number>
+                    </nz-form-control>
+                </div>
+            </div>
+        </form>
+
+    </nz-spin>
+
+
+</div>
+
+<div *ngIf="proposalType==2">
+    <nz-spin [nzSpinning]="isSpinning">
+        <form nz-form>
+            <div nz-row>
+                <div nz-col nzSpan="12" class="my-box">
+
+                    <div nz-row>
+                        <div nz-col nzSpan="8">
+                            <nz-form-label nzNoColon>{{'gfinancialinfo.label11'|translate }}
+                                <br />{{'gfinancialinfo.label12'|translate }}?
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-switch name="isincometaxfilled"
+                                    nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                    nzUnCheckedChildren="{{'common.switch.no'|translate}}"
+                                    [(ngModel)]="data.IS_INCOME_TAX_FILED">
+                                </nz-switch>
+
+                            </nz-form-control>
+                        </div>
+                        <div nz-col nzSpan="1"></div>
+
+
+                        <div nz-col nzSpan="6" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label13'|translate }}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="FINANCIAL_YEAR" style="width: 100%;"
+                                        [(ngModel)]="data.FINANCIAL_YEAR"
+                                        nzPlaceHolder="{{'gfinancialinfo.placeholder1'|translate }}">
+                                        <nz-option *ngFor="let p of incomeYears" [nzValue]="p.ID"
+                                            [nzLabel]="p.TEXTUAL_YEAR">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <!-- [disabled]="true" -->
+                        <div nz-col nzSpan="1"></div>
+
+                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label4'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number name="incomeamount" style="width: 100%;"
+                                        [(ngModel)]="data.INCOME_AMOUNT" [nzMax]="99999999999999999999999999"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+
+
+                    </div>
+
+                    <div nz-row>
+                        <div nz-col nzSpan="16"></div>
+                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'gfinancialinfo.label5'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number name="taxpaidamount" style="width: 100%;"
+                                        [(ngModel)]="data.TAX_PAID_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl1'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="CC_LOAN_TERNOVER" style="width: 100%;"
+                                        [(ngModel)]="data.CC_LOAN_TERNOVER" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl2'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="INCOME_SOURCE_AMOUNT" type="text" [(ngModel)]="data.INCOME_SOURCE_AMOUNT" />
+                                    
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl3'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="YEARLY_INCOME" style="width: 100%;"
+                                        [(ngModel)]="data.YEARLY_INCOME" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl7'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="BALANCE_AMOUNT" style="width: 100%;"
+                                        [(ngModel)]="data.BALANCE_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl4'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="SAVING_ACCOUNT_NO" style="width: 100%;"
+                                        [(ngModel)]="data.SAVING_ACCOUNT_NO" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl5'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="SAVING_AMOUNT" style="width: 100%;"
+                                        [(ngModel)]="data.SAVING_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.ttl6'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="OTHER_DEPOSIT_ACC_NO" style="width: 100%;"
+                                        [(ngModel)]="data.OTHER_DEPOSIT_ACC_NO" [nzMin]="0" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+
+
+
+    </nz-spin>
+
+
+
+</div>
+
+<div *ngIf="dataCode==200">
+
+    <div class="my-box" *ngIf="isSaved==1 || (proposalType==2)">
+        <div nz-row>
+            <div nz-col nzSpan="5">
+                <!-- <nz-form-label nzNoColon>प्रकार </nz-form-label> -->
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="5">
+                <h3 style="padding-left: 52px;">{{year1}} </h3>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="5">
+                <h3 style="margin-left: 12px;">{{year2}} </h3>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="5">
+                <h3 style="margin-left: -31px;">{{year3}} </h3>
+            </div>
+        </div>
+
+        <div nz-row *ngIf="proposalType==1">
+            <div nz-col nzSpan="5">
+                <h3 style="font-weight: 600;">{{'gfinancialinfo.col1'|translate }}</h3>
+            </div>
+        </div>
+
+        <div nz-row *ngIf="(incomeSourceId==3 || otherincomeSourceId==3 || otherincomeSourceId2==3) "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[0].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[0].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[1].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[2].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row *ngIf="proposalType!=2" style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[3].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[3].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[4].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[5].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <br />
+        <div nz-row
+            *ngIf="(incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2) ">
+            <div nz-col nzSpan="5">
+                <h3 style="font-weight: 600;">व्यवसाय उत्पन्न</h3>
+                <h4 style="font-weight: 600;">नफा-तोटा / जमा - खर्च माहिती</h4>
+            </div>
+        </div>
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[6].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[6].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[7].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[8].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[9].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[9].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[10].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[11].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[12].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[12].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[13].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[14].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[15].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[15].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[16].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[17].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[18].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[18].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[19].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[20].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[21].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[21].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[22].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[23].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+        <div nz-row *ngIf="proposalType==2" style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[24].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[24].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[25].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[26].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row *ngIf="proposalType==2" style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[27].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[27].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[28].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[29].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[30].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[30].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[31].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[32].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+
+        <br />
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 ">
+            <div nz-col nzSpan="5">
+                <h3 style="font-weight: 600;">{{'gfinancialinfo.title3'|translate }}</h3>
+                <h4 style="font-weight: 600;">{{'gfinancialinfo.title4'|translate }}</h4>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[33].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[33].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[34].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[35].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[36].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[36].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[37].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[38].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[39].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[39].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[40].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[41].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[42].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[42].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[43].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[44].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[45].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[45].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[46].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[47].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[48].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[48].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[49].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[50].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[51].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[51].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[52].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[53].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[54].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[54].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[55].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[56].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 "
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[57].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[57].INCOME_AMOUNT" (keyup)="calculate(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[58].INCOME_AMOUNT" (keyup)="calculate(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[59].INCOME_AMOUNT" (keyup)="calculate(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 ">
+            <div nz-col nzSpan="5">
+                <h3 style="font-weight: 600;">Total</h3>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-input-number name="taotal0" style="width: 100%;" [(ngModel)]="total[0]" disabled></nz-input-number>
+                <!-- <h3 style="font-weight: 600;">{{total[0]}}</h3> -->
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-input-number name="taotal1" style="width: 100%;" [(ngModel)]="total[1]" disabled></nz-input-number>
+                <!-- <h3 style="font-weight: 600;">{{total[1]}}</h3> -->
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-input-number name="taotal2" style="width: 100%;" [(ngModel)]="total[2]" disabled></nz-input-number>
+                <!-- <h3 style="font-weight: 600;">{{total[2]}}</h3> -->
+            </div>
+
+
+        </div>
+
+        <br />
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2 ">
+            <div nz-col nzSpan="5">
+                <h4 style="font-weight: 600;">{{'gfinancialinfo.title5'|translate }}</h4>
+            </div>
+        </div>
+
+
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[60].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[60].INCOME_AMOUNT" (keyup)="calculateTotal(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[61].INCOME_AMOUNT" (keyup)="calculateTotal(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[62].INCOME_AMOUNT" (keyup)="calculateTotal(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[63].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[63].INCOME_AMOUNT" (keyup)="calculateTotal(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[64].INCOME_AMOUNT" (keyup)="calculateTotal(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[65].INCOME_AMOUNT" (keyup)="calculateTotal(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[66].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[66].INCOME_AMOUNT" (keyup)="calculateTotal(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[67].INCOME_AMOUNT" (keyup)="calculateTotal(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[68].INCOME_AMOUNT" (keyup)="calculateTotal(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[69].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[69].INCOME_AMOUNT" (keyup)="calculateTotal(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[70].INCOME_AMOUNT" (keyup)="calculateTotal(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[71].INCOME_AMOUNT" (keyup)="calculateTotal(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[72].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[72].INCOME_AMOUNT" (keyup)="calculateTotal(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[73].INCOME_AMOUNT" (keyup)="calculateTotal(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[74].INCOME_AMOUNT" (keyup)="calculateTotal(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2"
+            style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[75].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[75].INCOME_AMOUNT" (keyup)="calculateTotal(0)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[76].INCOME_AMOUNT" (keyup)="calculateTotal(1)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[77].INCOME_AMOUNT" (keyup)="calculateTotal(2)"
+                        [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div>
+
+        <div nz-row
+            *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2">
+            <div nz-col nzSpan="5">
+                <h3 style="font-weight: 600;">Total</h3>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-input-number name="taotalcal1" style="width: 100%;" [(ngModel)]="total1[0]" disabled>
+                </nz-input-number>
+                <!-- <h3 style="font-weight: 600;">{{total[0]}}</h3> -->
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-input-number name="taotalcal2" style="width: 100%;" [(ngModel)]="total1[1]" disabled>
+                </nz-input-number>
+                <!-- <h3 style="font-weight: 600;">{{total[1]}}</h3> -->
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-input-number name="taotalcal3" style="width: 100%;" [(ngModel)]="total1[2]" disabled>
+                </nz-input-number>
+                <!-- <h3 style="font-weight: 600;">{{total[2]}}</h3> -->
+            </div>
+
+
+        </div>
+
+
+        <!-- <div nz-row *ngIf="incomeSourceId==2 || otherincomeSourceId==2 || otherincomeSourceId2==2 || incomeSourceId==4 || otherincomeSourceId==4 || otherincomeSourceId2==4 || proposalType==2" style="padding-bottom: 8px">
+
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{this.data.LAST_3_YEAR_INFORMATION[78].TYPE}} </nz-form-label>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year1incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[78].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+
+                <nz-form-control>
+                    <nz-input-number name="year2incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[79].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="4">
+                <nz-form-control>
+                    <nz-input-number name="year3incomeamount" style="width: 100%;"
+                        [(ngModel)]="this.data.LAST_3_YEAR_INFORMATION[80].INCOME_AMOUNT" [nzMin]="0"
+                        [nzMax]="99999999999999999999999999"></nz-input-number>
+
+                </nz-form-control>
+            </div>
+        </div> -->
+
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonVerifySpinning" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+            (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonVerifySpinning" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+            (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+            nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+    </div>
+</div>
+
+
+<div style="margin-left: 900px"
+    *ngIf="(isSaved==1 || proposalType==2 ) && CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+    <!-- <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.button1'|translate }}</span></button> -->
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'common.Save'|translate}} </span></button>
+</div>

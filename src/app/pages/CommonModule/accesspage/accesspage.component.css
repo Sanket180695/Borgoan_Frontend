@@ -1,0 +1,131 @@
+
+    .canvas {
+        /* width: 842px; */
+        width: 1000px;
+        height: 545px;
+        /* to centre page on screen*/
+        position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+    }
+  
+    .back {
+        /* width: 842px; */
+        width: 1000px;
+        height: 545px;
+        position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+    }
+
+  .home_shikuyaa {
+        /* width: 842px; */
+        width: 333px;
+        height: 137px;
+        position: absolute;
+  top:100px;
+  bottom: 0;
+  left: 100px;
+    }
+    
+    .home_o2{
+        /* width: 842px; */
+        width: 186px;
+        height: 115px;
+        position: absolute;
+  top:320px;
+  bottom: 0;
+  left: 150px;
+    }
+    .home_quote{
+        /* width: 842px; */
+        width: 281px;
+        height: 84px;
+        position: absolute;
+  top:180px;
+  bottom: 0;
+  left: 530px;
+    }
+  
+    .home_o2url{
+        /* width: 842px; */
+        width: 189px;
+        height: 18px;
+        position: absolute;
+  top:350px;
+  bottom: 0;
+  left: 570px;
+    }
+    .home_shikuyaaurl{
+        /* width: 842px; */
+        width: 128px;
+        height: 18px;
+        position: absolute;
+  top:370px;
+  bottom: 0;
+  left: 600px;
+    }
+    .rect{
+        /* width: 842px; */
+        width: 169px;
+        height: 549px;
+        position: absolute;
+  top:-2px;
+  bottom: 0;
+  left: 832px;
+  right: 0;
+    }
+    .button{
+        /* width: 842px; */
+        width: 300px;
+        height: 50px;
+        position: absolute;
+  top:470px;
+  bottom: 0;
+  left: 350px;
+  right: 0;
+    }
+    .youtube{
+        /* width: 842px; */
+        width: 108px;
+        height: 61px;
+        position: absolute;
+  top:145px;
+  bottom: 0;
+  left: 860px;
+  right: 0;
+    }
+    .playstore{
+        /* width: 842px; */
+        width: 115px;
+        height: 59px;
+        position: absolute;
+  top:215px;
+  bottom: 0;
+  left: 860px;
+  right: 0;
+    }
+    .facebook{
+        /* width: 842px; */
+        width: 115px;
+        height: 59px;
+        position: absolute;
+  top:285px;
+  bottom: 0;
+  left: 860px;
+  right: 0;
+    }
+    .insta{
+        /* width: 842px; */
+        width: 115px;
+        height: 59px;
+        position: absolute;
+  top:355px;
+  bottom: 0;
+  left: 860px;
+  right: 0;
+    }

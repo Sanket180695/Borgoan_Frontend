@@ -1,0 +1,286 @@
+<div>
+  <form nz-form>
+    <nz-spin [nzSpinning]="isSpinning">
+      <div nz-row
+        *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+        style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+        <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+            style="color: rgb(32, 119, 250);"></i></div>
+        <div nz-col nzSpan="23">
+          <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+          {{extraApplicantInformation.REMARK}}
+
+        </div>
+      </div><br>
+      <div nz-row class="my-box">
+        <div nz-col nzSpan="6">
+          <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{ 'guarantor-info.NAME_title' | translate}} </nz-form-label>
+            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+              <input nz-input name="NAME" type="text" [(ngModel)]="NAME" required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="6">
+          <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{ 'guarantor-info.MOBILE_NUMBER_title' | translate}} </nz-form-label>
+            <nz-form-control nzHasFeedback nzErrorTip="{{ 'guarantor-info.MOBILE_NUMBER_nzErrorTip' | translate}}">
+              <input nz-input name="MOBILE_NUMBER" maxlength="10" pattern="[6-9]{1}[0-9]{9}" [(ngModel)]="MOBILE_NUMBER"
+                required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="1"></div>
+
+        <div nz-col nzSpan="1">
+          <nz-form-item style="margin-bottom: 0px;">
+            <button nz-button nzType="primary" style="margin-left: 2px;margin-top: 32px;" (click)="addData()"><i nz-icon
+                nzType="plus"></i></button>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row>
+        <div nz-col nzSpan="24" style="align-content: center;">
+          <nz-table class="my-scroll no-wrap1" style="max-height: 300px;" nzBordered #table [nzLoading]="isAddSpinning"
+            [nzFrontPagination]="false" [nzData]="dataList">
+            <thead>
+              <tr>
+                <th> {{ 'common_text.table_action_title' | translate}} </th>
+                <th>{{ 'guarantor-info.table_header1' | translate}}</th>
+                <th>{{ 'guarantor-info.table_header2' | translate}}</th>
+                <th>{{ 'guarantor-info.table_header3' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of table.data;index as i">
+                <td>
+                  <!-- <a style="margin-right: 10px;" (click)="edit(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a> -->
+
+                  <a (click)="deleteRow(data)" *ngIf="data.ID==0"> <i nz-icon nzType="delete" nzTheme="outline"
+                      [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                  <a (click)="UpdateRow(data)" *ngIf="data.ID!=0 && data.VISIBILITY"> <i nz-icon nzType="delete"
+                      nzTheme="outline"></i></a>
+                  <a (click)="UpdateRowoff(data)" *ngIf="data.ID!=0 && !data.VISIBILITY"> <i nz-icon
+                      nzType="eye-invisible" nzTheme="outline"></i></a>
+
+                </td>
+                <td> <a (click)="viewInfo(data)" *ngIf="data.ID!=0"> {{ 'guarantor-info.table_linkbtn1' |
+                    translate}}</a> </td>
+                <td>{{data.NAME}}</td>
+                <td>{{data.MOBILE_NUMBER}}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+      <!-- <div nz-row>
+        <div nz-col nzSpan="24" style="margin-top: 10px; text-align:center; font-size:14px">
+           <b> Detail information of the Surety
+        </b>
+        </div>
+    </div> -->
+
+    <!-- <div nz-row>
+      <div nz-col nzSpan="24" style="margin-top: 10px;">
+          <table>
+              <tr>
+                  <th>Particulars</th>
+                  <th>1st Surety</th>
+                  <th>2nd Surety</th>                        
+              </tr>
+
+              <tr>
+                  <td>Full Name</td>
+                  <td> <span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                      {{GdataList2[0].gpersonalInfo.APPLICANT_NAME}} 
+                    </span> </td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      {{GdataList2[1].gpersonalInfo.APPLICANT_NAME}} 
+                    </span></td>
+              </tr>
+
+              <tr>
+                  
+                  <td>Address</td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                     <span *ngIf="GdataList2[0].gaddressinfoCurrent != undefined"> {{GdataList2[0].gaddressinfoCurrent.VILLAGE}}, {{GdataList2[0].gaddressinfoCurrent.BUILDING}}</span>
+                    </span></td>
+                    <td><span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      <span *ngIf="GdataList2[1].gaddressinfoCurrent != undefined"> {{GdataList2[1].gaddressinfoCurrent.VILLAGE}}, {{GdataList2[1].gaddressinfoCurrent.BUILDING}}</span>
+                    </span></td>
+              </tr>
+
+              <tr>
+                  <td>Occupation</td>
+                  <td> <span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                      {{GdataList2[0].gpersonalInfo.OCCUPATION}} 
+                    </span> </td>
+                    <td> <span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      {{GdataList2[1].gpersonalInfo.OCCUPATION}} 
+                    </span> </td>
+              </tr>
+
+              <tr>
+                  <td>Value of the movable & immovable property</td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                      {{GdataList2[0].gpersonalInfo.MOVALE_PROPERTY_VALUE + GdataList2[0].gpersonalInfo.IMMOVALE_PROPERTY_VALUE}}
+                    </span> </td>
+                  <td> <span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      {{GdataList2[1].gpersonalInfo.MOVALE_PROPERTY_VALUE + GdataList2[1].gpersonalInfo.IMMOVALE_PROPERTY_VALUE}}
+                    </span></td>
+              </tr>
+
+
+              <tr>
+                  <td>Annual Income</td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                      {{GdataList2[0].gpersonalInfo.G_ANNUAL_INCOME}} 
+                    </span> </td>
+                  <td> <span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      {{GdataList2[1].gpersonalInfo.G_ANNUAL_INCOME}} 
+                    </span></td>
+              </tr>
+
+
+              <tr>
+                  <td>Personal Loan</td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                      {{GdataList2[0].gpersonalInfo.G_PERSONAL_LOAN}} 
+                    </span> </td>
+                  <td> <span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      {{GdataList2[1].gpersonalInfo.G_PERSONAL_LOAN}} 
+                    </span></td>
+              </tr>
+
+
+              <tr>
+                  <td>Liability as surety</td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>0">
+                      {{GdataList2[0].gpersonalInfo.LIABILITY_AS_SURETY}} 
+                    </span> </td>
+                  <td><span *ngIf="GdataList2 != undefined && GdataList2.length>1">
+                      {{GdataList2[1].gpersonalInfo.LIABILITY_AS_SURETY}} 
+                    </span></td>
+              </tr>
+          </table>            
+      </div>
+  </div> -->
+    </nz-spin>
+  </form>
+
+</div>
+<div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8">
+  <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+    (click)="save()"><span>{{'common.Save'|translate}}</span></button>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="24">
+      <!-- *ngIf="roleid == '1' && stageid == 4" -->
+      <button type="button" *ngIf="roleId =='4' && CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonSpinning2" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+          (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+          <span>{{'basicinfo.m5'|translate}}</span>
+      </button>
+
+      <ng-template #iconTpl>
+          <h3>{{'basicinfo.m9'|translate}}</h3>
+          <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+              <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+              <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                  <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK"
+                      required />
+              </nz-form-control>
+          </nz-form-item>
+      </ng-template>
+
+      <button type="button" *ngIf="roleId =='4' && CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonSpinning2" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+          (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+      <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+          nz-button [nzLoading]="isButtonSpinning"
+          (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+  </div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="24">
+      <!-- *ngIf="roleid == '1' && stageid == 4" -->
+      <button type="button" *ngIf="roleId =='7' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == true"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonSpinning2" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+          (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+          <span>{{'basicinfo.m5'|translate}}</span>
+      </button>
+
+      <ng-template #iconTpl>
+          <h3>{{'basicinfo.m9'|translate}}</h3>
+          <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+              <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+              <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                  <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK"
+                      required />
+              </nz-form-control>
+          </nz-form-item>
+      </ng-template>
+
+      <!-- <button type="button" *ngIf="roleId =='7' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == false"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonSpinning2" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+          (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+          nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button> -->
+
+
+
+      <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8"
+          style="float: right;" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+          (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+  </div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="24">
+      <!-- *ngIf="roleid == '1' && stageid == 4" -->
+      <button type="button" *ngIf="roleId =='8' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == true"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonSpinning2" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+          (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+          <span>{{'basicinfo.m5'|translate}}</span>
+      </button>
+
+      <ng-template #iconTpl>
+          <h3>{{'basicinfo.m9'|translate}}</h3>
+          <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+              <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+              <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                  <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK"
+                      required />
+              </nz-form-control>
+          </nz-form-item>
+      </ng-template>
+
+      <!-- <button type="button" *ngIf="roleId =='7' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == false"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonSpinning2" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+          (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+          nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button> -->
+
+
+
+      <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8"
+          style="float: right;" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+          (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+  </div>
+</div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095"
+  [nzVisible]="drawerPersonalProposalVisible" [nzTitle]="drawerPersonalProposalTitle"
+  (nzOnClose)="drawerPersonalProposalClose()" (nzKeyboard)="true">
+  <app-gproposalinfo [drawerClose]="closeCallbackPersonalProposal" [extraApplicantInformation]="extraApplicantInformation" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [proposalData]="data" [APPLICANT_ID]="APPLICANT_ID"
+    [PROPOSAL_ID]="PROPOSAL_ID" [data]="guarntorData"></app-gproposalinfo>
+</nz-drawer>

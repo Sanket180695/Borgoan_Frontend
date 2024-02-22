@@ -1,0 +1,116 @@
+
+
+<div nz-row>
+    <div nz-col nzSpan="11">
+        <!-- <iframe scrolling="no" width="490px" height="515px" frameBorder="0" [src]="urlSafe"></iframe> -->
+    </div>
+  
+
+    <div nz-col nzSpan="1"></div>
+   
+    <div nz-col nzSpan="11">
+       
+
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <nz-form-item>
+                    <nz-form-label>{{'joinbranch.lebel1'|translate }} </nz-form-label>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label>{{'joinbranch.lebel2'|translate }}  </nz-form-label>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label>{{'joinbranch.lebel3'|translate }} </nz-form-label>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label>{{'joinbranch.lebel4'|translate }}  </nz-form-label>
+                </nz-form-item>
+               
+              
+            </div>
+            <div nz-col nzSpan="12">
+                <nz-form-item>
+                    <nz-form-label nzNoColon>{{data.APPLICANT_NAME}}</nz-form-label>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzNoColon style="white-space: pre-wrap;">{{data.LOAN_TYPE_NAME}}</nz-form-label>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzNoColon>{{data.LOAN_AMOUNT}}</nz-form-label>
+                </nz-form-item>
+                <nz-form-item>
+                  <div style="white-space: pre-wrap;"> {{currentAddress}}</div> 
+                </nz-form-item>
+            </div>
+        </div>
+
+        <form nz-form>
+            <div nz-row>
+            <div nz-col nzSpan="24">
+            <nz-radio-group name="status" [(ngModel)]="STATUS">
+                <label nz-radio nzValue="S">{{'joinbranch.lebel5'|translate }}</label>
+                <label nz-radio nzValue="R">{{'joinbranch.lebel6'|translate }}</label>
+            </nz-radio-group>
+            </div>
+        </div>
+        <br/>
+        <div nz-row *ngIf="STATUS=='S'">
+            <div nz-col nzSpan="24">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel7'|translate }} </nz-form-label>
+            <nz-select name="branchId" nzShowSearch style="width: 100%"
+                nzPlaceHolder="Select Branch" [nzLoading]="loadingBranch" [(ngModel)]="BRANCH_ID">
+                <nz-option *ngFor="let val of branches" [nzValue]="val.ID" [nzLabel]="val.NAME_EN">
+                </nz-option>
+            </nz-select>
+            </div>
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                    <nz-form-label nzRequired nzNoColon> {{(STATUS=='R'?'joinbranch.lebel8':'joinbranch.lebel9')|translate}} </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARKS"></textarea>
+                    </nz-form-control>
+            </div>
+        </div>
+    
+    </form>
+
+
+    <br/>
+    <div class="footer" style="bottom: -45px;">
+            <button type="button" *ngIf="STATUS=='S'" style="margin-right: 8px;" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" 
+                (click)="save('C')"><span>{{'joinbranch.button1'|translate }}</span></button>
+           
+                <button type="button" *ngIf="STATUS=='S'" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning1" 
+                (click)="save('O')"><span>{{'joinbranch.button2'|translate }}</span></button>
+
+             <button type="button" *ngIf="STATUS=='R'" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning2" 
+                (click)="save('R')"><span>{{'joinbranch.button3'|translate }}</span></button>
+    </div>
+
+    </div>
+</div>
+
+<div id="container">
+    <div class="section"><span class="link" (click)="documents()">{{'joinbranch.link1'|translate }}</span> </div>
+    <div class="section"><span class="link" (click)="statusLogs()">{{'joinbranch.link2'|translate }}</span> </div>
+    
+  </div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerCibilhVisible"
+  [nzTitle]="drawerCibilTitle" (nzOnClose)="drawerCibilClose()" (nzKeyboard)="true">
+  <app-cibilchecking [drawerClose]="closeCallbackCibil" [data]="drawerData" ></app-cibilchecking>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerStattusVisible"
+  [nzTitle]="drawerStattusTitle" (nzOnClose)="drawerStattusClose()" (nzKeyboard)="true">
+  <app-statuslogs [drawerClose]="closeCallbackStattus" [data]="drawerData"></app-statuslogs>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerDocumentVisible"
+  [nzTitle]="drawerDocumentTitle" (nzOnClose)="drawerDocumentClose()" (nzKeyboard)="true">
+  <app-documents2 [drawerClose]="closeCallbackDocument" TYPE="B" [data]="drawerData"></app-documents2>
+</nz-drawer>

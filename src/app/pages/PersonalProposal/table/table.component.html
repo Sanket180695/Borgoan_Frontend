@@ -1,0 +1,78 @@
+<nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;" class="my-scroll no-wrap1" nzBordered
+    #table23 [nzFrontPagination]="false" [nzData]="termDepositdata" [nzLoading]="loadingRecords4"
+    [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+    <thead (nzSortChange)="sort($event)">
+        <tr>
+            <th>{{'gcreditinfo.th1'|translate }}</th>
+            <th>Receipt No.</th>
+            <!-- <th>{{'gcreditinfo.th2'|translate }}</th> -->
+            <th>Account No.</th>
+            <th>Amount</th>
+            <th>Interest Rate</th>
+            <th>Maturity/Due</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of table23.data">
+            <td>
+                <a style="margin-right: 10px;" (click)="delete3(data)"><i nz-icon nzType="delete" nzTheme="twotone"
+                        [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                <a (click)="edit4(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+            </td>
+            <!-- <td> {{data['BRANCH_NAME']}} </td> -->
+            <td> {{data.RECEIPT_NO}} </td>
+            <td> {{data['ACC_NO']}}</td>
+            <td> {{data['ACC_AMOUNT']}} </td>
+            <td> {{data['INTEREST_RATE']}} </td>
+            <td> {{data['MATURITY_DUE'] }} </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                <b>Total</b>
+            </td>
+            <td>
+                <b>{{totalCountOfReceiptNo()}}</b>
+
+            </td>
+            <td>
+
+
+            </td>
+            <td>
+                <b>{{totalIncome1()}}</b>
+            </td>
+            <td>
+                <b>{{averageInterest() | number: '1.2-2'}}</b>
+
+            </td>
+            <td>
+                <b>{{ formattedEarliestMaturityDate()}}</b>
+            </td>
+
+
+
+        </tr>
+        <!-- 
+                            {{calculateTotal()}}
+                            {{ updateTotalCount(dataList) }} -->
+        <!-- {{ updateEarliestMaturityDate(dataList) }} -->
+        <!-- {{ calculate90PercentTotal() }} -->
+
+
+
+
+    </tbody>
+</nz-table>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="470" [nzVisible]="drawerVisible3" [nzTitle]="drawerTitle3"
+    (nzOnClose)="drawerClose3()" (nzKeyboard)="true">
+    <app-financialtermdeposit [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [PROPOSAL_ID]="PROPOSAL_ID" 
+        [extraApplicantInformation]="extraApplicantInformation" [drawerClose3]="closeCallback3" [data3]="drawerData1"
+        (demo)="saveWorkdata1()">
+    </app-financialtermdeposit>
+</nz-drawer>

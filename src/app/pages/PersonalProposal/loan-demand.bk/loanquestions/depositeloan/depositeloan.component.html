@@ -1,0 +1,76 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'depositLoan.label1'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="TYPE" [(ngModel)]="data.TYPE" disabled>
+                                        <nz-option [nzValue]="'R'" nzLabel="{{'depositLoan.option1'|translate }}">
+                                        </nz-option>
+                                        <nz-option [nzValue]="'D'" nzLabel="{{'depositLoan.option2'|translate }}">
+                                        </nz-option>
+                                        <nz-option [nzValue]="'P'" nzLabel="{{'depositLoan.option3'|translate }}">
+                                        </nz-option>
+                                        <nz-option [nzValue]="'C'" nzLabel="{{'depositLoan.option4'|translate }}">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="4">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'depositLoan.label4'|translate }}
+                                </nz-form-label>
+                                <nz-form-control  nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                                    placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.RECEIPT_DATE" name="RECEIPT_DATE" />
+                                    <!-- <nz-date-picker name="RECEIPT_DATE" style="width: 100%;"
+                                        [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                        [(ngModel)]="data.RECEIPT_DATE"
+                                        nzPlaceHolder="{{'depositLoan.label4'|translate }}">
+                                    </nz-date-picker> -->
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'depositLoan.label2'|translate }}
+                                </nz-form-label>
+                                <nz-form-control  nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="RECEIPT_NO" type="text" [(ngModel)]="data.RECEIPT_NO"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="4">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'depositLoan.label3'|translate }}
+                                </nz-form-label>
+                                <nz-form-control  nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="RECEIPT_AMOUNT"
+                                        nzPlaceHolder="{{'depositLoan.label3'|translate }}"
+                                        [(ngModel)]="data.RECEIPT_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </nz-spin>
+    </form>
+
+    <br />
+    <div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'| translate}}</span></button>
+    </div>
+</div>

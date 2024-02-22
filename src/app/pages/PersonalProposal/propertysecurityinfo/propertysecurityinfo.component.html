@@ -1,0 +1,91 @@
+
+    <div class="my-box">
+        <div nz-row>
+            <div nz-col nzSpan="6">
+                <nz-form-item>
+                    <nz-form-label nzNoColon>{{ 'propertysecurityinfo.propertydetails_title' | translate}} </nz-form-label>
+                    <nz-input-group>
+                        <nz-select name="propertydetailsid_id" nzShowSearch style="width: 100%"
+                            nzPlaceHolder="{{ 'propertysecurityinfo.propertydetails_placeholder' | translate}}" [nzLoading]="detailsLoading" (ngModelChange)="changePropertyDetails($event)" [(ngModel)]="PROPERTY_DETAILS_ID">
+                            <nz-option *ngFor="let val of propertyinfo" [nzValue]="val.ID" [nzLabel]="val.PROPERTY_DETAILS">
+                            </nz-option>
+                        </nz-select>
+                    </nz-input-group>
+                </nz-form-item>
+            </div>
+
+  <div nz-col nzSpan="1"></div>
+    <div nz-col nzSpan="6">
+        <nz-form-label nzNoColon> {{ 'propertysecurityinfo.name_title' | translate}} </nz-form-label>
+        <nz-form-control >
+            <input nz-input name="name" type="text" [(ngModel)]="VALUATOR_NAME"
+                required />
+        </nz-form-control>
+    </div>
+  <div nz-col nzSpan="1"></div>
+
+    <div nz-col nzSpan="3">
+        <nz-form-label nzNoColon>{{ 'propertysecurityinfo.valuation_amount_title' | translate}}</nz-form-label>
+        <nz-form-control>
+            <nz-input-number name="amoonut" style="width: 100%;"
+                [(ngModel)]="VALUATION_AMOUNT" [nzMax]="99999999999999999999999999" [nzMin]="0"></nz-input-number>
+        </nz-form-control>
+    </div>
+  <div nz-col nzSpan="1"></div>
+  <div nz-col nzSpan="4">
+    <nz-form-label nzNoColon>{{ 'propertysecurityinfo.valuation_date_title' | translate}}</nz-form-label>
+    <nz-form-control>
+        <nz-date-picker nzFormat="dd-MM-yyyy" [(ngModel)]="VALUATION_DATE"  nzPlaceHolder="{{ 'propertysecurityinfo.valuation_date_title' | translate}}" name="date" ></nz-date-picker>
+    </nz-form-control>
+</div>
+<div nz-col nzSpan="1"></div>
+
+<div nz-col nzSpan="1">
+    <nz-form-item style="margin-bottom: 0px;">
+        <button nz-button nzType="primary"  style="margin-left: 2px;margin-top: 32px;" (click)="addData()"><i nz-icon
+            nzType="plus"></i></button>
+    </nz-form-item>
+</div>
+        </div>
+
+
+        <div nz-row >
+            <div nz-col nzSpan="24" style="align-content: center;">
+              <nz-table class="my-scroll no-wrap1" style="max-height: 300px;" nzBordered #table [nzFrontPagination]="false"
+                [nzData]="propertySecurityInfo" [nzLoading]="loadingRecords"
+                  >
+                <thead>
+                  <tr>
+                    <th>{{ 'common_text.table_action_title1' | translate}}</th>
+                    <th>{{ 'propertysecurityinfo.propertydetails_title' | translate}} </th>
+                    <th>{{ 'propertysecurityinfo.name_title' | translate}} </th>
+                    <th>{{ 'propertysecurityinfo.valuation_amount_title' | translate}}</th>
+                    <th>{{ 'propertysecurityinfo.valuation_date_title' | translate}}</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of table.data ">
+                    <td>
+                       <a (click)="deleteRow(data)" *ngIf="data.ID==0"> <i nz-icon nzType="delete" nzTheme="outline"></i></a>
+                    </td>
+                    <td>{{data.PROPERTY_DETAILS}}</td>
+                    <td>{{data.VALUATOR_NAME}}</td>
+                    <td>{{data.VALUATION_AMOUNT}}</td>
+                    <td>{{data.VALUATION_DATE}}</td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+
+
+
+     
+          <div style="margin-left: 900px">
+    <!-- <button type="button" nz-button (click)="close()" class="ant-btn"
+        style="margin-right: 8px;"><span>बंद करा</span></button> -->
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{ 'common_text.footer_btn1' | translate}} </span></button>
+</div>
+</div>

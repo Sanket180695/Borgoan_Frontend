@@ -1,0 +1,107 @@
+<!-- <app-propertiesinfo (demos)='demos()' [LOAN_KEY]="LOAN_KEY" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID"
+    style="height: 100%;width: 100%;" TYPE="C" [APPLICANT_ID]="APPLICANT_ID" [data]="data" [PROPOSAL_ID]="PROPOSAL_ID">
+</app-propertiesinfo> -->
+
+<!-- <app-propertiesinfo (demos)='demos()' [LOAN_KEY]="LOAN_KEY"  [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" style="height: 100%;width: 100%;" [data]="propertyInfo" TYPE="C" [APPLICANT_ID]="APPLICANT_ID" [PROPOSAL_ID]="PROPOSAL_ID"></app-propertiesinfo> -->
+
+<!-- <app-primesecurityinfo (demo)='demos()'  [LOAN_KEY]="LOAN_KEY" *ngIf="type==1" style="height: 100%;width: 100%;" TYPE="C"
+    [APPLICANT_ID]="APPLICANT_ID" [data]="data" [PROPOSAL_ID]="PROPOSAL_ID"></app-primesecurityinfo> -->
+
+
+
+
+
+
+
+    <div nz-row nzType="flex">
+        <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" nzXl="8">
+            <div class="formname"> {{formTitle}}</div>
+        </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="16" nzLg="16" nzXl="16" style="display: flex;justify-content: flex-end">
+            <form nz-form [nzLayout]="'inline'">
+    
+                <nz-form-item>
+                    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                        <input type="text" name="search" nz-input
+                            placeholder="{{'bankloanschemes.search_title' | translate}} " [(ngModel)]="searchText" />
+                    </nz-input-group>
+                    <ng-template #suffixIconButton>
+                        <button nz-button nzType="primary" (click)="search(true)" nzSearch><i nz-icon
+                                nzType="search"></i></button>
+                    </ng-template>
+                </nz-form-item>
+                <nz-form-item>
+                    <button nz-button nzType="primary" (click)="add()" nzJustify="end">
+                        <i nz-icon nzType="plus"></i>{{ 'common_text.add_button_title' | translate}}
+                    </button>
+                </nz-form-item>
+            </form>
+        </div>
+    </div>
+    
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-table class="my-scroll no-wrap1" nzBordered #table nzShowSizeChanger [nzFrontPagination]="false"
+                [nzData]="PropertyTableData" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="search()" (nzPageSizeChange)="search(true)" style="max-height: 500px;">
+                <thead (nzSortChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th>Delete</th>
+                        <th>{{ 'common_text.table_action_title' | translate}} </th>
+                        <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of table.data">
+    
+                        <a (click)="delete(data)"> <i nz-icon nzType="delete" nzTheme="outline"
+                                [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                        <td>
+                            <a (click)="edit(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i> </a>
+                        </td>
+    
+    
+    
+                        <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+    
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+    
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+                <nz-form-label nzNoColon>Whether reletive document establishing the ownership are furnished?
+                </nz-form-label>
+    
+                <nz-form-control>
+                    <nz-switch name="IS_OWNERSHIP_FURNISHED" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                        nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "
+                        [(ngModel)]="GuarantorInfo.IS_OWNERSHIP_FURNISHED">
+                    </nz-switch>
+    
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    
+    <nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+        [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1100" [nzVisible]="drawerVisible"
+        [nzTitle]="drawerTitle" (nzOnClose)="drawerClose()" (nzKeyboard)="true">
+        <app-cpropertiesadd (demos)="demos2()" [IS_APPROVED]="IS_APPROVED" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [drawerClose]="closeCallback"
+            [APPLICANT_ID]="APPLICANT_ID" [TYPE]="TYPE" [data]="drawerData" [PROPOSAL_ID]="PROPOSAL_ID"
+            (closeDrawer)="drawerClose()"></app-cpropertiesadd>
+    </nz-drawer>
+    
+    <div nz-row>
+        <div nz-col nzSpan="24" *ngIf="CURRENT_STAGE_ID == 8 && !IS_APPROVED">
+    
+            <button type="button" style="float: right;" class="ant-btn ant-btn-primary"
+                nz-button [nzLoading]="isButtonSpinning" (click)="save()"><span>{{'common.Save'|translate}}</span></button>
+        </div>
+    </div>
+    
+    
+    

@@ -1,0 +1,154 @@
+<nz-layout class="app-layout" 
+  *ngIf="isLogedIn && branchIdCount==0 || branchIdCount==1 || (branchIdCount>1 && branchId>0)">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="/dashboard">
+        <!-- <img src="http://emm.tecpool.in/Shared/OrganizationLogo/3.jpg" alt="logo"> -->
+        <h1>{{isCollapsed ? '' :USERNAME}}</h1>
+      </a>
+    </div>
+    <div style="overflow: auto;height: 591px;">
+      <ul nz-menu nzMode="inline" nzTheme="dark">
+        <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+        <ng-template #menuTpl let-menus>
+          <ng-container *ngFor="let menu of menus">
+            <li *ngIf="!menu.children" nz-menu-item [nzPaddingLeft]="20" [nzDisabled]="menu.disabled"
+              nzMatchRouter>
+              <a [routerLink]="[menu.link]"><i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>{{ isCollapsed ? '' :
+                menu.title}}</a>
+
+
+            </li>
+            <li *ngIf="menu.children" nz-submenu [nzPaddingLeft]="20" [nzOpen]="menu.open"
+              [nzTitle]="menu.title" [nzIcon]="menu.icon" [nzDisabled]="menu.disabled">
+              <ul>
+                <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
+              </ul>
+            </li>
+          </ng-container>
+        </ng-template>
+      </ul>
+
+
+    </div>
+
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div nz-row>
+        <div nz-col nzSpan="19">
+          <div class="app-header">
+            <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+            </span>
+          </div>
+        </div>
+        <div nz-col nzSpan="3" class="app-header" style="padding-left: 20px;box-shadow: 0 1px 4px rgb(0 21 41 / 0%) ;">
+          <select #langSelect (change)="changeLang(langSelect.value)">
+            <option *ngFor="let lang of api.translate.getLangs()" [value]="lang"
+              [selected]="lang === api.translate.currentLang">{{ lang=='mr'?"मराठी":(lang=='en'?"English":"ಕನ್ನಡ")
+              }}</option>
+          </select>
+        </div>
+        <div nz-col nzSpan="1" style="background-color: white">
+          <div class="app-header" style="box-shadow: 0 1px 4px rgb(0 21 41 / 0%) ;">
+            <button nz-button nzType="primary" (click)="changepass()" nzShape="circle">
+              <i nz-icon nzType="setting" nzTheme="outline"></i>
+            </button>
+          </div>
+        </div>
+        <div nz-col nzSpan="1" style="background-color: white;">
+          <div class="app-header" style="box-shadow: 0 1px 4px rgb(0 21 41 / 0%) ;">
+            <button nz-button nzType="primary" (click)="logout()" nzShape="circle"><i nz-icon
+                nzType="logout"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div nz-col nzSpan="6" style="background-color: white">
+        <div class="app-header">
+          <nz-button-group>
+            <button *ngIf="roleId==10 || roleId==7 || parentId==7 || parentId==10" (click)="openSelect()" nz-button nzType="primary"><i nz-icon nzType="bank"></i>Select College</button>
+            <button  nz-button nzType="primary" *ngIf="roleIdLength>1" (click)="openSelectRolePage()">Select Role<i nz-icon nzType="user"></i></button>
+          </nz-button-group>
+        </div>
+        </div> -->
+      <!-- <div nz-col nzSpan="1" style="background-color: white">
+          <div class="app-header">
+            <button nz-button nzType="primary" (click)="resetModel()" [nzSize]="'smaill'" nzShape="circle"><i nz-icon nzType="key"></i></button>
+          </div>
+          </div> -->
+
+    </nz-header>
+    <!-- <marquee behavior="scroll" direction="left" style="color: red; font-weight: 700; font-size: 21px;">Please Recharge on or before 5th september 2023 to continue using our services. </marquee> -->
+    <nz-content *ngIf="validPages != 'home'">
+      <div class="inner-content">
+        <router-outlet>
+        </router-outlet>
+      </div>
+    </nz-content>
+    <nz-content *ngIf="validPages == 'home'" >
+      <div class="inner-content" style="background-color: transparent;padding: 0px !important;">
+        <router-outlet>
+        </router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer *ngIf="validPages != 'home'">
+      Proudly Designed & Developed By, <a href="http://kredpool.com">Kredpool Solutions Pvt. Ltd.</a>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>
+<app-login *ngIf="!isLogedIn" style="width:100%">
+</app-login>
+
+
+<nz-modal [(nzVisible)]="timedOut" *ngIf="isLogedIn" nzTitle="Time Out Error!" [nzFooter]="modalFooter"
+  [nzClosable]="false">
+  <h1> {{'app.modal.title'|translate}} {{count}} {{'app.modal.title1'|translate}} </h1>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="primary" (click)="continue()">{{'app.button.Continue'|translate}}</button>
+    <button nz-button nzType="primary" (click)="logout()"> {{'app.button.logout'|translate}} </button>
+  </ng-template>
+</nz-modal>
+
+<nz-modal [(nzVisible)]="resetVisible" [nzClosable]="true" nzTitle="{{'app.Reset.Password.title'|translate}}"
+  nzOkText="{{'app.Change.Password.text'|translate}}" (nzOnOk)="UpdateOk()" [nzOkLoading]="okLoading"
+  (nzOnCancel)="UpdateCancel()" [nzOkDisabled]="okdisabled">
+
+
+  <nz-form-item>
+    <nz-input-group nzSearch [nzAddOnBefore]="suffixTemplateInfo" [nzAddOnAfter]="suffixIconButton">
+      <input type="text" type="password" [disabled]="Verified" name="search" nz-input
+        placeholder="{{'app.passwordVerify.placeholder'|translate}}" [(ngModel)]="passwordVerify" />
+    </nz-input-group>
+    <ng-template #suffixTemplateInfo><i nz-icon nzType="key"></i></ng-template>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" (click)="verify()" [nzLoading]="verifyLoading" *ngIf="!Verified"
+        nzSearch>{{'app.button.Verify'|translate}}</button>
+      <button nz-button nzType="primary" *ngIf="Verified" [disabled]="true" nzSearch> <i nz-icon
+          nzType="check"></i></button>
+
+    </ng-template>
+  </nz-form-item>
+
+  <nz-form-item *ngIf="Verified">
+    <nz-form-control>
+      <input nz-input type="password" placeholder="{{'app.password.placeholder1'|translate}}" name="password"
+        (ngModelChange)="updateConfirmValidator($event)" [(ngModel)]="password" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item *ngIf="Verified">
+    <nz-form-control>
+      <input nz-input type="password" placeholder="{{'app.password.placeholder2'|translate}}"
+        [(ngModel)]="confirmPassword" (ngModelChange)="updateConfirmValidator($event)" name="confirmpassword" />
+    </nz-form-control>
+  </nz-form-item>
+
+
+</nz-modal>
+
+<app-selectbranch style="height: 100%;width: 100%;" *ngIf="isLogedIn && branchIdCount>0 && branchId==0">
+</app-selectbranch>

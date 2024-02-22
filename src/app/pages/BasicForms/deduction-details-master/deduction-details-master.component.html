@@ -1,0 +1,45 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'deduction-details-master.label1.name' | translate}} </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'deduction-details-master.name.nzErrorTip' | translate}} ">
+                            <input nz-input name="name" type="text" [(ngModel)]="data.NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'deduction-details-master.label2.name' | translate}} </nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-switch name="status" [(ngModel)]="data.IS_ACTIVE" [nzCheckedChildren]="checkedTemplate"
+                                [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+                            <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+                            <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.button5.name' | translate}} </span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common.button6.name' | translate}} </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common.label1.name' | translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>{{'common.button7.name' | translate}} </span></button>
+    </div>
+</div>

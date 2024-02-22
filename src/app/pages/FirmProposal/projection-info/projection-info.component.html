@@ -1,0 +1,162 @@
+<nz-spin [nzSpinning]="isSpinningTabs">
+    <div nz-row
+        *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+        style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+        <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+                style="color: rgb(32, 119, 250);"></i></div>
+        <div nz-col nzSpan="23">
+            <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+            {{extraApplicantInformation.REMARK}}
+
+        </div>
+    </div><br>
+
+    <nz-divider nzText="प्रोजेक्शन माहिती"></nz-divider>
+
+    <div style="height: 100%;width: 100%;" class="my-box">
+        <div nz-row>
+            <div nz-col nzSpan="11">
+                <nz-divider nzText="Cost of Project"></nz-divider>
+                <div nz-row nzType="flex">
+                    <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                    </div>
+                    <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                        style="display: flex;justify-content: flex-end">
+                        <form nz-form [nzLayout]="'inline'">
+                            <nz-form-item>
+                                <button nz-button nzType="primary" (click)="add()" nzJustify="end">
+                                    <i nz-icon nzType="plus"></i>{{'projection-info.addbuttontext'| translate}}
+                                </button>
+                            </nz-form-item>
+                        </form>
+                    </div>
+                </div>
+                <nz-table class="my-scroll no-wrap1" [nzShowPagination]="false" nzBordered #table nzShowSizeChanger
+                    [nzFrontPagination]="false" [nzData]="dataList" [nzLoading]="loadingRecords"
+                    [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+                    <thead>
+                        <tr>
+                            <th>{{'projection-info.action'| translate}} </th>
+                            <th>{{'projection-info.costofproject'| translate}}</th>
+                            <th>{{'projection-info.costofrupess'| translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of table.data">
+                            <td>
+                                <a (click)="edit(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                            </td>
+
+                            <td> {{data['COST_OF_PROJECT']}} </td>
+                            <td> {{data['COST_RUPEES']}} </td>
+
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+
+            <div nz-col nzSpan="11" nzOffset='1'>
+                <nz-divider nzText=" Means of Finance"></nz-divider>
+                <div nz-row nzType="flex">
+                    <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                    </div>
+                    <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                        style="display: flex;justify-content: flex-end">
+                        <form nz-form [nzLayout]="'inline'">
+                            <nz-form-item>
+                                <button nz-button nzType="primary" (click)="add2()" nzJustify="end">
+                                    <i nz-icon nzType="plus"></i>{{'projection-info.addbuttontext'| translate}}
+                                </button>
+                            </nz-form-item>
+                        </form>
+                    </div>
+                </div>
+                <nz-table class="my-scroll no-wrap1" [nzShowPagination]="false" nzBordered #table2 nzShowSizeChanger
+                    [nzFrontPagination]="false" [nzData]="meansdata" [nzLoading]="loadingRecords2"
+                    [nzTotal]="totalRecords2" [(nzPageIndex)]="pageIndex2" [(nzPageSize)]="pageSize">
+                    <thead>
+                        <tr>
+                            <th>{{'projection-info.action'| translate}}</th>
+                            <th>{{'projection-info.MEANS_OF_FINANCE'| translate}} </th>
+                            <th>{{'projection-info.MEANS_RUPEES'| translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of table2.data">
+                            <td>
+                                <a (click)="edit2(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                            </td>
+                            <td> {{data['MEANS_OF_FINANCE']}} </td>
+                            <td> {{data['MEANS_RUPEES']}} </td>
+
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div style="margin-left: 900px">
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+          (click)="save()"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+      </div> -->
+
+    <!-- <app-management-of-sales *ngIf="index==2" style="height: 100%;width: 100%;" [PROPOSAL_ID]="PROPOSAL_ID">
+    </app-management-of-sales> -->
+
+
+    <app-balance-sheet [LOAN_KEY]="LOAN_KEY" [CURRENT_STAGE_ID]='CURRENT_STAGE_ID' [extraApplicantInformation]="extraApplicantInformation" style="height: 100%;width: 100%;" [PROPOSAL_ID]="PROPOSAL_ID">
+    </app-balance-sheet>
+
+
+
+</nz-spin>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false" style="float: right; margin-left: 10px; margin-right: 10px;"
+            class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonVerifySpinning" nz-popconfirm
+            [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false" style="float: right; margin-left: 10px; margin-right: 10px;"
+            class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonVerifySpinning" nz-popconfirm
+            nzPopconfirmTitle="Are you sure?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+            nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+    </div>
+</div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="340" [nzVisible]="drawerVisible" [nzTitle]="drawerTitle"
+    (nzOnClose)="drawerClose()" (nzKeyboard)="true">
+    <app-add-projection [LOAN_KEY]="LOAN_KEY" [CURRENT_STAGE_ID]='CURRENT_STAGE_ID' [extraApplicantInformation]="extraApplicantInformation" [drawerClose]="closeCallback" [data]="drawerData">
+    </app-add-projection>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="340" [nzVisible]="drawerVisible2" [nzTitle]="drawerTitle2"
+    (nzOnClose)="drawerClose2()" (nzKeyboard)="true">
+    <app-add-means [LOAN_KEY]="LOAN_KEY" [CURRENT_STAGE_ID]='CURRENT_STAGE_ID' [extraApplicantInformation]="extraApplicantInformation" [drawerClose2]="closeCallback2" [data2]="drawerData2">
+    </app-add-means>
+</nz-drawer>

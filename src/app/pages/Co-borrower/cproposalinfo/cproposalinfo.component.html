@@ -1,0 +1,65 @@
+<div>
+  <nz-spin [nzSpinning]="isSpinningTabs">
+
+    <!-- <nz-steps nzType="navigation" nzSize="small" [nzCurrent]="index" (nzIndexChange)="onIndexChange($event)">
+         
+            <nz-step *ngFor="let tab of IndivisualInfotabs" [nzStatus]="getStatus(tab.STATUS)" [nzTitle]="tab.EXTRA_INFORMATION_NAME" >  </nz-step>
+          </nz-steps> -->
+
+
+    <nz-tabset [(nzSelectedIndex)]="selectedIndex" (nzSelectedIndexChange)="chnage($event)">
+      <nz-tab *ngFor="let tab of IndivisualInfotabs" [nzTitle]="titleTemplate33">
+        <ng-template #titleTemplate33>
+          <i nz-icon nzType="exclamation-circle" nzTheme="fill" style="color: #f18304;" *ngIf="!tab.IS_PROVIDED"></i>
+          <i nz-icon nzType="check-circle" nzTheme="fill" style="color: #00b963;" *ngIf="tab.IS_PROVIDED"></i>
+          <span *ngIf="browserLang =='mr' "> {{tab.EXTRA_INFORMATION_NAME}}</span>
+          <span *ngIf="browserLang =='kn' "> {{tab.NAME_KN}}</span>
+          <span *ngIf="browserLang =='en' "> {{tab.NAME_EN}}</span>
+        </ng-template>
+        <app-cpersonalinfo *ngIf="tab.EXTRA_INFORMATION_ID==1" [LOAN_KEY]='LOAN_KEY' [CURRENT_STAGE_ID]="CURRENT_STAGE_ID"
+          style="height: 100%;width: 100%;" (demo)='getTabs()' [APPLICANT_ID]="applicantId"
+          [personalInformationId]="personalInformationId" [data]="personalInfo"
+          [addressinfoCurrent]="addressinfoCurrent" [addressinfoPermanent]="addressinfoPermanent"
+          [familyDeatils]="familyDeatails" [PROPOSAL_ID]="PROPOSAL_ID" [GuarantorData]="data">
+        </app-cpersonalinfo>
+
+        <app-cpropertyinfo *ngIf="tab.EXTRA_INFORMATION_ID==6" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [LOAN_KEY]='LOAN_KEY'
+          style="height: 100%;width: 100%;" (demos)='getTabs()' [APPLICANT_ID]="applicantId" [PROPOSAL_ID]="PROPOSAL_ID" [GuarantorInfo]="data">
+        </app-cpropertyinfo>
+
+        <!-- <app-cincomeinfo *ngIf="tab.EXTRA_INFORMATION_ID==2" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [LOAN_KEY]='LOAN_KEY'
+          style="height: 100%;width: 100%;" (demo)='getTabs()' [APPLICANT_ID]="applicantId" [PROPOSAL_ID]="PROPOSAL_ID">
+        </app-cincomeinfo>
+
+        <app-cfinancialinfo *ngIf="tab.EXTRA_INFORMATION_ID==4" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [LOAN_KEY]='LOAN_KEY'
+          style="height: 100%;width: 100%;" (demo)='getTabs()' [APPLICANT_ID]="applicantId" [PROPOSAL_ID]="PROPOSAL_ID">
+        </app-cfinancialinfo>
+
+        <app-ccreditinfo *ngIf="tab.EXTRA_INFORMATION_ID==5" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [LOAN_KEY]='LOAN_KEY'
+          style="height: 100%;width: 100%;" (demo)='getTabs()' [APPLICANT_ID]="applicantId" [PROPOSAL_ID]="PROPOSAL_ID">
+        </app-ccreditinfo> -->
+
+        
+
+        <!-- <app-cdocumentinfo *ngIf="tab.EXTRA_INFORMATION_ID==13" [PROPOSAL_ID]="PROPOSAL_ID" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" TYPE="C" [extraApplicantInformation]='extraApplicantInformation'
+          [APPLICANT_ID]="applicantId" (demo)='getTabs()' [data]="proposalData"></app-cdocumentinfo> -->
+
+
+<!--           
+        <app-cdocumentinfo *ngIf="tab.EXTRA_INFORMATION_ID==13" [PROPOSAL_ID]="PROPOSAL_ID" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" TYPE="C" [extraApplicantInformation]='extraApplicantInformation'
+        [APPLICANT_ID]="applicantId" (demo)='getTabs()' [data]="proposalData">
+      </app-cdocumentinfo> -->
+
+
+      </nz-tab>
+
+
+     <!-- <nz-tab nzTitle="Other Details ">
+        <app-cother  [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [data]="other" [APPLICANT_ID]="APPLICANT_ID" [PROPOSAL_ID]="PROPOSAL_ID"></app-cother>
+      </nz-tab> -->
+
+    </nz-tabset>
+  </nz-spin>
+
+</div>

@@ -1,0 +1,29 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="11">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gpersonalinfo.businessname'|translate }} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name24" type="text" [(ngModel)]="data.NAME_OF_BUSINESS" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="2"></div>
+
+                <div nz-col nzSpan="11">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gpersonalinfo.businesswork'|translate }} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name23" type="text" [(ngModel)]="data.ADDRESS_OF_BUSINESS" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+
+            </nz-spin>
+            </form>
+            </div>

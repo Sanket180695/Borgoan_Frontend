@@ -1,0 +1,139 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header2'|translate }} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number name="EXISTING_LAND_AREA" style="width: 100%;"
+                                [(ngModel)]="data4.EXISTING_LAND_AREA" nzPlaceHolder="{{'business_info.placeholder1'|translate }}"
+                                [nzMin]="0">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>
+                            {{'business_info.business_info_header3'|translate }}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number name="EXISTING_CONSTRUCTION_AREA" style="width: 100%;"
+                                [(ngModel)]="data4.EXISTING_CONSTRUCTION_AREA" nzPlaceHolder="{{'business_info.placeholder1'|translate }}"
+                                [nzMin]="0"></nz-input-number>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'business_info.business_info_header4'|translate }}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number name="PROPOSED_LAND_AREA" style="width: 100%;"
+                                [(ngModel)]="data4.PROPOSED_LAND_AREA" nzPlaceHolder="{{'business_info.placeholder1'|translate }}"
+                                [nzMin]="0"></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>
+                            {{'business_info.business_info_header5'|translate }}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number name="PROPOSED_CONSTRUCTION_AREA" style="width: 100%;"
+                                [(ngModel)]="data4.PROPOSED_CONSTRUCTION_AREA" nzPlaceHolder="{{'business_info.placeholder1'|translate }}"
+                                [nzMin]="0"></nz-input-number>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header6'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-select name="TYPE_OF_FACTORY" [(ngModel)]="data4.TYPE_OF_FACTORY"
+                                nzPlaceHolder="{{'business_info.placeholder2'|translate }}">
+                                <nz-option *ngFor="let p of factoryData" [nzValue]="p.ID" [nzLabel]="p.NAME">
+                                </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header7'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_SUFFICIENT_AREA" [(ngModel)]="data4.IS_SUFFICIENT_AREA"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header8'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_AVAILABILITY_OF_ELECTRICITY" [(ngModel)]="data4.IS_AVAILABILITY_OF_ELECTRICITY"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header9'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_AVAILABILITY_OF_WATER" [(ngModel)]="data4.IS_AVAILABILITY_OF_WATER"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header10'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_AVAILABILITY_OF_TRANSPORT" [(ngModel)]="data4.IS_AVAILABILITY_OF_TRANSPORT"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'business_info.business_info_header11'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_AVAILABILITY_OF_WORKERS" [(ngModel)]="data4.IS_AVAILABILITY_OF_WORKERS"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+
+<div class="footer" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" >
+    <button type="button" nz-button (click)="close()" class="ant-btn"
+        style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+    <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data4.ID" nz-button nz-dropdown
+        [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+            <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+            </li>
+        </ul>
+    </nz-dropdown-menu>
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data4.ID"
+        (click)="save(false)"><span>{{'common_text.footer_btn3'|translate}}</span></button>
+</div>
+</div>

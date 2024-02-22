@@ -1,0 +1,70 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{ 'industri_marking.NAME_title' | translate}}({{'common.marathi' | translate}})</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input  name="NAME" type="text" [(ngModel)]="data.NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{ 'industri_marking.NAME_title' | translate}}({{'common.english' | translate}})</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input  name="NAME" type="text" [(ngModel)]="data.NAME_EN" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{ 'industri_marking.NAME_title' | translate}}({{'common.kannada' | translate}})</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input  name="NAME" type="text" [(ngModel)]="data.NAME_KN" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{ 'industri_marking.CODE_title' | translate}}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input name="CODE" type="text" [(ngModel)]="data.CODE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{ 'industri_marking.status_title' | translate}}</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-switch name="status" [(ngModel)]="data.IS_ACTIVE" 
+                            nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                        nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                            
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{ 'common.cancel' | translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{ 'common_text.footer_btn1' | translate}} </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{ 'common_text.footer_btn2' | translate}} </a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>{{ 'common_text.footer_btn3' | translate}} </span></button>
+    </div>
+</div>

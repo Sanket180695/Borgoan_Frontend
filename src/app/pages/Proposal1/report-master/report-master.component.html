@@ -1,0 +1,50 @@
+<div nz-row nzType="flex">
+    <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" nzXl="8">
+        <div class="formname">{{'reports.manage_reports'| translate}}</div>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="16" nzLg="16" nzXl="16" style="display: flex;justify-content: flex-end">
+        <form nz-form [nzLayout]="'inline'">
+            <nz-form-item>
+                <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                    <input type="text" name="search" nz-input placeholder="{{'users.searchrecordsinput'| translate}}" [(ngModel)]="searchText" />
+                </nz-input-group>
+                <ng-template #suffixIconButton>
+                    <button nz-button nzType="primary" (click)="search()" nzSearch><i nz-icon
+                            nzType="search"></i></button>
+                </ng-template>
+            </nz-form-item>
+        </form>
+    </div>
+</div>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-table class="my-scroll no-wrap1" nzBordered #table nzShowSizeChanger [nzFrontPagination]="false"
+            [nzData]="dataList" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+            [(nzPageSize)]="pageSize" (nzPageIndexChange)="search()" (nzPageSizeChange)="search(true)">
+            <thead (nzSortChange)="sort($event)" nzSingleSort>
+                <tr>
+                    <th>{{'users.coloumn1'| translate}}</th>
+                    <th>{{'users.tableaction'| translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of table.data">
+                    <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+                    <td  style="text-align: center;">
+                       <a (click)="edit(data)">{{'reports.report'| translate}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerVisible"
+  [nzTitle]="drawerTitle" (nzOnClose)="drawerClose()" (nzKeyboard)="true">
+  <app-proposal-filterwise-report></app-proposal-filterwise-report>
+</nz-drawer>
+
+
+

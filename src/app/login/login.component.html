@@ -1,0 +1,82 @@
+<div nz-row style="background-color:#F0F2F5" *ngIf="!isLogedIn" class="main_form_body">
+
+    <div class="limiter">
+
+                <!-- <div style="text-align: right;    background: #f2f2f2;">
+            <div style="padding:5px 5px 0px;">
+                <select #langSelect (change)="changeLang(langSelect.value)">
+                <option *ngFor="let lang of api.translate.getLangs()" [value]="lang"
+                    [selected]="lang === api.translate.currentLang">{{ lang=='mr'?"Marathi":"Kannada" }}</option>
+                </select>
+            </div>
+            </div> -->
+        <div class="container-login100">
+
+            
+
+            <div class="wrap-login100">
+
+                <!-- <div style="color: red;font-weight: 300px;">We wanted to bring your attention that some of your essential services are set to expire and are on grace period. <br>NOTE: Please recharge on or before 5th september 2023 to continue using our services.</div> -->
+
+                <div nz-row style="margin-bottom:16px;">
+                    <div nz-col nzSpan="24" style=" display: flex; justify-content: center; ">
+                        <img src="../../assets/Jyoti logo 100X100.png" width="100" height="100">
+                    </div>
+                </div>
+                <h2 class="login100-form-title p-b-26">{{bank}}</h2>
+                <form nz-form class="login-form">
+
+                    <nz-form-item>
+                        <nz-form-control nzRequired nzErrorTip="{{'login.username.nzErrorTip' | translate}}">
+                            <nz-input-group nzPrefixIcon="user">
+                                <input class="input-field" type="email" name="email_id" [(ngModel)]="EMAIL_ID" nz-input
+                                    placeholder="{{'login.username.placeholder'| translate}}" required />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control nzRequired nzErrorTip="{{'login.password.nzErrorTip'| translate}}">
+                            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                                <input class="input-field" [type]="passwordVisible ? 'text' : 'password'"
+                                    name="password" [(ngModel)]="PASSWORD" nz-input
+                                    placeholder="{{'login.password.placeholder'| translate}}" required />
+                            </nz-input-group>
+                            <ng-template #suffixTemplate>
+                                <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                    (click)="passwordVisible = !passwordVisible"></i>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <!-- <label nz-checkbox >
+            <span>Remember me</span>
+          </label>
+          <a class="login-form-forgot" class="login-form-forgot">Forgot password</a> -->
+                            <div class="container-login100-form-btn">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+
+                                    <button nz-button class="login100-form-btn" (click)="login()"
+                                        [nzLoading]="isloginSpinning" [nzType]="'primary'">{{'login.button.name'|
+                                        translate}}</button>
+                                </div>
+                            </div>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-radio-group name="lng" (ngModelChange)="changeLang($event)" nzButtonStyle="solid"
+                            [(ngModel)]="browserLang">
+                            <label class="label1" nz-radio nzValue="mr">मराठी</label>
+                            <label class="label2" nz-radio nzValue="kn">ಕನ್ನಡ</label>
+                            <label class="label3" nz-radio nzValue="en">English</label>
+                        </nz-radio-group>
+                    </nz-form-item>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

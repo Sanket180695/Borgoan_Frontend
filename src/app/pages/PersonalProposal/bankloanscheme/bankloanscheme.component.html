@@ -1,0 +1,188 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{ 'bankloanscheme.bankloanscheme_name' | translate}} </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input name="name" type="text" [(ngModel)]="data.NAME_MR" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{ 'bankloanscheme.bankloanscheme_name' | translate}} </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input name="name" type="text" [(ngModel)]="data.NAME_KN" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{ 'bankloanscheme.bankloanscheme_name' | translate}} </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{ 'common_text.nzErrorTip' | translate}}">
+                            <input nz-input name="name" type="text" [(ngModel)]="data.NAME_EN" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <!-- <div nz-row>
+            <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzNoColon>प्रकार </nz-form-label>
+                    <nz-form-control>
+                       <nz-checkbox-group name="types" [(ngModel)]="data.types"></nz-checkbox-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+                </div> -->
+
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+    
+                        <nz-form-label nzNoColon>{{'loantype.label2.name' | translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number name="processing_fee" style="width: 100%;" [(ngModel)]="data.PROCESSING_FEE"
+                                [nzMin]="0"></nz-input-number>
+                        </nz-form-control>
+    
+                    </div>
+                </div>
+         
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{ 'bankloanscheme.bankloanscheme_status' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_active" [(ngModel)]="data.IS_ACTIVE" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                           
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_individual_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_individual" [(ngModel)]="data.IS_INDIVIDUAL" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_firm_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_firm" [(ngModel)]="data.IS_FIRM" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_salaried_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_salaried" [(ngModel)]="data.IS_SALARIED" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_farmer_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_farmer" [(ngModel)]="data.IS_FARMER" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_profession' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_profession" [(ngModel)]="data.IS_PROPRIETER" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_buiness_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_buiness" [(ngModel)]="data.IS_BUSINESS" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_cashcredit_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_cashcredit" [(ngModel)]="data.IS_CASH_CREDIT" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankloanscheme.is_manufactiring_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="is_manufactiring" [(ngModel)]="data.IS_MANUFACTURING" nzCheckedChildren=" {{'common_text.checked' | translate}} "
+                            nzUnCheckedChildren=" {{'common_text.unchecked' | translate}} "></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{ 'common.cancel' | translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span> {{ 'common_text.footer_btn1' | translate}} </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)"> {{ 'common_text.footer_btn2' | translate}} </a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span> {{ 'common_text.footer_btn4' | translate}} </span></button>
+    </div>
+</div>

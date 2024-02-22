@@ -1,0 +1,19 @@
+export class Applicantdocument {
+    ID:number;
+    CLIENT_ID:number;
+    PROPOSAL_ID:number;
+    DOCUMENT_ID:number;
+    DOCUMENT_TITLE:string;
+    DOCUMENT_DESCRIPTION:string;
+    IS_UPLOADED;
+    UPLOADED_DATETIME:string;
+    DOCUMENT_KEY:string;
+    IS_COMPLUSORY;
+    IS_VERIFIED;
+    IS_APPROVED;
+    REMARK:string;
+    USER_ID:number;
+    TYPE:string
+    APPLICANT_ID:number
+    ALLOWED_TYPES:string
+}

@@ -1,0 +1,15 @@
+<app-propertiesinfo (demos)='demos()' [LOAN_KEY]="LOAN_KEY" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID"
+    style="height: 100%;width: 100%;" TYPE="G" [APPLICANT_ID]="APPLICANT_ID" [data]="data" [PROPOSAL_ID]="PROPOSAL_ID">
+</app-propertiesinfo>
+
+<div nz-row style="margin-top: 10px;">
+    <div nz-col nzSpan="24" style="text-align: right;padding: 10px;">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false"
+             class="ant-btn ant-btn-primary" nz-button (click)="demos2()">
+            <span>{{ 'cash-credit-loan.button2' | translate}}</span>
+        </button>
+    </div>
+</div>
+<!-- <app-primesecurityinfo (demo)='demos()'  [LOAN_KEY]="LOAN_KEY" *ngIf="type==1" style="height: 100%;width: 100%;" TYPE="G"
+    [APPLICANT_ID]="APPLICANT_ID" [data]="data" [PROPOSAL_ID]="PROPOSAL_ID"></app-primesecurityinfo> -->

@@ -1,0 +1,78 @@
+<div nz-row>
+
+  <!-- <div nz-col nzSpan="8">
+        <iframe scrolling="no" width="360px" height="515px" frameBorder="0" [src]="urlSafe"></iframe>
+    </div>
+   
+    <div nz-col nzSpan="1">
+    </div> -->
+  <div nz-col nzSpan="24">
+
+    <nz-spin [nzSpinning]="isSpinning1">
+      <div nz-row>
+        <a (click)="getUrlDocument()" *ngIf="fileExt=='pdf'">{{'approvedocument.row1'|translate }}</a>
+        <a (click)="getUrlDocument()" *ngIf="fileExt!='pdf'">{{'approvedocument.row2'|translate }}</a>
+      </div>
+      <div nz-row>
+        <ngx-image-viewer style="width:100%;height:400px;" *ngIf="fileExt!='pdf'" [src]="images" [(index)]="imageIndex">
+        </ngx-image-viewer>
+        <!-- <img [src]="imageSrc" *ngIf="fileExt!='pdf'" style="width:100%;height:300px;"> -->
+
+
+        <!-- <iframe width="600px" height="350px" *ngIf="fileExt=='pdf'" [src]="imageSrc1"></iframe> -->
+
+        <!-- <ngx-extended-pdf-viewer *ngIf="fileExt=='pdf'" [showSidebarButton]="false"
+       [showFindButton]="false" [showPagingButtons]="true"
+            [showZoomButtons]="true" [showPresentationModeButton]="false" [showOpenFileButton]="false"
+            [showPrintButton]="false" [showDownloadButton]="false" [showBookmarkButton]="false"
+            [showSecondaryToolbarButton]="true" [showRotateButton]="true" [showHandToolButton]="false"
+            [showScrollingButton]="false" [showSpreadButton]="false" [showPropertiesButton]="false"
+            [base64Src]="imageSrc" [height]="'50vh'"
+            [useBrowserLocale]="true">
+          </ngx-extended-pdf-viewer> -->
+
+        <div style="width: 700px;max-height: 400px;overflow-y: auto;" *ngIf="fileExt=='pdf'">
+          <pdf-viewer [src]="imageSrc" [fit-to-page]="true" style="width: 700px;overflow: scroll" [autoresize]="true"
+            [original-size]="false" [zoom]="1"></pdf-viewer>
+
+        </div>
+      </div>
+    </nz-spin>
+    <div nz-row>
+
+      <div nz-col nzSpan="3">
+
+        <nz-form-label nzRequired nzNoColon>{{'approvedocument.label1'|translate }} </nz-form-label>
+        <nz-form-control>
+          <nz-switch [(ngModel)]="documentData.IS_APPROVED"
+            nzCheckedChildren="{{'approvedocument.switch.child1'|translate }}"
+            nzUnCheckedChildren="{{'approvedocument.switch.child2'|translate }}" name="isapproved"></nz-switch>
+
+        </nz-form-control>
+
+      </div>
+
+      <div nz-col nzSpan="1"></div>
+      <div nz-col nzSpan="20">
+        <nz-form-item>
+          <nz-form-label nzRequired nzNoColon>{{'approvedocument.label2'|translate }}</nz-form-label>
+          <nz-form-control nzHasFeedback nzErrorTip="{{'approvedocument.label2.nzErrorTip'|translate }}">
+            <textarea nz-input [nzAutosize]="{ minRows: 2, maxRows: 6 }" name="remark" [(ngModel)]="documentData.REMARK"
+              required></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="footer" style="bottom: -45px;">
+      <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'approvedocument.button1'|translate }} </span></button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div *ngIf="branchId==0">
+    <nz-spin [nzSpinning]="isSpinning">
+
+    <div nz-row style="padding: 10px;">
+        <div style="display: flex;justify-content: flex-end">
+            <span>
+              <button nz-button nzType="primary" (click)="logout()">{{'selectbranch.button1'|translate }}</button>
+            </span>
+        </div>
+        <h2 style="text-align: center;">{{'selectbranch.title'|translate }}</h2>
+        <div style="background: #ECECEC">
+            <div nz-col [nzSpan]="6" *ngFor="let val of branches" style="padding: 10px;">
+                <nz-card style="width:300px;">
+                    <a (click)="chooseRole(val.ID)">
+                        <nz-card-meta style="text-align: center;" nzTitle="{{val.NAME}}"></nz-card-meta>
+                    </a>
+                </nz-card>
+            </div>
+        </div>
+    </div>
+</nz-spin>
+    
+    </div>
+    <app-dashboard *ngIf="branchId>0"></app-dashboard>

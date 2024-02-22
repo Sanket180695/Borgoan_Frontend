@@ -1,0 +1,99 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'travelplan.label1'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-select name="MEANS_OF_TRAVELS" [(ngModel)]="data.MEANS_OF_TRAVELS"
+                                nzPlaceHolder="प{{'travelplan.placeholder1'|translate }}">
+                                <nz-option [nzValue]="'1'" nzLabel="{{'travelplan.label1.option1'|translate }}"></nz-option>
+                                <nz-option [nzValue]="'2'" nzLabel="{{'travelplan.label1.option2'|translate }}"></nz-option>
+                                <nz-option [nzValue]="'3'" nzLabel="{{'travelplan.label1.option3'|translate }}"></nz-option>
+                                <nz-option [nzValue]="'4'" nzLabel="{{'travelplan.label1.option4'|translate }}"></nz-option>
+                                <nz-option [nzValue]="'5'" nzLabel="{{'travelplan.label1.option5'|translate }}"></nz-option>
+
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'travelplan.label2'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-date-picker name="TRAVEL_DATE" style="width: 100%;"
+                                (keydown.backspace)="focusss3($event)" (keydown.delete)="focusss3($event)"
+                                [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy" [(ngModel)]="data.TRAVEL_DATE"
+                                nzPlaceHolder="प{{'travelplan.label2'|translate }}">
+                            </nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'travelplan.label3'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="FROM_LOCATION" type="text" [(ngModel)]="data.FROM_LOCATION"
+                                required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'travelplan.label4'|translate }}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="TO_LOCATION" type="text" [(ngModel)]="data.TO_LOCATION" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'travelplan.label5'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <textarea nz-input name="INSURANCE" [nzAutosize]="{ minRows: 1, maxRows: 6 }"
+                                [(ngModel)]="data.TRAVELS_INSURENCE_DETAILS" ></textarea>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12" *ngIf="isAgent">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'travelplan.label6'|translate }}</nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number style="width: 100%;" name="TICKET_AMOUNT" type="text"
+                                nzPlaceHolder="{{'travelplan.label6'|translate }}" [(ngModel)]="data.TICKET_AMOUNT"
+                                [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'travelplan.label7'|translate }}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-switch name="IS_TICKET_TAKEN" [(ngModel)]="data.IS_TICKET_TAKEN"
+                                 nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>{{'travelplan.button1'|translate }}</span></button>
+    </div>
+</div>

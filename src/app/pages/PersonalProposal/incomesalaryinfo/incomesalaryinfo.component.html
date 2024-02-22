@@ -1,0 +1,280 @@
+<div>
+
+    <div>
+        <nz-divider nzText="{{'gincomeinfo.text1'|translate }}"></nz-divider>
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <div nz-row class="my-box">
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label4'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <textarea nz-input name="ORGANISATION_NAME" type="text"
+                                    [(ngModel)]="data1.ORGANISATION_NAME"
+                                    [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="14">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label5'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <input nz-input name="POST_OF_EMPLOYMENT" type="text"
+                                    [(ngModel)]="data1.POST_OF_EMPLOYMENT" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="10">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label6'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <input nz-input name="CONTACT_NO_OF_EMPLOYER" minlength="10"
+                                    maxlength="14" type="text" pattern="^\d+"
+                                    [(ngModel)]="data1.CONTACT_NO_OF_EMPLOYER">
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <!-- <div nz-col nzSpan="12">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label7'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-radio-group name="TYPE_OF_SECTOR" [(ngModel)]="data2.TYPE_OF_SECTOR"
+                                    nzButtonStyle="solid">
+                                    <label nz-radio nzValue="P"
+                                        style="margin-right: 0px;">{{'gincomeinfo.label8'|translate
+                                        }}</label>
+                                    <label nz-radio nzValue="G"
+                                        style="margin-right: 0px;">{{'gincomeinfo.label9'|translate
+                                        }}</label>
+                                </nz-radio-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div> -->
+                    <!-- <div nz-col nzSpan="12">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label10'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-radio-group name="TYPE_OF_EMPLOYMENT"
+                                    [(ngModel)]="data2.TYPE_OF_EMPLOYMENT" nzButtonStyle="solid">
+                                    <label nz-radio nzValue="P"
+                                        style="margin-right: 0px;">{{'gincomeinfo.label11'|translate
+                                        }}</label>
+                                    <label nz-radio nzValue="T"
+                                        style="margin-right: 0px;">{{'gincomeinfo.label12'|translate
+                                        }}</label>
+                                </nz-radio-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div> -->
+
+                </div>
+            </div>
+            <!-- <div nz-col nzSpan="5" nzOffset="1">
+                <div nz-row class="my-box">
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label13'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-date-picker style="width: 100%;" name="date" nzFormat="dd-MM-yyyy"
+                                    [(ngModel)]="data2.JOINING_DATE"
+                                    (keydown.backspace)="focusss1($event)"
+                                    (keydown.delete)="focusss1($event)" [nzDisabledDate]="disabledDate"
+                                    nzPlaceHolder="{{'gincomeinfo.label13'|translate }}">
+                                </nz-date-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label14'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-date-picker style="width: 100%;"
+                                    (keydown.backspace)="focusss($event)"
+                                    (keydown.delete)="focusss($event)" name="date1"
+                                    nzFormat="dd-MM-yyyy" [(ngModel)]="data2.RETIREMENT_DATE"
+                                    nzPlaceHolder="{{'gincomeinfo.label14'|translate }}">
+                                </nz-date-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label15'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-month-picker style="width: 100%;" name="LATEST_SALARY_MONTH"
+                                    [(ngModel)]="data2.LATEST_SALARY_MONTH"
+                                    [nzDisabledDate]="disabledDateMonth"
+                                    nzPlaceHolder="{{'gincomeinfo.label15'|translate }}">
+                                </nz-month-picker>
+
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                </div>
+            </div> -->
+            <div nz-col nzSpan="10" nzOffset="2">
+                <div nz-row class="my-box">
+                    <div nz-col nzSpan="11">
+                        <nz-form-item style="padding: 0px 5px;">
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label16'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+                                <nz-input-number style="width: 100%;" name="GROSS_SALARY"
+                                    [(ngModel)]="data1.GROSS_SALARY" [nzMin]="0" [nzStep]="1"
+                                    [nzMax]="9999999999999999999999">
+                                </nz-input-number>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="11" nzOffset="2">
+                        <nz-form-item style="padding: 0px 5px;">
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label22'|translate}}</nz-form-label>
+                            <nz-form-control>
+                                <nz-input-number style="width: 100%;" name="TOTAL_DEDUCTION"
+                                    [(ngModel)]="data1.TOTAL_DEDUCTION" [nzMin]="0" [nzStep]="1"
+                                    [nzMax]="data1.GROSS_SALARY">
+                                </nz-input-number>
+                                <!-- <span style="font-size: 12px;">(निव्वळ पगार : {{data2.NET_SALARY}})</span> -->
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="11">
+                        <nz-form-item style="padding: 0px 5px;">
+                            <nz-form-label nzNoColon>{{'gincomeinfo.label23'|translate }}
+                            </nz-form-label>
+                            <nz-form-control>
+
+                                <nz-input-number style="width: 100%;" name="NET_SALARY"
+                                    [(ngModel)]="data1.NET_SALARY" [nzMax]="data1.GROSS_SALARY">
+                                </nz-input-number>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <nz-divider nzText="{{'gincomeinfo.text2'|translate }} "></nz-divider>
+        <div nz-row class="my-box">
+            <div nz-col nzSpan="5">
+                <nz-form-item>
+                    <nz-form-label   nzNoColon>
+                        {{'gincomeinfo.label32'|translate }}</nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="houseno" type="text"
+                            [(ngModel)]="addressinfoSalary.HOUSE_NO" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5" nzOffset="1">
+                <nz-form-item>
+                    <nz-form-label   nzNoColon> {{'gincomeinfo.label33'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="building" type="text"
+                            [(ngModel)]="addressinfoSalary.BUILDING" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5" nzOffset="1">
+                <nz-form-item>
+                    <nz-form-label   nzNoColon>{{'gincomeinfo.label34'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="landmark" type="text"
+                            [(ngModel)]="addressinfoSalary.LANDMARK" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5" nzOffset="1">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label35'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="village" type="text"
+                            [(ngModel)]="addressinfoSalary.VILLAGE" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label36'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="taluka" type="text"
+                            [(ngModel)]="addressinfoSalary.TALUKA" (ngModelChange)="onChanges($event)" [nzAutocomplete]="auto" />
+                            <nz-autocomplete #auto>
+                                <nz-auto-option *ngFor="let option of talukas" [nzValue]="option.TALUKA">
+                                    {{option.TALUKA }},<small>{{ option.PINCODE }}</small>
+                                </nz-auto-option>
+                            </nz-autocomplete>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5" nzOffset="1">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label37'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="distrcict" type="text"
+                            [(ngModel)]="addressinfoSalary.DISTRICT" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5" nzOffset="1">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label38'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzHasFeedback>
+                        <input nz-input name="state" type="text"
+                            [(ngModel)]="addressinfoSalary.STATE" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="5" nzOffset="1">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'gincomeinfo.label39'|translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="pincode" pattern="^[1-9][0-9]{5}$" type="text"
+                            [(ngModel)]="addressinfoSalary.PINCODE" maxlength="6" minlength="6" (ngModelChange)="onChanges2($event)" [nzAutocomplete]="auto4" />
+                            <nz-autocomplete #auto4>
+                                <nz-auto-option *ngFor="let option of pincodes" [nzValue]="option">
+                                    {{option}}
+                                </nz-auto-option>
+                            </nz-autocomplete>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>{{
+                'common.cancel' | translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data1.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span> {{ 'common_text.footer_btn1' | translate}}
+            </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)"> {{ 'common_text.footer_btn2' | translate}} </a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button *ngIf="data1.ID"
+            (click)="save(false)"><span> {{ 'common_text.footer_btn3' | translate}} </span></button>
+    </div>
+</div>

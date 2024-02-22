@@ -1,0 +1,66 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+
+            <form nz-form style="padding:0px 20px;">
+                <div nz-row>
+                    <div nz-col nzSpan="10">
+                        <h3>Tabs Status (✓ is Approved)</h3>
+                        <div nz-row *ngFor="let datas of IndivisualInfotabs" style="margin-bottom: 10px;">
+                            <div nz-col nzSpan="4">
+                                <label *ngIf="datas.IS_APPROVED==1" style="color: green;">✓</label>
+                                <label *ngIf="datas.IS_APPROVED==0" style="color: red;"> ✗</label>
+                            </div>
+                            <div nz-col nzSpan="20">
+                                <span *ngIf="browserLang =='mr' "> {{datas.EXTRA_INFORMATION_NAME}}</span>
+                                <span *ngIf="browserLang =='kn' "> {{datas.NAME_KN}}</span>
+                                <span *ngIf="browserLang =='en' "> {{datas.NAME_EN}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-col nzSpan="14">
+                        
+                        <div nz-row>
+                            <div *ngIf="roleId =='4'" nz-col nzSpan="24">
+                                <nz-form-label nzRequired nzNoColon> {{'joinbranch.bmopinion'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <textarea nz-input rows="2" name="BRANCH_OPINION_TEXT"
+                                        [(ngModel)]="BRANCH_OPINION_TEXT"></textarea>
+                                </nz-form-control>
+                            </div>
+                        </div>
+
+
+                        <br>
+
+                        <div nz-row>
+                            <div nz-col nzSpan="24" style="text-align: right;">
+
+                                <button type="button" class="ant-btn ant-btn-primary" *ngIf="isreject && roleId =='4'"
+                                    nz-button [nzLoading]="isButtonSpinning" (click)="save('R')"><span>{{ 'basicinfo.m5'|translate}}</span></button>
+                                
+                                <button type="button" class="ant-btn ant-btn-primary" *ngIf="!isreject && roleId == '4'"
+                                    nz-button [nzLoading]="isButtonSpinning" (click)="save('V')"><span>{{ 'basicinfo.m6'|translate}}</span></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </nz-spin>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

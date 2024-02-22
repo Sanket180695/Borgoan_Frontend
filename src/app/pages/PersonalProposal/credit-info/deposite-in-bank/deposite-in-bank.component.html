@@ -1,0 +1,109 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row *ngIf="!data4.IS_SUB">
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th18'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="BANK_NAME" type="text" [(ngModel)]="data4.BANK_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+             
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th2'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="BRANCH_NAME" type="text" [(ngModel)]="data4.BRANCH_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row *ngIf="data4.IS_SUB">
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th2'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-select name="BRANCH_NAME" *ngIf="browserLang=='mr'" [(ngModel)]="data4.BRANCH_NAME" required nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                                <nz-option *ngFor="let p of branchData" [nzValue]="p.NAME_MR" [nzLabel]="p.NAME_MR"></nz-option>
+                            </nz-select>
+                            <nz-select name="BRANCH_NAME" *ngIf="browserLang=='kn'" [(ngModel)]="data4.BRANCH_NAME" required nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                                <nz-option *ngFor="let p of branchData" [nzValue]="p.NAME_KN" [nzLabel]="p.NAME_KN"></nz-option>
+                            </nz-select>
+                            <nz-select name="BRANCH_NAME" *ngIf="browserLang=='en'" [(ngModel)]="data4.BRANCH_NAME" required nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                                <nz-option *ngFor="let p of branchData" [nzValue]="p.NAME_EN" [nzLabel]="p.NAME_EN"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th19'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}" >
+                            <nz-select name="loantype" *ngIf="browserLang=='mr'" [(ngModel)]="data4.DEPOSITE_TYPE" required nzPlaceHolder="{{'gcreditinfo.th19'| translate}}">
+                                <nz-option *ngFor="let p of depositeTypeData" [nzValue]="p.M_NAME" [nzLabel]="p.M_NAME"></nz-option>
+                            </nz-select>
+                            <nz-select name="loantype" *ngIf="browserLang=='kn'" [(ngModel)]="data4.DEPOSITE_TYPE" required nzPlaceHolder="{{'gcreditinfo.th19'| translate}}">
+                                <nz-option *ngFor="let p of depositeTypeData" [nzValue]="p.K_NAME" [nzLabel]="p.K_NAME"></nz-option>
+                            </nz-select>
+                            <nz-select name="loantype" *ngIf="browserLang=='en'" [(ngModel)]="data4.DEPOSITE_TYPE" required nzPlaceHolder="{{'gcreditinfo.th19'| translate}}">
+                                <nz-option *ngFor="let p of depositeTypeData" [nzValue]="p.NAME" [nzLabel]="p.NAME"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th20'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 100%;" name="DEPOSITE_AMOUNT" [(ngModel)]="data4.DEPOSITE_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1">
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'gcreditinfo.th21'| translate}}?</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_LOAN_TAKEN" [(ngModel)]="data4.IS_LOAN_TAKEN"
+                                 nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                 nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                           
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-col nzSpan="12">
+                <nz-form-item>
+                    <nz-form-label nzNoColon>{{'gcreditinfo.th34'| translate}}</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input style="width: 100%;" name="AccountNo"
+                            [(ngModel)]="data4.ACCOUNT_NO" />
+                      
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data4.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data4.ID"
+            (click)="save(false)"><span>{{'common_text.footer_btn3'|translate}}</span></button>
+    </div>
+</div>

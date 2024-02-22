@@ -1,0 +1,123 @@
+<div nz-row
+    *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+    style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+    <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+            style="color: rgb(32, 119, 250);"></i></div>
+    <div nz-col nzSpan="23">
+        <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+        {{extraApplicantInformation.REMARK}}
+
+    </div>
+</div><br>
+
+<!-- <app-personalloan *ngIf="data.BANK_LOAN_TYPE_ID==1 || data.BANK_LOAN_TYPE_ID==2" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"  
+    [LOAN_SKIM_ID]="data.BANK_LOAN_TYPE_ID" [PROPOSAL_ID]="PROPOSAL_ID" style="height: 100%;width: 100%;">
+</app-personalloan>
+
+<app-shikshansavadharnloan *ngIf="data.BANK_LOAN_TYPE_ID==3" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-shikshansavadharnloan>
+
+<app-consumer-durables-loan *ngIf="data.BANK_LOAN_TYPE_ID==4" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-consumer-durables-loan> -->
+
+<!-- <app-vehicle-loan *ngIf="data.BANK_LOAN_TYPE_ID==5" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-vehicle-loan> -->
+<!-- 
+<app-machinery-loan *ngIf="data.BANK_LOAN_TYPE_ID==6" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-machinery-loan>
+
+<app-utkarsh-loan *ngIf="data.BANK_LOAN_TYPE_ID==7" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-utkarsh-loan>
+<app-dhanwantari-loan *ngIf="data.BANK_LOAN_TYPE_ID==8" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-dhanwantari-loan> -->
+
+<app-realestate-residential *ngIf="data.BANK_LOAN_TYPE_ID==6" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()"
+    [extraApplicantInformation]="extraApplicantInformation" [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-realestate-residential>
+<!-- <app-realestate-commercial *ngIf="data.BANK_LOAN_TYPE_ID==11" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-realestate-commercial>
+<app-realestate-resincom *ngIf="data.BANK_LOAN_TYPE_ID==10" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-realestate-resincom> -->
+
+
+<!-- <app-shubh-vivah-loan *ngIf="data.BANK_LOAN_TYPE_ID==12" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-shubh-vivah-loan>
+<app-pledge-loan *ngIf="data.BANK_LOAN_TYPE_ID==13 || data.BANK_LOAN_TYPE_ID==14" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"  
+    [LOAN_SKIM_ID]="data.BANK_LOAN_TYPE_ID" [PROPOSAL_ID]="PROPOSAL_ID" style="height: 100%;width: 100%;">
+</app-pledge-loan> -->
+
+<!-- 
+<app-cash-credit-loan *ngIf="data.BANK_LOAN_TYPE_ID==15" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    CASH_CREDIT_TYPE="T"
+    [PROPOSAL_ID]="PROPOSAL_ID" style="height: 100%;width: 100%;"></app-cash-credit-loan>
+
+<app-cash-credit-loan *ngIf="data.BANK_LOAN_TYPE_ID==16" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    CASH_CREDIT_TYPE="I"
+    [PROPOSAL_ID]="PROPOSAL_ID" style="height: 100%;width: 100%;"></app-cash-credit-loan>
+
+<app-cash-credit-loan-other *ngIf="data.BANK_LOAN_TYPE_ID==17" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-cash-credit-loan-other>
+
+<app-industrial-finance-machinery *ngIf="data.BANK_LOAN_TYPE_ID==18" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-industrial-finance-machinery>
+
+<app-realestate-industrialfinance *ngIf="data.BANK_LOAN_TYPE_ID==19" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-realestate-industrialfinance>
+
+<app-builderfinance *ngIf="data.BANK_LOAN_TYPE_ID==20" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-builderfinance>
+
+
+<app-tour-and-travel-loan *ngIf="data.BANK_LOAN_TYPE_ID==21" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-tour-and-travel-loan>
+
+<app-real-estate-to-up-loan *ngIf="data.BANK_LOAN_TYPE_ID==22" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-real-estate-to-up-loan>
+
+<app-rent-discoumting-loan *ngIf="data.BANK_LOAN_TYPE_ID==23" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()" [extraApplicantInformation]="extraApplicantInformation"    [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-rent-discoumting-loan> -->
+
+<app-goldloan *ngIf="data.BANK_LOAN_TYPE_ID==8" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()"
+    [extraApplicantInformation]="extraApplicantInformation" [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-goldloan>
+
+<app-depositeloan *ngIf="data.BANK_LOAN_TYPE_ID ==10"
+    [BANK_LOAN_TYPE_ID]="data.BANK_LOAN_TYPE_ID" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()"
+    [extraApplicantInformation]="extraApplicantInformation" [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-depositeloan>
+
+<app-amulyaloan *ngIf="data.BANK_LOAN_TYPE_ID==17" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" (demo)="demo()"
+    [extraApplicantInformation]="extraApplicantInformation" [PROPOSAL_ID]="PROPOSAL_ID"
+    style="height: 100%;width: 100%;"></app-amulyaloan>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonVerifySpinning" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+            (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonVerifySpinning" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+            (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+            nz-button [nzLoading]="isButtonSpinning" (click)="save()"><span>{{ 'common_text.footer_btn5' |
+                translate}}</span></button> -->
+    </div>
+</div>

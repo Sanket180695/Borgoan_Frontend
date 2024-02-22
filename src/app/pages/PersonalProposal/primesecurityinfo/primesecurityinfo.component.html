@@ -1,0 +1,106 @@
+
+
+    <div *ngIf="bankLoanId==2 || bankLoanId==14 || bankLoanId==15 || bankLoanId==16 || bankLoanId==17 ||  bankLoanId==17">
+        <nz-divider nzText=" {{ 'primesecurityinfo.divider1_title' | translate}} "></nz-divider>
+    
+     <nz-spin [nzSpinning]="isSpinning">
+        <div nz-row>
+            <div nz-col nzSpan="5" class="my-box">
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon>{{ 'primesecurityinfo.stoackamount_title' | translate}}</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="stoackamount" style="width: 100%;"
+                            [(ngModel)]="primesecurityinfo.STOCK_AMOUNT" [nzMax]="99999999999999999999999999" [nzMin]="0"></nz-input-number>
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.stockdetails' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="stockdetails"
+                            [(ngModel)]="primesecurityinfo.STOCK_DETAILS"></textarea>
+                    </nz-form-control>
+                </div>
+             
+    
+            </div>
+            <div nz-col nzSpan="1"></div>
+    
+            <div nz-col nzSpan="5" class="my-box">
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.debitoramount' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="debitoramount" style="width: 100%;"
+                            [(ngModel)]="primesecurityinfo.DEBTORS_AMOUNT" [nzMax]="99999999999999999999999999" [nzMin]="0"></nz-input-number>
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.debitordetails' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="debitordetails"
+                            [(ngModel)]="primesecurityinfo.DEBTORS_DETAILS"></textarea>
+                    </nz-form-control>
+                </div>
+               
+            </div>
+            <div nz-col nzSpan="1"></div>
+    
+            <div nz-col nzSpan="5" class="my-box">
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.workorderamount' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="workorderamount" style="width: 100%;"
+                            [(ngModel)]="primesecurityinfo.WORK_ORDER_AMOUNT" [nzMax]="99999999999999999999999999" [nzMin]="0"></nz-input-number>
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.workorderdetails' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="workorderdetails"
+                            [(ngModel)]="primesecurityinfo.WORK_ORDER_DETAILS"></textarea>
+                    </nz-form-control>
+                </div>
+             
+    
+            </div>
+            <div nz-col nzSpan="1"></div>
+    
+            <div nz-col nzSpan="5" class="my-box">
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.otheramount' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="otheramount" style="width: 100%;"
+                            [(ngModel)]="primesecurityinfo.OTHER_AMOUNT" [nzMax]="99999999999999999999999999" [nzMin]="0"></nz-input-number>
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-label nzNoColon> {{ 'primesecurityinfo.otherdetails' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="otherdetails"
+                            [(ngModel)]="primesecurityinfo.OTHER_DETAILS"></textarea>
+                    </nz-form-control>
+                </div>
+           
+    
+            </div>
+       </div>
+      
+    </nz-spin>
+    <div style="margin-left: 900px">
+            <!-- <button type="button" nz-button (click)="close()" class="ant-btn"
+                style="margin-right: 8px;"><span>बंद करा</span></button> -->
+            <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                (click)="save()"><span>{{ 'common_text.footer_btn1' | translate}}</span></button>
+        </div>
+    
+    
+    </div>
+
+
+
+
+<!-- <div nz-row *ngIf="bankLoanId!=1 || bankLoanId!=12 || bankLoanId!=13 || bankLoanId!=14 || bankLoanId!=15">
+    <div nz-col nzSpan="7"></div> 
+    <div nz-col nzSpan="10" style="text-align: center;border: 1px solid;font-size: 26px">
+        तुम्ही निवडलेल्या लोन स्कीम साठी उपलब्ध नाही 
+    </div>
+  </div> -->

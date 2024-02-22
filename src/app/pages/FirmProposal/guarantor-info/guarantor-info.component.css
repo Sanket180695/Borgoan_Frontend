@@ -1,0 +1,27 @@
+nz-form-item{
+    display: inline-block;
+    margin-bottom: 5px;
+    width: -webkit-fill-available;
+    padding: 0px 10px;
+  }
+  table {
+    width: 100%;
+    border-radius: 10px;
+  }
+   
+  th {
+    border: 1px solid grey;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  td {
+    border: 1px solid grey;
+    text-align: left;
+    padding: 5px;
+    font-size: 12px;
+    height: 25px;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+  }

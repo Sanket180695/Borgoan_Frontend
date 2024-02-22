@@ -1,0 +1,102 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'family-passport-info.label1'|translate }}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input  name="NAME" type="text" [(ngModel)]="data.NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'family-passport-info.label2'|translate }}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="PASSPORT_NUMBER" type="text" [(ngModel)]="data.PASSPORT_NUMBER" 
+                             required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+          
+            <div nz-col nzSpan="12">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'family-passport-info.label3'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-date-picker name="PASSPORT_VALIDITY_DATE" style="width: 100%;" (keydown.backspace)="focusss($event)" (keydown.delete)="focusss($event)"
+                            [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                            [(ngModel)]="data.PASSPORT_VALIDITY_DATE"
+                            nzPlaceHolder=" {{'family-passport-info.label3'|translate }}">
+                        </nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'family-passport-info.label4'|translate }}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input  name="VISA_COUNTRY_NAME" type="text" [(ngModel)]="data.VISA_COUNTRY_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'family-passport-info.label5'|translate }}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input  name="VISA_TYPE" type="text" [(ngModel)]="data.VISA_TYPE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'family-passport-info.label6'|translate }}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-date-picker name="VISA_VALIDITY" style="width: 100%;" (keydown.backspace)="focusss2($event)" (keydown.delete)="focusss2($event)"
+                            [nzDisabledDate]="disabledDate2" nzFormat="dd-MM-yyyy"
+                            [(ngModel)]="data.VISA_VALIDITY"
+                            nzPlaceHolder=" {{'family-passport-info.label6'|translate }}">
+                        </nz-date-picker>
+                            <!-- <nz-input-number style="width: 100%;" name="VISA_VALIDITY"
+                            [nzPlaceHolder]="'महिने मध्ये नमूद करा'" [(ngModel)]="data.VISA_VALIDITY"
+                            [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number> -->
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'family-passport-info.label7'|translate }}</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-switch name="IS_TAKEN_INSURANCE" [(ngModel)]="data.IS_TAKEN_INSURANCE"  nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                 nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                            
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>{{'family-passport-info.button1'|translate }}</span></button>
+    </div>
+</div>

@@ -1,0 +1,299 @@
+<div>
+    <!-- <h2>औद्योगिक फाइनान्स - मशीनरी कर्ज</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label1'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="PURPOSE_OF_LOAN" [(ngModel)]="data.PURPOSE_OF_LOAN"
+                                        nzPlaceHolder="{{'industrial-finance-machinery.placeholder1'|translate }}">
+                                        <nz-option [nzValue]="'1'" nzLabel="{{'industrial-finance-machinery.label1.option1'|translate }}"></nz-option>
+                                        <nz-option [nzValue]="'2'" nzLabel="{{'industrial-finance-machinery.label1.option2'|translate }}"></nz-option>
+                                        <nz-option [nzValue]="'3'" nzLabel="{{'industrial-finance-machinery.label1.option3'|translate }}">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="14">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label2'|translate }}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <textarea nz-input name="NATURE_OF_MACHINERY" [(ngModel)]="data.NATURE_OF_MACHINERY"
+                                        [nzAutosize]="{ minRows: 1, maxRows: 4 }" required></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'industrial-finance-machinery.label3'|translate }} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="DEALER_NAME" type="text" [(ngModel)]="data.DEALER_NAME"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="14">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label4'|translate }}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <textarea nz-input name="DETAILS_OF_MACHINERY"
+                                        [(ngModel)]="data.DETAILS_OF_MACHINERY"
+                                        [nzAutosize]="{ minRows: 1, maxRows: 4 }" required></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                <nz-form-label style="text-align: left;" nzNoColon>{{'industrial-finance-machinery.label5'|translate }} <br/> {{'industrial-finance-machinery.label6'|translate }} ?
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_RELATED_TO_BUSINESS" [(ngModel)]="data.IS_RELATED_TO_BUSINESS"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="5">
+                            <nz-form-item>
+                                 <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label7'|translate }} 
+                                 </nz-form-label>
+                                 <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                     <nz-year-picker style="width: 100%;" (keydown.backspace)="focusss4($event)" (keydown.delete)="focusss4($event)" [(ngModel)]="data.PRODUCTION_YEAR" name="PRODUCTION_YEAR"  nzPlaceHolder="{{'industrial-finance-machinery.label7'|translate }}"></nz-year-picker>
+                                 </nz-form-control>
+                             </nz-form-item>
+                         </div>
+
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label8'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="AVAILABILITY_TYPE" [(ngModel)]="data.AVAILABILITY_TYPE"
+                                        nzButtonStyle="solid">
+                                        <label nz-radio nzValue="R">{{'industrial-finance-machinery.label8.option1'|translate }}</label>
+                                        <label nz-radio nzValue="C">{{'industrial-finance-machinery.label8.option2'|translate }}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label9'|translate }} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="MACHINERY_TYPE" [(ngModel)]="data.MACHINERY_TYPE"
+                                        nzButtonStyle="solid">
+                                        <label nz-radio nzValue="N">{{'industrial-finance-machinery.label9.option2'|translate }} </label>
+                                        <label nz-radio nzValue="U">{{'industrial-finance-machinery.label9.option2'|translate }}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+                </div>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="10">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label10'|translate }}
+                                </nz-form-label>
+                                
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="EXPECTED_TO_INCREASED_PRODUCTIVITY"
+                                        nzPlaceHolder= "{{'industrial-finance-machinery.label10'|translate }}"
+                                        [(ngModel)]="data.EXPECTED_TO_INCREASED_PRODUCTIVITY" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1" required></nz-input-number>
+                                    <!-- <input nz-input type="text" name="EXPECTED_TO_INCREASED_PRODUCTIVITY"
+                                        [(ngModel)]="data.EXPECTED_TO_INCREASED_PRODUCTIVITY" required> -->
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label11'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="EXPECTED_PER_ANNUM_INCOME"
+                                        nzPlaceHolder= "{{'industrial-finance-machinery.label11'|translate }} '"
+                                        [(ngModel)]="data.EXPECTED_PER_ANNUM_INCOME" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+
+
+                        
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label12'|translate }}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="LIFE_OF_MACHINERY"
+                                        nzPlaceHolder= "{{'industrial-finance-machinery.label12'|translate }}"
+                                        [(ngModel)]="data.LIFE_OF_MACHINERY" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+
+                        <div nz-col nzSpan="24" *ngIf="data.MACHINERY_TYPE == 'N' ">
+                            <div nz-row>
+
+                                <div nz-col nzSpan="5">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label13'|translate }}</nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-input-number style="width: 100%;" name="QUOTATION_AMOUNT" type="text"
+                                                nzPlaceHolder= "{{'industrial-finance-machinery.label13s'|translate }}"
+                                                [(ngModel)]="data.QUOTATION_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999"
+                                                [nzStep]="1"></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="5">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label14'|translate }}</nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                                            placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.QUOTATION_GIVEN_DATE" name="QUOTATION_GIVEN_DATE" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="24" *ngIf="data.MACHINERY_TYPE == 'U' ">
+                            <div nz-row>
+                                <div nz-col nzSpan="5">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label15'|translate }}</nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-input-number style="width: 100%;" name="PURCHASE_AMOUNT"
+                                                nzPlaceHolder= "{{'industrial-finance-machinery.label15'|translate }}" [(ngModel)]="data.PURCHASE_AMOUNT"
+                                                [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1"></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                                <div nz-col nzSpan="5">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label16'|translate }}</nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-year-picker name="YEAR_OF_PURCHASE" style="width: 100%;"
+                                                [(ngModel)]="data.YEAR_OF_PURCHASE" (keydown.backspace)="focusss2($event)" (keydown.delete)="focusss2($event)"
+                                                nzPlaceHolder="{{'industrial-finance-machinery.label16'|translate }}">
+                                            </nz-year-picker>
+
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                                <div nz-col nzSpan="7">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon> {{'industrial-finance-machinery.label17'|translate }}
+                                        </nz-form-label>
+                                        <nz-form-control>
+                                            <nz-switch name="IS_DONE_AGREEMENT" [(ngModel)]="data.IS_DONE_AGREEMENT"
+                                                 nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="7">
+                                    <div nz-row>
+                                        <div nz-col nzSpan="24">
+                                            <nz-form-item style=" margin-bottom: 0px; ">
+                                                <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label18'|translate }}
+                                                </nz-form-label>
+                                            </nz-form-item>
+                                        </div>
+                                        <div nz-col nzSpan="8">
+                                            <nz-form-item>
+
+                                                <nz-form-control>
+                                                    <nz-switch name="IS_ADVANCE_PAID" [(ngModel)]="data.IS_ADVANCE_PAID"
+                                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                                    </nz-switch>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+
+                                        <div nz-col nzSpan="16" *ngIf="data.IS_ADVANCE_PAID">
+                                            <nz-form-item>
+
+                                                <nz-form-control>
+                                                    <nz-input-number style="width: 100%;" name="ADVANCE_PAID_AMOUNT"
+                                                        type="text" nzPlaceHolder= "{{'industrial-finance-machinery.text1'|translate }}"
+                                                        [(ngModel)]="data.ADVANCE_PAID_AMOUNT" [nzMin]="0"
+                                                        [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div nz-col nzSpan="5">
+                                    <nz-form-item>
+                                        <nz-form-label style="text-align: left;" nzNoColon>{{'industrial-finance-machinery.label19'|translate }} <br> {{'industrial-finance-machinery.label20'|translate }}
+                                        </nz-form-label>
+                                        <nz-form-control>
+                                            <nz-switch name="IS_VALUATION_DONE" [(ngModel)]="data.IS_VALUATION_DONE"
+                                                 nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="12" *ngIf="data.IS_VALUATION_DONE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon> {{'industrial-finance-machinery.label21'|translate }}
+                                        </nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <input nz-input type="text" name="VALUATOR_NAME"
+                                                [(ngModel)]="data.VALUATOR_NAME" required>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="4" *ngIf="data.IS_VALUATION_DONE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label22'|translate }}</nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                                            placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.VALUATION_DATE" name="VALUATION_DATE" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="3" *ngIf="data.IS_VALUATION_DONE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{'industrial-finance-machinery.label23'|translate }} </nz-form-label>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT"
+                                                type="text" nzPlaceHolder= "{{'industrial-finance-machinery.label23'|translate }}"
+                                                [(ngModel)]="data.VALUATION_AMOUNT" [nzMin]="1"
+                                                [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px;"  *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+            <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                (click)="save()"><span>{{'industrial-finance-machinery.button1'|translate }}</span></button>
+    </div>
+</div>

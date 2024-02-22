@@ -1,0 +1,151 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+
+                <div nz-col nzSpan="24">
+
+                    <div nz-row>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'business_info.Constitutesth3'|translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'business_info.Constitutesth4'|translate}}">
+                                    <input nz-input name="name" type="text" [(ngModel)]="data3.NAME" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'business_info.th2'|translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="gender" nzButtonStyle="solid" [(ngModel)]="data3.GENDER">
+                                        <label nz-radio nzValue="M">{{'business_info.td1'|translate}}  </label>
+                                        <label nz-radio nzValue="F">{{'business_info.td2'|translate}}  </label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'business_info.th4'|translate}} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'business_info.Constitutesth5'|translate}}">
+                                    <nz-date-picker [(ngModel)]="data3.DOB" style="width: 100%;" nzFormat="dd-MM-yyyy"
+                                        [nzDisabledDate]="disabledDate" nzPlaceHolder="{{'business_info.Constitutesth5'|translate}}" name="dob"
+                                        (ngModelChange)="onChange($event)">
+                                    </nz-date-picker>
+                                </nz-form-control>
+                                {{age}}
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'business_info.Constitutesth6'|translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="religion" type="text" [(ngModel)]="data3.RELIGION" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'business_info.Constitutesth7'|translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="CASTE" type="text" [(ngModel)]="data3.CASTE"  />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'business_info.th3'|translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="education" type="text" [(ngModel)]="data3.EDUCATION"
+                                         />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'business_info.th8'|translate}}</nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'common.checkmobile'|translate}}">
+                                    <input nz-input name="mobile1" maxlength="10" pattern="[6-9]{1}[0-9]{9}"
+                                        [(ngModel)]="data3.MOBILE_NUMBER" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'business_info.th5'|translate}}</nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'business_info.PAN_NUMBER_nzErrorTip'|translate}}">
+                                    <input nz-input name="pan" type="text" maxlength="10"
+                                        pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" [(ngModel)]="data3.PAN_NUMBER" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'business_info.th6'|translate}}</nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{'gpersonalinfo.message30'|translate}}">
+                                    <input nz-input name="adharnumber" maxlength="12" type="text"
+                                        pattern="^[1-9]{1}[0-9]{11}$" [(ngModel)]="data3.AADHAR" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24" >
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'business_info.th9'|translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="RELATIONSHIP_WITH_OTHER" type="text"
+                                        [(ngModel)]="data3.RELATIONSHIP_WITH_OTHER" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'business_info.th7'|translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="membershipnumber" type="text"
+                                        [(ngModel)]="data3.MEMBERSHIP_NUMBER" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" *ngIf="iscompany == 1">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'business_info.th10'|translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="DIRECTORS_IDENTITY_NUMBER" type="text"
+                                        [(ngModel)]="data3.DIRECTORS_IDENTITY_NUMBER" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                       
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'business_info.th11'|translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_AUTHORISED_TO_TRANSACT"
+                                        [(ngModel)]="data3.IS_AUTHORISED_TO_TRANSACT"  nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                         nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.cancel'|translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data3.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'common_text.footer_btn1'|translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'common_text.footer_btn2'|translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data3.ID"
+            (click)="save(false)"><span>{{'common_text.footer_btn3'|translate}}</span></button>
+    </div>
+</div>

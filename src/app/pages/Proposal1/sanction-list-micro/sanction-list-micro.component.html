@@ -1,0 +1,103 @@
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-table class="my-scroll no-wrap1" style="display: flex;" nzBordered #table nzShowSizeChanger
+            [nzFrontPagination]="false" [nzData]="dataList" [nzLoading]="loadingRecords" [nzTotal]="totalRecords"
+            [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="search()"
+            (nzPageSizeChange)="search(true)">
+            <thead (nzSortChange)="sort($event)" nzSingleSort>
+                <tr>
+                    <!-- <th nzShowSort nzSortKey="SEQUENCE_NUMBER">{{'proposalsall.th1'|translate }}</th>
+                    <th>{{'proposalsall.th2'|translate }}</th>
+                    <th>{{'proposalsall.th3'|translate }} </th>
+                    <th>{{'proposalsall.td7'|translate }} </th> 
+                    <th>{{'cibilchecking.lebel5'|translate }} </th> -->
+                    <th>{{'proposalsall.td7'|translate }} </th>
+                    <th>{{'proposalsall.th4'|translate }}</th>
+                    <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of table.data;index as i">
+                    <!-- <td></td>
+                    
+                    <td style="text-align: center;">
+                    </td>
+
+                    <td style="text-align: center;">
+                    </td>
+
+                    <td></td>
+
+
+                    <td style="text-align: center;"></td> -->
+
+                    <td>
+                        <a style="margin-left: 5px;" *ngIf="data.CURRENT_STAGE_ID>7 && data.LOAN_TYPE_ID == 17 " nz-tooltip
+                            nzTooltipTitle="Amulya Loan" (click)="printPdf(data,6)"><i nz-icon nzType="printer" nzTheme="outline"></i>
+                        </a>
+                        
+                        <a style="margin-left: 5px;"
+                            *ngIf="data.CURRENT_STAGE_ID>7 && data.LOAN_TYPE_ID == 17 && data.LOAN_TYPE_ID != 10 && data.LOAN_TYPE_ID != 8"
+                            nz-tooltip nzTooltipTitle="Guarantors form" (click)="printPdf(data,9)"><i nz-icon nzType="printer"
+                                nzTheme="outline"></i>
+                        </a>
+                        
+                        <a style="margin-left: 5px;" *ngIf="data.CURRENT_STAGE_ID>7 && data.LOAN_TYPE_ID == 10 " nz-tooltip
+                            nzTooltipTitle="Deposit Loan" (click)="printPdf(data,10)"><i nz-icon nzType="printer" nzTheme="outline"></i>
+                        </a>
+                        
+                        
+                        <a style="margin-left: 5px;" *ngIf="data.CURRENT_STAGE_ID>7 && data.LOAN_TYPE_ID == 8 " nz-tooltip
+                            nzTooltipTitle="Gold Loan" (click)="printPdf(data,11)"><i nz-icon nzType="printer" nzTheme="outline"></i>
+                        </a>
+
+                        <a style="margin-left: 5px;" *ngIf="data.CURRENT_STAGE_ID>7 && data.LOAN_TYPE_ID == 9 " nz-tooltip
+                            nzTooltipTitle="RD Loan" (click)="printPdf(data,12)"><i nz-icon nzType="printer" nzTheme="outline"></i>
+                        </a>
+
+                        <a style="margin-left: 5px;" *ngIf="data.CURRENT_STAGE_ID>7 && data.LOAN_TYPE_ID == 11 " nz-tooltip
+                            nzTooltipTitle="Pigmy Loan" (click)="printPdf(data,13)"><i nz-icon nzType="printer" nzTheme="outline"></i>
+                        </a>
+                        
+                        <a style="margin-left: 5px;" *ngIf="(data.CURRENT_STAGE_ID == 17 || data.CURRENT_STAGE_ID == 13) 
+                            && (data.LOAN_TYPE_ID == 8 || data.LOAN_TYPE_ID == 10 || data.LOAN_TYPE_ID == 17 || data.LOAN_TYPE_ID == 9 || data.LOAN_TYPE_ID == 11)"
+                            nz-tooltip nzTooltipTitle="Sanction Note" (click)="printPreview(data)"><i nz-icon nzType="printer"
+                                nzTheme="outline"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        <span *ngIf="browserLang=='mr'">
+                            {{data.PAYMENT_STATUS=='Y'?('proposalsall.td6'|translate):data.CURRENT_STAGE_NAME}}
+                        </span>
+                        <span *ngIf="browserLang=='kn'">
+                            {{data.PAYMENT_STATUS=='Y'?('proposalsall.td6'|translate):data.STAGE_NAME_KN}}
+                        </span>
+                        <span *ngIf="browserLang=='en'">
+                            {{data.PAYMENT_STATUS=='Y'?('proposalsall.td6'|translate):data.STAGE_NAME_EN}}
+                        </span>
+                    </td>
+
+                    <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
+
+
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+    [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="850" [nzVisible]="drawerFormVisible"
+    [nzTitle]="drawerFormTitle" (nzOnClose)="drawerFormClose()" (nzKeyboard)="true">
+    <app-preview-amulya-form [drawerClose]="closeCallbackPrint" [IS_SANCTIONED]="true">
+    </app-preview-amulya-form>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="850" [nzVisible]="drawerFormPrintVisible"
+  [nzTitle]="drawerFormPrintTitle" (nzOnClose)="drawerFormPrintClose()" (nzKeyboard)="true">
+  <app-formprint [drawerClose]="closeCallbackFormPrint" [data]="drawerFormPrintData" [data2]="data2"
+    [type6]='type6' [type9]='type9' [type10]='type10' [type11]='type11'[formname]='formname'></app-formprint>
+</nz-drawer>

@@ -1,0 +1,290 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+
+            <form nz-form style="padding:0px 20px;">
+                <div nz-row>
+                    <div nz-col nzSpan="10">
+                        <h3>Tabs Status (✓ is Approved)</h3>
+                        <div nz-row *ngFor="let datas of IndivisualInfotabs" style="margin-bottom: 10px;">
+                            <div nz-col nzSpan="4">
+                                <label *ngIf="datas.IS_APPROVED==1" style="color: green;">✓</label>
+                                <label *ngIf="datas.IS_APPROVED==0" style="color: red;"> ✗</label>
+                            </div>
+                            <div nz-col nzSpan="20">
+                                <span *ngIf="browserLang =='mr' "> {{datas.EXTRA_INFORMATION_NAME}}</span>
+                                <span *ngIf="browserLang =='kn' "> {{datas.NAME_KN}}</span>
+                                <span *ngIf="browserLang =='en' "> {{datas.NAME_EN}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-col nzSpan="14">
+                        
+                        <div nz-row>
+                            <div *ngIf="roleId =='4'" nz-col nzSpan="24">
+                                <nz-form-label nzRequired nzNoColon> {{'joinbranch.bmopinion'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <textarea nz-input rows="2" name="BRANCH_OPINION_TEXT"
+                                        [(ngModel)]="BRANCH_OPINION_TEXT"></textarea>
+                                </nz-form-control>
+                            </div>
+                        </div>
+
+
+                        <br>
+
+                        <div nz-row>
+                            <div nz-col nzSpan="24" style="text-align: right;">
+
+                                <button type="button" class="ant-btn ant-btn-primary" *ngIf="isreject && roleId =='4'"
+                                    nz-button [nzLoading]="isButtonSpinning" (click)="save('R')"><span>{{ 'basicinfo.m5'|translate}}</span></button>
+                                
+                                <button type="button" class="ant-btn ant-btn-primary" *ngIf="!isreject && roleId == '4'"
+                                    nz-button [nzLoading]="isButtonSpinning" (click)="save('V')"><span>{{ 'basicinfo.m6'|translate}}</span></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </nz-spin>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+
+            <form nz-form style="padding:0px 20px;">
+                <div nz-row>
+                    <div nz-col nzSpan="10">
+                        <h3>Tabs Status (✓ is Approved)</h3>
+                        <div nz-row *ngFor="let datas of IndivisualInfotabs" style="margin-bottom: 10px;">
+                            <div nz-col nzSpan="4">
+                                <label *ngIf="datas.IS_APPROVED==1" style="color: green;">✓</label>
+                                <label *ngIf="datas.IS_APPROVED==0" style="color: red;"> ✗</label>
+                            </div>
+                            <div nz-col nzSpan="20">
+                                <span *ngIf="browserLang =='mr' "> {{datas.EXTRA_INFORMATION_NAME}}</span>
+                                <span *ngIf="browserLang =='kn' "> {{datas.NAME_KN}}</span>
+                                <span *ngIf="browserLang =='en' "> {{datas.NAME_EN}}</span>
+                            </div>
+                        </div>
+
+
+                    <div nz-row style="margin-top: 30px;">
+                        <div nz-col nzSpan="24" style="text-align: right;">
+                            <button type="button" class="ant-btn ant-btn-primary"
+                                *ngIf="isreject && roleId =='4' && loanType==15" nz-button
+                                [nzLoading]="isButtonSpinning" (click)="save('R')"><span>Send to Refill</span></button>
+
+                        </div>
+                    </div>
+                    </div>
+
+                    <div nz-col nzSpan="14" class="my-box">
+
+                        <div nz-row>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-radio-group name="status" [(ngModel)]="STATUS">
+                                        <label nz-radio nzValue="A"> {{'paymentapproval.paymentapproval'|
+                                            translate}}</label>
+                                        <label nz-radio nzValue="R">{{'paymentapproval.paymentreject'| translate}}
+                                        </label>
+                                        <label nz-radio nzValue="F">{{'extra-information-list.formTitle'| translate}} </label>
+                                    </nz-radio-group>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>{{ 'basicinfo.t2' | translate}}
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-input-number style="width: 100%;" name="RESOLUTION_NO"
+                                            [(ngModel)]="data.RESOLUTION_NO" [nzMin]="1" [nzStep]="1">
+                                        </nz-input-number>
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th22'|
+                                        translate}}</nz-form-label>
+                                    <nz-form-control>
+                                        <input nz-input
+                                            [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                                            placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.SANCTION_DATE"
+                                            name="SANCTION_DATE" />
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th5'| translate}}
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-input-number style="width: 100%;" name="SANCTION_AMOUNT"
+                                            [(ngModel)]="data.SANCTION_AMOUNT" [nzMin]="1" 
+                                            [nzStep]="1">
+                                        </nz-input-number>
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon> Sanction Amount In Words</nz-form-label>
+                                    <nz-form-control>
+                                        <input nz-input type="text" [(ngModel)]="data.AMOUNT_IN_WORDS"
+                                            name="AMOUNT_IN_WORDS" />
+
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>{{ 'basicinfo.t1' | translate}} %
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-input-number style="width: 100%;" name="RATE_OF_INTEREST"
+                                            [(ngModel)]="data.RATE_OF_INTEREST" [nzMin]="0" 
+                                            [nzStep]="1">
+                                        </nz-input-number>
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>Committee No.
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-input-number style="width: 100%;" name="Commitee"
+                                            [(ngModel)]="data.COMMITTEE_NO" [nzMin]="1" [nzStep]="1">
+                                        </nz-input-number>
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+
+
+
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzNoColon>{{ 'loaninfomation.term_for_loan' | translate}}
+                                    </nz-form-label>
+                                    <nz-form-control>
+
+                                        <nz-select *ngIf="browserLang=='mr'" name="TERM_FOR_LOAN"
+                                            [(ngModel)]="data.TERM_OF_LOAN">
+                                            <nz-option *>
+                                            </nz-option>
+                                        </nz-select>
+                                        <nz-select *ngIf="browserLang=='kn'" name="TERM_FOR_LOAN"
+                                            [(ngModel)]="data.TERM_OF_LOAN">
+                                            <nz-option>
+                                            </nz-option>
+                                        </nz-select>
+                                        <nz-select *ngIf="browserLang=='en'" name="TERM_FOR_LOAN"
+                                            [(ngModel)]="data.TERM_OF_LOAN">
+                                            <nz-option>
+                                            </nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+
+
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzNoColon>{{ 'loaninfomation.installment_frequency_title' |
+                                        translate}}</nz-form-label>
+                                    <nz-form-control>
+
+                                        <nz-select *ngIf="browserLang=='mr'" name="installment_frequency"
+                                            [(ngModel)]="data.TYPE_OF_INSTALLMENT">
+                                            <nz-option>
+                                            </nz-option>
+                                        </nz-select>
+                                        <nz-select *ngIf="browserLang=='kn'" name="installment_frequency"
+                                            [(ngModel)]="data.TYPE_OF_INSTALLMENT">
+                                            <nz-option>
+                                            </nz-option>
+                                        </nz-select>
+                                        <nz-select *ngIf="browserLang=='en'" name="installment_frequency"
+                                            [(ngModel)]="data.TYPE_OF_INSTALLMENT">
+                                            <nz-option>
+                                            </nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+
+                            <div nz-col nzSpan="12" *ngIf="STATUS=='A'">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>Installment Amount
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-input-number style="width: 100%;" name="EMI_AMOUNT"
+                                            [(ngModel)]="data.EMI_AMOUNT" [nzMin]="1" [nzStep]="1">
+                                        </nz-input-number>
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+
+                            <div nz-col nzSpan="24">
+                                <nz-form-label nzRequired nzNoColon>{{'passtomainbranch.lebel3'| translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARKS" required></textarea>
+                                </nz-form-control>
+                            </div>
+                        </div>
+
+                        <div nz-row style="margin-top: 30px;">
+                            <div nz-col nzSpan="24" style="text-align: right;">
+
+                                <button type="button" class="ant-btn ant-btn-primary"
+                                    *ngIf="isreject && roleId =='4' && loanType==15" nz-button
+                                    [nzLoading]="isButtonSpinning" (click)="save('R')"><span>Reject</span>
+                                </button>
+
+                                <button type="button" class="ant-btn ant-btn-primary"
+                                    *ngIf="isreject && roleId =='4' && loanType==15" nz-button
+                                    [nzLoading]="isButtonSpinning" (click)="save('R')"><span>Disburse</span>
+                                </button>
+    
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                  
+
+                </div>
+
+            </form>
+        </nz-spin>
+    </form>
+
+</div> -->

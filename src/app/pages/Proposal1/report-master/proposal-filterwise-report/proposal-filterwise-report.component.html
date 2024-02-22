@@ -1,0 +1,194 @@
+<!-- Filters -->
+<div nz-row>
+    <div nz-col nzSpan="12">
+        <nz-form-item *ngIf="REPORT_PRAMS.REPORT_ID == '6'">
+            <nz-input-group>
+                <nz-select *ngIf="browserLang=='mr'" name="proposalStageId" nzShowSearch style="width: 100%"
+                    nzPlaceHolder="{{'proposalsall.placeholder2'|translate }}" [(ngModel)]="REPORT_PRAMS.SORT_VALUE">
+
+                    <nz-option *ngFor="let val of STAGES_LIST" [nzValue]="val.ID"
+                        [nzLabel]="val.SEQUENCE_NUMBER+'. '+val.NAME">
+                    </nz-option>
+
+                </nz-select>
+
+                <nz-select *ngIf="browserLang=='en'" name="proposalStageId" nzShowSearch style="width: 100%"
+                    nzPlaceHolder="{{'proposalsall.placeholder2'|translate }}" [(ngModel)]="REPORT_PRAMS.SORT_VALUE">
+                    <nz-option *ngFor="let val of STAGES_LIST" [nzValue]="val.ID"
+                        [nzLabel]="val.SEQUENCE_NUMBER+'. '+val.NAME_EN">
+                    </nz-option>
+
+                </nz-select>
+            </nz-input-group>
+        </nz-form-item>
+
+        <nz-form-item *ngIf="REPORT_PRAMS.REPORT_ID == '8'">
+
+            <nz-form-control>
+                <nz-select *ngIf="browserLang=='mr'" nzPlaceHolder="कर्जाचा प्रकार निवडा" nzShowSearch name="loantype"
+                    style="width: 100%" [(ngModel)]="REPORT_PRAMS.SORT_VALUE">
+                    <nz-option *ngFor="let p of LOANTYPE_LIST" [nzValue]="p.ID" [nzLabel]="p.NAME"></nz-option>
+                </nz-select>
+
+                <nz-select *ngIf="browserLang=='en'" nzPlaceHolder="Select loan type " nzShowSearch name="loantype"
+                    style="width: 100%" [(ngModel)]="REPORT_PRAMS.SORT_VALUE">
+                    <nz-option *ngFor="let p of LOANTYPE_LIST" [nzValue]="p.ID" [nzLabel]="p.NAME_EN"></nz-option>
+                </nz-select>
+
+            </nz-form-control>
+        </nz-form-item>
+
+
+        <nz-form-item *ngIf="REPORT_PRAMS.REPORT_ID == '1'">
+
+            <nz-form-control>
+
+                <nz-select *ngIf="browserLang=='mr'" nzShowSearch name="BRANCH_ID" style="width:100%"
+                    [(ngModel)]="REPORT_PRAMS.SORT_VALUE" nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                    <nz-option *ngFor="let p of BRANCH_LIST" [nzValue]="p.ID" [nzLabel]="p.NAME">
+                    </nz-option>
+                </nz-select>
+
+                <nz-select *ngIf="browserLang=='en'" nzShowSearch name="BRANCH_ID" style="width:100%"
+                    [(ngModel)]="REPORT_PRAMS.SORT_VALUE" nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                    <nz-option *ngFor="let p of BRANCH_LIST" [nzValue]="p.ID" [nzLabel]="p.NAME_EN">
+                    </nz-option>
+                </nz-select>
+
+            </nz-form-control>
+
+        </nz-form-item>
+
+        <nz-form-item *ngIf="REPORT_PRAMS.REPORT_ID == '14'">
+
+            <nz-form-control>
+
+                <nz-select *ngIf="browserLang=='mr'" name="APPLICANT_TYPE_LIST" style="width:100%"
+                    [(ngModel)]="REPORT_PRAMS.SORT_VALUE">
+                    <nz-option *ngFor="let p of APPLICANT_TYPE_LIST" nzPlaceHolder="अर्जदाराचा प्रकार निवडा"
+                        [nzValue]="p.VALUE" [nzLabel]="p.VALUE">
+                    </nz-option>
+                </nz-select>
+
+                <nz-select *ngIf="browserLang=='en'" name="APPLICANT_TYPE_LIST" style="width:100%"
+                    [(ngModel)]="REPORT_PRAMS.SORT_VALUE">
+                    <nz-option *ngFor="let p of APPLICANT_TYPE_LIST" nzPlaceHolder="Select the type of applicant"
+                        [nzValue]="p.VALUE" [nzLabel]="p.VALUE_EN">
+                    </nz-option>
+                </nz-select>
+
+            </nz-form-control>
+        </nz-form-item>
+
+        <div nz-row *ngIf="REPORT_PRAMS.REPORT_ID == '7'">
+
+            <div nz-col nzSpan="11">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="START_AMOUNT" style="width: 100%;"
+                            [(ngModel)]="REPORT_PRAMS.START_AMOUNT" nzPlaceHolder="Start Loan Amount">
+                        </nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="1"></div>
+
+            <div nz-col nzSpan="12">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="END_AMOUNT" style="width: 100%;" [(ngModel)]="REPORT_PRAMS.END_AMOUNT"
+                            nzPlaceHolder="End Loan Amount">
+                        </nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div nz-col nzSpan="1">
+
+    </div>
+
+    <div nz-col nzSpan="6">
+        <nz-form-item>
+            <nz-range-picker [nzFormat]="'dd/MM/yyyy'" (nzOnCalendarChange)="changeDate($event)" name="selectedDate"
+                [(ngModel)]="selectedDate"></nz-range-picker>
+        </nz-form-item>
+    </div>
+
+    <div nz-col nzSpan="1">
+
+    </div>
+
+    <div nz-col nzSpan="3">
+        <nz-button-group>
+            <button nz-tooltip nzTooltipTitle="Apply Filter" nz-button nzType="primary" (click)="getReport(false)"><i
+                    nz-icon nzType="filter"></i></button>
+            <button nz-button nzType="default" nz-tooltip nzTooltipTitle="Clear Filter" (click)="clearFilter()"><i
+                    nz-icon nzType="clear"></i></button>
+        </nz-button-group>
+    </div>
+</div>
+
+<!-- Table -->
+<nz-form-item>
+    <nz-button-group>
+        
+        <button nz-button nzType="primary" [appExport]="EXEL_DATA" fileName="Proposals" nz-tooltip
+            nzTooltipTitle="Excel Report"><i nz-icon nzType="file-excel" nzTheme="outline"></i></button>
+
+        <button nz-button nzType="default" nz-tooltip nzTooltipTitle="PDF Report" (click)="generatePDF()"><i nz-icon
+                nzType="file-pdf" nzTheme="outline"></i></button>
+
+    </nz-button-group>
+</nz-form-item>
+<!-- 
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-table class="my-scroll no-wrap1" style="display: flex;" nzBordered #table nzShowSizeChanger
+            [nzFrontPagination]="false" [nzData]="TABLE_DATA" [nzLoading]="tableLoading"
+            [nzTotal]="REPORT_PRAMS.TOTAL_COUNT" [(nzPageIndex)]="REPORT_PRAMS.PAGE_INDEX"
+            [(nzPageSize)]="REPORT_PRAMS.PAGE_SIZE" (nzPageIndexChange)="getReport(false)"
+            (nzPageSizeChange)="getReport(false)">
+
+            <thead>
+                <tr>
+                    <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let data of table.data">
+                    <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+                </tr>
+            </tbody>
+
+        </nz-table>
+    </div>
+</div> -->
+
+<div nz-row>
+
+    <div nz-col nzSpan="24">
+        <table  
+        style="@media print {width:100%;border:1px solid black;text-align:center; font-size: 10px;border-collapse: collapse !important;}width:100%;border:1px solid black;text-align:center; font-size: 10px;border-collapse: collapse !important;" id="tableContent">
+            <tr style="@media print{background-color:rgb(200, 200, 200);}background-color:rgb(200, 200, 200); ">
+                <th *ngFor="let column of columns" style="border:1px solid black;">{{column[1]}}</th>
+            </tr>
+
+            <tr *ngFor="let data of EXEL_DATA">
+                <td *ngFor="let column of columns" style="border:1px solid black;">{{data[column[0]]}}</td>
+            </tr>
+
+        </table>
+    </div>
+</div>

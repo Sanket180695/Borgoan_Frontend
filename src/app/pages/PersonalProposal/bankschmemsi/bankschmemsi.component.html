@@ -1,0 +1,162 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row
+                *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+                style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+                <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+                        style="color: rgb(32, 119, 250);"></i></div>
+                <div nz-col nzSpan="23">
+                    <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+                    {{extraApplicantInformation.REMARK}}
+
+                </div>
+            </div><br>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="7">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'bankschmemsi.loanskimtype_title' | translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{ 'common_text.nzErrorTip' | translate}} ">
+                            <nz-select *ngIf="browserLang=='mr'" name="loanskimtype" nzShowSearch
+                                [nzLoading]="loadingBankScheme" [nzDisabled]="disable1"
+                                [(ngModel)]="data.BANK_LOAN_TYPE_ID" required>
+
+                                <nz-option *ngFor="let p of loanSkimData" [nzValue]="p.ID" [nzLabel]="p.NAME_MR">
+                                </nz-option>
+                            </nz-select>
+                            <nz-select *ngIf="browserLang=='kn'" name="loanskimtype" nzShowSearch
+                                [nzLoading]="loadingBankScheme" [nzDisabled]="disable1"
+                                [(ngModel)]="data.BANK_LOAN_TYPE_ID" required>
+
+                                <nz-option *ngFor="let p of loanSkimData" [nzValue]="p.ID" [nzLabel]="p.NAME_KN">
+                                </nz-option>
+                            </nz-select>
+                            <nz-select *ngIf="browserLang=='en'" name="loanskimtype" nzShowSearch
+                                [nzLoading]="loadingBankScheme" [nzDisabled]="disable1"
+                                [(ngModel)]="data.BANK_LOAN_TYPE_ID" required>
+
+                                <nz-option *ngFor="let p of loanSkimData" [nzValue]="p.ID" [nzLabel]="p.NAME_EN">
+                                </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankschmemsi.INDUSTRY_CODE_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-select name="INDUSTRY_CODE_ID" nzShowSearch [nzLoading]="loadingIndustryCode"
+                                [(ngModel)]="data.INDUSTRY_CODE_ID">
+                                <nz-option [nzValue]="id_Zero" nzLabel="Not Applicable"> </nz-option>
+                                <nz-option *ngFor="let p of instryCodeIds" [nzValue]="p.ID"
+                                    [nzLabel]="'('+p.CODE+') '+p.NAME">
+                                </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="5">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankschmemsi.REAL_ESTATE_MARKING_title' | translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-select name="REAL_ESTATE_MARKING" nzShowSearch [(ngModel)]="data.REAL_ESTATE_MARKING">
+                                <nz-option [nzValue]="id_NA" nzLabel="Not Applicable"> </nz-option>
+                                <nz-option nzValue="OHU" nzLabel="Only Housing upto 25 lakhs"> </nz-option>
+                                <nz-option nzValue="OHA" nzLabel="Only Housing Above 25 lakhs"> </nz-option>
+                                <nz-option nzValue="CRE" nzLabel="Commercial Real Estate"> </nz-option>
+                                <nz-option nzValue="RE" nzLabel="Real Estate"> </nz-option>
+                                <nz-option nzValue="REO" nzLabel="Real Estate (SCC - Other)"> </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="18">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankschmemsi.PRIORITY_CODE_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-select name="PRIORITY_CODE_ID" nzShowSearch [nzLoading]="loadingPriorityCode"
+                                [(ngModel)]="data.PRIORITY_CODE_ID">
+                                <nz-option [nzValue]="id_Zero" nzLabel="Not Applicable"> </nz-option>
+                                <nz-option *ngFor="let p of priorityCode" [nzValue]="p.ID" [nzLabel]="p.NAME">
+                                </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="18">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{'bankschmemsi.WEEKER_SECTION_title' | translate}} </nz-form-label>
+                        <nz-form-control>
+                            <nz-select name="WEEKER_SECTION_ID" nzShowSearch [nzLoading]="loadingWeekerCode"
+                                [(ngModel)]="data.WEEKER_SECTION_ID">
+                                <nz-option [nzValue]="id_Zero" nzLabel="Not Applicable"> </nz-option>
+                                <nz-option *ngFor="let p of weekerSections" [nzValue]="p.ID"
+                                    [nzLabel]="'('+p.CODE+') '+p.NAME">
+                                </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="1"></div>
+
+
+            </div>
+        </nz-spin>
+    </form>
+
+    <div style="text-align: right;" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <!-- <button type="button" nz-button class="ant-btn" style="margin-right: 8px;"><span>{{ 'common.cancel' | translate}}</span></button> -->
+        <button type="button" style="margin-right: 8px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonSpinning" (click)="save()"><span> {{ 'common_text.footer_btn5' | translate}}
+            </span></button>
+
+        <button type="button" *ngIf="extraApplicantInformation.CURRENT_STAGE_ID==3" class="ant-btn ant-btn-primary"
+            nz-button [nzLoading]="isButtonSpinning1" (click)="saveClose()"><span> {{ 'common_text.footer_btn6' |
+                translate}} </span></button>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <!-- *ngIf="roleid == '1' && stageid == 4" -->
+            <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+                style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+                [nzLoading]="isButtonSpinning2" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+                (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+                <span>{{'basicinfo.m5'|translate}}</span>
+            </button>
+
+            <ng-template #iconTpl>
+                <h3>{{'basicinfo.m9'|translate}}</h3>
+                <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                    <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK"
+                            required />
+                    </nz-form-control>
+                </nz-form-item>
+            </ng-template>
+
+            <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+                style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+                [nzLoading]="isButtonSpinning2" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+                (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+                nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+            <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+                    nz-button [nzLoading]="isButtonSpinning"
+                    (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+        </div>
+    </div>
+</div>

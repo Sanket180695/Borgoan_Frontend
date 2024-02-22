@@ -1,0 +1,39 @@
+
+ <nz-spin [nzSpinning]="isSpinning">
+
+    <div>
+
+        <div nz-row>
+            <div nz-col nzSpan="8"></div>
+            <div nz-col nzSpan="6" style="padding-left: 5px;" >
+            <h3> {{'loantypedocumentmapping.label1.name' | translate}}  </h3> 
+        </div>
+        <div nz-col nzSpan="3" style="padding-left: 35px;" >
+            <h3> {{'loantypedocumentmapping.label2.nam' | translate}}  </h3> 
+        </div>
+        
+        </div> 
+
+        <div nz-row style="overflow: auto;">
+            <nz-tree [nzCheckable]="true" [nzData]="loadTypeDocumentData" [nzTreeTemplate]="n1">
+                <ng-template #n1 let-node >
+                    
+                    <nz-form-label nzNoColon style="width: 250px;text-align: left;">{{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+                     
+                    <label nz-checkbox style="margin-left: 20px;" [ngModelOptions]="{standalone: true}" *ngIf="node.origin.isLeaf && node.origin.checked" (ngModelChange)="changeIsComplusory($event,node.origin)" [ngModel]="node.origin.IS_COMPULSORY==0?false:true"> </label>
+    
+                    <label nz-checkbox style="margin-left: 140px;" [ngModelOptions]="{standalone: true}" *ngIf="node.origin.isLeaf && node.origin.checked" (ngModelChange)="changestatus($event,node.origin)" [ngModel]="node.origin.STATUS==0?false:true"> </label>
+    
+                    </ng-template>
+            </nz-tree>
+        </div>
+    </div>
+ 
+    
+
+ </nz-spin>
+
+<div class="footer" >
+    <button type="button"  nz-button  (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>{{'common.cancel' | translate}}</span></button>
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" (click)="save()"><span>{{'common.Save_&_Close' | translate}}</span></button>
+</div>

@@ -1,0 +1,79 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'LoantypeSpecificInformation.lable1'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name24" type="text" [(ngModel)]="data.NAME_OF_GROUP" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'LoantypeSpecificInformation.lable2'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name23" type="text" [(ngModel)]="data.FATHER_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>
+                            {{'LoantypeSpecificInformation.lable3'| translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number name="SAVING_AMOUNT" style="width: 100%;" [(ngModel)]="data.SAVING_AMOUNT">
+                                <!-- ({{age}}) -->
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>
+                            {{'LoantypeSpecificInformation.lable4'| translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number name="ANNUAL_INCOME" style="width: 100%;" [(ngModel)]="data.ANNUAL_INCOME">
+                                <!-- ({{age}}) -->
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+
+                <div nz-col nzSpan="8">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'LoantypeSpecificInformation.lable5'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name21" type="text" [(ngModel)]="data.ADDRESS_OF_GROUP" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+            </div>
+
+
+            <br />
+            <div style="margin-left: 900px"
+                *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+                <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                    (click)="save()"><span>{{'common.Save'| translate}}</span></button>
+            </div>
+
+        </nz-spin>
+
+    </form>
+</div>

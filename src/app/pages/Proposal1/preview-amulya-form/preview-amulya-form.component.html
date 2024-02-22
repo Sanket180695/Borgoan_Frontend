@@ -1,0 +1,285 @@
+<div nz-row style="border-bottom: 1px solid #7a7a7a;padding-bottom: 5px; margin-bottom: 5px;">
+
+    <div nz-col nzSpan="4" style="text-align: right;">
+        <select #langSelect (change)="changeLang(langSelect.value)">
+            <option *ngFor="let lang of api.translate.getLangs()" [value]="lang"
+                [selected]="lang === api.translate.currentLang">{{ lang=='mr'?"मराठी":(lang=='en'?"English":"ಕನ್ನಡ")
+                }}</option>
+        </select>
+    </div>
+    <div nz-col nzSpan="4" style="text-align: right;">
+        <button nz-button class="ant-btn ant-btn-primary" (click)="gPDF()" [nzLoading]="isButtonSpinning"><span
+                *ngIf="!isButtonSpinning">Download PDF</span><span
+                *ngIf="isButtonSpinning">Downloading...</span></button>
+    </div>
+</div>
+
+<div id="contentToConvert">
+    <nz-spin [nzSpinning]="formSpinning">
+
+        <div *ngFor="let branch of branchData" style="page-break-after: always !Important;">
+
+            <div nz-row>
+                <div nz-col nzSpan="6" style="text-align: right;">
+                    <span class="user_input">{{data2.OUTWARD_NUMBER}}</span>
+                </div>
+
+                <div nz-col nzSpan="12">
+                </div>
+
+                <div nz-col nzSpan="6">
+                    <span class="user_input">{{data2.OUTWARD_DATE}}</span>
+                </div>
+
+                <div nz-col nzSpan="24">
+                    
+                   
+                    ಗೆ, <br>  ಶಾಖಾ ವ್ಯವಸ್ಥಾಪಕರು <br> <span class="user_input">{{branch.branch_name}}</span> <br>
+                </div>
+
+                <div nz-col nzSpan="24" style="text-align: center; margin-top: 10px;">
+                    ವಿಷಯ:- “ ಬಂಗಾರ, ಠೇವು ಮತ್ತು ಜ್ಯೋತಿ ಕಿರು ” ಸಾಲಗಳಿಗೆ ಘಟನೋತ್ತರ ಮಂಜೂರಾತಿ ಕುರಿತು,
+                </div>
+
+                <div nz-col nzSpan="24" style="text-align: justify; text-indent: 40px; margin-top: 10px;">
+                    ಈ ಮೇಲ್ಕಾಣಿಸಿದ ವಿಷಯದ ಮೇರೆಗೆ ತಮಗೆ ತಿಳಿಸುವದೇನೆಂದರೆ, ಸದರಿ ಮೇಲಿನ ವಿಷಯದ ಬಗ್ಗೆ ದಿನಾಂಕ:-
+                    <span class="user_input">{{data2.BOARD_MEETING_DATE}}</span>
+                    ರಂದು ಜರುಗಿದ ಮುಖ್ಯ ಕಛೇರಿ ಸಾಲ ಸಮಿತಿ ಸಭೆ ನಂ.
+                    <span class="user_input">{{data2.COMMITTEE_NO}}</span>
+                    ಠರಾವ ನಂ.
+                    <span class="user_input">{{data2.RESOLUTION_NO}}</span>
+                    ರಲ್ಲಿ ಕೂಲಂಕೂಷವಾಗಿ ಚರ್ಚಿಸಿ ಸಾಲ ಸಮಿತಿ ಸದಸ್ಯರು,
+                    <span class="user_input">{{ data2.SELECTED_DATE | date:'dd/MM/yyyy' }}</span>
+                    ರ ವರೆಗೆ ಬಿಡುಗಡೆ ಮಾಡಿರುವ ಬಂಗಾರ (811) ಠೇವು (823) ರಿಕರಿಂಗ್ ಠೇವು
+                    (822) ಪಿಗ್ಮಿಠೇವು (823) ಠೇವು ಸಿ.ಸಿ (852) ಜ್ಯೋತಿ ಕಿರು ಸಾಲ (841) ವನ್ನು ಸ್ವ-ಬಳಕೆಗಾಗಿ, ಕಿರು ವ್ಯಾಪಾರ, ಹೈನುಗಾರಿಕೆ,
+                    ಗೃಹ ಮತ್ತು ಗುಡಿ ಕೈಗಾರಿಕೆ ಉದ್ದೇಶಗಳ ಸಾಲಗಳಿಗೆ ಘಟನೋತ್ತರ ಮಂಜೂರಿ ನೀಡಿದ್ದಾರೆ. ಹಾಗೂ ಸದರಿ ಘಟನೋತ್ತರ ಮಂಜೂರಾತಿ
+                    ಪಡೆದ ಸಾಲಗಳನ್ನು ನಿರ್ದೇಶಕ ಮಂಡಳಿಯ ಅನುಮೋದನೆಗಾಗಿ ಕ್ರಮವಿಟ್ಟು, ಈ ಮೊದಲು ತಮಗೆ ನೀಡಿರುವ ಸಾಲ ಯೋಜನೆಯ
+                    ನಿಯಮಾವಳಿಗಳನ್ನು ಪಾಲಿಸುವಂತೆ ಸೂಚಿಸಿ, ಸದರ ಅರ್ಜಿಗಳನ್ನು ಮುಂದಿನ ಕ್ರಮಗೋಸ್ಕರ ತಮ್ಮ ಕಡೆಗೆ ರವಾನಿಸಲಾಗಿದೆ.
+                </div>
+
+            </div>
+
+            <div nz-row nzSpan="24">
+
+                <div nz-col nzSpan="24" style="text-indent: 25px;margin-top: 20px;">
+                    1. ಬಂಗಾರ ಸಾಲ (811)
+
+                </div>
+
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="23">
+                    <table>
+                        <tr>
+
+                            <th>ಅ ನಂ</th>
+                            <th>ಸಾಲಗಾರರ ಹೆಸರು</th>
+
+                            <th>ವಿಳಾಸ</th>
+                            <th>ಖಾತೆ ನಂ</th>
+                            <th>ಬಂಗಾರದ ಮೌಲ್ಯ</th>
+                            <th>ನೀಡಿದ ಸಾಲ</th>
+
+
+                            <th>ದಿನಾಂಕ</th>
+
+                        </tr>
+                        <tr *ngFor="let data of branch.goldList; index as i">
+
+                            <td>{{i+1}}</td>
+                            <td>{{data['APPLICANT_NAME']}}</td>
+                            <td>
+                                <span *ngFor="let address of goldAddressList">
+                                    <span *ngIf="data.ID == address.PROPOSAL_ID">
+                                        {{address.CURRENT_ADDRESS[0].VILLAGE}}
+                                    </span>
+                                </span>
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <span *ngFor="let gold of goldLoanSpecificList">
+                                    <span *ngIf="data.ID == gold.PROPOSAL_ID">
+                                        {{gold.total}}
+                                    </span>
+                                </span>
+                            </td>
+                            <td>{{data['SANCTION_AMOUNT']}}</td>
+                            <td></td>
+
+                        </tr>
+
+                        <tr *ngIf="branch.goldList.length == 0">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div nz-col nzSpan="24" style="text-indent: 25px;margin-top: 20px;">
+                    2. ಠೇವಣಿ ಸಾಲ (821) :-
+                </div>
+
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="23">
+                    <table>
+                        <tr>
+
+                            <th>ಅ ನಂ</th>
+                            <th>ಸಾಲಗಾರರ ಹೆಸರು</th>
+
+                            <th>ವಿಳಾಸ</th>
+                            <th>ಖಾತೆ ನಂ</th>
+                            <th>ಠೇವಣಿ ಮೋತ್ತ</th>
+                            <th>ನೀಡಿದ ಸಾಲ</th>
+
+
+                            <th>ದಿನಾಂಕ</th>
+
+                        </tr>
+                        <tr *ngFor="let data of branch.depositList; index as i">
+
+                            <td>{{i+1}}</td>
+                            <td>{{data['APPLICANT_NAME']}}</td>
+                            <td>
+                                <span *ngFor="let address of depositAddressList">
+                                    <span *ngIf="data.ID == address.PROPOSAL_ID">
+                                        {{address.CURRENT_ADDRESS[0].VILLAGE}}
+                                    </span>
+                                </span>
+                            </td>
+                            <td>account no</td>
+                            <td>
+                                <span *ngFor="let term of termDepositeTotal;">
+                                    <span *ngIf="data.ID == term.PROPOSAL_ID">
+                                        {{term.total}}
+                                    </span>
+                                </span>
+                            </td>
+                            <td>{{data['SANCTION_AMOUNT']}}</td>
+                            <td>sanction date</td>
+
+                        </tr>
+
+                        <tr *ngIf="branch.depositList.length == 0">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div nz-col nzSpan="24" style="text-indent: 25px;margin-top: 20px;">
+                    3. ಜ್ಯೋತಿ ಕಿರು ಸಾಲ (841)
+                </div>
+
+                <div nz-col nzSpan="1"></div>
+
+                <div nz-col nzSpan="23">
+                    <table>
+                        <tr>
+
+                            <th>ಅ ನಂ</th>
+                            <th>ಸಾಲಗಾರರ ಹೆಸರು</th>
+                            <th>ವಿಳಾಸ</th>
+                            <th>ಖಾತೆ ನಂ</th>
+                            <th>ಹಿಂದೆ ನೀಡಿದ ಸಾಲ</th>
+                            <th>ನೀಡಿದ ಸಾಲ</th>
+                            <th>ದಿನಾಂಕ</th>
+
+                        </tr>
+                        <tr *ngFor="let data of branch.amulyaList; index as i">
+
+                            <td>{{i+1}}</td>
+                            <td>{{data['APPLICANT_NAME']}}</td>
+                            <td>
+                                <span *ngFor="let address of amulyaAddressList">
+                                    <span *ngIf="data.ID == address.PROPOSAL_ID">
+                                        {{address.CURRENT_ADDRESS[0].VILLAGE}}
+                                    </span>
+                                </span>
+                            </td>
+                            <td>account no</td>
+                            <td>previous sanction loan amount</td>
+                            <td>{{data['SANCTION_AMOUNT']}}</td>
+                            
+                            <td>sanction date</td>
+
+                        </tr>
+
+                        <tr *ngIf="branch.amulyaList.length == 0">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div nz-col nzSpan="24" style="text-align: justify;">
+                    ಆಡಳಿತ ಕಛೇರಿ ಯಕ್ಸಂಬಾ.
+                    ವಿ.ಸೂ:-
+                    1. ಸಾಲದ ಅರ್ಜಿಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಭರಣಾ ಮಾಡಬೇಕು. ಸಾಲದ ಅರ್ಜಿಗಳ ಮೇಲೆ ಹಾಗೂ ಠೇವು ರಶೀದಿಗಳ ಮೇಲೆ ಸಹಿಗಳನ್ನು
+                    ತಪ್ಪದೇ ಪಡೆಯತಕ್ಕದ್ದು. ಸಾಲಗಾರರ ಸಹಿ ಹೆಬ್ಬಟ್ಟು ಇದ್ದಲ್ಲಿ ದಸ್ತೂರ ಸಹಿ ತಪ್ಪದೇ ಪಡೆಯಬೇಕು. ಶಾಖಾ ವ್ಯವಸ್ಥಾಪಕರು ಅಂತಾ ಮುದ್ರಿತ
+                    ಇರುವ ಸ್ಥಳದಲ್ಲಿ ಶಾಖಾ ವ್ಯವಸ್ಥಾಪಕರು ಮುದ್ರೆಯೊಂದಿಗೆ ಸಹಿ ಮಾಡತಕ್ಕದ್ದು.
+                    2. ಶಾಖಾ ವ್ಯವಸ್ಧಾಪಕರು ಯಾವದೇ ಕಾರಣಕ್ಕೂ ಮುಖ್ಯ ಕಛೇರಿ ಆಡಳಿತ ಮಂಡಳಿಯ ಪೂರ್ವಾನುಮತಿಯಿಲ್ಲದೆ ಅಪೂರ್ಣ ಸಾಲದ
+                    ಅರ್ಜಿಗಳನ್ನು ಪಡೆದು ಉಪನಿಯಮ ಹಾಗೂ ಸಾಲದ ನಿಯಮಗಳನ್ನು ಉಲ್ಲಂಘನೆ ಮಾಡಿ ಸಾಲವನ್ನು ಬಿಡುಗಡೆ ಮಾಡತಕ್ಕದಲ್ಲ. ಒಂದು ವೇಳೆ
+                    ಹಾಗೆ ಮಾಡಿದ್ದಲ್ಲಿ ಶಾಖಾ ವ್ಯವಸ್ಧಾಪಕರೆ ಹೊಣೆಗಾರರು ತಿಳಿಯಿರಿ.
+                    3. ಸಾಲಗಾರರಿಂದ ಗುರುತಿನ/ಪಡಿತರ ಚೀಟಿಯ ನಕಲು ಪ್ರತಿ, ವಿವರದ ವಿಳಾಸ, ಸಾಲಗಾರರ 4 ಫೋಟೊ ಹಾಗೂ ಗಂಡ ಹೆಂಡತಿಯ ಜಂಟಿ 2
+                    ಫೋಟೊ ಮತ್ತು ಸಾಲ ಪತ್ರಗಳ ಮೇಲೆ ಸಾಲಗಾರರ ಮತ್ತು ಜಾಮೀನುದಾರರ ಸಹಿ ಪಡೆಯಬೇಕು.
+                    4. ಹೊಸ ಸಾಲ ಬಿಡುಗಡೆ ಮಾಡುವಾಗ ಮತ್ತು ಸಾಲ ತಿರುವಳಿ ಮಾಡುವಾಗ ತಮಗೆ ಕಳುಹಿಸಿದ ಮುಖ್ಯ ಕಛೇರಿಯ ಆದೇಶದನ್ವಯ ಸಾಲದಲ್ಲಿ
+                    ಕಡಿತ ಮಾಡಿಕೊಳ್ಳಬೇಕು.
+                    5. ಉತ್ಪಾದನಾ ಚಟುವಟಿಕೆಗಾಗಿ ಮಾತ್ರ ಸಾಲವನ್ನು ನೀಡತಕ್ಕದ್ದು ಮತ್ತು ಸದರಿ ಸಾಲವು ನಿಗದಿತ ಅವಧಿಯಲ್ಲಿ ಸಂಪೂರ್ಣವಾಗಿ
+                    ವಸೂಲಿಸತಕ್ಕದ್ದು. ಸಾಲಗಾರರು ಕಂತು ಭರಣಾ ಮಾಡಿದ ಬಗ್ಗೆ ಸದರಿ ಕಂತಿನ ಪಾವತಿಯನ್ನು ಸಾಲಗಾರರಿಗೆ ನೀಡಿ, ಸಾಲಗಾರರ ಸಾಲದ
+                    ಪಾಸ-ಬುಕ್ಕನಲ್ಲಿ ನಮೂದಿಸಬೇಕು.
+                    6. ಕಾಲ ಕಾಲಕ್ಕೆ ಮುಖ್ಯ ಕಚೇರಿಯಿಂದ ನಿರ್ದೇಶಿತವಾಗುವ ನಿಯಮಗಳು ಅನ್ವಯಿಸುತ್ತವೆ.
+
+
+                </div>
+
+                <div nz-col nzSpan="24" style="text-align: center;">
+                    ನಿರ್ದೇಶಕ ಮಂಡಳಿಯ ಆದೇಶದ ಮೇರೆಗೆ,
+                </div>
+
+                <div nz-col nzSpan="18" style="text-align: center;">
+                </div>
+
+                <div nz-col nzSpan="6" style="text-align: center;">
+                    (ವಿಜಯ ಎನ್. ಖಡಕಭಾವಿ)
+                    ಪ್ರಧಾನ ವ್ಯವಸ್ಥಾಪಕರು 
+                </div>
+
+            </div>
+
+
+        </div>
+    </nz-spin>
+</div>
+
+
+<!-- <div *ngIf="roleId == '9'" style="display: flex;align-items: end;">
+    <button nz-button nzType="primary" (click)="processBranch()" name="preview">Process Branch Data</button>
+</div> -->
+
+<div *ngIf="roleId == '11' && !IS_SANCTIONED" style="display: flex;align-items: end;">
+    <div>
+        <button nz-button nzType="primary" (click)="sanction()" name="preview">Sanction</button>
+    </div>
+</div>

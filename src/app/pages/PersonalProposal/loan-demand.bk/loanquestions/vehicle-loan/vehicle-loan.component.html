@@ -1,0 +1,443 @@
+<div>
+    <!-- <h2>वाहन कर्ज</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="12" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'vehicle-loan.NAME_OF_VEHICLE'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="NAME_OF_VEHICLE" type="text"
+                                        [(ngModel)]="data.NAME_OF_VEHICLE" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'vehicle-loan.VEHICLE_COMPANY'| translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+
+                                    <textarea nz-input name="VEHICLE_COMPANY" [(ngModel)]="data.VEHICLE_COMPANY"
+                                        [nzAutosize]="{ minRows: 1, maxRows: 3 }" required></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'vehicle-loan.DEALER_NAME'| translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <textarea nz-input name="DEALER_NAME" [(ngModel)]="data.DEALER_NAME"
+                                        [nzAutosize]="{ minRows: 1, maxRows: 3 }" required></textarea>
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'vehicle-loan.REGISTRATION'| translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <textarea nz-input name="REGISTRATION" [(ngModel)]="data.REGISTRATION"
+                                        [nzAutosize]="{ minRows: 1, maxRows: 3 }" required></textarea>
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <!-- <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'vehicle-loan.USE_TYPE'| translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="USE_TYPE" [(ngModel)]="data.USE_TYPE" nzButtonStyle="solid" >
+                                        <label nz-radio nzValue="I">{{'vehicle-loan.USE_TYPE1'| translate}}</label>
+                                        <label nz-radio nzValue="C">{{'vehicle-loan.USE_TYPE2'| translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon> {{'vehicle-loan.VEHICLE_TYPE'| translate}}  </nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="VEHICLE_TYPE" [(ngModel)]="data.VEHICLE_TYPE"
+                                        nzButtonStyle="solid" >
+                                        <label nz-radio nzValue="N"> {{'vehicle-loan.VEHICLE_TYPE1'| translate}}   </label>
+                                        <label nz-radio nzValue="U">{{'vehicle-loan.VEHICLE_TYPE2'| translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+
+                        <!-- <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>  {{'vehicle-loan.WHEELS_COUNT'| translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="WHEELS_COUNT" [(ngModel)]="data.WHEELS_COUNT" 
+                                        nzPlaceHolder=" {{'vehicle-loan.WHEELS_COUNT_PLACEHOLDER'| translate}} " >
+                                        <nz-option [nzValue]="'1'" nzLabel="{{'vehicle-loan.option1'| translate}}"></nz-option>
+                                        <nz-option [nzValue]="'2'" nzLabel="{{'vehicle-loan.option2'| translate}}"></nz-option>
+                                        <nz-option [nzValue]="'3'" nzLabel="{{'vehicle-loan.option3'| translate}}"></nz-option>
+                                        <nz-option [nzValue]="'4'" nzLabel="{{'vehicle-loan.option4'| translate}}"></nz-option>
+                                        <nz-option [nzValue]="'5'" nzLabel="{{'vehicle-loan.option5'| translate}}"></nz-option>
+                                        <nz-option [nzValue]="'6'" nzLabel="{{'vehicle-loan.option6'| translate}}"></nz-option>
+                                        <nz-option [nzValue]="'7'" nzLabel="{{'vehicle-loan.option7'| translate}}"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+                        <!-- <div nz-col nzSpan="6" >
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'vehicle-loan.MAKE_YEAR'| translate}}  </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'vehicle-loan.MAKE_YEAR_ERROR'| translate}} ">
+                                    <nz-year-picker name="Make Year" style="width: 100%;" [nzDisabledDate]="disabledDate2" [(ngModel)]="data.MAKE_YEAR" (keydown.backspace)="focusss5($event)" (keydown.delete)="focusss5($event)"  
+                                     required></nz-year-picker>
+                      
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+                        <!-- <div nz-col nzSpan="8">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'vehicle-loan.IS_BS6'| translate}} </nz-form-label>
+                                <nz-form-control >
+                                    <nz-switch name="IS_BS6" [(ngModel)]="data.IS_BS6"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                   
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+
+
+                    </div>
+                </div>
+                <div nz-col nzSpan="1"></div>
+                <div nz-col nzSpan="11" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired  nzNoColon>{{'vehicle-loan.VEHICLE_VALUATION'|
+                                    translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="VEHICLE_VALUATION" type="text"
+                                        nzPlaceHolder="{{'vehicle-loan.VEHICLE_VALUATION'| translate}}"
+                                        [(ngModel)]="data.VEHICLE_VALUATION" [nzMin]="1" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1"  required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired  nzNoColon>{{'vehicle-loan.PURCHASE_AMOUNT'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="PURCHASE_AMOUNT"
+                                        nzPlaceHolder="{{'vehicle-loan.PURCHASE_AMOUNT'| translate}}"
+                                        [(ngModel)]="data.PURCHASE_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999"
+                                         [nzStep]="1" required>
+                                    </nz-input-number>
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label   nzNoColon>{{'vehicle-loan.YEAR_OF_PURCHASE'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control  >
+                                    <nz-year-picker style="width: 100%;" name="YEAR_OF_PURCHASE"
+                                        (keydown.backspace)="focusss4($event)" (keydown.delete)="focusss2($event)"
+                                        [(ngModel)]="data.YEAR_OF_PURCHASE" [nzDisabledDate]="disabledDate2"
+                                        nzPlaceHolder="{{'vehicle-loan.YEAR_OF_PURCHASE'| translate}}"  >
+                                    </nz-year-picker>
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label   nzNoColon> {{'vehicle-loan.VALUATION_DATE'| translate}}
+                                </nz-form-label>
+                                <nz-form-control  >
+                                    <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                                    placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.VALUATION_DATE" name="VALUATION_DATE" />
+                                    <!-- <nz-date-picker name="VALUATION_DATE" style="width: 100%;"
+                                        (keydown.backspace)="focusss($event)" (keydown.delete)="focusss($event)"
+                                        [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                        [(ngModel)]="data.VALUATION_DATE"
+                                        nzPlaceHolder="{{'vehicle-loan.VALUATION_DATE'| translate}}">
+                                    </nz-date-picker> -->
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label   nzNoColon> {{'vehicle-loan.VALUATION_AMOUNT'|
+                                    translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT" type="text"
+                                        nzPlaceHolder="{{'vehicle-loan.VALUATION_AMOUNT'| translate}} "
+                                        [(ngModel)]="data.VALUATION_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1"
+                                        required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label   nzNoColon>{{'vehicle-loan.THIRD_PARTY_INSURANCE_PERIOD'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="THIRD_PARTY_INSURANCE_PERIOD"
+                                        type="text" [(ngModel)]="data.THIRD_PARTY_INSURANCE_PERIOD" [nzMin]="0"
+                                        [nzMax]="9999999999999999999999" [nzStep]="1"  ></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label   nzNoColon>{{'vehicle-loan.FITNESS_PERIOD'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="FITNESS_PERIOD" type="text" [(ngModel)]="data.FITNESS_PERIOD"
+                                          />
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label   nzNoColon>{{'vehicle-loan.TAX_PERIOD'|
+                                    translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="TAX_PERIOD" type="text" [(ngModel)]="data.TAX_PERIOD"
+                                          />
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div nz-col nzSpan="8" class="my-box" nzOffset="1">
+                    <div nz-row> -->
+
+                <!--                         
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'vehicle-loan.INSURANCE_TYPE'| translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="INSURANCE_TYPE" [(ngModel)]="data.INSURANCE_TYPE"
+                                        nzButtonStyle="solid" >
+                                        <label nz-radio nzValue="C">{{'vehicle-loan.INSURANCE_TYPE1'| translate}}</label>
+                                        <label nz-radio nzValue="N">{{'vehicle-loan.INSURANCE_TYPE2'| translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+                <!-- <div nz-col nzSpan="24" *ngIf="data.INSURANCE_TYPE == 'C'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'vehicle-loan.COMPREHENSIVE_INSURANCE_PERIOD'| translate}} </nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number style="width: 100%;" name="COMPREHENSIVE_INSURANCE_PERIOD"
+                                        type="text" [(ngModel)]="data.COMPREHENSIVE_INSURANCE_PERIOD" [nzMin]="1"
+                                        [nzMax]="9999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+
+
+                <!--                         
+                    </div>
+                </div> -->
+
+
+            </div>
+            <!-- <div nz-row>
+                <div nz-col nzSpan="24" >
+                    <div nz-row>
+
+                        <div nz-col nzSpan="24">
+                            <div nz-row> -->
+
+            <!-- <div nz-col nzSpan="6">
+                                    <nz-form-item>
+                                        <nz-form-label  nzNoColon> {{'vehicle-loan.QUOTATION_GIVEN_DATE'| translate}}  </nz-form-label>
+                                        <nz-form-control >
+                                            <nz-date-picker name="date" style="width: 100%;" [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                                [(ngModel)]="data.QUOTATION_GIVEN_DATE" (keydown.backspace)="focusss2($event)" (keydown.delete)="focusss2($event)"
+                                                nzPlaceHolder="{{'vehicle-loan.QUOTATION_GIVEN_DATE_PLACEHOLDER'| translate}}" >
+                                            </nz-date-picker>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div> -->
+            <!-- <div nz-col nzSpan="6">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon> {{'vehicle-loan.BASIC_PRICE'| translate}} </nz-form-label>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="BASIC_PRICE" type="text"
+                                                nzPlaceHolder="{{'vehicle-loan.BASIC_PRICE'| translate}}" [(ngModel)]="data.BASIC_PRICE"
+                                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div> -->
+            <!-- <div nz-col nzSpan="6">
+                                    <nz-form-item>
+                                        <nz-form-label  nzNoColon> {{'vehicle-loan.ACCESSORIES_PRICE'| translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="ACCESSORIES_PRICE" type="text"
+                                                nzPlaceHolder="{{'vehicle-loan.ACCESSORIES_PRICE'| translate}}" [(ngModel)]="data.ACCESSORIES_PRICE"
+                                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" ></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div> -->
+            <!-- <div nz-col nzSpan="6">
+                                    <nz-form-item>
+                                        <nz-form-label  nzNoColon>{{'vehicle-loan.RTO_TAX_OR_REGISTRATION_PRICE'| translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="RTO_TAX_OR_REGISTRATION_PRICE" type="text"
+                                                nzPlaceHolder="{{'vehicle-loan.RTO_TAX_OR_REGISTRATION_PRICE'| translate}}" [(ngModel)]="data.RTO_TAX_OR_REGISTRATION_PRICE"
+                                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" ></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div> -->
+            <!-- <div nz-col nzSpan="6">
+                                    <nz-form-item>
+                                        <nz-form-label  nzNoColon>{{'vehicle-loan.INSURENCE'| translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="INSURENCE" type="text"
+                                                nzPlaceHolder="{{'vehicle-loan.INSURENCE'| translate}}" [(ngModel)]="data.INSURENCE"
+                                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" ></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div> -->
+            <!-- <div nz-col nzSpan="6">
+                                    <nz-form-item>
+                                        <nz-form-label  nzNoColon>{{'vehicle-loan.OTHER_CHARGES'| translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <nz-input-number style="width: 100%;" name="OTHER_CHARGES" type="text"
+                                                nzPlaceHolder="{{'vehicle-loan.OTHER_CHARGES'| translate}}" [(ngModel)]="data.OTHER_CHARGES"
+                                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" ></nz-input-number>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div> -->
+
+
+            <!-- <div nz-col nzSpan="10">
+                                <nz-form-item>
+                                    <nz-form-label  nzNoColon>{{'vehicle-loan.PREVIOUS_OWNER_NAME'| translate}}</nz-form-label>
+                                    <nz-form-control>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <input nz-input name="PREVIOUS_OWNER_NAME" type="text"
+                                                [(ngModel)]="data.PREVIOUS_OWNER_NAME" />
+                                        </nz-form-control>
+
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div> -->
+
+
+            <!-- <div nz-col nzSpan="6">
+                                <nz-form-item>
+                                    <label style="color: black;"> {{'vehicle-loan.IS_DONE_AGREEMENT'| translate}}</label>
+                                    <nz-form-control >
+                                        <nz-switch name="IS_DONE_AGREEMENT" [(ngModel)]="data.IS_DONE_AGREEMENT"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div> -->
+
+            <!-- <div nz-col nzSpan="5">
+                                <nz-form-item>
+                                    <nz-form-label  nzNoColon>{{'vehicle-loan.NUMBER_OF_OWNERSHIPS'| translate}} </nz-form-label>
+                                    <nz-form-control nzHasFeedback>
+                                        <nz-input-number style="width: 100%;" name="NUMBER_OF_OWNERSHIPS" nzPlaceHolder="{{'vehicle-loan.NUMBER_OF_OWNERSHIPS'| translate}}"
+                                             [(ngModel)]="data.NUMBER_OF_OWNERSHIPS" [nzMin]="0" [nzMax]="100" [nzStep]="1" ></nz-input-number>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div> -->
+            <!-- <div nz-col nzSpan="8">
+                                <div nz-row> -->
+            <!-- <div nz-col nzSpan="24">
+                                        <nz-form-item style=" margin-bottom: 0px; ">
+                                            <nz-form-label  nzNoColon>{{'vehicle-loan.IS_ADVANCE_PAID'| translate}}
+                                            </nz-form-label>
+                                        </nz-form-item>
+                                    </div>
+                                    <div nz-col nzSpan="8">
+                                        <nz-form-item>
+                                           
+                                            <nz-form-control>
+                                                <nz-switch name="IS_ADVANCE_PAID" [(ngModel)]="data.IS_ADVANCE_PAID"
+                                                     nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                                </nz-switch>
+                                            </nz-form-control>
+                                        </nz-form-item>
+                                    </div> -->
+
+            <!-- <div nz-col nzSpan="16" *ngIf="data.IS_ADVANCE_PAID">
+                                        <nz-form-item>
+                                            <nz-form-label nzRequired nzNoColon> {{'vehicle-loan.ADVANCE_PAID_AMOUNT'| translate}}
+                                            </nz-form-label>
+                                            <nz-form-control>
+                                                <nz-input-number style="width: 100%;" name="ADVANCE_PAID_AMOUNT"
+                                                    type="text" nzPlaceHolder="{{'vehicle-loan.ADVANCE_PAID_AMOUNT'| translate}}"
+                                                    [(ngModel)]="data.ADVANCE_PAID_AMOUNT" [nzMin]="1"
+                                                    [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                            </nz-form-control>
+                                        </nz-form-item>
+                                    </div> -->
+
+            <!-- </div>
+                            </div>
+                             -->
+
+            <!-- <div nz-col nzSpan="6">
+                                <nz-form-item>
+                                    <nz-form-label  nzNoColon>{{'vehicle-loan.IS_VALUATION_DONE'| translate}}
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-switch name="IS_VALUATION_DONE" [(ngModel)]="data.IS_VALUATION_DONE"
+                                             nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                        </nz-switch>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="10" *ngIf="data.IS_VALUATION_DONE">
+                                <nz-form-item>
+                                    <nz-form-label  nzNoColon> {{'vehicle-loan.VALUATOR_NAME'| translate}}
+                                    </nz-form-label>
+                                    <nz-form-control >
+                                        <input nz-input type="text" name="VALUATOR_NAME"
+                                            [(ngModel)]="data.VALUATOR_NAME" >
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="4" *ngIf="data.IS_VALUATION_DONE">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon> {{'vehicle-loan.VALUATION_DATE'| translate}} </nz-form-label>
+                                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                        <nz-date-picker name="VALUATION_DATE" style="width: 100%;" (keydown.backspace)="focusss($event)" (keydown.delete)="focusss($event)"
+                                            [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                            [(ngModel)]="data.VALUATION_DATE" nzPlaceHolder="{{'vehicle-loan.VALUATION_DATE'| translate}}">
+                                        </nz-date-picker>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>-->
+
+            <!-- </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span> {{'common.Save'| translate}} </span></button>
+    </div>
+</div>

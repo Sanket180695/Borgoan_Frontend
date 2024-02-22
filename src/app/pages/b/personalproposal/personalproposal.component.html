@@ -1,0 +1,152 @@
+<div (mouseover)="myFunction($event)" #tableToMeasure>
+  <nz-spin [nzSpinning]="isSpinningTabs">
+
+    <!-- <nz-steps nzType="navigation" nzSize="small" [nzCurrent]="index" (nzIndexChange)="onIndexChange($event)">
+     
+        <nz-step *ngFor="let tab of IndivisualInfotabs" [nzStatus]="getStatus(tab.STATUS)" [nzTitle]="tab.EXTRA_INFORMATION_NAME" >  </nz-step>
+      </nz-steps> -->
+
+
+    <nz-tabset [(nzSelectedIndex)]="selectedIndex" (nzSelectedIndexChange)="chnage($event)">
+      <nz-tab *ngFor="let tab of IndivisualInfotabs" [nzTitle]="titleTemplate33">
+        <ng-template #titleTemplate33>
+          <i nz-icon nzType="exclamation-circle" nzTheme="fill" style="color: #f18304;" *ngIf="!tab.IS_PROVIDED"></i>
+          <i nz-icon nzType="check-circle" nzTheme="fill" style="color: #00b963;" *ngIf="tab.IS_PROVIDED"></i>
+          <span *ngIf="browserLang =='mr' "> {{tab.EXTRA_INFORMATION_NAME}}</span>
+          <span *ngIf="browserLang =='kn' "> {{tab.NAME_KN}}</span>
+          <span *ngIf="browserLang =='en' "> {{tab.NAME_EN}}</span>
+
+        </ng-template>
+        <app-personalinfo *ngIf="tab.EXTRA_INFORMATION_ID==1" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [APPLICANT_ID]="APPLICANT_ID" [oldIndex]="index" (indexChanged)="indexChanged($event)" [PROPOSAL_ID]="PROPOSAL_ID"
+          [IndivisualInfotabs]="IndivisualInfotabs" [personalInformationId]="personalInformationId"
+          [data]="personalInfo" [addressinfoCurrent]="addressinfoCurrent" [addressinfoPermanent]="addressinfoPermanent"
+          [familyDeatils]="familyDeatails" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']"></app-personalinfo>
+
+        <app-firm-details *ngIf="tab.EXTRA_INFORMATION_ID==7" style="height: 100%;width: 100%;" [oldIndex]="index"
+          (demo)='getTabs()' (CloseChanged)="CloseChanged($event)" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']" [PROPOSAL_ID]="PROPOSAL_ID"></app-firm-details>
+
+        <app-income-info *ngIf="tab.EXTRA_INFORMATION_ID==2" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [APPLICANT_ID]="APPLICANT_ID" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data1]="incomeInfo"
+          [PROPOSAL_ID]="PROPOSAL_ID" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']"></app-income-info>
+
+        <app-loan-demand *ngIf="tab.EXTRA_INFORMATION_ID==3" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="loanInfo" [PROPOSAL_ID]="PROPOSAL_ID" [LOAN_KEY]="data['LOAN_KEY']">
+        </app-loan-demand>
+
+        <app-financialinfo *ngIf="tab.EXTRA_INFORMATION_ID==4" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [APPLICANT_ID]="APPLICANT_ID" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="financialInfo" [LOAN_KEY]="data['LOAN_KEY']"
+          [PROPOSAL_ID]="PROPOSAL_ID"></app-financialinfo>
+
+        <app-credit-info *ngIf="tab.EXTRA_INFORMATION_ID==5" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [APPLICANT_ID]="APPLICANT_ID" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="creditInfo" [LOAN_KEY]="data['LOAN_KEY']"
+          [PROPOSAL_ID]="PROPOSAL_ID"></app-credit-info>
+
+        <app-propertyinfo *ngIf="tab.EXTRA_INFORMATION_ID==6" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [APPLICANT_ID]="APPLICANT_ID" [oldIndex]="index" (CloseChanged)="CloseChanged($event)" [data]="propertyInfo" [LOAN_KEY]="data['LOAN_KEY']"
+          [PROPOSAL_ID]="PROPOSAL_ID"></app-propertyinfo>
+
+
+        <app-projection-info *ngIf="tab.EXTRA_INFORMATION_ID==8" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [oldIndex]="index" (CloseChanged)="CloseChanged($event)" [PROPOSAL_ID]="PROPOSAL_ID" [LOAN_KEY]="data['LOAN_KEY']"></app-projection-info>
+
+        <app-guarantor-info *ngIf="tab.EXTRA_INFORMATION_ID==9" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [oldIndex]="index" (CloseChanged)="CloseChanged($event)" [data]="data" [APPLICANT_ID]="APPLICANT_ID" [LOAN_KEY]="data['LOAN_KEY']"
+          [PROPOSAL_ID]="PROPOSAL_ID">
+        </app-guarantor-info>
+
+        <app-loanquestions *ngIf="tab.EXTRA_INFORMATION_ID==10" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']" style="height: 100%;width: 100%;" (demos)='getTabs()'
+          [PROPOSAL_ID]="PROPOSAL_ID"></app-loanquestions>
+
+
+        <app-bankschmemsi *ngIf="tab.EXTRA_INFORMATION_ID==11" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [PROPOSAL_ID]="PROPOSAL_ID"></app-bankschmemsi>
+
+        <app-coborrowerinfo *ngIf="tab.EXTRA_INFORMATION_ID==12" [CURRENT_STAGE_ID]="data.CURRENT_STAGE_ID" [LOAN_KEY]="data['LOAN_KEY']" style="height: 100%;width: 100%;" (demo)='getTabs()'
+          [data]="data" [APPLICANT_ID]="APPLICANT_ID" [PROPOSAL_ID]="PROPOSAL_ID"></app-coborrowerinfo>
+
+      </nz-tab>
+      <nz-tab nzTitle="{{ 'basicinfo.m1' | translate}}" *ngIf="IndivisualInfotabs.length>0 && IsSubmit && data.CURRENT_STAGE_ID==8">
+        <app-sumbitforreview style="height: 100%;width: 100%;" [data]="data" [APPLICANT_ID]="APPLICANT_ID"  (fsubmit)="submit()"
+          [PROPOSAL_ID]="PROPOSAL_ID" [IndivisualInfotabs]="IndivisualInfotabs"></app-sumbitforreview>
+      </nz-tab>
+      <nz-tab nzTitle="{{ 'basicinfo.m2' | translate}}" *ngIf="IndivisualInfotabs.length>0 && data.CURRENT_STAGE_ID==9">
+        <app-sumbitforscrutiny style="height: 100%;width: 100%;" [data]="data" [APPLICANT_ID]="APPLICANT_ID" (fsubmit)="submit()"
+          [PROPOSAL_ID]="PROPOSAL_ID" [IndivisualInfotabs]="IndivisualInfotabs" [isreject]="isreject"></app-sumbitforscrutiny>
+      </nz-tab>
+    </nz-tabset>
+
+    <!-- [nzDisabled]="!tab.STATUS" -->
+
+    <!-- <div *ngIf="PROPOSAL_TYPE=='1' && !textVisible">
+        
+        <app-personalinfo *ngIf="index==0" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [IndivisualInfotabs]="IndivisualInfotabs" [personalInformationId]="personalInformationId" [data]="personalInfo" [addressinfoCurrent]="addressinfoCurrent" [addressinfoPermanent]="addressinfoPermanent" [familyDeatils]="familyDeatails"></app-personalinfo>
+           
+        <app-income-info *ngIf="index==1" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data1]="incomeInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-income-info>
+  
+        <app-loan-demand *ngIf="index==2" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="loanInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-loan-demand>
+  
+        <app-financialinfo *ngIf="index==3" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="financialInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-financialinfo>
+  
+        <app-credit-info *ngIf="index==4" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="creditInfo"  [PROPOSAL_ID]="PROPOSAL_ID"></app-credit-info>
+  
+        <app-propertyinfo *ngIf="index==5" style="height: 100%;width: 100%;" [oldIndex]="index" (CloseChanged)="CloseChanged($event)"  [data]="propertyInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-propertyinfo>
+  
+      
+
+
+      </div>
+     -->
+
+    <!-- <div *ngIf="PROPOSAL_TYPE=='2' && !textVisible">
+        <app-loan-demand *ngIf="index==0" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="loanInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-loan-demand>
+       
+        <app-financialinfo *ngIf="index==1" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="financialInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-financialinfo>
+       
+        <app-credit-info *ngIf="index==2" style="height: 100%;width: 100%;" [oldIndex]="index" (indexChanged)="indexChanged($event)" [data]="creditInfo"  [PROPOSAL_ID]="PROPOSAL_ID"></app-credit-info>
+        
+        <app-propertyinfo *ngIf="index==3" style="height: 100%;width: 100%;" [oldIndex]="index" (CloseChanged)="CloseChanged($event)"  [data]="propertyInfo" [PROPOSAL_ID]="PROPOSAL_ID"></app-propertyinfo>
+       
+        <app-firm-details *ngIf="index==4" style="height: 100%;width: 100%;" [oldIndex]="index" (CloseChanged)="CloseChanged($event)"  [PROPOSAL_ID]="PROPOSAL_ID"></app-firm-details>
+       
+        <app-projection-info *ngIf="index==5" style="height: 100%;width: 100%;" [oldIndex]="index" (CloseChanged)="CloseChanged($event)"  [PROPOSAL_ID]="PROPOSAL_ID"></app-projection-info>
+       
+        <app-guarantor-info *ngIf="index==6" style="height: 100%;width: 100%;" [oldIndex]="index" (CloseChanged)="CloseChanged($event)"  [PROPOSAL_ID]="PROPOSAL_ID"></app-guarantor-info>
+  
+
+      </div> -->
+
+    <div nz-row *ngIf="textVisible">
+      <div nz-col nzSpan="7"></div>
+      <div nz-col nzSpan="10" style="text-align: center;border: 1px solid;font-size: 26px">
+        {{'common.extra_info_empty'|translate }}
+      </div>
+    </div>
+
+
+  </nz-spin>
+
+  <div id="container" #container>
+    <!-- <div class="section"><span class="link" (click)="chatInfo()">{{'proposaldocument.link1'|translate }} </span> </div> -->
+    <div class="section"><span class="link" (click)="Documents()">{{'joinbranch.link1'|translate }} </span> </div>
+    <div class="section"><span class="link" (click)="statusLogs()">{{'joinbranch.link2'|translate }} </span> </div>
+  </div>
+</div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="400" [nzVisible]="drawerchatVisible"
+  [nzTitle]="drawerchatTitle" (nzOnClose)="drawerchatClose()" (nzKeyboard)="true">
+  <app-chatinfo [drawerClose]="closeCallbackchat" [data]="drowerData"></app-chatinfo>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerDocumentVisible"
+  [nzTitle]="drawerDocumentTitle" (nzOnClose)="drawerDocumentClose()" (nzKeyboard)="true">
+  <app-documents2 [drawerClose]="closeCallbackDocument" TYPE="B" [data]="drowerData"></app-documents2>
+</nz-drawer>
+
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerStattusVisible"
+  [nzTitle]="drawerStattusTitle" (nzOnClose)="drawerStattusClose()" (nzKeyboard)="true">
+  <app-statuslogs [drawerClose]="closeCallbackStattus" [data]="drowerData"></app-statuslogs>
+</nz-drawer>

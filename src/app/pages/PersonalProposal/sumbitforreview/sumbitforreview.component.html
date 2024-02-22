@@ -1,0 +1,42 @@
+<div class="my-box">
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24" style="padding-top: 20px;text-align: center;">
+                    <h2>{{ 'basicinfo.m3' | translate}}</h2>
+                    <!-- <label nz-checkbox [(ngModel)]="checked" name="Submit">
+                        Check here to indicate that you have read and agree to the terms & conditions
+                    </label> -->
+                </div>
+
+
+                <div nz-col nzSpan="12" nzOffset="6" style="margin-bottom: 10px;">
+                    <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}} </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARKS"></textarea>
+                    </nz-form-control>
+                </div>
+
+                <!-- <div nz-col nzSpan="12" nzOffset="6" style="margin-bottom: 10px;">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'basicinfo.m20'|translate}}</nz-form-label>
+                        <nz-form-control>
+                            <input type="file" #file1 accept="application/pdf" (change)="onFileSelectedFile1($event)" />
+                        </nz-form-control>
+                    </nz-form-item>
+
+                </div> -->
+
+            </div>
+        </nz-spin>
+    </form>
+    <div nz-row>
+        <div nz-col nzSpan="24" style="text-align: center;">
+            <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                (click)="save()">
+                <span *ngIf="!IndivisualInfotabs[0].IS_VERIFIED ">{{ 'basicinfo.m1' | translate}}</span>
+                <span *ngIf="IndivisualInfotabs[0].IS_VERIFIED ">{{ 'basicinfo.m4' | translate}}</span>
+            </button>
+        </div>
+    </div>
+</div>

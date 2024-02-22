@@ -1,0 +1,2217 @@
+<form nz-form>
+    <nz-spin [nzSpinning]="isSpinning">
+        <div nz-row class="my-box">
+            <div nz-col nzSpan="18" nzOffset='2'>
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'balance-sheet.NOTE_TO_ACHIVE_THE_PROJECTIONS'| translate}} 
+                    </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input name="NOTE_TO_ACHIVE_THE_PROJECTIONS" type="text"
+                            [(ngModel)]="ProjectionInfo.NOTE_TO_ACHIVE_THE_PROJECTIONS"
+                            [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="4">
+                <nz-form-item>
+                    <nz-form-label nzNoColon>
+                    </nz-form-label>
+                    <nz-form-control>
+                <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning"
+                    (click)="saveNote()"><span> {{'common.Save'| translate}} </span></button>
+                </nz-form-control>
+            </nz-form-item>
+            </div>
+        </div>
+
+    </nz-spin>
+</form>
+
+
+<nz-divider nzText="{{'balance-sheet.NOTE_TO_ACHIVE_THE_PROJECTIONS'| translate}}"></nz-divider>
+
+<div class="my-box">
+    <div nz-row>
+        <div nz-col nzSpan="3">
+           <h4>{{'balance-sheet.field1'| translate}}</h4> 
+        </div>
+        <div nz-col nzSpan="3" *ngFor="let year of profitablityStatements">
+            <h4 style="margin-left: 30px;">{{year['YEAR']}}</h4>
+        </div>
+
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{'balance-sheet.field2'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY1"  [(ngModel)]="profitablityStatements[0]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY2"  [(ngModel)]="profitablityStatements[1]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY3"  [(ngModel)]="profitablityStatements[2]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY4"  [(ngModel)]="profitablityStatements[3]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY5"  [(ngModel)]="profitablityStatements[4]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY6"  [(ngModel)]="profitablityStatements[5]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPACITY_UTILITY7"  [(ngModel)]="profitablityStatements[6]['CAPACITY_UTILITY']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+   <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{'balance-sheet.field3'| translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS1"  [(ngModel)]="profitablityStatements[0]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS2"  [(ngModel)]="profitablityStatements[1]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS3"  [(ngModel)]="profitablityStatements[2]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS4"  [(ngModel)]="profitablityStatements[3]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS5"  [(ngModel)]="profitablityStatements[4]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS6"  [(ngModel)]="profitablityStatements[5]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="GROSS_RECEIPTS7"  [(ngModel)]="profitablityStatements[6]['GROSS_RECEIPTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{'balance-sheet.field4'| translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES1"  [(ngModel)]="profitablityStatements[0]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES2"  [(ngModel)]="profitablityStatements[1]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES3"  [(ngModel)]="profitablityStatements[2]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES4"  [(ngModel)]="profitablityStatements[3]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES5"  [(ngModel)]="profitablityStatements[4]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES6"  [(ngModel)]="profitablityStatements[5]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RM_PURCHASES7"  [(ngModel)]="profitablityStatements[6]['RM_PURCHASES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>     
+
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{'balance-sheet.field5'| translate}}   </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSES1"  [(ngModel)]="profitablityStatements[0]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSES2"  [(ngModel)]="profitablityStatements[1]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSES3"  [(ngModel)]="profitablityStatements[2]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSES4"  [(ngModel)]="profitablityStatements[3]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSES5"  [(ngModel)]="profitablityStatements[4]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSESS6"  [(ngModel)]="profitablityStatements[5]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DIRECT_EXPENSES7"  [(ngModel)]="profitablityStatements[6]['DIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+          
+            <h5> {{'balance-sheet.field6'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES1"  [(ngModel)]="profitablityStatements[0]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES2"  [(ngModel)]="profitablityStatements[1]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES3"  [(ngModel)]="profitablityStatements[2]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES4"  [(ngModel)]="profitablityStatements[3]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES5"  [(ngModel)]="profitablityStatements[4]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES6"  [(ngModel)]="profitablityStatements[5]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INDIRECT_EXPENSES7"  [(ngModel)]="profitablityStatements[6]['INDIRECT_EXPENSES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <!-- <div nz-row>
+        <div nz-col nzSpan="3">
+            <h4 >Interest on Loan </h4>
+            </div>
+    </div> -->
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{'balance-sheet.field7'| translate}} </h5>
+
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN1"  [(ngModel)]="profitablityStatements[0]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN2"  [(ngModel)]="profitablityStatements[1]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN3"  [(ngModel)]="profitablityStatements[2]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN4"  [(ngModel)]="profitablityStatements[3]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN5"  [(ngModel)]="profitablityStatements[4]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN6"  [(ngModel)]="profitablityStatements[5]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_TERM_LOAN7"  [(ngModel)]="profitablityStatements[6]['INTEREST_TERM_LOAN']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    
+    <div nz-row>
+        <div nz-col nzSpan="3">
+          
+           
+            <h5 > {{'balance-sheet.field8'| translate}}  </h5>
+
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT1"  [(ngModel)]="profitablityStatements[0]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT2"  [(ngModel)]="profitablityStatements[1]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT3"  [(ngModel)]="profitablityStatements[2]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT4"  [(ngModel)]="profitablityStatements[3]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT5"  [(ngModel)]="profitablityStatements[4]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT6"  [(ngModel)]="profitablityStatements[5]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_CASH_CREDIT7"  [(ngModel)]="profitablityStatements[6]['INTEREST_CASH_CREDIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+          
+           
+            <h5 > {{'balance-sheet.field9'| translate}}  </h5>
+
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER1"  [(ngModel)]="profitablityStatements[0]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER2"  [(ngModel)]="profitablityStatements[1]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER3"  [(ngModel)]="profitablityStatements[2]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER4"  [(ngModel)]="profitablityStatements[3]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER5"  [(ngModel)]="profitablityStatements[4]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER6"  [(ngModel)]="profitablityStatements[5]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_OTHER7"  [(ngModel)]="profitablityStatements[6]['INTEREST_OTHER']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+          
+           
+            <h5 > {{'balance-sheet.field10'| translate}}   </h5>
+
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION1"  [(ngModel)]="profitablityStatements[0]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION2"  [(ngModel)]="profitablityStatements[1]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION3"  [(ngModel)]="profitablityStatements[2]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION4"  [(ngModel)]="profitablityStatements[3]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION5"  [(ngModel)]="profitablityStatements[4]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION6"  [(ngModel)]="profitablityStatements[5]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION7"  [(ngModel)]="profitablityStatements[6]['DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+          
+           
+            <h5 >{{'balance-sheet.field11'| translate}} </h5>
+
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS1"  [(ngModel)]="profitablityStatements[0]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS2"  [(ngModel)]="profitablityStatements[1]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS3"  [(ngModel)]="profitablityStatements[2]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS4"  [(ngModel)]="profitablityStatements[3]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS5"  [(ngModel)]="profitablityStatements[4]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS6"  [(ngModel)]="profitablityStatements[5]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="REMU_TO_PARTNERS7"  [(ngModel)]="profitablityStatements[6]['REMU_TO_PARTNERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+          
+           
+            <h5 > {{'balance-sheet.field12'| translate}}  </h5>
+
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL1"  [(ngModel)]="profitablityStatements[0]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL2"  [(ngModel)]="profitablityStatements[1]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL3"  [(ngModel)]="profitablityStatements[2]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL4"  [(ngModel)]="profitablityStatements[3]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL5"  [(ngModel)]="profitablityStatements[4]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL6"  [(ngModel)]="profitablityStatements[5]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CAPITAL7"  [(ngModel)]="profitablityStatements[6]['INTEREST_ON_CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field13'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS1"  [(ngModel)]="profitablityStatements[0]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS2"  [(ngModel)]="profitablityStatements[1]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS3"  [(ngModel)]="profitablityStatements[2]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS4"  [(ngModel)]="profitablityStatements[3]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS5"  [(ngModel)]="profitablityStatements[4]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS6"  [(ngModel)]="profitablityStatements[5]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHERS7"  [(ngModel)]="profitablityStatements[6]['OTHERS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field14'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX1"  [(ngModel)]="profitablityStatements[0]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX2"  [(ngModel)]="profitablityStatements[1]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX3"  [(ngModel)]="profitablityStatements[2]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX4"  [(ngModel)]="profitablityStatements[3]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX5"  [(ngModel)]="profitablityStatements[4]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX6"  [(ngModel)]="profitablityStatements[5]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_BEFORE_TAX7"  [(ngModel)]="profitablityStatements[6]['PROFIT_BEFORE_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field15'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX1"  [(ngModel)]="profitablityStatements[0]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX2"  [(ngModel)]="profitablityStatements[1]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX3"  [(ngModel)]="profitablityStatements[2]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX4"  [(ngModel)]="profitablityStatements[3]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX5"  [(ngModel)]="profitablityStatements[4]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX6"  [(ngModel)]="profitablityStatements[5]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="LESS_TAX7"  [(ngModel)]="profitablityStatements[6]['LESS_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field16'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX1"  [(ngModel)]="profitablityStatements[0]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX2"  [(ngModel)]="profitablityStatements[1]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX3"  [(ngModel)]="profitablityStatements[2]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX4"  [(ngModel)]="profitablityStatements[3]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX5"  [(ngModel)]="profitablityStatements[4]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX6"  [(ngModel)]="profitablityStatements[5]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROFIT_AFTER_TAX7"  [(ngModel)]="profitablityStatements[6]['PROFIT_AFTER_TAX']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+   
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field17'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION1"  [(ngModel)]="profitablityStatements[0]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION2"  [(ngModel)]="profitablityStatements[1]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION3"  [(ngModel)]="profitablityStatements[2]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION4"  [(ngModel)]="profitablityStatements[3]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION5"  [(ngModel)]="profitablityStatements[4]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION6"  [(ngModel)]="profitablityStatements[5]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="ADD_BACK_DEPRECIATION7"  [(ngModel)]="profitablityStatements[6]['ADD_BACK_DEPRECIATION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field18'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT1"  [(ngModel)]="profitablityStatements[0]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT2"  [(ngModel)]="profitablityStatements[1]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT3"  [(ngModel)]="profitablityStatements[2]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT4"  [(ngModel)]="profitablityStatements[3]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT5"  [(ngModel)]="profitablityStatements[4]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT6"  [(ngModel)]="profitablityStatements[5]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OPERATING_PROFIT7"  [(ngModel)]="profitablityStatements[6]['OPERATING_PROFIT']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div> 
+
+</div>
+
+
+
+
+<nz-divider nzText="{{'balance-sheet.divider2'| translate}} "></nz-divider>
+
+<div class="my-box">
+    <div nz-row>
+        <div nz-col nzSpan="3">
+           <h4>{{'balance-sheet.field1'| translate}}</h4> 
+        </div>
+        <div nz-col nzSpan="3" *ngFor="let d of data2">
+            <h4 style="margin-left: 30px;">{{d['YEAR']}}</h4>
+        </div>
+
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <h4>{{'balance-sheet.field19'| translate}} </h4>
+        </div>
+
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{'balance-sheet.field20'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS1"  [(ngModel)]="data2[0]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS2"  [(ngModel)]="data2[1]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS3"  [(ngModel)]="data2[2]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS4"  [(ngModel)]="data2[3]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS5"  [(ngModel)]="data2[4]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS6"  [(ngModel)]="data2[5]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="FIXED_ASSETS7"  [(ngModel)]="data2[6]['FIXED_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5> {{'balance-sheet.field21'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS0"  [(ngModel)]="data2[0]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS1"  [(ngModel)]="data2[1]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS2"  [(ngModel)]="data2[2]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS3"  [(ngModel)]="data2[3]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS4"  [(ngModel)]="data2[4]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS5"  [(ngModel)]="data2[5]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" (keyup)="calculate(5)" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INVESTMENTS6"  [(ngModel)]="data2[6]['INVESTMENTS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" [nzMin]="0" (keyup)="calculate(6)" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field22'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK1"  [(ngModel)]="data2[0]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK2"  [(ngModel)]="data2[1]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK3"  [(ngModel)]="data2[2]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK4"  [(ngModel)]="data2[3]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK5"  [(ngModel)]="data2[4]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK6"  [(ngModel)]="data2[5]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="STOCK7"  [(ngModel)]="data2[6]['STOCK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field23'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS1"  [(ngModel)]="data2[0]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS2"  [(ngModel)]="data2[1]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS4"  [(ngModel)]="data2[2]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS3"  [(ngModel)]="data2[3]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS5"  [(ngModel)]="data2[4]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS6"  [(ngModel)]="data2[5]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="WORK_IN_PROGRESS7"  [(ngModel)]="data2[6]['WORK_IN_PROGRESS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field24'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS1"  [(ngModel)]="data2[0]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS2"  [(ngModel)]="data2[1]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS3"  [(ngModel)]="data2[2]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS4"  [(ngModel)]="data2[3]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS5"  [(ngModel)]="data2[4]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS6"  [(ngModel)]="data2[5]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEBTORS7"  [(ngModel)]="data2[6]['DEBTORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field25'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK1"  [(ngModel)]="data2[0]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK2"  [(ngModel)]="data2[1]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK3"  [(ngModel)]="data2[2]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK4"  [(ngModel)]="data2[3]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK5"  [(ngModel)]="data2[4]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK6"  [(ngModel)]="data2[5]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CASH_AND_BANK7"  [(ngModel)]="data2[6]['CASH_AND_BANK']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field26'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS1"  [(ngModel)]="data2[0]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS2"  [(ngModel)]="data2[1]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS3"  [(ngModel)]="data2[2]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS4"  [(ngModel)]="data2[3]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS5"  [(ngModel)]="data2[4]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS6"  [(ngModel)]="data2[5]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_ASSETS7"  [(ngModel)]="data2[6]['OTHER_ASSETS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculate(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h4>{{'balance-sheet.field27'| translate}}</h4>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal1"  [(ngModel)]="total[0]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal2"  [(ngModel)]="total[1]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal3"  [(ngModel)]="total[2]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal4"  [(ngModel)]="total[3]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal5"  [(ngModel)]="total[4]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal6"  [(ngModel)]="total[5]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="assetstotal7"  [(ngModel)]="total[6]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <h4>{{'balance-sheet.field28'| translate}}</h4>
+        </div>
+
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field29'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL1"  [(ngModel)]="data2[0]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL2"  [(ngModel)]="data2[1]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL3"  [(ngModel)]="data2[2]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL4"  [(ngModel)]="data2[3]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL5"  [(ngModel)]="data2[4]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL6"  [(ngModel)]="data2[5]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CAPITAL7"  [(ngModel)]="data2[6]['CAPITAL']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field30'| translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES1"  [(ngModel)]="data2[0]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES2"  [(ngModel)]="data2[1]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES3"  [(ngModel)]="data2[2]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES4"  [(ngModel)]="data2[3]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)"  [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES5"  [(ngModel)]="data2[4]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)"  [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES6"  [(ngModel)]="data2[5]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)"  [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="RESERVES7"  [(ngModel)]="data2[6]['RESERVES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)"  [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field31'| translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS1"  [(ngModel)]="data2[0]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS3"  [(ngModel)]="data2[1]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS2"  [(ngModel)]="data2[2]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS4"  [(ngModel)]="data2[3]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS5"  [(ngModel)]="data2[4]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS6"  [(ngModel)]="data2[5]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="SUB_LOANS7"  [(ngModel)]="data2[6]['SUB_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field32'| translate}} </h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS1"  [(ngModel)]="data2[0]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS2"  [(ngModel)]="data2[1]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS3"  [(ngModel)]="data2[2]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS4"  [(ngModel)]="data2[3]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS5"  [(ngModel)]="data2[4]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS6"  [(ngModel)]="data2[5]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div><div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LOANS7"  [(ngModel)]="data2[6]['OTHER_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field33'| translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS1"  [(ngModel)]="data2[0]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS2"  [(ngModel)]="data2[1]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS3"  [(ngModel)]="data2[2]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS4"  [(ngModel)]="data2[3]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS5"  [(ngModel)]="data2[4]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS6"  [(ngModel)]="data2[5]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="UNSECURED_LOANS7"  [(ngModel)]="data2[6]['UNSECURED_LOANS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field34'| translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS1"  [(ngModel)]="data2[0]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS2"  [(ngModel)]="data2[1]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS3"  [(ngModel)]="data2[2]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS4"  [(ngModel)]="data2[3]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS5"  [(ngModel)]="data2[4]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS6"  [(ngModel)]="data2[5]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="CREDITORS7"  [(ngModel)]="data2[6]['CREDITORS']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field35'| translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION1"  [(ngModel)]="data2[0]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION2"  [(ngModel)]="data2[1]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION3"  [(ngModel)]="data2[2]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION4"  [(ngModel)]="data2[3]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION5"  [(ngModel)]="data2[4]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION6"  [(ngModel)]="data2[5]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="PROVISION67"  [(ngModel)]="data2[6]['PROVISION']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{'balance-sheet.field36'| translate}}  </h5>
+        </div>
+       
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES1"  [(ngModel)]="data2[0]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES2"  [(ngModel)]="data2[1]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES3"  [(ngModel)]="data2[2]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES4"  [(ngModel)]="data2[3]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES5"  [(ngModel)]="data2[4]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES6"  [(ngModel)]="data2[5]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="OTHER_LIABILITIES7"  [(ngModel)]="data2[6]['OTHER_LIABILITIES']"
+                        nzPlaceHolder="{{'balance-sheet.moneyplaceholder'| translate}}'" (keyup)="calculateLiability(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h4>{{'balance-sheet.field27'| translate}}</h4>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal1"  [(ngModel)]="total1[0]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal2"  [(ngModel)]="total1[1]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal3"  [(ngModel)]="total1[2]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal4"  [(ngModel)]="total1[3]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal5"  [(ngModel)]="total1[4]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal6"  [(ngModel)]="total1[5]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="liabilitytotal7"  [(ngModel)]="total1[6]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+ </div>
+ 
+<app-repaying style="height: 100%;width: 100%;" (indexChanged)="indexChanged($event)" [repayingCapacityBorrower]="repayingCapacityBorrower" [PROPOSAL_ID]="PROPOSAL_ID">
+</app-repaying>
+
+<div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8  && extraApplicantInformation.IS_VERIFIED== false">
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning"
+        (click)="save()"><span>{{'balance-sheet.saveclosebutton'| translate}}</span></button>
+</div>

@@ -1,0 +1,132 @@
+<div>
+    <form nz-form>
+        <div nz-row>
+            <div nz-col nzSpan="11">
+
+                <nz-form-label nzRequired nzNoColon>{{'addproposaldocument.label1'|translate }} </nz-form-label>
+                <nz-input-group>
+                    <nz-tree-select style="width: 100%" name="documentGroupName" nzShowSearch [(ngModel)]="DOCUMENT_ID"
+                        [nzNodes]="documentGroupsNodes" (ngModelChange)="getChangeDocumentGroup($event)"
+                        [nzAllowClear]="false" nzPlaceHolder="{{'addproposaldocument.placeholder1'|translate }}">
+                    </nz-tree-select>
+                    <!-- <nz-select [nzLoading]="isSpinningDocumentGroup" name="document_id" nzShowSearch style="width: 100%"
+                        nzPlaceHolder="Select Document Name" (ngModelChange)="getChangeDocumentGroup($event)"
+                        [(ngModel)]="DOCUMENT_ID">
+                        <nz-option *ngFor="let val of documentGroups" [nzValue]="val.ID" [nzLabel]="val.NAME">
+                        </nz-option>
+                    </nz-select> -->
+                </nz-input-group>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="11">
+                <nz-form-label nzRequired nzNoColon>{{'addproposaldocument.label2'|translate }} </nz-form-label>
+                <nz-input-group>
+                    <nz-select *ngIf="browserLang == 'kn'" [nzLoading]="isSpinningDocument"
+                        (ngModelChange)="getChangeDocument($event)" name="document_id" nzShowSearch style="width: 100%"
+                        nzPlaceHolder="{{'addproposaldocument.placeholder2'|translate }}"
+                        [(ngModel)]="documentdata.DOCUMENT_ID">
+                        <nz-option *ngFor="let val of documents" [nzValue]="val.ID" [nzLabel]="val.NAME_KN">
+                        </nz-option>
+                    </nz-select>
+                    <nz-select *ngIf="browserLang == 'en'" [nzLoading]="isSpinningDocument"
+                        (ngModelChange)="getChangeDocument($event)" name="document_id" nzShowSearch style="width: 100%"
+                        nzPlaceHolder="{{'addproposaldocument.placeholder2'|translate }}"
+                        [(ngModel)]="documentdata.DOCUMENT_ID">
+                        <nz-option *ngFor="let val of documents" [nzValue]="val.ID" [nzLabel]="val.NAME_EN">
+                        </nz-option>
+                    </nz-select>
+                    <nz-select *ngIf="browserLang == 'mr'" [nzLoading]="isSpinningDocument"
+                        (ngModelChange)="getChangeDocument($event)" name="document_id" nzShowSearch style="width: 100%"
+                        nzPlaceHolder="{{'addproposaldocument.placeholder2'|translate }}"
+                        [(ngModel)]="documentdata.DOCUMENT_ID">
+                        <nz-option *ngFor="let val of documents" [nzValue]="val.ID" [nzLabel]="val.NAME">
+                        </nz-option>
+                    </nz-select>
+                </nz-input-group>
+            </div>
+        </div>
+
+
+        <div nz-row>
+            <div nz-col nzSpan="11">
+                <nz-form-label nzRequired nzNoColon>{{'addproposaldocument.label3'|translate }} </nz-form-label>
+                <nz-form-control>
+                    <input nz-input name="name" type="text" [(ngModel)]="documentdata.DOCUMENT_TITLE" />
+                </nz-form-control>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="11">
+                <nz-form-label nzNoColon>{{'addproposaldocument.label4'|translate }} </nz-form-label>
+                <nz-form-control>
+                    <textarea nz-input rows="2" name="Description"
+                        [(ngModel)]="documentdata.DOCUMENT_DESCRIPTION"></textarea>
+                </nz-form-control>
+            </div>
+
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="5">
+                <nz-form-label nzNoColon>{{'addproposaldocument.label5'|translate }}</nz-form-label>
+                <nz-form-control>
+                    <nz-switch name="isComplusary" [(ngModel)]="documentdata.IS_COMPLUSORY"></nz-switch>
+                </nz-form-control>
+            </div>
+            <div nz-col nzSpan="5"></div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <button nz-button nzType="primary" style="margin-top: 22px;" (click)="addDocument()"
+                            nzJustify="end">
+                            <i nz-icon nzType="plus"></i>
+                        </button>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <nz-divider nzText="{{'addproposaldocument.text1'|translate }}"></nz-divider>
+        <div nz-row>
+            <div nz-col nzSpan="24" style="align-content: center;">
+                <nz-table class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false"
+                    [nzData]="documentDetails">
+                    <thead>
+                        <tr>
+                            <th>{{'addproposaldocument.th1'|translate }}</th>
+                            <th>{{'addproposaldocument.th2'|translate }}</th>
+                            <th>{{'addproposaldocument.th3'|translate }} </th>
+                            <th>{{'addproposaldocument.th4'|translate }} </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of table.data ">
+                            <td>
+                                <a (click)="deleteRow(data)"> <i nz-icon nzType="delete" nzTheme="outline"></i></a>
+                            </td>
+                            <td>{{data.DOCUMENT_TITLE}}</td>
+                            <td>{{data.DOCUMENT_DESCRIPTION}}</td>
+                            <td>
+                                <i nz-icon *ngIf="data.IS_COMPLUSORY" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                    [nzTwotoneColor]="'#52c41a'"></i>
+                                <i nz-icon *ngIf="!data.IS_COMPLUSORY" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+                                    [nzTwotoneColor]="'#f50'"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+
+
+
+<div class="footer">
+    <button type="button" nz-button (click)="close()" class="ant-btn"
+        style="margin-right: 8px;"><span>{{'common.button1'|translate }} </span></button>
+    <button type="button" *ngIf="documentDetails.length>0" class="ant-btn ant-btn-primary" nz-button
+        [nzLoading]="isSpinning" (click)="save()"><span>{{'common.button2'|translate }}</span></button>
+</div>

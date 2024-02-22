@@ -1,0 +1,95 @@
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-form-item>
+            <nz-radio-group name="status" [(ngModel)]="STATUS">
+                <label nz-radio nzValue="A"> {{'paymentapproval.paymentapproval'| translate}}</label>
+                <label nz-radio nzValue="R">{{'paymentapproval.paymentreject'| translate}} </label>
+                <label nz-radio nzValue="F">{{'extra-information-list.formTitle'| translate}} </label>
+            </nz-radio-group>
+        </nz-form-item>
+
+    </div>
+    <div nz-col nzSpan="6" *ngIf="STATUS=='A'">
+        <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{ 'basicinfo.t2' | translate}}
+            </nz-form-label>
+            <nz-form-control>
+                <nz-input-number style="width: 100%;" name="RESOLUTION_NO" [(ngModel)]="data.RESOLUTION_NO" [nzMin]="1"
+                    [nzStep]="1">
+                </nz-input-number>
+
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <div nz-col nzSpan="6" *ngIf="STATUS=='A'">
+        <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th22'| translate}}</nz-form-label>
+            <nz-form-control>
+                <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                 placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.SANCTION_DATE" name="SANCTION_DATE" />
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <div nz-col nzSpan="6" *ngIf="STATUS=='A'">
+        <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th5'| translate}}
+            </nz-form-label>
+            <nz-form-control>
+                <nz-input-number style="width: 100%;" name="SANCTION_AMOUNT" [(ngModel)]="data.SANCTION_AMOUNT"
+                    [nzMin]="1" [nzMax]="999999999999999999999999999" [nzStep]="1">
+                </nz-input-number>
+
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <div nz-col nzSpan="6" *ngIf="STATUS=='A'">
+        <nz-form-item>
+            <nz-form-label nzRequired nzNoColon>{{ 'basicinfo.t1' | translate}} %
+            </nz-form-label>
+            <nz-form-control>
+                <nz-input-number style="width: 100%;" name="RATE_OF_INTEREST" [(ngModel)]="data.RATE_OF_INTEREST"
+                    [nzMin]="0" [nzMax]="999999999999999999999999999" [nzStep]="1">
+                </nz-input-number>
+
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+  
+   
+</div>
+
+<div nz-row *ngIf="STATUS=='A'">
+    <div nz-col nzSpan="24">
+        <nz-form-item>
+            <nz-form-label>{{'basicinfo.m21'|translate}}</nz-form-label>
+            <nz-form-control>
+                <input type="file" #file1 accept="application/pdf" (change)="onFileSelectedFile1($event)" />
+            </nz-form-control>
+        </nz-form-item>
+
+    </div>
+</div>
+
+<div nz-row *ngIf="STATUS !='A'">
+    <div nz-col nzSpan="24">
+        <nz-form-label nzRequired nzNoColon>{{'passtomainbranch.lebel3'| translate}} </nz-form-label>
+        <nz-form-control>
+            <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARKS" required></textarea>
+        </nz-form-control>
+    </div>
+</div>
+dfsdfd
+<div class="footer">
+    <button type="button" nz-button (click)="close()" class="ant-btn"
+        style="margin-right: 8px;"><span>{{'common.button1'|translate}}
+        </span></button>
+    <button type="button" *ngIf="STATUS=='A'" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'paymentapproval.saveclosebutton'|translate}}</span></button>
+
+    <button *ngIf="STATUS=='F'" type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'common_text.footer_btn6'|translate}}</span></button>
+
+    <button *ngIf="STATUS=='R'" type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'paymentapproval.paymentreject'|translate}}</span></button>
+
+</div>

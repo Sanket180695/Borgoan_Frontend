@@ -1,0 +1,16 @@
+export class FactoryUnit {
+    ID:number;
+    CLIENT_ID:number;
+    FIRM_INFORMATION_ID:number;
+    EXISTING_LAND_AREA:string;
+    EXISTING_CONSTRUCTION_AREA:string;
+    PROPOSED_LAND_AREA:string;
+    PROPOSED_CONSTRUCTION_AREA:string;
+    TYPE_OF_FACTORY:string;
+    IS_SUFFICIENT_AREA:boolean;
+    IS_AVAILABILITY_OF_ELECTRICITY:boolean;
+    IS_AVAILABILITY_OF_WATER:boolean;
+    IS_AVAILABILITY_OF_TRANSPORT:boolean;
+    IS_AVAILABILITY_OF_WORKERS:boolean;
+    BUSINESS_FIRM_INFORMATION_ID:number
+}

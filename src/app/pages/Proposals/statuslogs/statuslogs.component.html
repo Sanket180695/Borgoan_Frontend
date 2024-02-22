@@ -1,0 +1,45 @@
+<div nz-row nzType="flex">
+  <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" nzXl="8">
+    <div class="formname"> {{formTitle}}</div>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="16" nzLg="16" nzXl="16" style="display: flex;justify-content: flex-end">
+      <form nz-form [nzLayout]="'inline'">
+     
+        <nz-form-item>
+          <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+            <input type="text" name="search" nz-input placeholder="{{'statuslogs.placeholder1'|translate }}" [(ngModel)]="searchText" />
+          </nz-input-group>
+          <ng-template #suffixIconButton>
+            <button nz-button nzType="primary" (click)="search()" nzSearch><i nz-icon nzType="search"></i></button>
+          </ng-template>
+        </nz-form-item>
+       
+      </form>
+    </div>
+  </div>
+  
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-table class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false"
+        [nzData]="dataList" [nzLoading]="loadingRecords" 
+        >
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+          <tr>
+            <th *ngFor="let column of columns">{{column[1]}}</th>
+            <th >{{'statuslogs.th1'|translate }} </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table.data">
+         
+            <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+            <td>
+                <i nz-icon *ngIf="data.IS_COMPLETED" [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                <i nz-icon *ngIf="!data.IS_COMPLETED" [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+              </td> 
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>

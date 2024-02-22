@@ -1,0 +1,290 @@
+<div>
+
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.NAME_OF_TENANT'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="NAME_OF_TENANT" type="text" [(ngModel)]="data.NAME_OF_TENANT"
+                                required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'rent-discoumting-loan.TENENT_TYPE'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-select name="TENENT_TYPE" [(ngModel)]="data.TENENT_TYPE"
+                                nzPlaceHolder="भाडेकरू व्यक्ती प्रकार  निवडा">
+                                <nz-option [nzValue]="'1'" [nzLabel]="'प्रॉपरायटरी फर्म'"></nz-option>
+                                <nz-option [nzValue]="'2'" [nzLabel]="'भागीदारी फर्म'"></nz-option>
+                                <nz-option [nzValue]="'3'" [nzLabel]="'कंपनी'"></nz-option>
+                                <nz-option [nzValue]="'4'" [nzLabel]="'एचयूएफ (HUF)'"></nz-option>
+                                <nz-option [nzValue]="'5'" [nzLabel]="'ट्रस्ट (TRUST)'"></nz-option>
+
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="8">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.RENTED_GIVEN_TIME'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-input-number style="width: 50%;" name="RENTED_GIVEN_TIME"
+                                [nzPlaceHolder]="'महिने मध्ये नमूद करा'" [(ngModel)]="data.RENTED_GIVEN_TIME"
+                                [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                <span> (महिने मध्ये)</span>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+             
+
+                <div nz-col nzSpan="10">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'rent-discoumting-loan.RENTED_BULDING_TYPE'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-radio-group name="RENTED_BULDING_TYPE" [(ngModel)]="data.RENTED_BULDING_TYPE"
+                                nzButtonStyle="solid">
+                                <label nz-radio nzValue="R">निवासी इमारत</label>
+                                <label nz-radio nzValue="C">कमर्शियल</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'rent-discoumting-loan.IS_RENT_TAKEN_CASH_OR_IN_BANK'| translate}}
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <nz-radio-group name="IS_RENT_TAKEN_CASH_OR_IN_BANK"
+                                [(ngModel)]="data.IS_RENT_TAKEN_CASH_OR_IN_BANK" nzButtonStyle="solid">
+                                <label nz-radio nzValue="C">रोख</label>
+                                <label nz-radio nzValue="B">बँक</label>
+                            </nz-radio-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+            
+
+            <div nz-col nzSpan="8" *ngIf="data.IS_RENT_TAKEN_CASH_OR_IN_BANK=='B'">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.RENT_BANK_NAME'| translate}} 
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <input nz-input name="RENT_BANK_NAME" type="text" [(ngModel)]="data.RENT_BANK_NAME" required />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="10">
+                <nz-form-item>
+                    <nz-form-label style="text-align: left;" nzNoColon> {{'rent-discoumting-loan.IS_OWNER'| translate}} <br/>
+                        आहे का?
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-switch name="IS_OWNER" [(ngModel)]="data.IS_OWNER"  nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                             nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                        </nz-switch>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="6">
+                <nz-form-item>
+                    <nz-form-label style="text-align: left;" nzNoColon>{{'rent-discoumting-loan.IS_DONE_TDS_CUTTING'| translate}} 
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-switch name="IS_DONE_TDS_CUTTING" [(ngModel)]="data.IS_DONE_TDS_CUTTING"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                        </nz-switch>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="8">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.AMOUNT_AFTER_TDS_CUTTING'| translate}} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 100%;" name="AMOUNT_AFTER_TDS_CUTTING"
+                            [nzPlaceHolder]="'एकूण भाडे नमूद करा'" [(ngModel)]="data.AMOUNT_AFTER_TDS_CUTTING"
+                            [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.IS_ANY_BANK_LOAN_TAKEN'| translate}}
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-switch name="IS_ANY_BANK_LOAN_TAKEN" [(ngModel)]="data.IS_ANY_BANK_LOAN_TAKEN"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                        </nz-switch>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            
+            <div nz-col nzSpan="10" *ngIf="data.IS_ANY_BANK_LOAN_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.LOAN_BANK_NAME'| translate}} 
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <input nz-input name="LOAN_BANK_NAME" type="text" [(ngModel)]="data.LOAN_BANK_NAME" required />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="6" *ngIf="data.IS_ANY_BANK_LOAN_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.SANCTIONED_LOAN_AMOUNT'| translate}} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 100%;" name="SANCTIONED_LOAN_AMOUNT"
+                            [nzPlaceHolder]="'रक्कम नमूद करा'" [(ngModel)]="data.SANCTIONED_LOAN_AMOUNT" [nzMin]="1"
+                            [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="8" *ngIf="data.IS_ANY_BANK_LOAN_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.REMAINING_LOAN_AMOUNT'| translate}} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 50%;" name="REMAINING_LOAN_AMOUNT"
+                            [nzPlaceHolder]="'बाकी रक्कम नमूद करा'" [(ngModel)]="data.REMAINING_LOAN_AMOUNT" [nzMin]="1"
+                            [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.IS_RENT_AGREEMENT_DONE'| translate}} 
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-switch name="IS_RENT_AGREEMENT_DONE" [(ngModel)]="data.IS_RENT_AGREEMENT_DONE"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                        </nz-switch>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="5" *ngIf="data.IS_RENT_AGREEMENT_DONE">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.MONTHLY_RENT'| translate}} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 100%;" name="MONTHLY_RENT"
+                            [nzPlaceHolder]="'दरमहाचे भाडे नमूद करा'" [(ngModel)]="data.MONTHLY_RENT" [nzMin]="1"
+                            [nzMax]="99999999999999999999999999" [nzStep]="0" required></nz-input-number>
+
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="6" *ngIf="data.IS_RENT_AGREEMENT_DONE">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.RENT_AGREEMENT_END_DATE'| translate}}  </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <input nz-input [textMask]="{mask: mask,guide:true,keepCharPositions:true,pipe:autoCorrectedDatePipe}"
+                        placeholder="dd/mm/yyyy" type="text" [(ngModel)]="data.RENT_AGREEMENT_END_DATE" name="RENT_AGREEMENT_END_DATE" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            
+            <div nz-col nzSpan="8" *ngIf="data.IS_RENT_AGREEMENT_DONE">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon> {{'rent-discoumting-loan.RENT_AGREEMNT_TIME'| translate}} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 50%;" name="RENT_AGREEMNT_TIME"
+                            [nzPlaceHolder]="'महिने मध्ये नमूद करा'" [(ngModel)]="data.RENT_AGREEMNT_TIME"
+                            [nzMin]="0" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                            <span> (महिने मध्ये)</span>
+
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            
+
+           
+        </div>
+            <nz-divider nzText="{{'rent-discoumting-loan.divider1'| translate}} ">
+            </nz-divider>
+
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label21'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="houseno1" type="text" [(ngModel)]="addressinfo.HOUSE_NO" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'realestate-commercial.label22'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="building1" type="text" [(ngModel)]="addressinfo.BUILDING" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label23'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="landmark1" type="text" [(ngModel)]="addressinfo.LANDMARK" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label24'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="village1" type="text" [(ngModel)]="addressinfo.VILLAGE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label25'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="taluka1" type="text" [(ngModel)]="addressinfo.TALUKA" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label26'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="distrcict1" type="text" [(ngModel)]="addressinfo.DISTRICT" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label27'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="state1" type="text" [(ngModel)]="addressinfo.STATE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-commercial.label28'| translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'rent-discoumting-loan.PINCODEERRORTIP'| translate}}">
+                            <input nz-input name="pincode1" pattern="^[1-9][0-9]{5}$" type="text"
+                                [(ngModel)]="addressinfo.PINCODE" maxlength="6" minlength="6" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+</nz-spin>
+</form>
+<div style="margin-left:900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'common.Save'| translate}} </span></button>
+</div>
+</div>

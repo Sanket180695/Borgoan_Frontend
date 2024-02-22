@@ -1,0 +1,255 @@
+
+table {
+    width: 100%;
+  }
+  
+  
+  .top-left-radius {
+    border-radius: 10px 0px 0px 0px;
+  }
+  
+  .top-right-radius {
+    border-radius: 0px 10px 0px 0px;
+  }
+  
+  .bottom-right-radius {
+    border-radius: 0px 0px 10px 0px;
+  }
+  
+  .bottom-left-radius {
+    border-radius: 0px 0px 0px 10px;
+  }
+  
+  th,
+  td {
+    border: 1px solid gray;
+    height:30px;
+  }
+  
+  .thtd{
+    height: 30px;
+  }
+  
+  th {
+   
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  td {
+    padding-left: 5px;
+   
+  }
+  
+  .tableData {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold !important;
+  }
+  
+  .tableData2 {
+    font-weight: bold !important;
+  }
+  ​
+  .no-bottom-border{
+    border:none;
+  }
+  
+  .no-top-border{
+    border-top:none;
+  }
+  
+  .height35{
+    height:36px;
+  }
+  .height45{
+    height:45px;
+  }
+label {
+    font-size: 12px !important;
+}
+
+input {
+    font-size: 12px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #000000 !important;
+}
+
+textarea {
+    border: none !important;
+    /* border-bottom: 0.5px solid lightgrey !important; */
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    resize: none;
+}
+
+input {
+    border: none !important;
+    padding: 0px 5px !important;
+    color: #000000 !important;
+    /* border-bottom: 0.5px solid lightgrey !important; */
+}
+
+nz-input-number {
+    border: none !important;
+    /* border-bottom: 0.5px solid lightgrey !important; */
+}
+
+.container {
+    border: 1px solid black;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo {
+    color: tan;
+}
+
+.marquee {
+    color: tan;
+    font-size: 48px;
+    margin: 20px;
+}
+
+.assignment {
+    margin: 20px;
+}
+
+.person {
+    border-bottom: 2px solid black;
+    font-size: 32px;
+    font-style: italic;
+    margin: 20px auto;
+    width: 400px;
+}
+
+.reason {
+    margin: 20px;
+}
+
+.top {
+    text-align: center;
+    margin-left: -20px;
+    margin-right: 10px;
+    margin-top: -50px;
+}
+
+.header {
+    text-align: center;
+    margin-left: -20px;
+    margin-right: 10px;
+    margin-top: -150px;
+}
+
+.line {
+    width: 122px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -20px;
+    margin-left: -100px;
+}
+
+.line1 {
+    width: 400px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line2 {
+    width: 273px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line3 {
+    width: 322px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line4 {
+    width: 230px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 100px;
+}
+
+.line5 {
+    width: 234px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line6 {
+    width: 295px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line7 {
+    width: 320px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line8 {
+    width: 399px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.line9 {
+    width: 230px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+small {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+@media print {
+    /* you can change the selector to whatever you need */
+    body {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+.data {
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.marginBottom {
+    margin-bottom: 10px;
+}
+

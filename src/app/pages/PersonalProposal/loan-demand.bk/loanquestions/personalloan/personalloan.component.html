@@ -1,0 +1,121 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row class="my-box">
+            <div nz-col nzSpan="6">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label1'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-select name="purpoaseofloan" nzPlaceHolder="{{'personalloan.placeholder1'|translate }}"
+                            [(ngModel)]="questionies.PURPOSE_OF_LOAN" required>
+                            <nz-option nzValue="EP" nzLabel="{{'personalloan.label1.option1'|translate }}"> </nz-option>
+                            <nz-option nzValue="HR" nzLabel="{{'personalloan.label1.option2'|translate }}"> </nz-option>
+                            <nz-option nzValue="FE" nzLabel="{{'personalloan.label1.option3'|translate }}"> </nz-option>
+                            <nz-option nzValue="MP" nzLabel="{{'personalloan.label1.option4'|translate }}"> </nz-option>
+                            <nz-option nzValue="MR" nzLabel="{{'personalloan.label1.option5'|translate }}"> </nz-option>
+                            <nz-option nzValue="PD" nzLabel="{{'personalloan.label1.option6'|translate }}"> </nz-option>
+                            <nz-option nzValue="PC" nzLabel="{{'personalloan.label1.option7'|translate }}"> </nz-option>
+                            <nz-option nzValue="BP" nzLabel="{{'personalloan.label1.option8'|translate }}"> </nz-option>
+                            <nz-option nzValue="OT" nzLabel="{{'personalloan.label1.option9'|translate }}"> </nz-option>
+                           
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="6" *ngIf="LOAN_SKIM_ID == 2">
+                <nz-form-item>
+                    <nz-form-label nzNoColon>{{'personalloan.label2'|translate }}</nz-form-label>
+                    <nz-form-control>
+                        <nz-switch name="IS_INSURANCE_TAKEN" [(ngModel)]="questionies.IS_INSURANCE_TAKEN"
+                             nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+            <div nz-row class="my-box" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+            <div nz-col nzSpan="11" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label3'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <input nz-input name="INSURANCE_COMPANY_NAME" type="text"
+                            [(ngModel)]="questionies.INSURANCE_COMPANY_NAME" required />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="5" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label4'|translate }}
+                    </nz-form-label>
+                   
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 100%;" name="INSURANCE_POLICY_NUMBER"
+                        nzPlaceHolder= "{{'personalloan.label4'|translate }}"
+                        [(ngModel)]="questionies.INSURANCE_POLICY_NUMBER" [nzMin]="1" 
+                        [nzStep]="1" required></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="5" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label5'|translate }}
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <input nz-input name="INSURANCE_POLICY_AMOUNT" type="text"
+                            [(ngModel)]="questionies.INSURANCE_POLICY_AMOUNT" required />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            
+            
+            <div nz-col nzSpan="5" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label6'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-date-picker name="INSURANCE_POLICY_TAKEN_DATE" style="width: 100%;" nzFormat="dd-MM-yyyy" (keydown.backspace)="focusss4($event)" (keydown.delete)="focusss4($event)"
+                            [(ngModel)]="questionies.INSURANCE_POLICY_TAKEN_DATE"  [nzDisabledDate]="disabledDate"
+                            nzPlaceHolder="{{'personalloan.label6'|translate }}" required>
+                        </nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+            <div nz-col nzSpan="5" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label7'|translate }}</nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-date-picker name="INSURANCE_POLICY_END_DATE" style="width: 100%;" nzFormat="dd-MM-yyyy" (keydown.backspace)="focusss($event)" (keydown.delete)="focusss($event)"
+                            [(ngModel)]="questionies.INSURANCE_POLICY_END_DATE"  [nzDisabledDate]="disabledDate2"
+                            nzPlaceHolder="{{'personalloan.label7'|translate }}" required>
+                        </nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="1"></div>
+
+            <div nz-col nzSpan="5" *ngIf="LOAN_SKIM_ID == 2 && questionies.IS_INSURANCE_TAKEN">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'personalloan.label8'|translate }} </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                        <nz-input-number style="width: 100%;" name="INSURANCE_SURRENDER_AMOUNT"
+                            nzPlaceHolder= "{{'personalloan.label8'|translate }}"
+                            [(ngModel)]="questionies.INSURANCE_SURRENDER_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999"
+                            [nzStep]="1" required></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            
+            </div>
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px;"  *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <!-- <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>बंद करा</span></button> -->
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'personalloan.button1'|translate }} </span></button>
+    </div>
+</div>

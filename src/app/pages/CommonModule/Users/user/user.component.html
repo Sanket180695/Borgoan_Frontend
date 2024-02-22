@@ -1,0 +1,128 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+            <div nz-col nzSpan="24">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>{{'user.rolename'| translate}} </nz-form-label>
+                        <nz-select name="role_id" [disabled]="value1" [nzLoading]="loadingroles" nzShowSearch style="width: 100%"
+                            nzPlaceHolder="{{'user.roleinputplaceholder'| translate}}" [(ngModel)]="data.ROLE_ID">
+                            <nz-option *ngFor="let val of roles"  [nzValue]="val.ID" [nzLabel]="val.NAME">
+                            </nz-option>
+                        </nz-select>
+                </nz-form-item>
+            </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24" >
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'gcreditinfo.th2'| translate}}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}" >
+                            <nz-select *ngIf="browserLang=='mr'" name="BRANCH_NAME" [(ngModel)]="data.BRANCH_ID" required nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                                <nz-option nzValue="0" nzLabel="कोणीही नाही">
+                                </nz-option>
+                                <nz-option *ngFor="let p of branchData" [nzValue]="p.ID" [nzLabel]="p.NAME_MR"></nz-option>
+                            </nz-select>  
+                            <nz-select *ngIf="browserLang=='kn'" name="BRANCH_NAME" [(ngModel)]="data.BRANCH_ID" required nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                                <nz-option nzValue="0" nzLabel="ಯಾವುದೂ">
+                                </nz-option>
+                                <nz-option *ngFor="let p of branchData" [nzValue]="p.ID" [nzLabel]="p.NAME_KN"></nz-option>
+                            </nz-select>  
+                            <nz-select name="BRANCH_NAME" *ngIf="browserLang=='en'" [(ngModel)]="data.BRANCH_ID" required nzPlaceHolder="{{'gcreditinfo.th2'| translate}}">
+                                <nz-option nzValue="0" nzLabel="None">
+                                </nz-option>
+                                <nz-option *ngFor="let p of branchData" [nzValue]="p.ID" [nzLabel]="p.NAME_EN"></nz-option>
+                            </nz-select>  
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+  
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'user.nameinput'| translate}}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'user.errortip'| translate}}">
+                            <input nz-input name="name" type="text" [(ngModel)]="data.NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'user.emailidinput'| translate}}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'user.emailerrortip'| translate}}">
+                            <input type="text" name="search"  nz-input [(ngModel)]="data.EMAIL_ID" required/>
+                        </nz-form-control>
+                        </nz-form-item>
+            </div>
+            <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{'user.mobileinput'| translate}}</nz-form-label>
+                            <nz-form-control nzHasFeedback nzErrorTip="{{'user.errortip'| translate}}">
+                                <input nz-input name="mobile" maxlength="10" pattern="[0-9]{10}" [(ngModel)]="data.MOBILE_NUMBER" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'user.passwordinput'| translate}}</nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'user.errortip'| translate}}">
+                            <nz-input-group [nzSuffix]="suffixTemplate">
+                                <input [type]="passwordVisible ? 'text' : 'password'" nz-input
+                                    name="password" [(ngModel)]="data.PASSWORD" required />
+                            </nz-input-group>
+                            <ng-template #suffixTemplate>
+                                <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                    (click)="passwordVisible = !passwordVisible"></i>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col *ngIf="data.ROLE_ID == 7 || data.ROLE_ID == 8" nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'user.maxlimit'| translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-input-number style="width: 90%;" name="LOAN_LIMIT"
+                            [(ngModel)]="data.LOAN_LIMIT" [nzMin]="1" [nzMax]="9999999999999999999999" [nzStep]="1">
+                        </nz-input-number>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label>{{'user.statusswitch'| translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="status" [(ngModel)]="data.IS_ACTIVE"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'user.cancelbutton'| translate}}</span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span>{{'user.savebutton'| translate}}</span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'user.savenewbutton'| translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>{{'user.updatebutton'| translate}}</span></button>
+    </div>
+</div>

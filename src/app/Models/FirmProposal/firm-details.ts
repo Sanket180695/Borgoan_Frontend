@@ -1,0 +1,48 @@
+export class FirmDetails {
+    
+    ID: number;
+    CLIENT_ID: number;
+    PROPOSAL_ID: number;
+    NAME_OF_FIRM: string;
+    NATURE_OF_BUSINESS: string;
+    CONSTITUTION_OF_FIRM: string;
+    IS_MSME_REGISTERED: boolean=false;
+    MSME_REGISTRATION_NUMBER: string;
+    MSME_REGISTRATION_DATE: any;
+    IS_INVOLVE_IN_MANUFACTURING_PROCESS: Date;
+    TYPE_OF_FIRM_REGISTRATION: string;
+    DATE_OF_REGISTRATION: any;
+    REGISTRATION_NUMBER: string;
+    PAN_NUMBER_OF_FIRM: string;
+    REGISTERED_OFFICE_ADDRESS_ID: number;
+    IS_ANOTHER_BRANCH: boolean=false;
+    ANOTHER_BRANCH_ADDRESS_ID: number;
+    OWNERSHIP_OF_BUSINESS: string = 'O';
+    IS_SHOP_ACT_LICENSE: boolean=false;
+    IS_SHOP_ACT_LICENSE_RENEWAL_FOR_CURRENT_YEAR: boolean=false;
+    IS_GST_REGISTARTION_CERTIFICATE: boolean=false;
+    IS_CERTIFICATE_FROM_PROFESSIONAL_TAX_AUTHORITY: boolean=false;
+    IS_OTHER_LICENSE: boolean=false;
+    OTHER_LICENSE_NAME: string;
+    LANDLINE_NUMBER: string;
+    EMAIL_ID: string;
+    IS_SISTER_OR_ASSOCIATE_CONSERN: boolean=false;
+    IS_ANY_CHANGE_IN_CONSTITUENTS: boolean=false;
+    CHANGE_IN_CONSTITUENTS_DETAILS: string;
+    PRIME_COSTOMERS_DETAILS: string;
+    DETAILS_OF_WORK_ORDERS: string;
+    OTHER_LICENSE_NUMBER: string;
+    SHOP_ACT_NUMBER: string;
+    GST_NUMBER: string;
+    IS_PARTNERS: boolean=false;
+    DETAILS_OF_MANUFACTURING_PROCESS: string;
+    DETAILS_OF_MANUFACTURED_PRODUCT: string;
+    USE_OF_MANUFACTURED_PRODUCT: string;
+    MANUFACTURED_PRODUCT_OTHER_INFO: string;
+    OWNER_NAME: string;
+    IS_RENT_AGREEMENT_DONE:boolean=false;
+    RENT_AGREEMENT_END_DATE :any;
+    NEW_DIRECTORS_PARTNERS_TRUSTEE_INFO:string="";
+    OLD_DIRECTORS_PARTNERS_TRUSTEE_INFO:string="";
+
+}

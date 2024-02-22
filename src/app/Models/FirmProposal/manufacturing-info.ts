@@ -1,0 +1,17 @@
+export class ManufacturingInfo {
+    ID:number;
+    CLIENT_ID:number
+    FIRM_INFORMATION_ID:number;
+    NAME_OF_PRODUCT:string;
+    USE_OF_PRODUCT_IN_DETAILS:string;
+    IS_ANCILILLARY_PRODUCT:boolean;
+    FINAL_USE_OF_PRODUCT:string;
+    AVAILABILITY_OF_MARKET:string='G';
+    PLACE_OF_MARKET:string;
+    BUSINESS_FIRM_INFORMATION_ID:number
+    DETAILS_OF_MANUFACTURING_PROCESS:string
+    MANUFACTURED_PRODUCT_OTHER_INFO:string
+    DETAILS_OF_MANUFACTURED_PRODUCT:string
+    RAW_PRODUCT_DETAILS:string
+    CREDIT_TERMS_DETAILS:number
+}

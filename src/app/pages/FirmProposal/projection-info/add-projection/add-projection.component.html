@@ -1,0 +1,49 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'add-projection.COST_OF_PROJECT'| translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'add-projection.errortip'| translate}}">
+                            <input nz-input type="text" name="COST_OF_PROJECT"
+                                [(ngModel)]="data.COST_OF_PROJECT">
+                           
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'add-projection.COST_RUPEES'| translate}}
+                            
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'add-projection.errortip'| translate}}">
+                            <nz-input-number name="COST_RUPEES" style="width: 100%;"
+                                [(ngModel)]="data.COST_RUPEES" nzPlaceHolder="{{'add-means.MEANS_RUPEES_PLACEHOLDER'| translate}}"
+                                [nzMin]="1" [nzMax]="99999999999999999999999999">
+                            </nz-input-number>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                
+            </div>
+            
+        </nz-spin>
+    </form>
+    <div class="footer" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span> {{'add-projection.cancelbutton'| translate}} </span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span> {{'add-projection.saveclosebutton'| translate}}  </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'add-projection.savenewbutton'| translate}} </a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span> {{'add-projection.updatebutton'| translate}}</span></button>
+    </div>
+</div>

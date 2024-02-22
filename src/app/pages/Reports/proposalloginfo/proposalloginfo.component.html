@@ -1,0 +1,124 @@
+<div nz-row nzType="flex">
+    <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+        <div class="formname"> {{formTitle}}</div>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12" style="display: flex;justify-content: flex-end">
+        <form nz-form [nzLayout]="'inline'">
+            <!-- <nz-form-item >
+            <button nz-button nzType="primary" [appExport]="payment" fileName="payments"><i nz-icon nzType="file-excel" nzTheme="outline"></i></button>
+        </nz-form-item> -->
+            <nz-form-item>
+                <button nz-button [nzType]="isFilterApplied" (click)="showFilter()"><i nz-icon
+                        nzType="filter"></i></button>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                    <input type="text" name="search" nz-input
+                        placeholder=" {{'payments.searchrecordplaceholder'| translate}}" [(ngModel)]="searchText" />
+                </nz-input-group>
+                <ng-template #suffixIconButton>
+                    <button nz-button nzType="primary" (click)="search(true)" nzSearch><i nz-icon
+                            nzType="search"></i></button>
+                </ng-template>
+            </nz-form-item>
+
+        </form>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <div class="filter {{filterClass}}">
+            <div class="filter-box">
+                <form nz-form>
+                    <div nz-row nzGutter="8">
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-range-picker style="width: 100%;" [nzFormat]="dateFormat"
+                                    (nzOnCalendarChange)="changeDate($event)" name="selectedDate"
+                                    [(ngModel)]="selectedDate"></nz-range-picker>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="8">
+
+                            <nz-form-item>
+                                <nz-input-group>
+                                    <nz-select *ngIf="browserLang=='mr'" name="proposalStageId" nzShowSearch
+                                        style="width: 100%"  nzMode="multiple"
+                                        [nzLoading]="loadingbranches" [(ngModel)]="STAGE_ID">
+                                       
+                                        <nz-option *ngFor="let val of branches" [nzValue]="val.ID"
+                                            [nzLabel]="val.NAME_MR">
+                                        </nz-option>
+
+                                    </nz-select>
+                                    <nz-select *ngIf="browserLang=='kn'" name="proposalStageId" nzShowSearch
+                                        style="width: 100%"  nzMode="multiple"
+                                        [nzLoading]="loadingbranches" [(ngModel)]="STAGE_ID">
+                                        
+                                        <nz-option *ngFor="let val of branches" [nzValue]="val.ID"
+                                            [nzLabel]="val.NAME_KN">
+                                        </nz-option>
+
+                                    </nz-select>
+                                    <nz-select *ngIf="browserLang=='en'" name="proposalStageId" nzShowSearch
+                                        style="width: 100%"  nzMode="multiple"
+                                        [nzLoading]="loadingbranches" [(ngModel)]="STAGE_ID">
+                                       
+                                        <nz-option *ngFor="let val of branches" [nzValue]="val.ID"
+                                            [nzLabel]="val.NAME_EN">
+                                        </nz-option>                                        
+                                    </nz-select>
+                                </nz-input-group>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-input-group>
+                                    <nz-select name="USER_ID" style="width: 100%" 
+                                        [(ngModel)]="USER_ID">
+                                        <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                        </nz-option>
+                                        <nz-option *ngFor="let val of users" [nzValue]="val.ID"
+                                            [nzLabel]="val.NAME">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-input-group>
+                            </nz-form-item>
+                        </div>                       
+                        <div nz-col nzSpan="4">
+                            <button nz-button nzType="primary" [nzLoading]="isSpinning" (click)="applyfilter()"
+                                style="margin-right: 10px;"><i nz-icon nzType="filter"></i></button>
+                            <button nz-button nzType="default" (click)="clearFilter()"><i nz-icon
+                                    nzType="clear"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-table class="my-scroll no-wrap1" nzBordered #table nzShowSizeChanger [nzFrontPagination]="false"
+            [nzData]="dataList" [nzLoading]="loadingRecords" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+            [(nzPageSize)]="pageSize" (nzPageIndexChange)="search()" (nzPageSizeChange)="search(true)">
+            <thead (nzSortChange)="sort($event)" nzSingleSort>
+                <tr>
+                    <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of table.data">
+                    <td *ngFor="let column of columns">
+                        <span *ngIf="column[0]=='PAYMENT_MODE'">
+                            {{(data.PAYMENT_MODE=="O"?'basicinfo.m13':'basicinfo.m14')|translate}}
+                        </span>
+                        <span *ngIf="column[0]!='PAYMENT_MODE'">
+                            {{data[column[0]]}}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

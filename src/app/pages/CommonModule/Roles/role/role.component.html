@@ -1,0 +1,86 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'role.ParentRole'| translate}}  </nz-form-label>
+                        <nz-input-group>
+                            <nz-select name="parent_name" [nzLoading]="roleLoading" nzShowSearch style="width: 100%"
+                                [(ngModel)]="data.PARENT_ID">
+                                <nz-option nzValue="0" nzLabel="None"></nz-option>
+                                <nz-option *ngFor="let role of roles" [nzValue]="role.ID" [nzLabel]="role.NAME"></nz-option>
+                            </nz-select>
+                        </nz-input-group>
+                    </nz-form-item>
+                </div>
+            </div>
+         
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'role.nameinpt'| translate}} </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'role.errortip'| translate}}">
+                            <input nz-input name="name" [(ngModel)]="data.NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'role.type'| translate}} </nz-form-label>
+                        <nz-input-group>
+                            <nz-select name="parent_name" nzShowSearch style="width: 100%"
+                                [(ngModel)]="data.TYPE">
+                                <nz-option nzValue="SUPER_ADMIN"  nzLabel="Super Admin"></nz-option>
+                                <nz-option nzValue="BANK_ADMIN" nzLabel="Bank Admin"></nz-option>
+                                <nz-option nzValue="HEAD_OFFICE_ADMIN" nzLabel="Head Office Admin"></nz-option>
+                                <nz-option nzValue="BRANCH_ADMIN"  nzLabel="Branch Admin"></nz-option>
+                            </nz-select>
+                        </nz-input-group>
+                    </nz-form-item>
+                </div>
+            </div>
+           
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{'role.descriptioninput'| translate}}</nz-form-label>
+                        <nz-form-control>
+                            <textarea nz-input rows="2" name="description" [(ngModel)]="data.DESCRIPTION"
+                                ></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'role.startpageinput'| translate}}  </nz-form-label>
+                        <nz-form-control nzHasFeedback nzErrorTip="{{'role.errortip'| translate}}">
+                            <input nz-input name="start_page" [(ngModel)]="data.START_PAGE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+         
+        
+        </nz-spin>
+    </form>
+    <div class="footer">
+        <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span> {{'role.cancelbutton'| translate}} </span></button>
+        <button type="button" class="ant-btn ant-btn-primary" *ngIf="!data.ID" nz-button nz-dropdown
+            [nzDropdownMenu]="menu" (click)="save(false)"><span> {{'role.savebutton'| translate}} </span></button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="menuc" style="border-radius: 4px;background-color: #40a9ff;">
+                    <a (click)="save(true)">{{'role.savenewbutton'| translate}}</a>
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" *ngIf="data.ID"
+            (click)="save(false)"><span>{{'role.updatebutton'| translate}}</span></button>
+    </div>
+</div>

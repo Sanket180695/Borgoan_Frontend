@@ -1,0 +1,247 @@
+<div nz-row>
+  <div nz-col nzSpan="14">
+    <nz-radio-group name="status" [(ngModel)]="STATUS">
+      <label nz-radio [nzDisabled]="disabled" nzValue="M">{{'proposaldocument.label1'|translate }}</label>
+      <!-- <label nz-radio [nzDisabled]="disabled" nzValue="B">{{'proposaldocument.label2'|translate }}</label> -->
+      <label nz-radio [nzDisabled]="disabled" nzValue="R">{{'proposaldocument.label3'|translate }} </label>
+      <!-- <label nz-radio *ngIf="data.CURRENT_STAGE_ID == 10" [nzDisabled]="disabled1" nzValue="F">{{'proposaldocument.label4'|translate }} </label> -->
+    </nz-radio-group>
+  </div>
+</div>
+
+<br />
+
+
+<div nz-row>
+  <div nz-col nzSpan="7"></div>
+  <div nz-col nzSpan="10" style="text-align: center;border: 1px solid;font-size: 26px" *ngIf="textVisible">
+    {{'proposaldocument.col1'|translate }}
+  </div>
+</div>
+
+
+
+<div id="container">
+  <!-- <div class="section"><span class="link" (click)="chatInfo()">{{'proposaldocument.link1'|translate }}  </span> </div> -->
+  <div class="section"><span class="link" (click)="Documents()">{{'proposaldocument.link2'|translate }} </span> </div>
+  <div class="section"><span class="link" (click)="statusLogs()">{{'proposaldocument.link3'|translate }} </span> </div>
+</div>
+
+
+<div nz-row *ngIf="!disabled && STATUS=='M'">
+  <div nz-col nzSpan="12" style="align-content: center;">
+    <nz-table class="my-scroll no-wrap1" nzBordered #table [nzLoading]="loadingRecords" [nzFrontPagination]="false"
+      [nzData]="extraInfoDetails">
+      <thead>
+        <tr>
+          <th> </th>
+          <th>{{'proposaldocument.th1'|translate }}</th>
+          <th>{{'proposaldocument.th2'|translate }} </th>
+          <!-- <th>अनिवार्य</th> -->
+          <th>{{'proposaldocument.th3'|translate }}</th>
+
+          <!-- <th>मंजूर</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of table.data ">
+          <td> <label nz-checkbox [ngModelOptions]="{standalone: true}"
+              [nzDisabled]="data.ID==10 || data.ID==11? true:false" (ngModelChange)="changeInfo($event,data)"
+              [ngModel]="(data.IS_SELECTED==1 || data.ID==11)?true:false"></label></td>
+
+          <td>{{getType(data.TYPE)}}</td>
+
+          <td>
+            <span *ngIf="browserLang=='mr'">
+              {{data.NAME_MR}}
+            </span>
+            <span *ngIf="browserLang=='kn'">
+              {{data.NAME_KN}}
+            </span>
+            <span *ngIf="browserLang=='en'">
+              {{data.NAME_EN}}
+            </span>
+          </td>
+          <!-- <td> <label nz-checkbox [ngModelOptions]="{standalone: true}" *ngIf="data.IS_SELECTED==1" (ngModelChange)="changeCompulsaryInfo($event,data)" [ngModel]="data.IS_COMPULSORY==0?false:true"></label></td> -->
+          <td>
+            <div *ngIf="data.IS_SELECTED">
+              <i nz-icon *ngIf="data.IS_PROVIDED" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                [nzTwotoneColor]="'#52c41a'"></i>
+              <i nz-icon *ngIf="!data.IS_PROVIDED" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+                [nzTwotoneColor]="'#f50'"></i>
+            </div>
+          </td>
+          <!-- <td>  
+                    <div *ngIf="data.IS_PROVIDED">
+                      <i nz-icon *ngIf="data.IS_APPROVED" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                      [nzTwotoneColor]="'#52c41a'"></i>
+                    <i nz-icon *ngIf="!data.IS_APPROVED" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+                      [nzTwotoneColor]="'#f50'"></i>
+                    </div>
+                   
+                  </td> -->
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
+<div nz-row *ngIf="!disabled && STATUS=='B' ">
+
+  <div nz-col nzSpan="12">
+    <nz-form-label nzRequired nzNoColon> {{'proposaldocument.label5'|translate }} </nz-form-label>
+    <nz-form-control>
+      <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARKS"></textarea>
+    </nz-form-control>
+  </div>
+
+</div>
+
+<div nz-row *ngIf="!disabled && STATUS=='R' ">
+
+  <div nz-col nzSpan="12">
+    <nz-form-label nzRequired nzNoColon> {{'proposaldocument.label6'|translate }} </nz-form-label>
+    <nz-form-control>
+      <textarea nz-input rows="2" name="remark1" [(ngModel)]="REMARKS"></textarea>
+    </nz-form-control>
+  </div>
+
+</div>
+
+
+<div *ngIf="!disabled && STATUS=='F'">
+  <nz-spin [nzSpinning]="isLoadingDocuments">
+
+    <div nz-row>
+
+      <div nz-col nzSpan="7">
+
+        <nz-input-group [nzSuffix]="suffixIcon">
+          <input type="text" nz-input placeholder="{{'proposaldocument.placeholder1'|translate }}"
+            [(ngModel)]="searchValue" />
+        </nz-input-group>
+        <ng-template #suffixIcon>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+
+        <nz-tree [nzData]="kycDocuments" nzVirtualHeight="320px" [nzSearchValue]="searchValue" [nzCheckable]="true"
+          [nzTreeTemplate]="n1">
+          <ng-template #n1 let-node>
+            <nz-form-label nzNoColon>
+              {{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+          </ng-template>
+        </nz-tree>
+      </div>
+      <div nz-col nzSpan="1"></div>
+      <div nz-col nzSpan="7">
+        <nz-input-group [nzSuffix]="suffixIcon1">
+          <input type="text" nz-input placeholder="{{'proposaldocument.placeholder2'|translate }}"
+            [(ngModel)]="searchValue1" />
+        </nz-input-group>
+        <ng-template #suffixIcon1>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+
+        <nz-tree [nzData]="incomeDocuments" nzVirtualHeight="320px" [nzSearchValue]="searchValue1" [nzCheckable]="true"
+          [nzTreeTemplate]="n2">
+          <ng-template #n2 let-node>
+            <nz-form-label nzNoColon>
+              {{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+          </ng-template>
+        </nz-tree>
+      </div>
+
+      <div nz-col nzSpan="1"></div>
+      <div nz-col nzSpan="7">
+
+        <nz-input-group [nzSuffix]="suffixIcon2">
+          <input type="text" nz-input placeholder="{{'proposaldocument.placeholder3'|translate }}"
+            [(ngModel)]="searchValue2" />
+        </nz-input-group>
+        <ng-template #suffixIcon2>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+
+        <nz-tree [nzData]="purposeDocuments" nzVirtualHeight="320px" [nzSearchValue]="searchValue2" [nzCheckable]="true"
+          [nzTreeTemplate]="n3">
+          <ng-template #n3 let-node>
+            <nz-form-label nzNoColon>
+              {{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+          </ng-template>
+        </nz-tree>
+
+      </div>
+      <div nz-col nzSpan="1"></div>
+
+
+
+    </div>
+  </nz-spin>
+
+  <br />
+
+  <div nz-row class="my-box">
+    <div nz-col nzSpan="10">
+      <nz-form-label nzRequired nzNoColon> {{'proposaldocument.label7'|translate }} </nz-form-label>
+      <nz-form-control>
+        <textarea nz-input [nzAutosize]="{ minRows: 1, maxRows: 3 }" name="information" [(ngModel)]="AMT_INFORMATION"
+          required></textarea>
+      </nz-form-control>
+    </div>
+
+    <div nz-col nzSpan="1">
+    </div>
+    <div nz-col nzSpan="5">
+
+      <nz-form-label nzRequired nzNoColon> {{'proposaldocument.label8'|translate }}</nz-form-label>
+      <nz-form-control nzHasFeedback nzErrorTip="{{'proposaldocument.label8.nzErrorTip'|translate }}">
+        <nz-input-number name="amount" style="width: 100%;" [(ngModel)]="AMOUNT" [nzMin]="0" required></nz-input-number>
+      </nz-form-control>
+
+    </div>
+
+
+
+    <!-- <div nz-col nzSpan="5">
+<nz-form-label nzRequired nzNoColon>वैधता (दिवसामधे नमूद करा)</nz-form-label>
+<nz-form-control nzHasFeedback nzErrorTip="{{'common.nzErrorTip'| translate}}">
+<nz-input-number name="time" style="width: 100%;" [(ngModel)]="TIME"
+[nzMin]="1" required></nz-input-number>
+</nz-form-control>
+</div> -->
+
+
+  </div>
+
+  <br />
+
+</div>
+
+
+<div class="footer">
+  <button type="button" nz-button (click)="close()" class="ant-btn"
+    style="margin-right: 8px;"><span>{{'proposaldocument.button1'|translate }} </span></button>
+  <button type="button" *ngIf="!disabled" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSaveSpinning"
+    (click)="save()"><span>{{'proposaldocument.button2'|translate }}</span></button>
+</div>
+
+
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="400" [nzVisible]="drawerchatVisible"
+  [nzTitle]="drawerchatTitle" (nzOnClose)="drawerchatClose()" (nzKeyboard)="true">
+  <app-chatinfo [drawerClose]="closeCallbackchat" [data]="drowerData"></app-chatinfo>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerDocumentVisible"
+  [nzTitle]="drawerDocumentTitle" (nzOnClose)="drawerDocumentClose()" (nzKeyboard)="true">
+  <app-documents2 [drawerClose]="closeCallbackDocument" TYPE="B" [data]="drowerData"></app-documents2>
+</nz-drawer>
+
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095" [nzVisible]="drawerStattusVisible"
+  [nzTitle]="drawerStattusTitle" (nzOnClose)="drawerStattusClose()" (nzKeyboard)="true">
+  <app-statuslogs [drawerClose]="closeCallbackStattus" [data]="drowerData"></app-statuslogs>
+</nz-drawer>

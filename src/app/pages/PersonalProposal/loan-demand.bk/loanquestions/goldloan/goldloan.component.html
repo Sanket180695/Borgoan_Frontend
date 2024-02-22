@@ -1,0 +1,142 @@
+<div>
+    <div nz-row class="my-box">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t1'|translate }}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <textarea nz-input name="DESCRIPTION_OF_JEWELS" [(ngModel)]="data.DESCRIPTION_OF_JEWELS"
+                        [nzAutosize]="{ minRows: 1, maxRows: 4 }" (input)="onInput($event)" [nzAutocomplete]="auto"
+                        required></textarea>
+                    <nz-autocomplete #auto>
+                        <nz-auto-option *ngFor="let option of options" [nzValue]="option">{{option}}</nz-auto-option>
+                    </nz-autocomplete>
+                    
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t2'|translate }} </nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <nz-input-number style="width: 100%;" name="TOTAL_QUANTITY" [(ngModel)]="data.TOTAL_QUANTITY"
+                        [nzMin]="1" [nzStep]="1" required></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t3'|translate }} </nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <nz-input-number style="width: 100%;" name="GROSS_WEIGHT" [(ngModel)]="data.GROSS_WEIGHT"
+                        [nzMin]="1" [nzStep]="1" required></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t4'|translate }} </nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <nz-input-number style="width: 100%;" name="NET_WEIGHT" [(ngModel)]="data.NET_WEIGHT" [nzMin]="1"
+                        (ngModelChange)="calculateValuation($event)" [nzStep]="1" required></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t5'|translate }}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <nz-input-number style="width: 100%;" name="PER_GRAM_RATE" [(ngModel)]="data.PER_GRAM_RATE"
+                        [nzMin]="1" (ngModelChange)="calculateValuation($event)" [nzStep]="1" required>
+                    </nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t7'|translate }}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <textarea nz-input name="REMARK" [(ngModel)]="data.REMARK" [nzAutosize]="{ minRows: 1, maxRows: 4 }"
+                        required></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="6">
+            <nz-form-item>
+                <nz-form-label nzRequired nzNoColon>{{'goldloan.t6'|translate }}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT" [(ngModel)]="data.VALUATION_AMOUNT"
+                        [nzMin]="1" [nzStep]="1" required></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+
+        <div nz-col nzSpan="6">
+            <nz-form-item>
+                <nz-form-label nzNoColon></nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <button nz-button nzType="primary" (click)="add()" nzJustify="end" [nzLoading]="isButtonSpinning">
+                        <i nz-icon nzType="plus"></i> {{'goldloan.button1'|translate }}
+                    </button>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <nz-table [nzShowPagination]="false" style="height: 250px;" class="my-scroll no-wrap1" nzBordered #table
+        [nzFrontPagination]="false" [nzData]="dataList" [nzLoading]="loadingRecords">
+        <thead>
+            <tr>
+                <th>{{'cash-credit-loan.label26'|translate }}</th>
+                <th>{{'goldloan.t1'|translate }}</th>
+                <th>{{'goldloan.t2'|translate }}</th>
+                <th>{{'goldloan.t3'|translate }}</th>
+                <th>{{'goldloan.t4'|translate }}</th>
+                <th>{{'goldloan.t5'|translate }}</th>
+                <th>{{'goldloan.t6'|translate }}</th>
+                <th>{{'goldloan.t7'|translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of table.data;index as i">
+                <td>
+                    <a (click)="edit(data)" style="margin-right: 15px;"><i nz-icon nzType="edit"
+                            nzTheme="twotone"></i></a>
+                    <!-- <a (click)="delete(i)" *ngIf="data.ID == undefined"><i nz-icon nzType="delete"
+                            nzTheme="twotone" [nzTwotoneColor]="'#ff4d4f'"></i></a> -->
+                </td>
+                <td>
+                    {{data['DESCRIPTION_OF_JEWELS']}}
+
+                </td>
+                <td>
+                    {{data['TOTAL_QUANTITY']}}
+
+                </td>
+                <td>
+                    {{data['GROSS_WEIGHT']}}
+
+                </td>
+                <td>
+                    {{data['NET_WEIGHT']}}
+
+                </td>
+                <td>
+                    {{data['PER_GRAM_RATE']}}
+
+                </td>
+                <td>
+                    {{data['VALUATION_AMOUNT']}}
+
+                </td>
+                <td>
+                    {{data['REMARK']}}
+
+                </td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

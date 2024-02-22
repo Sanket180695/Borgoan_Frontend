@@ -1,0 +1,75 @@
+<div nz-row nzType="flex">
+  <div nz-col nzXs="24"  style="display: flex;justify-content: flex-end">
+    <form nz-form [nzLayout]="'inline'">
+      <nz-form-item>
+        <!-- <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+          <input type="text" name="search" nz-input placeholder="{{'bankloanschemes.search_title' | translate}} " [(ngModel)]="searchText" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <button nz-button nzType="primary" (click)="search()" nzSearch><i nz-icon nzType="search"></i></button>
+        </ng-template> -->
+      </nz-form-item>
+      <nz-form-item>
+        <button nz-button nzType="primary" (click)="add()" nzJustify="end">
+          <i nz-icon nzType="plus"></i> {{'management-of-sales.addbutton'| translate}}
+        </button>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="24">
+    <nz-table class="my-scroll no-wrap1" nzBordered #table nzShowSizeChanger [nzShowPagination]="false" [nzFrontPagination]="false"
+      [nzData]="data1" [nzLoading]="loadingRecords" 
+      [(nzPageSize)]="pageSize" >
+      <thead >
+        <tr>
+          <th>{{'management-of-sales.action'| translate}}</th>
+          <th>{{'management-of-sales.ajentname'| translate}}</th>
+          <th>{{'management-of-sales.isownshop'| translate}} </th>
+          <th>{{'management-of-sales.issaledirecttocustomer'| translate}}</th>
+          <th>{{'management-of-sales.customerdetails'| translate}}</th>
+          <th>{{'management-of-sales.exportsales'| translate}}</th>
+          <th>{{'management-of-sales.exportdeatils'| translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of table.data;index as i">
+          <td>
+            <a style="margin-right: 10px;" *ngIf="type=='B'" (click)="deleteRow(data)"><i nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'#ff4d4f'"></i></a>
+            <a (click)="edit(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+          </td>
+          <td> {{data['AGENT_NAME']}} </td>
+          <td> <i nz-icon *ngIf="data.IS_SHOWROOM_OR_DEPO_OWNED" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"></i>
+            <i nz-icon *ngIf="!data.IS_SHOWROOM_OR_DEPO_OWNED" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#f50'"></i>
+          </td>
+          
+          <td> <i nz-icon *ngIf="data.IS_SALE_DIRECT_TO_CUSTOMER" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"></i>
+            <i nz-icon *ngIf="!data.IS_SALE_DIRECT_TO_CUSTOMER" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#f50'"></i>
+          </td>
+          <td> {{data['CUSTOMER_DETAILS']}} </td>
+          <td> <i nz-icon *ngIf="data.IS_EXPORT_SALES" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"></i>
+            <i nz-icon *ngIf="!data.IS_EXPORT_SALES" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#f50'"></i>
+          </td>
+          <td> {{data['EXPORT_DETAILS']}} </td>
+
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
+
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1080" [nzVisible]="drawerVisible"
+  [nzTitle]="drawerTitle" (nzOnClose)="drawerClose()" (nzKeyboard)="true">
+  <app-add-sales-info [extraApplicantInformation]="extraApplicantInformation" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [PROPOSAL_ID]="PROPOSAL_ID" [type]="type" [dataList]="data1" [drawerClose]="closeCallback" [data]="drawerData" [addressinfo]="addressinfoBussiness"></app-add-sales-info>
+</nz-drawer>

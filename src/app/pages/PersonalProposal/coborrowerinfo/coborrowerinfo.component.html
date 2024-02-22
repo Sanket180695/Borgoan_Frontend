@@ -1,0 +1,133 @@
+<div>
+  <form nz-form>
+    <nz-spin [nzSpinning]="isSpinning">
+      <div nz-row
+      *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+      style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+      <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+              style="color: rgb(32, 119, 250);"></i></div>
+      <div nz-col nzSpan="23">
+          <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+          {{extraApplicantInformation.REMARK}}
+
+      </div>
+  </div><br>
+      <div nz-row class="my-box">
+        <div nz-col nzSpan="6">
+          <nz-form-item>
+            <nz-form-label nzRequired nzNoColon> {{ 'coborrowerinfo.NAME' | translate}} </nz-form-label>
+            <nz-form-control nzErrorTip="{{ 'common_text.nzErrorTip' | translate}} ">
+              <input nz-input name="G_NAME" type="text" [(ngModel)]="g_info.G_NAME" required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="6">
+          <nz-form-item>
+            <nz-form-label nzRequired nzNoColon> {{ 'coborrowerinfo.MOBILE_NUMBER_title' | translate}} </nz-form-label>
+            <nz-form-control nzHasFeedback nzErrorTip="{{ 'coborrowerinfo.MOBILE_NUMBER_nzErrorTip' | translate}}">
+              <input nz-input name="G_MOBILE" maxlength="10" pattern="[6-9]{1}[0-9]{9}" [(ngModel)]="g_info.G_MOBILE"
+                required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="1"></div>
+
+        <div nz-col nzSpan="1">
+          <nz-form-item style="margin-bottom: 0px;">
+            <button nz-button nzType="primary" style="margin-left: 2px;margin-top: 32px;" [nzLoading]="isAddSpinning"
+              (click)="addData()"><i nz-icon nzType="plus"></i></button>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row>
+        <div nz-col nzSpan="24" style="align-content: center;">
+          <nz-table class="my-scroll no-wrap1" style="max-height: 300px;" nzBordered #table [nzFrontPagination]="false"
+            [nzData]="guarantorData">
+            <thead>
+              <tr>
+                <th> {{ 'common_text.table_action_title' | translate}} </th>
+                <th>{{ 'coborrowerinfo.table_header1' | translate}}</th>
+                <th>{{ 'coborrowerinfo.table_header2' | translate}}</th>
+                <th>{{ 'coborrowerinfo.table_header3' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of table.data;index as i">
+                <td>
+                  <!-- <a style="margin-right: 10px;" (click)="edit(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                     -->
+                  <a (click)="deleteRow(data)"> <i nz-icon nzType="delete" nzTheme="outline"
+                      [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                  <!-- <a (click)="UpdateRow(data)" *ngIf="data.ID!=0 && data.VISIBILITY"> <i nz-icon nzType="delete"
+                      nzTheme="outline"></i></a>
+                  <a (click)="UpdateRowoff(data)" *ngIf="data.ID!=0 && !data.VISIBILITY"> <i nz-icon
+                      nzType="eye-invisible" nzTheme="outline"></i></a> -->
+
+                </td>
+                <td> <a (click)="viewInfo(data)">{{ 'coborrowerinfo.table_linkbtn1' | translate}}</a>
+                </td>
+
+                <td>{{data.G_NAME}}</td>
+                <td>{{data.G_MOBILE}}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+    </nz-spin>
+  </form>
+
+</div>
+
+<div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+  <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning" (click)="save()"><span>
+      {{ 'common_text.footer_btn5' | translate}} </span></button>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="24">
+      <!-- *ngIf="roleid == '1' && stageid == 4" -->
+      <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+          style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+          [nzLoading]="isButtonVerifySpinning" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+          (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+          <span>{{'basicinfo.m5'|translate}}</span>
+      </button>
+
+      <ng-template #iconTpl>
+          <h3>{{'basicinfo.m9'|translate}}</h3>
+          <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+              <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+              <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                  <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK"
+                      required />
+              </nz-form-control>
+          </nz-form-item>
+      </ng-template>
+
+      <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+                style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+                nz-popconfirm nzPopconfirmTitle="Are you sure?"
+                (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+                nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+
+      <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+          nz-button [nzLoading]="isButtonSpinning"
+          (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+  </div>
+</div>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="1095"
+  [nzVisible]="drawerPersonalProposalVisible" [nzTitle]="drawerPersonalProposalTitle"
+  (nzOnClose)="drawerPersonalProposalClose()" (nzKeyboard)="true">
+  <app-cproposalinfo [proposalData]="data" [APPLICANT_ID]="APPLICANT_ID"
+    [extraApplicantInformation]="extraApplicantInformation" [PROPOSAL_ID]="PROPOSAL_ID"
+    [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [IS_APPROVED]="extraApplicantInformation.IS_APPROVED"
+    [data]="drawerData"></app-cproposalinfo>
+</nz-drawer>

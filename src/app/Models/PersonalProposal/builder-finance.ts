@@ -1,0 +1,42 @@
+export class BuilderFinance {
+    ID: number;
+    CLIENT_ID: number;
+    PROPOSAL_ID: number;
+    NAME_OF_PROJECT: string;
+    ADDRESS_ID: number;
+    NAME_OF_OWNER: string;
+    PROPERTY_BELONGS_TO: string = "O";
+    PROJECT_TYPE: string;
+    IS_REGISTERED_UNDER_RERA: boolean = false;
+    AREA_OF_PLOT: number;
+    PLOT_VALUATION: number;
+    IS_PLOT_NA_OR_NA_ORDERED: string = 'N';
+    IS_PAID_GOVERNMENT_DUES: boolean = false;
+    IS_READY_CONSTRUCTION_PLAN: boolean = false;
+    IS_PERMISSION_OBTAINED: boolean = false;
+    TOTAL_AREA_OF_CONSTRUCTION: number
+    TOTAL_COST_OF_CONSTRUCTION: number
+    EXPECTED_COMPLETION_TIME: number;
+    IS_PROJECT_WORK_STARTED: boolean = false;
+    TOTAL_COST_OF_WORK_IN_PROGRESS: number;
+    IS_TAKEN_UNSECURED_LOAN: boolean = false;
+    IS_ANY_FINANCER_INVESTED: boolean = false;
+    FLATS_COUNT: number;
+    NUMBER_OF_FLATS_GIVEN_TO_OWNER: number;
+    TOTAL_SELLEBLE_AREA_GIVEN_TO_OWNER_FLATS: number;
+    NUMBER_OF_SHOPS_OFFICES_GIVEN_TO_OWNER: number;
+    TOTAL_SELLEBLE_AREA_GIVEN_TO_OWNER_SHOPS_OFFICES: number;
+    OTHER_TOTAL_SELLABLE_AREA: number;
+    SELLING_RATE_FLATS: number;
+    TOTAL_OTHER_FLATS_SELLING_RATE: number;
+    NUMBER_OF_COMMERCIAL_PLACES: number;
+    TOTAL_AREA_OF_OTHER_COMMERCIAL_PLACES: number;
+    SELLING_RATE_COMMERCIAL_OFFICES: number;
+    TOTAL_SELLING_PRICE_OF_COMMERCIAL_OFFICES: number;
+    TOTAL_SELL_PRICE_OTHER: number;
+    IS_STARTED_BOOKING: boolean = false;
+    COLLECTED_AMOUNT: number;
+    SALE_DEEDS_EXECUTED_COUNT: number;
+    RERA_REGISTRATION_NUMBER:string
+    REMAINING_LOAN_AMOUNT:number
+}

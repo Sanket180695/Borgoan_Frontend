@@ -1,0 +1,85 @@
+<div>
+    <div nz-row nzType="flex">
+        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6" nzXl="6">
+            <div class="formname"> Loan Type Wise Installmentfrequency Wise Counts</div>
+        </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="18" nzXl="18" style="display: flex;justify-content: flex-end">
+            <form nz-form [nzLayout]="'inline'">
+
+             
+                    <nz-form-item>
+                      <nz-input-group>
+                        <nz-select *ngIf="browserLang=='mr'" name="proposalStageId" nzShowSearch style="width: 200px"
+                          nzPlaceHolder="{{'proposalsall.placeholder2'|translate }}" [nzLoading]="loadingProposalStages"
+                          [(ngModel)]="PROPOSAL_STAGE_ID" (ngModelChange)="applyfilter($event)">
+                          <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                          </nz-option>
+                          <nz-option *ngFor="let val of proposalStages" [nzValue]="val.ID"
+                            [nzLabel]="val.NAME_MR">
+                          </nz-option>
+      
+                        </nz-select>
+                        <nz-select *ngIf="browserLang=='kn'" name="proposalStageId" nzShowSearch style="width: 200px"
+                          nzPlaceHolder="{{'proposalsall.placeholder2'|translate }}" [nzLoading]="loadingProposalStages"
+                          [(ngModel)]="PROPOSAL_STAGE_ID" (ngModelChange)="applyfilter($event)">
+                          <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                          </nz-option>
+                          <nz-option *ngFor="let val of proposalStages" [nzValue]="val.ID"
+                            [nzLabel]="val.NAME_KN">
+                          </nz-option>
+      
+                        </nz-select>
+                        <nz-select *ngIf="browserLang=='en'" name="proposalStageId" nzShowSearch style="width: 200px"
+                          nzPlaceHolder="{{'proposalsall.placeholder2'|translate }}" [nzLoading]="loadingProposalStages"
+                          [(ngModel)]="PROPOSAL_STAGE_ID" (ngModelChange)="applyfilter($event)">
+                          <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                          </nz-option>
+                          <nz-option *ngFor="let val of proposalStages" [nzValue]="val.ID"
+                            [nzLabel]="val.NAME_EN">
+                          </nz-option>
+      
+                        </nz-select>
+                      </nz-input-group>
+                    </nz-form-item>
+                 
+                <!-- <nz-form-item>
+              <button nz-button nzType="primary" [appExport]="dataList1" fileName="Proposals"><i nz-icon nzType="file-excel"
+                  nzTheme="outline"></i></button>
+            </nz-form-item> -->
+                <nz-form-item>
+                    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                        <input type="text" name="search" nz-input (keydown.enter)="searchSet()"
+                            placeholder="Search Records" [(ngModel)]="searchText" />
+                    </nz-input-group>
+                    <ng-template #suffixIconButton>
+                        <button nz-button nzType="primary" name="button1" id="button1" (click)="search(true)"
+                            nzSearch><i nz-icon nzType="search"></i></button>
+                    </ng-template>
+                </nz-form-item>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-table class="my-scroll no-wrap1" nzBordered #table nzShowSizeChanger="false" [nzFrontPagination]="false"
+                [nzData]="dataList" [nzLoading]="loadingRecords" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                [(nzPageSize)]="pageSize" (nzPageSizeChange)="search(true)">
+                <thead (nzSortChange)="sort($event)" nzSingleSort>
+                    <tr>
+
+                        <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of table.data">
+
+                        <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

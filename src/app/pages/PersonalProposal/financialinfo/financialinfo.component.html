@@ -1,0 +1,835 @@
+<!-- <div nz-row *ngIf="isSaved==0 && proposalType==1">
+    <div nz-col nzSpan="7"></div>
+    <div nz-col nzSpan="10" style="text-align: center;border: 1px solid;font-size: 26px">
+        {{'gfinancialinfo.title'|translate }}
+    </div>
+</div> -->
+
+
+<div>
+    <nz-spin [nzSpinning]="isSpinning">
+        <form nz-form>
+            <div nz-row
+                *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+                style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+                <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+                        style="color: rgb(32, 119, 250);"></i></div>
+                <div nz-col nzSpan="23">
+                    <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+                    {{extraApplicantInformation.REMARK}}
+
+                </div>
+            </div>
+            <br>
+            <!-- <div nz-row> -->
+            <!-- <div nz-col nzSpan="12" class="my-box">
+
+                    <div nz-row>
+                        <div nz-col nzSpan="8">
+                            <nz-form-label nzRequired nzNoColon> {{'gfinancialinfo.label1'|translate }} <br />
+                                {{'gfinancialinfo.label2'|translate }} </nz-form-label>
+                            <nz-form-control>
+                                <nz-switch name="isincometaxfilled"
+                                    nzCheckedChildren="{{'gfinancialinfo.switch.child1'|translate }} "
+                                    nzUnCheckedChildren="{{'gfinancialinfo.switch.child2'|translate }}"
+                                    [(ngModel)]="data.IS_INCOME_TAX_FILED">
+                                </nz-switch>
+
+                            </nz-form-control>
+                        </div>
+                        <div nz-col nzSpan="1"></div>
+
+
+                        <div nz-col nzSpan="6" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label3'|translate }}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="FINANCIAL_YEAR" style="width: 100%;"
+                                        [(ngModel)]="data.FINANCIAL_YEAR"
+                                        nzPlaceHolder="{{'gfinancialinfo.placeholder1'|translate }}">
+                                        <nz-option *ngFor="let p of incomeYears" [nzValue]="p.ID"
+                                            [nzLabel]="p.TEXTUAL_YEAR">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                     
+                        <div nz-col nzSpan="1"></div>
+
+                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label4'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback
+                                    nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                    <nz-input-number name="incomeamount" style="width: 100%;"
+                                        [(ngModel)]="data.INCOME_AMOUNT" [nzMax]="99999999999999999999999999"></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+
+
+                    </div>
+
+                    <div nz-row>
+                        <div nz-col nzSpan="16"></div>
+                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{'gfinancialinfo.label5'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback
+                                    nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                    <nz-input-number name="taxpaidamount" style="width: 100%;"
+                                        [(ngModel)]="data.TAX_PAID_AMOUNT" [nzMin]="0" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+
+                </div>  -->
+            <!-- <div nz-col nzSpan="1"></div> -->
+
+            <!-- <div nz-col nzSpan="11" class="my-box"
+                    *ngIf="(incomeSourceId==2 || incomeSourceId==4 || otherincomeSourceId==2 || otherincomeSourceId==4 || otherincomeSourceId2==2 || otherincomeSourceId2==4)">
+                    <div nz-row>
+                        <div nz-col nzSpan="9">
+                            <nz-form-label nzNoColon>{{'gfinancialinfo.label6'|translate }}</nz-form-label>
+                            <nz-form-control>
+                                <nz-switch name="ispigmy" [(ngModel)]="data.IS_PIGMY"
+                                    nzCheckedChildren="{{'gfinancialinfo.switch.child1'|translate }}"
+                                    nzUnCheckedChildren="{{'gfinancialinfo.switch.child2'|translate }}">
+                                </nz-switch>
+                            </nz-form-control>
+                        </div>
+                        <div nz-col nzSpan="1"></div>
+                        <div nz-col nzSpan="14" *ngIf="data.IS_PIGMY">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.label7'|translate }} </nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="bankName" type="text" [(ngModel)]="data.BANK_NAME" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    <div nz-row>
+
+                        <div nz-col nzSpan="11" *ngIf="data.IS_PIGMY">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.label8'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="dailypigmyamount" style="width: 100%;"
+                                        [(ngModel)]="data.DAILY_PIGMY_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="2"></div>
+
+                        <div nz-col nzSpan="11" *ngIf="data.IS_PIGMY">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'gfinancialinfo.label9'|translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-input-number name="pigmynalace" style="width: 100%;"
+                                        [(ngModel)]="data.PIGMY_BALANCE" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+                </div> -->
+            <div nz-row>
+                <!-- filed income tax: -->
+                <div nz-col nzSpan="11" class="my-box">
+                    <div>
+                        <nz-spin [nzSpinning]="isSpinning">
+                            <form nz-form>
+                                <div nz-row>
+                                    <div nz-col nzSpan="24">
+
+                                        <div nz-row>
+                                            <div nz-col nzSpan="24">
+                                                <nz-form-label nzNoColon>{{'gcreditinfo.label1.child121'|translate }}
+
+                                                </nz-form-label>
+                                                <nz-form-control>
+                                                    <nz-switch name="isincometaxfilled"
+                                                        nzCheckedChildren="{{'gfinancialinfo.switch.child1'|translate }}"
+                                                        nzUnCheckedChildren="{{'gfinancialinfo.switch.child2'|translate }}"
+                                                        [(ngModel)]="data.IS_INCOME_TAX_FILED">
+                                                    </nz-switch>
+
+                                                </nz-form-control>
+                                            </div>
+                                            <div nz-col nzSpan="1"></div>
+
+
+                                            <div nz-col nzSpan="10" *ngIf="data.IS_INCOME_TAX_FILED">
+                                                <nz-form-item>
+                                                    <nz-form-label nzRequired
+                                                        nzNoColon>{{'gfinancialinfo.label13'|translate }}
+                                                    </nz-form-label>
+                                                    <nz-form-control>
+                                                        <nz-select name="FINANCIAL_YEAR" style="width: 100%;"
+                                                            [(ngModel)]="data.FINANCIAL_YEAR"
+                                                            nzPlaceHolder="{{'gfinancialinfo.placeholder1'|translate }}">
+                                                            <nz-option *ngFor="let p of incomeYears" [nzValue]="p.ID"
+                                                                [nzLabel]="p.TEXTUAL_YEAR">
+                                                            </nz-option>
+                                                        </nz-select>
+                                                    </nz-form-control>
+                                                </nz-form-item>
+                                            </div>
+
+                                            <div nz-col nzSpan="1"></div>
+                                            <div nz-col nzSpan="10" *ngIf="data.IS_INCOME_TAX_FILED">
+                                                <nz-form-item>
+                                                    <nz-form-label nzRequired nzNoColon>
+                                                        {{'gfinancialinfo.label5'|translate }}
+                                                    </nz-form-label>
+                                                    <nz-form-control nzHasFeedback
+                                                        nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                                        <nz-input-number name="taxpaidamount" style="width: 100%;"
+                                                            [(ngModel)]="data.TAX_PAID_AMOUNT" [nzMin]="1"
+                                                            [nzMax]="999999999999999999">
+                                                        </nz-input-number>
+                                                    </nz-form-control>
+                                                </nz-form-item>
+                                            </div>
+                                            <!--<div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                                            <nz-form-item>z
+                                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.label4'|translate }}
+                                                </nz-form-label>
+                                                <nz-form-control nzHasFeedback
+                                                    nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                                    <nz-input-number name="incomeamount" style="width: 100%;"
+                                                        [(ngModel)]="data.INCOME_AMOUNT" [nzMax]="99999999999999999999999999"></nz-input-number>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div> -->
+                                        </div>
+
+                                        <!-- <div nz-row>
+                                        <div nz-col nzSpan="16"></div>
+                                        <div nz-col nzSpan="8" *ngIf="data.IS_INCOME_TAX_FILED">
+                                            <nz-form-item>
+                                                <nz-form-label nzRequired nzNoColon> {{'gfinancialinfo.label5'|translate }}
+                                                </nz-form-label>
+                                                <nz-form-control nzHasFeedback
+                                                    nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                                    <nz-input-number name="taxpaidamount" style="width: 100%;"
+                                                        [(ngModel)]="data.TAX_PAID_AMOUNT" [nzMin]="1" [nzMax]="99999999999999999999999999">
+                                                    </nz-input-number>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </div>
+                                    </div> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </nz-spin>
+
+
+
+                    </div>
+                </div>
+                <div nz-col nzSpan="2"></div>
+                <!-- Pay Sales Tax -->
+                <div nz-col nzSpan="11" class="my-box">
+                    <div>
+                        <nz-spin [nzSpinning]="isSpinning">
+                            <form nz-form>
+                                <div nz-row>
+                                    <div nz-col nzSpan="24">
+
+                                        <div nz-row>
+                                            <div nz-col nzSpan="24">
+                                                <nz-form-label nzNoColon>{{'gcreditinfo.label1.child122'|translate }}
+
+                                                </nz-form-label>
+                                                <nz-form-control>
+                                                    <nz-switch name="ispaysalestaxfilled"
+                                                        nzCheckedChildren="{{'gfinancialinfo.switch.child1'|translate }}"
+                                                        nzUnCheckedChildren="{{'gfinancialinfo.switch.child2'|translate }}"
+                                                        [(ngModel)]="data.IS_PAY_SALES_TAX_FILED">
+                                                    </nz-switch>
+
+                                                </nz-form-control>
+                                            </div>
+                                            <div nz-col nzSpan="1"></div>
+
+
+                                            <div nz-col nzSpan="10" *ngIf="data.IS_PAY_SALES_TAX_FILED">
+                                                <nz-form-item>
+                                                    <nz-form-label nzRequired
+                                                        nzNoColon>{{'gfinancialinfo.label13'|translate }}
+                                                    </nz-form-label>
+                                                    <nz-form-control>
+                                                        <nz-select name="finanFINANCIAL_YEAR" style="width: 100%;"
+                                                            [(ngModel)]="data.FINANCIAL_YEAR_SALES_TAX"
+                                                            nzPlaceHolder="{{'gfinancialinfo.placeholder1'|translate }}">
+                                                            <nz-option *ngFor="let p of incomeYears" [nzValue]="p.ID"
+                                                                [nzLabel]="p.TEXTUAL_YEAR">
+                                                            </nz-option>
+                                                        </nz-select>
+                                                    </nz-form-control>
+                                                </nz-form-item>
+                                            </div>
+
+                                            <div nz-col nzSpan="1"></div>
+                                            <div nz-col nzSpan="10" *ngIf="data.IS_PAY_SALES_TAX_FILED">
+                                                <nz-form-item>
+                                                    <nz-form-label nzRequired nzNoColon>
+                                                        {{'gfinancialinfo.label55'|translate }}
+                                                    </nz-form-label>
+                                                    <nz-form-control nzHasFeedback
+                                                        nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                                        <nz-input-number name="salestaxpaidamountt" style="width: 100%;"
+                                                            [(ngModel)]="data.SALES_TAX_PAID_AMOUNT">
+                                                        </nz-input-number>
+                                                    </nz-form-control>
+                                                </nz-form-item>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </nz-spin>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- <div nz-row>
+                <div nz-col nzSpan="12" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="11">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl4'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback
+                                    nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                    <input nz-input name="SAVING_ACCOUNT_NO" style="width: 100%;"
+                                        [(ngModel)]="data.SAVING_ACCOUNT_NO" />
+
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="1"></div>
+                        <div nz-col nzSpan="11">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'gfinancialinfo.ttl5'|translate }}
+                                </nz-form-label>
+                                <nz-form-control nzHasFeedback
+                                    nzErrorTip="{{'gfinancialinfo.label.nzErrorTip'|translate }}">
+                                    <nz-input-number name="SAVING_AMOUNT" style="width: 100%;"
+                                        [(ngModel)]="data.SAVING_AMOUNT" [nzMin]="1" [nzMax]="9999999999999999999999">
+                                    </nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="12">
+
+                </div>
+            </div> -->
+            <!-- Saving acc details -->
+             <div nz-row>
+                <div nz-col [nzLg]="{span :22, offset:1}">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>
+                            {{'gfinancialinfo.label57'|translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_HAVE_DEPOSIT" [(ngModel)]="data.IS_HAVE_DEPOSIT"
+                                nzCheckedChildren="{{'gcreditinfo.switch.child1'|translate }}"
+                                nzUnCheckedChildren="{{'gcreditinfo.switch.child2'|translate }}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24" >
+                    <div>
+                    <br>
+                    <!-- <nz-divider nzText="{{'gincomeinfo.text123'|translate }}"></nz-divider> -->
+                    <div nz-col [nzLg]="{span :22, offset:1}" *ngIf="data.IS_HAVE_DEPOSIT">
+                        <div nz-row nzType="flex">
+                            <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                            </div>
+                            <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                                style="display: flex;justify-content: flex-end">
+                                <form nz-form [nzLayout]="'inline'">
+                                    <nz-form-item>
+                                        <button nz-button nzType="primary"
+                                            (click)="table()" nzJustify="end">
+                                            <i nz-icon nzType="plus"></i>{{'gincomeinfo.button4'|translate }}
+                                        </button>
+                                    </nz-form-item>
+                                </form>
+                            </div>
+                        </div>
+                        <nz-table [nzShowPagination]="false" style="height: 250px;" class="my-scroll no-wrap1"
+                            nzBordered #table2 [nzFrontPagination]="false" [nzData]="savingAccdata"
+                            [nzLoading]="loadingRecords2" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                            [(nzPageSize)]="pageSize">
+                            <thead>
+                                <tr>
+                                    <th>{{'gincomeinfo.th1'|translate }}</th>
+                                    <th>{{'gfinancialinfo.ttl4'|translate }}</th>
+                                    <th>{{'gfinancialinfo.ttl5'|translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of table2.data">
+
+                                    <td>
+                                        <!-- <a (click)="tabledit(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a> -->
+
+                                        <a style="margin-right: 10px;" (click)="deleteSavingAcc(data)"><i nz-icon nzType="delete"
+                                            nzTheme="twotone" [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                                        <a (click)="tabledit(data,i)"><i nz-icon nzType="edit"
+                                                nzTheme="twotone"></i></a>
+                                    </td>
+
+                                    <td> {{data['ACC_NO']}}</td>
+
+                                    <td> {{data['ACC_AMOUNT']}} </td>
+
+                                </tr>
+                            </tbody>
+                        </nz-table>
+                        <hr>
+                        <br>
+                    </div>
+
+
+                </div> 
+                </div>
+            </div> 
+
+            <!-- Term Deposit -->
+            <div nz-row>
+                <div nz-col [nzLg]="{span :22, offset:1}">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>
+                            {{'gfinancialinfo.label53'|translate }}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_HAVE_TERM_DEPOSIT" [(ngModel)]="data.IS_HAVE_TERM_DEPOSIT"
+                                nzCheckedChildren="{{'gcreditinfo.switch.child1'|translate }}"
+                                nzUnCheckedChildren="{{'gcreditinfo.switch.child2'|translate }}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzLg]="{span :22, offset:1}" *ngIf="data.IS_HAVE_TERM_DEPOSIT">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add3()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i>{{'gcreditinfo.button1'|translate }}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <app-table [termDepositdata]="termDepositdata" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID"></app-table>
+                    
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+
+            <!-- Current Deposit -->
+            <div nz-row>
+                <div nz-col [nzLg]="{span :22, offset:1}">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>
+                            {{'gfinancialinfo.label54'|translate }}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_HAVE_CURRENT_DEPOSIT" [(ngModel)]="data.IS_HAVE_CURRENT_DEPOSIT"
+                                nzCheckedChildren="{{'gcreditinfo.switch.child1'|translate }}"
+                                nzUnCheckedChildren="{{'gcreditinfo.switch.child2'|translate }}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzLg]="{span :22, offset:1}" *ngIf="data.IS_HAVE_CURRENT_DEPOSIT">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add4()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i>{{'gcreditinfo.button1'|translate }}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false" [nzData]="currentDepositdata"
+                        [nzLoading]="loadingRecords4" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                        [(nzPageSize)]="pageSize">
+                        <thead (nzSortChange)="sort($event)">
+                            <tr>
+                                <th>{{'gcreditinfo.th1'|translate }}</th>
+                                <!-- <th>बँकेचे नाव</th> -->
+                                <!-- <th>{{'gcreditinfo.th2'|translate }}</th> -->
+                                <th>{{'gfinancialinfo.ttl11'| translate}}</th>
+                                <th>{{'consumer-durables-loan.placeholder3'| translate}}</th>
+                                <th>{{'gcreditinfo.th9'| translate}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td >
+                                    <a style="margin-right: 10px;" (click)="delete3(data)"><i nz-icon nzType="delete"
+                                            nzTheme="twotone" [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                                    <a (click)="edit5(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <!-- <td> {{data['BRANCH_NAME']}} </td> -->
+                                <!-- <td> {{data.BRANCH_NAME}} </td> -->
+                                <td>{{data['ACC_NO']}}</td>
+                                <td> {{data['ACC_AMOUNT']}} </td>
+                                <td> {{data['MATURITY_DUE']}} </td>
+
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <!-- Recurring Deposit -->
+            <div nz-row>
+                <div nz-col [nzLg]="{span :22, offset:1}">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>
+                            {{'gfinancialinfo.label56'|translate }}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_HAVE_RECURRING_DEPOSIT" [(ngModel)]="data.IS_HAVE_RECURRING_DEPOSIT"
+                                nzCheckedChildren="{{'gcreditinfo.switch.child1'|translate }}"
+                                nzUnCheckedChildren="{{'gcreditinfo.switch.child2'|translate }}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzLg]="{span :22, offset:1}" *ngIf="data.IS_HAVE_RECURRING_DEPOSIT">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add1()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i>{{'gcreditinfo.button1'|translate }}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false" [nzData]="recurringDepositdata"
+                        [nzLoading]="loadingRecords4" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                        [(nzPageSize)]="pageSize">
+                        <thead (nzSortChange)="sort($event)">
+                            <tr>
+                                <th>{{'gcreditinfo.th1'|translate }}</th>
+                                <!-- <th>बँकेचे नाव</th> -->
+                                <!-- <th>{{'gcreditinfo.th2'|translate }}</th> -->
+                                <th>{{'gfinancialinfo.ttl11'| translate}}</th>
+                                <th>{{'consumer-durables-loan.placeholder3'| translate}}</th>
+                                <th>{{'gcreditinfo.th9'| translate}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a style="margin-right: 10px;" (click)="deleteRecurringDeposit(data)"><i nz-icon nzType="delete"
+                                            nzTheme="twotone" [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                                    <a (click)="edit3(data,i)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <!-- <td> {{data['BRANCH_NAME']}} </td> -->
+                                <!-- <td> {{data.BRANCH_NAME}} </td> -->
+                                <td> {{data['ACC_NO']}}</td>
+
+                                <td> {{data['ACC_AMOUNT']}} </td>
+                                <td> {{data['MATURITY_DUE']}} </td>
+
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <!-- -----fixed deposit---- -->
+
+            <!-- <div nz-row>
+                <div nz-col [nzLg]="{span :22, offset:1}">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>
+                            {{'gfinancialinfo.label58'|translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_HAVE_FIXED_DEPOSIT" [(ngModel)]="data.IS_HAVE_FIXED_DEPOSIT"
+                                nzCheckedChildren="{{'gcreditinfo.switch.child1'|translate }}"
+                                nzUnCheckedChildren="{{'gcreditinfo.switch.child2'|translate }}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24" >
+                    <div>
+                    <br>
+                    
+                    <div nz-col [nzLg]="{span :22, offset:1}" *ngIf="data.IS_HAVE_FIXED_DEPOSIT">
+                        <div nz-row nzType="flex">
+                            <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                            </div>
+                            <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                                style="display: flex;justify-content: flex-end">
+                                <form nz-form [nzLayout]="'inline'">
+                                    <nz-form-item>
+                                        <button nz-button nzType="primary"
+                                            (click)="table()" nzJustify="end">
+                                            <i nz-icon nzType="plus"></i>{{'gincomeinfo.button4'|translate }}
+                                        </button>
+                                    </nz-form-item>
+                                </form>
+                            </div>
+                        </div>
+                        <nz-table [nzShowPagination]="false" style="height: 250px;" class="my-scroll no-wrap1"
+                            nzBordered #table2 [nzFrontPagination]="false" [nzData]="fixedDepositedata"
+                            [nzLoading]="loadingRecords2" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                            [(nzPageSize)]="pageSize">
+                            <thead>
+                                <tr>
+                                    <th>{{'gincomeinfo.th1'|translate }}</th>
+                                    <th>{{'gfinancialinfo.ttl12'|translate }}</th>
+                                    <th>{{'gfinancialinfo.ttl13'|translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of table2.data">
+
+                                    <td>
+                                        
+
+                                        <a style="margin-right: 10px;" (click)="deleteFixedDeposit(data)"><i nz-icon nzType="delete"
+                                            nzTheme="twotone" [nzTwotoneColor]="'#ff4d4f'"></i></a>
+                                        <a (click)="tabledit(data,i)"><i nz-icon nzType="edit"
+                                                nzTheme="twotone"></i></a>
+                                    </td>
+
+                                    <td> {{data['ACC_NO']}}</td>
+
+                                    <td> {{data['ACC_AMOUNT']}} </td>
+
+                                </tr>
+                            </tbody>
+                        </nz-table>
+                        <hr>
+                        <br>
+                    </div>
+
+
+                </div> 
+                </div>
+            </div>  -->
+
+
+
+      
+        </form>
+
+    </nz-spin>
+
+
+</div>
+
+
+
+<div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8 ">
+    <!-- <button type="button" nz-button (click)="close()" class="ant-btn"
+            style="margin-right: 8px;"><span>{{'common.button1'|translate }}</span></button> -->
+    <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+        (click)="save()"><span>{{'common.Save'|translate}} </span></button>
+</div>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button"
+            *ngIf="roleId =='4' && CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonVerifySpinning" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+            (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <button type="button"
+            *ngIf="roleId =='4' && CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonVerifySpinning" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+            (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+            nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button"
+            *ngIf="roleId =='7' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == true"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonSpinning" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+            (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <!-- <button type="button" *ngIf="roleId =='7' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonSpinning2" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+            (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button> -->
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8"
+            style="float: right;" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button"
+            *ngIf="roleId =='8' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == true"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonSpinning" nz-popconfirm [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()"
+            (nzOnCancel)="cancel()" nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <!-- <button type="button" *ngIf="roleId =='7' && CURRENT_STAGE_ID == 14 && extraApplicantInformation.IS_APPROVED == false"
+            style="float: right; margin-left: 10px; margin-right: 10px;" class="ant-btn ant-btn-primary" nz-button
+            [nzLoading]="isButtonSpinning2" nz-popconfirm nzPopconfirmTitle="Are you sure?"
+            (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button> -->
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8"
+            style="float: right;" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+    </div>
+</div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="850" [nzVisible]="drawerVisible2" [nzTitle]="drawerTitle2"
+    (nzOnClose)="drawerClose2()" (nzKeyboard)="true">
+    <app-savingaccdetails [drawerClose2]="closeCallback2" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [PROPOSAL_ID]="PROPOSAL_ID"
+        [extraApplicantInformation]="extraApplicantInformation" [data4]="drawerData2" [addressinfoCurrent]="FinanceData"
+        (demo)="saveWorkdata24()">
+    </app-savingaccdetails>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="470" [nzVisible]="drawerVisible3" [nzTitle]="drawerTitle3"
+    (nzOnClose)="drawerClose3()" (nzKeyboard)="true">
+    <app-financialtermdeposit [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [PROPOSAL_ID]="PROPOSAL_ID"
+        [extraApplicantInformation]="extraApplicantInformation" [drawerClose3]="closeCallback3" [data3]="drawerData1"
+        (demo)="saveWorkdata1()">
+    </app-financialtermdeposit>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="470" [nzVisible]="drawerVisible4" [nzTitle]="drawerTitle4"
+    (nzOnClose)="drawerClose4()" (nzKeyboard)="true">
+    <app-financialcurrentdeposit [CURRENT_STAGE_ID]="CURRENT_STAGE_ID"  [PROPOSAL_ID]="PROPOSAL_ID"
+        [extraApplicantInformation]="extraApplicantInformation" [drawerClose4]="closeCallback4" [data45]="drawerData6"
+        (demo)="saveWorkdata2()">
+    </app-financialcurrentdeposit>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="470" [nzVisible]="drawerVisible5" [nzTitle]="drawerTitle5"
+    (nzOnClose)="drawerClose5()" (nzKeyboard)="true">
+    <app-financialrecurringdeposit [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [PROPOSAL_ID]="PROPOSAL_ID"
+        [extraApplicantInformation]="extraApplicantInformation" [drawerClose1]="closeCallback5" [data]="drawerData5"
+        [financial1]="financial1" (demo)="saveWorkdata()">
+    </app-financialrecurringdeposit>
+</nz-drawer>
+
+
+<!-- <nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="850" [nzVisible]="drawerVisible2" [nzTitle]="drawerTitle2"
+    (nzOnClose)="drawerClose2()" (nzKeyboard)="true">
+    <app-fixeddepositdetail [drawerClose2]="closeCallback2" [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [PROPOSAL_ID]="PROPOSAL_ID"
+        [extraApplicantInformation]="extraApplicantInformation" [data7]="drawerData2" [addressinfoCurrent]="FinanceData"
+        (demo)="saveWorkdata25()">
+    </app-fixeddepositdetail>
+</nz-drawer> -->
+

@@ -1,0 +1,223 @@
+<div *ngIf="totalRecords==0 ">
+
+  <nz-spin [nzSpinning]="isLoadingDocuments">
+
+    <div nz-row>
+
+      <div nz-col nzSpan="7">
+
+        <nz-input-group [nzSuffix]="suffixIcon">
+          <input type="text" nz-input placeholder="{{'documents2.placeholder1'|translate }}"
+            [(ngModel)]="searchValue" />
+        </nz-input-group>
+        <ng-template #suffixIcon>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+
+        <nz-tree [nzData]="kycDocuments" nzVirtualHeight="400px" [nzSearchValue]="searchValue" [nzCheckable]="true"
+          [nzTreeTemplate]="n1">
+          <ng-template #n1 let-node>
+            <nz-form-label nzNoColon *ngIf="browserLang == 'mr'">
+              {{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+            <nz-form-label nzNoColon *ngIf="browserLang == 'kn'">
+              {{node.origin.isLeaf?node.origin.title_kn:node.title_kn}}</nz-form-label>
+            <nz-form-label nzNoColon *ngIf="browserLang == 'en'">
+              {{node.origin.isLeaf?node.origin.title_en:node.title_en}}</nz-form-label>
+          </ng-template>
+        </nz-tree>
+      </div>
+      <div nz-col nzSpan="1"></div>
+      <div nz-col nzSpan="7" *ngIf="TYPE=='G'">
+        <nz-input-group [nzSuffix]="suffixIcon1">
+          <input type="text" nz-input placeholder="{{'documents2.placeholder2'|translate }}"
+            [(ngModel)]="searchValue1" />
+        </nz-input-group>
+        <ng-template #suffixIcon1>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+
+        <nz-tree [nzData]="incomeDocuments" nzVirtualHeight="400px" [nzSearchValue]="searchValue1" [nzCheckable]="true"
+          [nzTreeTemplate]="n2">
+          <ng-template #n2 let-node>
+            <nz-form-label nzNoColon *ngIf="browserLang == 'mr'">
+              {{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+            <nz-form-label nzNoColon *ngIf="browserLang == 'kn'">
+              {{node.origin.isLeaf?node.origin.title_kn:node.title_kn}}</nz-form-label>
+            <nz-form-label nzNoColon *ngIf="browserLang == 'en'">
+              {{node.origin.isLeaf?node.origin.title_en:node.title_en}}</nz-form-label>
+          </ng-template>
+        </nz-tree>
+      </div>
+
+      <div nz-col nzSpan="1"></div>
+      <!-- <div nz-col nzSpan="7">
+
+  <nz-input-group [nzSuffix]="suffixIcon2">
+    <input type="text" nz-input placeholder="Search2" [(ngModel)]="searchValue2" />
+</nz-input-group>
+<ng-template #suffixIcon2>
+    <i nz-icon nzType="search"></i>
+</ng-template>
+
+  <nz-tree [nzData]="purposeDocuments" nzVirtualHeight="400px" [nzSearchValue]="searchValue2" [nzCheckable]="true" [nzTreeTemplate]="n3">
+    <ng-template #n3 let-node>
+        <nz-form-label nzNoColon>
+            {{node.origin.isLeaf?node.origin.title:node.title}}</nz-form-label>
+    </ng-template>
+</nz-tree>
+
+</div> -->
+      <div nz-col nzSpan="1"></div>
+
+
+
+    </div>
+  </nz-spin>
+
+</div>
+
+
+<div nz-row nzType="flex" *ngIf="totalRecords>0">
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+    <div class="formname" *ngIf="TYPE=='B'"> {{formTitle}}</div>
+  </div>
+  <div nz-col nzXl="24" style="display: flex;justify-content: flex-end">
+    <form nz-form [nzLayout]="'inline'">
+
+      <nz-form-item>
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+          <input type="text" name="search" nz-input placeholder="{{'documents2.placeholder3'|translate }}"
+            [(ngModel)]="searchText" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <button nz-button nzType="primary" (click)="search()" nzSearch><i nz-icon nzType="search"></i></button>
+        </ng-template>
+      </nz-form-item>
+      <nz-form-item>
+        <button nz-button nzType="primary" (click)="add()" nzJustify="end">
+          <i nz-icon nzType="plus"></i>
+        </button>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
+
+<br />
+
+<div nz-row *ngIf="totalRecords>0">
+  <div nz-col nzSpan="24">
+    <nz-table class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false" [nzData]="proposalDocumentData"
+      [nzLoading]="isSpinning">
+      <thead>
+        <tr>
+          <th>{{'documents2.th1'|translate }}</th>
+          <th>{{'documents2.th2'|translate }}</th>
+          <!-- <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th> -->
+          <th *ngFor="let column of columns">{{column[1]}}</th>
+          <th> {{'documents2.th3'|translate }}</th>
+          <th> {{'documents2.th4'|translate }}</th>
+          <th> {{'documents2.th5'|translate }}</th>
+          <th> {{'documents2.th6'|translate }} </th>
+          <th> {{'documents2.th7'|translate }} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data1 of table.data">
+          <td>
+            <button *ngIf="!data1.IS_UPLOADED || (data1.IS_UPLOADED && data1.IS_APPROVED == 0)" nz-button
+              style="height: 28px; padding: 0px 7px; font-size: 12px;" (click)="fileInput.click()"><i nz-icon
+                nzType="upload" nzTheme="outline"></i>
+              <input #fileInput type="file" (change)="handleChange($event,data1)" (click)="fileInput.value = null"
+                value="" style="display:none;" accept=".pdf,.png,.jpeg,.jpg" />
+            </button>
+            <!-- <button nz-button
+          style="height: 28px; padding: 0px 7px; font-size: 12px;"
+          (click)="fileInput.click()"><i nz-icon nzType="upload" nzTheme="outline"></i>
+          <input #fileInput type="file" (change)="handleChange($event,data1)"
+              (click)="fileInput.value = null" value="" style="display:none;"
+              accept=".pdf" />
+      </button> -->
+          </td>
+          <td>
+            <a nz-button nzType="link" nzSize="small" (click)="getUrl(data1,data1.DOCUMENT_KEY,data1.DOCUMENT_TITLE)"><i
+                nz-icon *ngIf="data1.IS_UPLOADED" [nzType]="'eye'" nzTheme="outline"></i></a>
+          </td>
+          <td>
+            <span *ngIf="browserLang == 'en' && data1.DOCUMENT_ID < 50">{{data1.NAME_EN}}</span>
+            <span *ngIf="browserLang == 'mr' || data1.DOCUMENT_ID == 50">{{data1.DOCUMENT_TITLE}}</span>
+            <span *ngIf="browserLang == 'kn' && data1.DOCUMENT_ID < 50">{{data1.NAME_KN}}</span>
+          </td>
+          <td>
+            {{data1.UPLOADED_DATETIME}}
+          </td>
+          <td>
+            <i nz-icon *ngIf="data1.IS_UPLOADED" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"></i>
+            <i nz-icon *ngIf="!data1.IS_UPLOADED" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#f50'"></i>
+          </td>
+          <td>
+            <i nz-icon *ngIf="data1.IS_COMPLUSORY" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"></i>
+            <i nz-icon *ngIf="!data1.IS_COMPLUSORY" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#f50'"></i>
+          </td>
+          <td>
+            <i nz-icon *ngIf="data1.IS_VERIFIED" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"></i>
+            <i nz-icon *ngIf="!data1.IS_VERIFIED" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#f50'"></i>
+          </td>
+          <td>
+            <div *ngIf="data1.IS_VERIFIED">
+              <i nz-icon *ngIf="data1.IS_APPROVED" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                [nzTwotoneColor]="'#52c41a'"></i>
+              <i nz-icon *ngIf="!data1.IS_APPROVED" [nzType]="'close-circle'" [nzTheme]="'twotone'"
+                [nzTwotoneColor]="'#f50'"></i>
+            </div>
+          </td>
+          <td>{{data1.REMARK}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
+<div class="footer" *ngIf="TYPE=='B'">
+
+  <button type="button" style="margin-right: 10px;" *ngIf="(data.CURRENT_STAGE_ID>2 && buttonVisible)"
+    class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+    (click)="save2()"><span>{{'documents2.button1'|translate }}</span></button>
+
+  <button type="button" style="margin-right: 10px;" *ngIf="(docverifyButton && data.CURRENT_STAGE_ID==2)"
+    class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning2"
+    (click)="save()"><span>{{'basicinfo.action1'|translate }}</span></button>
+
+  <button type="button" *ngIf="(cibilverifyButton && data.CURRENT_STAGE_ID==3)" class="ant-btn ant-btn-primary" nz-button
+    [nzLoading]="isButtonSpinning2" (click)="save3()"><span>{{'basicinfo.action2'|translate }}</span></button>
+</div>
+
+
+<div style="margin-left: 800px" *ngIf="TYPE=='G' || TYPE=='C'">
+
+  <button type="button" *ngIf="data.CURRENT_STAGE_ID==8 && buttonVisible" class="ant-btn ant-btn-primary" nz-button
+    [nzLoading]="isButtonSpinning" (click)="save2()"><span>{{'documents2.button1'|translate }}</span></button>
+
+  <button type="button" style="margin-left: 124px" *ngIf="totalRecords==0 " class="ant-btn ant-btn-primary" nz-button
+    [nzLoading]="isMapButtonSpinning" (click)="mapDocument()"><span>{{'documents2.button2'|translate }}</span></button>
+</div>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="800" [nzVisible]="drawerVisible"
+  [nzTitle]="drawerTitle" (nzOnClose)="drawerClose1()" (nzKeyboard)="true">
+  <app-addproposaldocument [drawerClose]="closeCallback" [TYPE]="TYPE" [APPLICANT_ID]="APPLICANT_ID"
+    [PROPOSAL_ID]="data.ID"></app-addproposaldocument>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
+  [nzClosable]="true" [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="700"
+  [nzVisible]="drawerApproveDocumentVisible" [nzTitle]="drawerApproveDocumentTitle"
+  (nzOnClose)="drawerCloseApproveDocument()" (nzKeyboard)="true">
+  <app-approvedocument [drawerClose]="closeCallbackApproveDocument" [data]="drowerData" [documentData]="documentData">
+  </app-approvedocument>
+</nz-drawer>

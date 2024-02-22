@@ -1,0 +1,907 @@
+<nz-divider nzText="{{ 'repaying.repaying_divider1_title' | translate}} "></nz-divider>
+
+
+ <div class="my-box">
+
+    
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+           <h4>{{ 'repaying.repaying_title' | translate}} </h4> 
+        </div>
+        <div nz-col nzSpan="3" *ngFor="let year of repayingCapacityBorrower">
+            <h4 style="margin-left: 20px;">{{year['YEAR']}}</h4>
+        </div>
+
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{ 'repaying.repaying_title1' | translate}}   </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT1"  [(ngModel)]="repayingCapacityBorrower[0]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT2"  [(ngModel)]="repayingCapacityBorrower[1]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT3"  [(ngModel)]="repayingCapacityBorrower[2]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT4"  [(ngModel)]="repayingCapacityBorrower[3]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT5"  [(ngModel)]="repayingCapacityBorrower[4]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT6"  [(ngModel)]="repayingCapacityBorrower[5]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="NET_PROFIT7"  [(ngModel)]="repayingCapacityBorrower[6]['NET_PROFIT']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{ 'repaying.repaying_title2' | translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION1"  [(ngModel)]="repayingCapacityBorrower[0]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION2"  [(ngModel)]="repayingCapacityBorrower[1]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION3"  [(ngModel)]="repayingCapacityBorrower[2]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION4"  [(ngModel)]="repayingCapacityBorrower[3]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION5"  [(ngModel)]="repayingCapacityBorrower[4]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION6"  [(ngModel)]="repayingCapacityBorrower[5]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DEPRECIATION7"  [(ngModel)]="repayingCapacityBorrower[6]['DEPRECIATION']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 >{{ 'repaying.repaying_title3' | translate}}   </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL1"  [(ngModel)]="repayingCapacityBorrower[0]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL2"  [(ngModel)]="repayingCapacityBorrower[1]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL3"  [(ngModel)]="repayingCapacityBorrower[2]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL4"  [(ngModel)]="repayingCapacityBorrower[3]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL5"  [(ngModel)]="repayingCapacityBorrower[4]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL6"  [(ngModel)]="repayingCapacityBorrower[5]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_TL7"  [(ngModel)]="repayingCapacityBorrower[6]['INTEREST_ON_TL']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{ 'repaying.repaying_title4' | translate}}    </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC1"  [(ngModel)]="repayingCapacityBorrower[0]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC2"  [(ngModel)]="repayingCapacityBorrower[1]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC3"  [(ngModel)]="repayingCapacityBorrower[2]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC4"  [(ngModel)]="repayingCapacityBorrower[3]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC5"  [(ngModel)]="repayingCapacityBorrower[4]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC6"  [(ngModel)]="repayingCapacityBorrower[5]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="INTEREST_ON_CC7"  [(ngModel)]="repayingCapacityBorrower[6]['INTEREST_ON_CC']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata1(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="3">
+            <h4>{{ 'repaying.repaying_title5' | translate}} </h4>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total1"  [(ngModel)]="total[0]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total2"  [(ngModel)]="total[1]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total3"  [(ngModel)]="total[2]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total4"  [(ngModel)]="total[3]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total5"  [(ngModel)]="total[4]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total6"  [(ngModel)]="total[5]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="total7"  [(ngModel)]="total[6]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+
+   <div nz-row>
+        <div nz-col nzSpan="3">
+            <h5 > {{ 'repaying.repaying_title6' | translate}}  </h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING1"  [(ngModel)]="repayingCapacityBorrower[0]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(0)" [nzMin]="0" [nzMax]="total[0]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING2"  [(ngModel)]="repayingCapacityBorrower[1]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(1)" [nzMin]="0" [nzMax]="total[1]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING3"  [(ngModel)]="repayingCapacityBorrower[2]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(2)" [nzMin]="0" [nzMax]="total[2]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING4"  [(ngModel)]="repayingCapacityBorrower[3]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(3)" [nzMin]="0" [nzMax]="total[3]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING5"  [(ngModel)]="repayingCapacityBorrower[4]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(4)" [nzMin]="0" [nzMax]="total[4]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING6"  [(ngModel)]="repayingCapacityBorrower[5]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(5)" [nzMin]="0" [nzMax]="total[5]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="DRAWING7"  [(ngModel)]="repayingCapacityBorrower[6]['DRAWING']"
+                        nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaataIncome(6)" [nzMin]="0" [nzMax]="total[6]"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+   
+<!-- <div nz-row>
+    <div nz-col nzSpan="5">
+        <h4>Dept Service Coverage Ratio</h4>
+    </div>
+</div> -->
+
+<div nz-row>
+        <div nz-col nzSpan="3">
+            <h5>{{ 'repaying.repaying_title7' | translate}}</h5>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal1"  [(ngModel)]="income[0]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal2"  [(ngModel)]="income[1]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal3"  [(ngModel)]="income[2]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal4"  [(ngModel)]="income[3]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal5"  [(ngModel)]="income[4]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal6"  [(ngModel)]="income[5]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="3" >
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-number name="incometotal7"  [(ngModel)]="income[6]"
+                        disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+
+</div> 
+
+ <div class="my-box">
+     <div nz-row>
+            <div nz-col nzSpan="3">
+               <h4>{{ 'repaying.repaying_title8' | translate}}</h4> 
+            </div>
+            <div nz-col nzSpan="3" *ngFor="let year of repayingCapacityBorrower">
+                <h4 style="margin-left: 20px;">{{year['YEAR']}}</h4>
+            </div>
+    
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <h5 > {{ 'repaying.repaying_title9' | translate}}</h5>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG1"  [(ngModel)]="repayingCapacityBorrower[0]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG2"  [(ngModel)]="repayingCapacityBorrower[1]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG3"  [(ngModel)]="repayingCapacityBorrower[2]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG4"  [(ngModel)]="repayingCapacityBorrower[3]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG5"  [(ngModel)]="repayingCapacityBorrower[4]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG6"  [(ngModel)]="repayingCapacityBorrower[5]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_BLDG7"  [(ngModel)]="repayingCapacityBorrower[6]['TERM_LOAN_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <h5 > {{ 'repaying.repaying_title10' | translate}}</h5>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG1"  [(ngModel)]="repayingCapacityBorrower[0]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG2"  [(ngModel)]="repayingCapacityBorrower[1]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG3"  [(ngModel)]="repayingCapacityBorrower[2]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG4"  [(ngModel)]="repayingCapacityBorrower[3]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG5"  [(ngModel)]="repayingCapacityBorrower[4]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG6"  [(ngModel)]="repayingCapacityBorrower[5]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_BLDG7"  [(ngModel)]="repayingCapacityBorrower[6]['MONTHLY_INSTALLMENT_BLDG']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div> 
+
+       <div nz-row>
+            <div nz-col nzSpan="3">
+                <h5 >  {{ 'repaying.repaying_title11' | translate}} </h5>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH1"  [(ngModel)]="repayingCapacityBorrower[0]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH2"  [(ngModel)]="repayingCapacityBorrower[1]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH3"  [(ngModel)]="repayingCapacityBorrower[2]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH4"  [(ngModel)]="repayingCapacityBorrower[3]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH5"  [(ngModel)]="repayingCapacityBorrower[4]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH6"  [(ngModel)]="repayingCapacityBorrower[5]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="TERM_LOAN_MACH7"  [(ngModel)]="repayingCapacityBorrower[6]['TERM_LOAN_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <h5 > {{ 'repaying.repaying_title12' | translate}} </h5>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH1"  [(ngModel)]="repayingCapacityBorrower[0]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH2"  [(ngModel)]="repayingCapacityBorrower[1]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH3"  [(ngModel)]="repayingCapacityBorrower[2]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH4"  [(ngModel)]="repayingCapacityBorrower[3]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH5"  [(ngModel)]="repayingCapacityBorrower[4]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH6"  [(ngModel)]="repayingCapacityBorrower[5]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="MONTHLY_INSTALLMENT_MACH7"  [(ngModel)]="repayingCapacityBorrower[6]['MONTHLY_INSTALLMENT_MACH']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <h5 > {{ 'repaying.repaying_title13' | translate}}  </h5>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT1"  [(ngModel)]="repayingCapacityBorrower[0]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT2"  [(ngModel)]="repayingCapacityBorrower[1]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT3"  [(ngModel)]="repayingCapacityBorrower[2]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT4"  [(ngModel)]="repayingCapacityBorrower[3]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT5"  [(ngModel)]="repayingCapacityBorrower[4]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT6"  [(ngModel)]="repayingCapacityBorrower[5]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST_ON_CASH_CREDIT_LIMIT7"  [(ngModel)]="repayingCapacityBorrower[6]['INTEREST_ON_CASH_CREDIT_LIMIT']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <h5 > {{ 'repaying.repaying_title14' | translate}} </h5>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST1"  [(ngModel)]="repayingCapacityBorrower[0]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(0)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST2"  [(ngModel)]="repayingCapacityBorrower[1]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(1)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST3"  [(ngModel)]="repayingCapacityBorrower[2]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(2)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST4"  [(ngModel)]="repayingCapacityBorrower[3]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(3)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST5"  [(ngModel)]="repayingCapacityBorrower[4]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(4)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST6"  [(ngModel)]="repayingCapacityBorrower[5]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(5)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="INTEREST7"  [(ngModel)]="repayingCapacityBorrower[6]['INTEREST']"
+                            nzPlaceHolder= "{{'repaying.repaying_placeholder' | translate}}" (keyup)="getDaata(6)" [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>  
+        
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <h4> {{ 'repaying.repaying_title15' | translate}} </h4>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal1"  [(ngModel)]="total1[0]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal2"  [(ngModel)]="total1[1]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal3"  [(ngModel)]="total1[2]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal4"  [(ngModel)]="total1[3]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal5"  [(ngModel)]="total1[4]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal6"  [(ngModel)]="total1[5]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col nzSpan="3" >
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-number name="liabilitytotal7"  [(ngModel)]="total1[6]"
+                            disabled [nzMin]="0" [nzMax]="99999999999999999999999999"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+    
+        </div>
+ </div> 

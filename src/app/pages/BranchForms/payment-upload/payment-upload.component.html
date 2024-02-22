@@ -1,0 +1,29 @@
+
+  <div nz-row>
+
+    <div nz-col nzSpan="24">
+        <nz-form-item>
+            <nz-form-label>{{'basicinfo.m11'|translate}}</nz-form-label>
+        
+            <input type="file"  #file1 accept="image/*" (change)="onFileSelectedFile1($event)" />
+        </nz-form-item>
+       
+    </div>
+  </div>
+
+    <!-- <div nz-row>
+        <div nz-col nzSpan="24">
+                <nz-form-label nzRequired nzNoColon>शेरा </nz-form-label>
+                <nz-form-control >
+                    <textarea nz-input rows="2" name="remark" [(ngModel)]="REMARK" required></textarea>
+                </nz-form-control>
+        </div>
+    </div> -->
+  
+    <div class="footer" >
+        <button type="button" nz-button (click)="close()" class="ant-btn" style="margin-right: 8px;"><span>{{'common.button1'|translate}}
+        </span></button>
+        <button type="button" style="margin-right: 8px;" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isSpinning" 
+        (click)="save()"><span>{{'cash-credit-loan.button2'|translate}}</span></button>
+    
+    </div>

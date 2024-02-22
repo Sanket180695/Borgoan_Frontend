@@ -1,0 +1,392 @@
+
+<div>
+    <!-- <h2>रिअल इस्टेट लोन - औद्योगिक फाइनान्स</h2> -->
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row>
+                <div nz-col nzSpan="24" class="my-box">
+                    <div nz-row>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label1'|translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-select name="INDUSTRIAL_FINANCE_TYPE" [(ngModel)]="data.INDUSTRIAL_FINANCE_TYPE"
+                                        nzPlaceHolder="{{'realestate-industrialfinance.placeholder1'|translate}}">
+                                        <nz-option [nzValue]="'1'" nzLabel="{{'realestate-industrialfinance.label1.option1'|translate}}'" sel></nz-option>
+                                        <nz-option [nzValue]="'2'" nzLabel="{{'realestate-industrialfinance.label1.option2'|translate}}'"></nz-option>
+                                        <nz-option [nzValue]="'3'" nzLabel="{{'realestate-industrialfinance.label1.option3'|translate}}'">
+                                        </nz-option>
+
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label2'|translate}} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="PLOT_AREA"
+                                        nzPlaceHolder="{{'realestate-industrialfinance.placeholder2'|translate}}'" [(ngModel)]="data.PLOT_AREA"
+                                        [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label3'|translate}}  </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="TOTAL_AREA_OF_CONSTRUCTION"
+                                        nzPlaceHolder="{{'realestate-industrialfinance.placeholder2'|translate}}'" [(ngModel)]="data.TOTAL_AREA_OF_CONSTRUCTION"
+                                        [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label4'|translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="TOTAL_COST_OF_CONSTRUCTION"
+                                        nzPlaceHolder="{{'realestate-industrialfinance.placeholder3'|translate}}'" [(ngModel)]="data.TOTAL_COST_OF_CONSTRUCTION"
+                                        [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1' ||data.INDUSTRIAL_FINANCE_TYPE =='2'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label5'|translate}}</nz-form-label>
+                                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                        <input nz-input name="NAME_OF_LESSOR" type="text"
+                                            [(ngModel)]="data.NAME_OF_LESSOR" required />
+                                    </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='3'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label6'|translate}}</nz-form-label>
+                                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                        <input nz-input name="NAME_OF_OWNER" type="text"
+                                            [(ngModel)]="data.NAME_OF_OWNER" required />
+                                    </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label7'|translate}}</nz-form-label>
+                                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                        <input nz-input name="NAME_OF_BUILDER_DEVELOPER" type="text"
+                                            [(ngModel)]="data.NAME_OF_BUILDER_DEVELOPER" required />
+                                    </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='3'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label8'|translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="IS_PLOT_RENTED_OR_OWN"
+                                        [(ngModel)]="data.IS_PLOT_RENTED_OR_OWN" nzButtonStyle="solid">
+                                        <label nz-radio nzValue="O"  style=" margin-right: 0px; ">{{'realestate-industrialfinance.label8.option1'|translate}} </label>
+                                        <label nz-radio nzValue="R"  style=" margin-right: 0px; ">{{'realestate-industrialfinance.label8.option2'|translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="5"
+                            *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1' ||data.INDUSTRIAL_FINANCE_TYPE =='2'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label9'|translate}} </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="APPROXIMATE_VALUATION_OF_PLOT"
+                                        nzPlaceHolder="{{'realestate-industrialfinance.label9'|translate}}'"
+                                        [(ngModel)]="data.APPROXIMATE_VALUATION_OF_PLOT" [nzMin]="1" [nzMax]="99999999999999999999999999"
+                                        [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="7">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label10'|translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-input-number style="width: 100%;" name="EXPECTED_COMPLETION_TIME"
+                                        nzPlaceHolder="{{'realestate-industrialfinance.placeholder4'|translate}}'" [(ngModel)]="data.EXPECTED_COMPLETION_TIME"
+                                        [nzMin]="1" [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='3'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label11'|translate}}
+                                </nz-form-label>
+                                <nz-form-control >
+                                    <nz-radio-group name="IS_PLOT_NA_OR_NA_ORDERED"
+                                        [(ngModel)]="data.IS_PLOT_NA_OR_NA_ORDERED" nzButtonStyle="solid">
+                                        <label nz-radio nzValue="I">{{'realestate-industrialfinance.label11.option1'|translate}}</label>
+                                        <label nz-radio nzValue="N">{{'realestate-industrialfinance.label11.option2'|translate}}</label>
+                                        <label nz-radio nzValue="O">{{'realestate-industrialfinance.label11.option3'|translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="6" *ngIf="data.INDUSTRIAL_FINANCE_TYPE=='1' || data.INDUSTRIAL_FINANCE_TYPE=='2'">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'realestate-industrialfinance.label12'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_PAID_STATUTORY_DUTY"
+                                        [(ngModel)]="data.IS_PAID_STATUTORY_DUTY"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="6" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1' || data.INDUSTRIAL_FINANCE_TYPE =='2'">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'realestate-industrialfinance.label13'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_PLOT_TAKEN_ON_LEASE" [(ngModel)]="data.IS_PLOT_TAKEN_ON_LEASE"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        <div nz-col nzSpan="5" >
+                            <nz-form-item>
+                                <nz-form-label style="text-align: left;" nzNoColon> {{'realestate-industrialfinance.label14'|translate}}<br/> {{'realestate-industrialfinance.label15'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_PERMISSION_TAKEN"
+                                        [(ngModel)]="data.IS_PERMISSION_TAKEN"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        
+                        
+                       
+                        <div nz-col nzSpan="7" >
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'realestate-industrialfinance.label16'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_PLAN_READY_FOR_CONSTRUCTION"
+                                        [(ngModel)]="data.IS_PLAN_READY_FOR_CONSTRUCTION"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        <div nz-col nzSpan="12" *ngIf="data.INDUSTRIAL_FINANCE_TYPE=='3'">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{'realestate-industrialfinance.label17'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_PAID_GOVERNMENT_DUTIES"
+                                        [(ngModel)]="data.IS_PAID_GOVERNMENT_DUTIES"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+
+
+                        
+                        <div nz-col nzSpan="6" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1' ||data.INDUSTRIAL_FINANCE_TYPE =='2'">
+                            <nz-form-item>
+                                <nz-form-label style="text-align: left;" nzNoColon>{{'realestate-industrialfinance.label18'|translate}} <br/>{{'realestate-industrialfinance.label19'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_AVAILABLE_POSSESSION_LETTER" [(ngModel)]="data.IS_AVAILABLE_POSSESSION_LETTER"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        <div nz-col nzSpan="6" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1' || data.INDUSTRIAL_FINANCE_TYPE =='2'">
+                            <nz-form-item>
+                                <nz-form-label style="text-align: left;" nzNoColon>{{'realestate-industrialfinance.label20'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_AVAILABLE_PLOT_ALLOTEMENT_LETTER" [(ngModel)]="data.IS_AVALABLE_PLOT_ALLOTEMENT_LETTER"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        
+                        
+
+                        <div nz-col nzSpan="5" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1' || data.INDUSTRIAL_FINANCE_TYPE =='2'">
+                            <nz-form-item>
+                                <label  nzNoColon>{{'realestate-industrialfinance.label21'|translate}}
+                                </label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_NOC_OBTAINED"
+                                        [(ngModel)]="data.IS_NOC_OBTAINED"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        <div nz-col nzSpan="13" *ngIf="data.INDUSTRIAL_FINANCE_TYPE =='1'">
+                            <nz-form-item>
+                                <label > {{'realestate-industrialfinance.label22'|translate}}
+                                </label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_MIDC_READY_FOR_TRIPARTY_AGREEMENT"
+                                        [(ngModel)]="data.IS_MIDC_READY_FOR_TRIPARTY_AGREEMENT"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        
+                        <div nz-col nzSpan="6" *ngIf="(data.INDUSTRIAL_FINANCE_TYPE =='1' || data.INDUSTRIAL_FINANCE_TYPE =='2') && data.IS_PLOT_TAKEN_ON_LEASE">
+                            <nz-form-item>
+                                <nz-form-label  nzNoColon>{{'realestate-industrialfinance.label23'|translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_LEASE_DEAD_MADE" [(ngModel)]="data.IS_LEASE_DEAD_MADE"
+                                         nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                        <div nz-row >
+                            <div nz-col nzSpan="5">
+                                <nz-form-item>
+                                    <nz-form-label  nzNoColon>{{'realestate-industrialfinance.label24'|translate}}
+                                    </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-switch name="IS_VALUATION_DONE" [(ngModel)]="data.IS_VALUATION_DONE"
+                                             nzCheckedChildren="{{'common.switch.yes'|translate}}"  nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                        </nz-switch>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="10" *ngIf="data.IS_VALUATION_DONE">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon> {{'realestate-industrialfinance.label25'|translate}}
+                                    </nz-form-label>
+                                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                        <input nz-input type="text" name="VALUATOR_NAME"
+                                            [(ngModel)]="data.VALUATOR_NAME" required>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="5" *ngIf="data.IS_VALUATION_DONE">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label26'|translate}}</nz-form-label>
+                                    <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                        <nz-date-picker name="VALUATION_DATE" style="width: 100%;" (keydown.backspace)="focusss2($event)" (keydown.delete)="focusss2($event)"
+                                            [nzDisabledDate]="disabledDate" nzFormat="dd-MM-yyyy"
+                                            [(ngModel)]="data.VALUATION_DATE" nzPlaceHolder="{{'realestate-industrialfinance.label26'|translate}}">
+                                        </nz-date-picker>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="4" *ngIf="data.IS_VALUATION_DONE">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label27'|translate}} </nz-form-label>
+                                    <nz-form-control>
+                                        <nz-input-number style="width: 100%;" name="VALUATION_AMOUNT"
+                                            type="text" nzPlaceHolder="{{'realestate-industrialfinance.label27'|translate}}'"
+                                            [(ngModel)]="data.VALUATION_AMOUNT" [nzMin]="1"
+                                            [nzMax]="99999999999999999999999999" [nzStep]="1" required></nz-input-number>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            <nz-divider nzText=" पत्ता"></nz-divider>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{(data.INDUSTRIAL_FINANCE_TYPE=='2'?'realestate-industrialfinance.label28':'realestate-industrialfinance.label29')|translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="houseno1" type="text" [(ngModel)]="addressinfo.HOUSE_NO" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{'realestate-industrialfinance.label30'|translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="building1" type="text" [(ngModel)]="addressinfo.BUILDING" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label31'|translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="landmark1" type="text" [(ngModel)]="addressinfo.LANDMARK" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label32'|translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="village1" type="text" [(ngModel)]="addressinfo.VILLAGE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label33'|translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="taluka1" type="text" [(ngModel)]="addressinfo.TALUKA" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label34'|translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="distrcict1" type="text" [(ngModel)]="addressinfo.DISTRICT" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label35'|translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <input nz-input name="state1" type="text" [(ngModel)]="addressinfo.STATE" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>{{'realestate-industrialfinance.label36'|translate}}</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'realestate-industrialfinance.label36.nzErrorTip'|translate}}">
+                            <input nz-input name="pincode1" pattern="^[1-9][0-9]{5}$" type="text"
+                                [(ngModel)]="addressinfo.PINCODE" maxlength="6" minlength="6" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+</nz-spin>
+    </form>
+    <div style="margin-left: 900px;" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        
+            <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning"
+                (click)="save()"><span>{{'realestate-industrialfinance.button1'|translate}}</span></button>
+      
+    </div>
+</div>

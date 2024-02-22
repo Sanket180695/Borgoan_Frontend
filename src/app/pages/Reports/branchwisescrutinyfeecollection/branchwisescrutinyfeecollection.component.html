@@ -1,0 +1,129 @@
+
+<div nz-row nzType="flex">
+    <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" nzXl="8">
+        <div class="formname">Branchwise Scrutiny Fee Collected</div>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="16" nzLg="16" nzXl="16" style="display: flex;justify-content: flex-end">
+        <form nz-form [nzLayout]="'inline'">
+            <nz-form-item>
+                <button nz-button [nzType]="isFilterApplied" (click)="showFilter()"><i nz-icon
+                        nzType="filter"></i></button>
+            </nz-form-item>
+            <!-- <nz-form-item>
+          <button nz-button nzType="primary" [appExport]="dataList1" fileName="Proposals"><i nz-icon nzType="file-excel"
+              nzTheme="outline"></i></button>
+        </nz-form-item> -->
+            <nz-form-item>
+                <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                    <input type="text" name="search" nz-input (keydown.enter)="searchSet()"
+                        placeholder="{{'proposalsall.placeholder1'|translate }}" [(ngModel)]="searchText" />
+                </nz-input-group>
+                <ng-template #suffixIconButton>
+                    <button nz-button nzType="primary" name="button1" id="button1" (click)="search(true)" nzSearch><i
+                            nz-icon nzType="search"></i></button>
+                </ng-template>
+            </nz-form-item>
+
+        </form>
+    </div>
+</div>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <div class="filter {{filterClass}}">
+            <div class="filter-box">
+                <form nz-form>
+                    <div nz-row nzGutter="8">
+                        <div nz-col nzSpan="8">
+                            <nz-form-item>
+                                <nz-select *ngIf="browserLang=='mr'" name="branchId" nzShowSearch style="width: 100%"
+                                    [nzLoading]="loadingBranch" [(ngModel)]="BRANCH_ID">
+                                    <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                    </nz-option>
+                                    <nz-option *ngFor="let val of branches" [nzValue]="val.ID" [nzLabel]="val.NAME_MR">
+                                    </nz-option>
+                                </nz-select>
+                                <nz-select *ngIf="browserLang=='en'" name="branchId" nzShowSearch style="width: 100%"
+                                    [nzLoading]="loadingBranch" [(ngModel)]="BRANCH_ID">
+                                    <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                    </nz-option>
+                                    <nz-option *ngFor="let val of branches" [nzValue]="val.ID" [nzLabel]="val.NAME_EN">
+                                    </nz-option>
+                                </nz-select>
+                                <nz-select *ngIf="browserLang=='kn'" name="branchId" nzShowSearch style="width: 100%"
+                                    [nzLoading]="loadingBranch" [(ngModel)]="BRANCH_ID">
+                                    <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                    </nz-option>
+                                    <nz-option *ngFor="let val of branches" [nzValue]="val.ID" [nzLabel]="val.NAME_KN">
+                                    </nz-option>
+                                </nz-select>
+                            </nz-form-item>
+                        </div>
+                       
+
+                        <!-- <div nz-col nzSpan="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-select *ngIf="browserLang=='mr'" name="loantype" style="width: 100%"
+                                        [nzLoading]="isLoanSpinning" [(ngModel)]="LOAN_TYPE_ID">
+                                        <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                        </nz-option>
+                                        <nz-option *ngFor="let p of loanData" [nzValue]="p.ID" [nzLabel]="p.NAME_MR">
+                                        </nz-option>
+                                    </nz-select>
+                                    <nz-select *ngIf="browserLang=='kn'" name="loantype" style="width: 100%"
+                                        [nzLoading]="isLoanSpinning" [(ngModel)]="LOAN_TYPE_ID">
+                                        <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                        </nz-option>
+                                        <nz-option *ngFor="let p of loanData" [nzValue]="p.ID" [nzLabel]="p.NAME_KN">
+                                        </nz-option>
+                                    </nz-select>
+                                    <nz-select *ngIf="browserLang=='en'" name="loantype" style="width: 100%"
+                                        [nzLoading]="isLoanSpinning" [(ngModel)]="LOAN_TYPE_ID">
+                                        <nz-option nzValue="AL" nzLabel="{{'proposalsall.label1'|translate }}">
+                                        </nz-option>
+                                        <nz-option *ngFor="let p of loanData" [nzValue]="p.ID" [nzLabel]="p.NAME_EN">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div> -->
+
+
+                        <div nz-col nzSpan="4">
+
+                            <nz-button-group>
+                                <button nz-button nzType="primary" [nzLoading]="isSpinning" (click)="applyfilter()"><i
+                                        nz-icon nzType="filter"></i></button>
+                                <button nz-button nzType="default" (click)="clearFilter()"><i nz-icon
+                                        nzType="clear"></i></button>
+                            </nz-button-group>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <nz-table class="my-scroll no-wrap1" style="width: 70vw;" nzBordered #table nzShowSizeChanger
+            [nzFrontPagination]="false" [nzData]="dataList" [nzLoading]="loadingRecords" [nzTotal]="totalRecords"
+            [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="search()"
+            (nzPageSizeChange)="search(true)">
+            <thead (nzSortChange)="sort($event)" nzSingleSort>
+                <tr>
+                    <th *ngFor="let column of columns" nzShowSort nzSortKey={{column[0]}}>{{column[1]}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of table.data">
+                    <td *ngFor="let column of columns">{{data[column[0]]}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

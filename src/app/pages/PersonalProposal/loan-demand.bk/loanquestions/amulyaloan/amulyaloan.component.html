@@ -1,0 +1,75 @@
+<div>
+    <form nz-form>
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>Name Of Group</nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name24" type="text" [(ngModel)]="data.NAME_OF_GROUP" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+               
+
+                <div nz-col nzSpan="6">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon>Father/Husband Name </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                            <input nz-input name="name23" type="text" [(ngModel)]="data.FATHER_NAME" required />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            
+
+
+            <div nz-col nzSpan="6">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>
+                        Saving In The Group</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="AGE" style="width: 100%;" [(ngModel)]="data.SAVING_AMOUNT"
+                            [nzMax]="999" [nzMin]="1">
+                            <!-- ({{age}}) -->
+                        </nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+
+
+
+            <div nz-col nzSpan="6">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>
+                        Anual Income</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-number name="AGE" style="width: 100%;" [(ngModel)]="data.ANUAL_INCOME"
+                            [nzMax]="999" [nzMin]="1">
+                            <!-- ({{age}}) -->
+                        </nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+
+
+            <div nz-col nzSpan="8">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzNoColon>Address Of Group </nz-form-label>
+                    <nz-form-control nzErrorTip="{{'gpersonalinfo.label.nzErrorTip'|translate }}">
+                        <input nz-input name="name23" type="text" [(ngModel)]="data.ADDRESS_OF_GROUP" required />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+
+</div>
+
+
+
+
+            </nz-spin>
+            </form>
+            </div>

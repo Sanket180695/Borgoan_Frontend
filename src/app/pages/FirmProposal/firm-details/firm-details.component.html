@@ -1,0 +1,1175 @@
+<div>
+    <form nz-form style="margin-bottom: 60px;">
+        <nz-spin [nzSpinning]="isSpinning">
+            <div nz-row
+                *ngIf="extraApplicantInformation.REMARK !='' && extraApplicantInformation.IS_VERIFIED && !extraApplicantInformation.IS_APPROVED"
+                style="border-radius: 2px;border: 1px solid #91d5ff;background-color:#e6f7ff;padding:5px 10px;">
+                <div nz-col nzSpan="1" style="text-align: center;"><i nz-icon nzType="exclamation-circle" nzTheme="fill"
+                        style="color: rgb(32, 119, 250);"></i></div>
+                <div nz-col nzSpan="23">
+                    <h4 style="margin-bottom: 2px;"> {{'basicinfo.m7'|translate}}</h4>
+                    {{extraApplicantInformation.REMARK}}
+
+                </div>
+            </div><br>
+            <div nz-row>
+                <div nz-col nzSpan="11">
+                    <div nz-row class="my-box">
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.NAME_OF_FIRM_title' | translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="NAME_OF_FIRM" type="text" [(ngModel)]="data.NAME_OF_FIRM"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.NATURE_OF_FIRM_title' |
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="NATURE_OF_BUSINESS" type="text"
+                                        [(ngModel)]="data.NATURE_OF_BUSINESS" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.CONSTITUTION_OF_FIRM' |
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-select name="CONSTITUTION_OF_FIRM" [(ngModel)]="data.CONSTITUTION_OF_FIRM"
+                                        nzPlaceHolder="{{ 'business_info.CONSTITUTION_OF_FIRM' |
+                                        translate}}">
+                                        <nz-option *ngFor="let p of constitutionData" [nzValue]="p.ID"
+                                            [nzLabel]="p.NAME">
+                                        </nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.PAN_NUMBER_OF_FIRM' |
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzErrorTip="{{ 'business_info.PAN_NUMBER_nzErrorTip' |
+                                translate}}">
+                                    <input nz-input name="PAN_NUMBER_OF_FIRM" type="text" maxlength="10"
+                                        [(ngModel)]="data.PAN_NUMBER_OF_FIRM"
+                                        pattern="[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{ 'business_info.DATE_OF_REGISTRATION' |
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-date-picker style="width: 100%;" name="DATE_OF_REGISTRATION"
+                                        nzFormat="dd-MM-yyyy" [(ngModel)]="data.DATE_OF_REGISTRATION"
+                                        [nzDisabledDate]="disabledDate" nzPlaceHolder="{{ 'business_info.DATE_OF_REGISTRATION' |
+                                        translate}}" required>
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{ 'business_info.REGISTRATION_NUMBER' |
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <input nz-input name="REGISTRATION_NUMBER" type="text"
+                                        [(ngModel)]="data.REGISTRATION_NUMBER" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.EMAIL_ID' |
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{ 'business_info.EMAIL_ID_nzErrorTip' |
+                                translate}}">
+                                    <input type="text" name="search"
+                                        pattern="^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$"
+                                        nz-input [(ngModel)]="data.EMAIL_ID" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.LANDLINE_NUMBER' |
+                                    translate}}</nz-form-label>
+                                <nz-form-control nzHasFeedback nzErrorTip="{{ 'business_info.LANDLINE_NUMBER_nzErrorTip' |
+                                translate}}">
+                                    <input nz-input name="landlineNo" maxlength="12" pattern="^[0-9]{10,12}$"
+                                        [(ngModel)]="data.LANDLINE_NUMBER" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon>{{ 'business_info.OWNERSHIP_TYPE_title' |
+                                    translate}}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-radio-group name="OWNERSHIP_OF_BUSINESS"
+                                        [(ngModel)]="data.OWNERSHIP_OF_BUSINESS" nzButtonStyle="solid">
+                                        <label nz-radio nzValue="O" style=" margin-right: 10px; ">{{
+                                            'business_info.OWNERSHIP_TYPE_radio1' |
+                                            translate}} </label>
+                                        <label nz-radio nzValue="R" style=" margin-right: 0px; ">{{
+                                            'business_info.OWNERSHIP_TYPE_radio2' |
+                                            translate}}</label>
+                                    </nz-radio-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24" *ngIf="data.OWNERSHIP_OF_BUSINESS == 'R'">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{ 'business_info.OWNER_NAME_title' | translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <input nz-input name="OWNER_NAME" type="text" [(ngModel)]="data.OWNER_NAME"
+                                        required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12" *ngIf="data.OWNERSHIP_OF_BUSINESS == 'R'">
+                            <nz-form-item>
+                                <nz-form-label nzNoColon> {{ 'business_info.IS_RENT_AGREEMENT_DONE_title' | translate}}
+                                    ?
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_RENT_AGREEMENT_DONE" [(ngModel)]="data.IS_RENT_AGREEMENT_DONE"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="12"
+                            *ngIf="data.OWNERSHIP_OF_BUSINESS == 'R' && data.IS_RENT_AGREEMENT_DONE">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{ 'business_info.RENT_AGREEMENT_END_DATE_title' |
+                                    translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-date-picker style="width: 100%;" name="RENT_AGREEMENT_END_DATE"
+                                        nzFormat="dd-MM-yyyy" [(ngModel)]="data.RENT_AGREEMENT_END_DATE" nzPlaceHolder="{{ 'business_info.RENT_AGREEMENT_END_DATE_title' |
+                                        translate}}" required>
+                                    </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="12" nzOffset="1">
+                    <div nz-row class="my-box">
+                        <div nz-col nzSpan="24">
+                            <div nz-row>
+                                <div nz-col nzSpan="24">
+                                    <nz-form-item style=" margin-bottom: 0px; ">
+                                        <nz-form-label nzRequired nzNoColon> {{ 'business_info.IS_MSME_REGISTERED_title'
+                                            |
+                                            translate}} ?
+                                        </nz-form-label>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="4">
+                                    <nz-form-item>
+                                        <nz-form-control>
+                                            <nz-switch name="IS_MSME_REGISTERED" [(ngModel)]="data.IS_MSME_REGISTERED"
+                                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="10" *ngIf="data.IS_MSME_REGISTERED">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{
+                                            'business_info.MSME_REGISTRATION_NUMBER_title' | translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <input nz-input name="MSME_REGISTRATION_NUMBER" type="text"
+                                                [(ngModel)]="data.MSME_REGISTRATION_NUMBER"
+                                                placeholder="{{ 'business_info.MSME_REGISTRATION_NUMBER_placeholder' | translate}} "
+                                                required />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="10" *ngIf="data.IS_MSME_REGISTERED">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon> {{
+                                            'business_info.MSME_REGISTRATION_DATE_title' | translate}} </nz-form-label>
+                                        <nz-form-control>
+                                            <nz-date-picker style="width: 100%;" name="MSME_REGISTRATION_DATE"
+                                                nzFormat="dd-MM-yyyy" [(ngModel)]="data.MSME_REGISTRATION_DATE"
+                                                nzPlaceHolder=" {{ 'business_info.MSME_REGISTRATION_DATE_placeholder' | translate}} "
+                                                [nzDisabledDate]="disabledDate" required>
+                                            </nz-date-picker>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon> {{
+                                    'business_info.IS_CERTIFICATE_FROM_PROFESSIONAL_TAX_AUTHORITY_title' | translate}}
+                                </nz-form-label>
+                                <nz-form-control>
+                                    <nz-switch name="IS_CERTIFICATE_FROM_PROFESSIONAL_TAX_AUTHORITY"
+                                        [(ngModel)]="data.IS_CERTIFICATE_FROM_PROFESSIONAL_TAX_AUTHORITY"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <div nz-row>
+                                <div nz-col nzSpan="14">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{
+                                            'business_info.IS_GST_REGISTARTION_CERTIFICATE_title' | translate}}
+                                        </nz-form-label>
+                                        <nz-form-control>
+                                            <nz-switch name="IS_GST_REGISTARTION_CERTIFICATE"
+                                                [(ngModel)]="data.IS_GST_REGISTARTION_CERTIFICATE"
+                                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="10" *ngIf="data.IS_GST_REGISTARTION_CERTIFICATE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{ 'business_info.GST_NUMBER_title' |
+                                            translate}} </nz-form-label>
+                                        <nz-form-control
+                                            nzErrorTip="{{ 'business_info.GST_NUMBER_nzErrorTip' | translate}} ">
+                                            <input nz-input name="GST_NUMBER" type="text" [(ngModel)]="data.GST_NUMBER"
+                                                placeholder="{{ 'business_info.GST_NUMBER_title' |
+                                                translate}}" required
+                                                pattern="[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[1-9A-Za-z]{1}Z[0-9A-Za-z]{1}"
+                                                maxlength="15" minlength="15" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <div nz-row>
+                                <div nz-col nzSpan="14">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{ 'business_info.IS_SHOP_ACT_LICENSE_title'
+                                            |
+                                            translate}}
+                                        </nz-form-label>
+                                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                            <nz-switch name="IS_SHOP_ACT_LICENSE" [(ngModel)]="data.IS_SHOP_ACT_LICENSE"
+                                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                                <div nz-col nzSpan="10" *ngIf="data.IS_SHOP_ACT_LICENSE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon> {{ 'business_info.SHOP_ACT_NUMBER_title' |
+                                            translate}} </nz-form-label>
+                                        <nz-form-control>
+                                            <input nz-input name="SHOP_ACT_NUMBER" type="text"
+                                                [(ngModel)]="data.SHOP_ACT_NUMBER" required placeholder=" {{ 'business_info.SHOP_ACT_NUMBER_title' |
+                                                translate}} " />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-col nzSpan="24" *ngIf="data.IS_SHOP_ACT_LICENSE">
+                            <nz-form-item>
+                                <nz-form-label nzRequired nzNoColon>{{
+                                    'business_info.IS_SHOP_ACT_LICENSE_RENEWAL_FOR_CURRENT_YEAR_title' | translate}}
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                    <nz-switch name="IS_SHOP_ACT_LICENSE_RENEWAL_FOR_CURRENT_YEAR"
+                                        [(ngModel)]="data.IS_SHOP_ACT_LICENSE_RENEWAL_FOR_CURRENT_YEAR"
+                                        nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                        nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                    </nz-switch>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <div nz-row>
+                                <div nz-col nzSpan="24">
+                                    <nz-form-item style=" margin-bottom: 0px; ">
+                                        <nz-form-label nzRequired nzNoColon> {{ 'business_info.IS_OTHER_LICENSE_title' |
+                                            translate}} </nz-form-label>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="4">
+                                    <nz-form-item>
+                                        <nz-form-control>
+                                            <nz-switch name="IS_OTHER_LICENSE" [(ngModel)]="data.IS_OTHER_LICENSE"
+                                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                                            </nz-switch>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="10" *ngIf="data.IS_OTHER_LICENSE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon>{{ 'business_info.OTHER_LICENSE_NAME_title'
+                                            | translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <input nz-input name="OTHER_LICENSE_NAME" type="text"
+                                                [(ngModel)]="data.OTHER_LICENSE_NAME"
+                                                placeholder="{{ 'business_info.OTHER_LICENSE_NAME_title' | translate}}" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="10" *ngIf="data.IS_OTHER_LICENSE">
+                                    <nz-form-item>
+                                        <nz-form-label nzRequired nzNoColon> {{
+                                            'business_info.OTHER_LICENSE_NUMBER_title' | translate}}</nz-form-label>
+                                        <nz-form-control>
+                                            <input nz-input name="OTHER_LICENSE_NUMBER" type="text"
+                                                [(ngModel)]="data.OTHER_LICENSE_NUMBER"
+                                                placeholder=" {{ 'business_info.OTHER_LICENSE_NUMBER_title' | translate}}"
+                                                required />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div nz-row style="margin-top: 10px; ">
+                <div nz-col nzSpan="24">
+                    <nz-form-item style="display: flex; ">
+                        <nz-form-label nzNoColon>{{ 'business_info.lebel1' | translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_ANY_CHANGE_IN_CONSTITUENTS"
+                                [(ngModel)]="data.IS_ANY_CHANGE_IN_CONSTITUENTS"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                </div>
+                <div nz-col nzSpan="11" *ngIf="data.IS_ANY_CHANGE_IN_CONSTITUENTS">
+                    <nz-divider nzText="{{ 'business_info.lebel2' | translate}}"
+                        *ngIf="data.IS_ANY_CHANGE_IN_CONSTITUENTS"></nz-divider>
+
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="addConstitutes()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i> {{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false"
+                        [nzData]="dataListConstitutes" [nzLoading]="loadingConstitutes" [nzTotal]="totalRecords"
+                        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th>{{ 'common_text.table_action_title'| translate}} </th>
+                                <th>{{ 'business_info.Constitutesth1' | translate}} </th>
+                                <th>{{ 'business_info.Constitutesth2' | translate}} </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a (click)="editConstitutes(data)"><i nz-icon nzType="edit"
+                                            nzTheme="twotone"></i></a>
+                                </td>
+                                <td>
+                                    {{data.NAME}}
+                                </td>
+                                <td>
+                                    {{data.DATE}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+
+                    <br>
+                </div>
+
+                <div nz-col nzSpan="1"></div>
+                <div nz-col nzSpan="11" *ngIf="data.IS_ANY_CHANGE_IN_CONSTITUENTS">
+                    <nz-divider nzText="{{'business_info.divider' | translate}}"
+                        *ngIf="data.IS_ANY_CHANGE_IN_CONSTITUENTS"></nz-divider>
+
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="addNewConstitutes()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i> {{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false"
+                        [nzData]="dataListNewConstitutes" [nzLoading]="loadingConstitutes" [nzTotal]="totalRecords"
+                        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th>{{ 'common_text.table_action_title'| translate}} </th>
+                                <th>{{ 'business_info.Constitutesth1' | translate}} </th>
+                                <th>{{ 'business_info.Constitutesth2' | translate}} </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a (click)="editNewConstitutes(data)"><i nz-icon nzType="edit"
+                                            nzTheme="twotone"></i></a>
+                                </td>
+                                <td>
+                                    {{data.NAME}}
+                                </td>
+                                <td>
+                                    {{data.DATE}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+
+                    <br>
+                </div>
+                <hr>
+            </div>
+
+
+            <div nz-row style="margin-top: 10px; ">
+                <div nz-col nzSpan="24">
+                    <nz-form-item style="display: flex; ">
+                        <nz-form-label nzNoColon>{{ 'business_info.IS_INVOLVE_IN_MANUFACTURING_PROCESS_title' |
+                            translate}}</nz-form-label>
+                        <!-- मॅन्युफॅक्चरिंग प्रक्रिया -->
+                        <nz-form-control>
+                            <nz-switch name="IS_INVOLVE_IN_MANUFACTURING_PROCESS"
+                                [(ngModel)]="data.IS_INVOLVE_IN_MANUFACTURING_PROCESS"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24" *ngIf="data.IS_INVOLVE_IN_MANUFACTURING_PROCESS">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add1()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i>{{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false" [nzData]="dataList1"
+                        [nzLoading]="loadingRecords1" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                        [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th> {{ 'common_text.table_action_title'| translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header2' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header3' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header4' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header5' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header6' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header7' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header11' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header12' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header8' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header9' | translate}} </th>
+                                <th> {{ 'business_info.manufacturingProcessData_header10' | translate}} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a (click)="edit1(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <td> {{data['NAME_OF_PRODUCT']}} </td>
+                                <td> {{data['USE_OF_PRODUCT_IN_DETAILS']}} </td>
+
+                                <td> {{data['FINAL_USE_OF_PRODUCT']}} </td>
+                                <td> {{data['DETAILS_OF_MANUFACTURING_PROCESS']}} </td>
+                                <td> {{data['MANUFACTURED_PRODUCT_OTHER_INFO']}} </td>
+                                <td> {{data['DETAILS_OF_MANUFACTURED_PRODUCT']}} </td>
+
+                                <td> {{data['RAW_PRODUCT_DETAILS']}} </td>
+
+                                <td> {{data['CREDIT_TERMS_DETAILS']}} </td>
+
+                                <td> {{data['AVAILABILITY_OF_MARKET'] == ( 'business_info.AVAILABILITY_OF_MARKET_title1'
+                                    | translate)? ( 'business_info.AVAILABILITY_OF_MARKET_title1' | translate):
+                                    data['AVAILABILITY_OF_MARKET'] == ( 'business_info.AVAILABILITY_OF_MARKET_title2' |
+                                    translate)? ( 'business_info.AVAILABILITY_OF_MARKET_title2' | translate):(
+                                    'business_info.AVAILABILITY_OF_MARKET_title3' | translate)}}
+                                </td>
+                                <td> {{data['PLACE_OF_MARKET']}} </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.IS_ANCILILLARY_PRODUCT" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.IS_ANCILILLARY_PRODUCT" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <nz-divider nzText=" {{ 'business_info.divider1_title' | translate}} "
+                *ngIf="data.IS_INVOLVE_IN_MANUFACTURING_PROCESS"></nz-divider>
+            <app-management-of-sales [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" *ngIf="data.IS_INVOLVE_IN_MANUFACTURING_PROCESS" style="height: 100%;width: 100%;"
+                [PROPOSAL_ID]="PROPOSAL_ID">
+            </app-management-of-sales>
+
+            <hr>
+            <br>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="11">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzNoColon> {{ 'business_info.PRIME_COSTOMERS_DETAILS_title' |
+                            translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <textarea nz-input name="PRIME_COSTOMERS_DETAILS" type="text"
+                                [(ngModel)]="data.PRIME_COSTOMERS_DETAILS"
+                                [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+
+                <div nz-col nzSpan="11" nzOffset='1'>
+                    <nz-form-item>
+                        <nz-form-label nzNoColon> {{ 'business_info.DETAILS_OF_WORK_ORDERS_title' |
+                            translate}} </nz-form-label>
+                        <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                            <textarea nz-input name="DETAILS_OF_WORK_ORDERS" type="text"
+                                [(ngModel)]="data.DETAILS_OF_WORK_ORDERS"
+                                [nzAutosize]="{ minRows: 1, maxRows: 3 }"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+            </div>
+
+            <div nz-row style="margin-top: 10px; ">
+                <div nz-col nzSpan="24">
+                    <nz-form-item style="display: flex; ">
+                        <nz-form-label nzRequired nzNoColon>{{ 'business_info.lebel3' |
+                            translate}}</nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_SISTER_OR_ASSOCIATE_CONSERN"
+                                [(ngModel)]="data.IS_SISTER_OR_ASSOCIATE_CONSERN"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}"></nz-switch>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="24" *ngIf="data.IS_SISTER_OR_ASSOCIATE_CONSERN">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add2()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i> {{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;" class="my-scroll no-wrap1" nzBordered
+                        #table [nzFrontPagination]="false" [nzData]="dataList2" [nzLoading]="loadingRecords2"
+                        [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th>{{ 'common_text.table_action_title'| translate}} </th>
+                                <th>{{ 'business_info.SISTER_CONSERN_th1'| translate}}</th>
+                                <th>{{ 'business_info.NATURE_OF_FIRM_title' |
+                                    translate}}</th>
+                                <th>{{ 'business_info.CONSTITUTION_OF_FIRM' |
+                                    translate}}</th>
+                                <th>{{ 'business_info.SISTER_CONSERN_th2'| translate}}</th>
+                                <th>{{ 'business_info.SISTER_CONSERN_th3'| translate}}</th>
+                                <th>{{ 'business_info.SISTER_CONSERN_th4'| translate}}</th>
+                                <th>{{ 'business_info.SISTER_CONSERN_th5'| translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a (click)="edit2(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <td> {{data['NAME_OF_FIRM']}} </td>
+                                <td> {{data['NATURE_OF_BUSINESS']}} </td>
+                                <td> {{getconsti(data['CONSTITUTION'])}} </td>
+                                <td> {{data['BANKERS']}} </td>
+                                <td> {{data['TOTAL_LOAN_OR_ADVANCE']}} </td>
+                                <td> {{data['OUTSTANDING_AMOUNT']}} </td>
+                                <td> {{data['SECURITY_OFFERED_FOR_LOAN']}} </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <div nz-row style="margin-top: 10px; ">
+                <nz-divider nzText="{{ 'business_info.lebel4' |
+                translate}}"></nz-divider>
+
+                <div nz-col nzSpan="24">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add3()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i> {{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false" [nzData]="dataList3"
+                        [nzLoading]="loadingRecords3" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                        [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th>{{ 'common_text.table_action_title'| translate}} </th>
+                                <th>{{ 'business_info.th1' | translate}}</th>
+                                <th>{{ 'business_info.th2' | translate}}</th>
+                                <th>{{ 'business_info.th4' | translate}}</th>
+                                <th>{{ 'business_info.th3' | translate}}</th>
+                                <th>{{ 'business_info.th8' | translate}}</th>
+                                <th>{{ 'business_info.th5' | translate}}</th>
+                                <th>{{ 'business_info.th6' | translate}}</th>
+                                <th>{{ 'business_info.th9' | translate}}</th>
+                                <th>{{ 'business_info.th7' | translate}}</th>
+                                <th>{{ 'business_info.th10' | translate}}</th>
+                                <th>{{ 'business_info.th11' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data1 of table.data">
+                                <td>
+                                    <a (click)="edit3(data1)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <td> {{data1['NAME']}} </td>
+                                <td> {{(data1['GENDER']== 'M'?'business_info.td1' :'business_info.td2')| translate }}
+                                </td>
+                                <td> {{data1['DOB']}} </td>
+                                <td> {{data1['EDUCATION']}} </td>
+                                <td> {{data1['MOBILE_NUMBER']}} </td>
+                                <td> {{data1['PAN_NUMBER'] }} </td>
+                                <td> {{data1['AADHAR']}} </td>
+                                <td>{{data1['RELATIONSHIP_WITH_OTHER']}}</td>
+                                <td> {{data1['MEMBERSHIP_NUMBER']}} </td>
+                                <td *ngIf="data.TYPE_OF_FIRM_REGISTRATION == '1'">
+                                    {{data1['DIRECTORS_IDENTITY_NUMBER'] }} </td>
+                                <td *ngIf="data.TYPE_OF_FIRM_REGISTRATION != '1'">-</td>
+                                <td>
+                                    <i nz-icon *ngIf="data1.IS_AUTHORISED_TO_TRANSACT" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data1.IS_AUTHORISED_TO_TRANSACT" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <div nz-row style="margin-top: 10px; " *ngIf="data.IS_INVOLVE_IN_MANUFACTURING_PROCESS">
+                <nz-divider nzText=" {{ 'business_info.FACTORY_INFORMATION_title' | translate}} "></nz-divider>
+
+                <div nz-col nzSpan="24">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add4()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i> {{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false" [nzData]="dataList4"
+                        [nzLoading]="loadingRecords4" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                        [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th> {{ 'common_text.table_action_title'| translate}} </th>
+                                <th> {{ 'business_info.business_info_header2' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header3' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header4' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header5' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header6' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header7' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header8' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header9' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header10' | translate}} </th>
+                                <th> {{ 'business_info.business_info_header11' | translate}} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a (click)="edit4(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <td> {{data['EXISTING_LAND_AREA']}} </td>
+                                <td> {{data['EXISTING_CONSTRUCTION_AREA']}} </td>
+                                <td> {{data['PROPOSED_LAND_AREA']}} </td>
+                                <td> {{data['PROPOSED_CONSTRUCTION_AREA']}} </td>
+                                <td> {{data['TYPE_OF_FACTORY']}} </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.IS_SUFFICIENT_AREA" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.IS_SUFFICIENT_AREA" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.IS_AVAILABILITY_OF_ELECTRICITY" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.IS_AVAILABILITY_OF_ELECTRICITY" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.IS_AVAILABILITY_OF_WATER" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.IS_AVAILABILITY_OF_WATER" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.IS_AVAILABILITY_OF_TRANSPORT" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.IS_AVAILABILITY_OF_TRANSPORT" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.IS_AVAILABILITY_OF_WORKERS" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.IS_AVAILABILITY_OF_WORKERS" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <div nz-row style="margin-top: 10px; " *ngIf="data.IS_INVOLVE_IN_MANUFACTURING_PROCESS">
+                <nz-divider nzText=" {{ 'business_info.divider2_title' | translate}} "></nz-divider>
+                <div nz-col nzSpan="24">
+                    <div nz-row nzType="flex">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="20" nzLg="20" nzXl="12">
+
+                        </div>
+                        <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="6" nzXl="12"
+                            style="display: flex;justify-content: flex-end">
+                            <form nz-form [nzLayout]="'inline'">
+                                <nz-form-item>
+                                    <button nz-button nzType="primary" (click)="add5()" nzJustify="end">
+                                        <i nz-icon nzType="plus"></i> {{ 'common_text.add_button_title' | translate}}
+                                    </button>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                    </div>
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table1 [nzFrontPagination]="false" [nzData]="dataList5"
+                        [nzLoading]="loadingRecords5" [nzTotal]="totalRecords" [(nzPageIndex)]="pageIndex"
+                        [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th>{{ 'common_text.table_action_title'| translate}} </th>
+                                <th>{{ 'business_info.business_info_employee_header2' | translate}} </th>
+                                <th>{{ 'business_info.business_info_employee_header3' | translate}} </th>
+                                <th>{{ 'business_info.business_info_employee_header4' | translate}} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table1.data">
+                                <td>
+                                    <a (click)="edit5(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <td> {{data['EMPLOYEE_CATEGORY']}} </td>
+                                <td> {{data['COUNT']}} </td>
+                                <td>
+                                    <i nz-icon *ngIf="data.EDUCATINALLY_QUALIFIED" [nzType]="'check-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                    <i nz-icon *ngIf="!data.EDUCATINALLY_QUALIFIED" [nzType]="'close-circle'"
+                                        [nzTheme]="'twotone'" [nzTwotoneColor]="'#f50'"></i>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <hr>
+                    <br>
+                </div>
+
+            </div>
+
+            <nz-divider nzText="{{ 'business_info.divider3_title1' | translate}}"></nz-divider>
+            <div nz-row class="my-box">
+                <div nz-col nzSpan="5">
+                    <nz-form-label style="max-width: 169px;" nzRequired nzNoColon>{{
+                        'business_info.business_info_houseno1' | translate}} </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="houseno1" type="text" [(ngModel)]="addressinfoBussiness.HOUSE_NO"
+                            required />
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="5" nzOffset="1">
+                    <nz-form-label nzRequired nzNoColon> {{ 'business_info.business_info_building1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="building1" type="text" [(ngModel)]="addressinfoBussiness.BUILDING"
+                            required />
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="5" nzOffset="1">
+                    <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_landmark1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="landmark1" type="text" [(ngModel)]="addressinfoBussiness.LANDMARK"
+                            required />
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="5" nzOffset="1">
+                    <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_village1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="village1" type="text" [(ngModel)]="addressinfoBussiness.VILLAGE"
+                            required />
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="5">
+                    <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_taluka1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="taluka1" type="text" [(ngModel)]="addressinfoBussiness.TALUKA" required />
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="5" nzOffset="1">
+                    <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_distrcict1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="distrcict1" type="text" [(ngModel)]="addressinfoBussiness.DISTRICT"
+                            required />
+                    </nz-form-control>
+                </div>
+                <div nz-col nzSpan="5" nzOffset="1">
+                    <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_state1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input name="state1" type="text" [(ngModel)]="addressinfoBussiness.STATE" required />
+                    </nz-form-control>
+                </div>
+
+                <div nz-col nzSpan="5" nzOffset="1">
+                    <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_pincode1' | translate}}
+                    </nz-form-label>
+                    <nz-form-control nzErrorTip="{{ 'business_info.business_info_pincode1_nzErrorTip' | translate}} ">
+                        <input nz-input name="pincode1" pattern="^[1-9][0-9]{5}$" type="text"
+                            [(ngModel)]="addressinfoBussiness.PINCODE" maxlength="6" minlength="6" />
+                    </nz-form-control>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzNoColon>{{ 'business_info.otherbranch' | translate}}
+                        </nz-form-label>
+                        <nz-form-control>
+                            <nz-switch name="IS_ANOTHER_BRANCH" [(ngModel)]="data.IS_ANOTHER_BRANCH"
+                                nzCheckedChildren="{{'common.switch.yes'|translate}}"
+                                nzUnCheckedChildren="{{'common.switch.no'|translate}}">
+                            </nz-switch>
+
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div class="my-box" *ngIf="data.IS_ANOTHER_BRANCH">
+                <nz-divider nzText="{{ 'business_info.otherbranch2' | translate}}"></nz-divider>
+                <div nz-row>
+                    <div nz-col nzSpan="11">
+                        <nz-form-item>
+                            <nz-form-label style="max-width: 169px;" nzRequired nzNoColon>{{
+                                'business_info.otherbranch3' | translate}}</nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchName" type="text" [(ngModel)]="BRANCH_NAME" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+                <div nz-row>
+                    <div nz-col nzSpan="5">
+                        <nz-form-item>
+                            <nz-form-label style="max-width: 169px;" nzRequired nzNoColon>{{
+                                'business_info.business_info_houseno1' | translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchhouseno" type="text" [(ngModel)]="HOUSE_NO" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="5" nzOffset="1">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon> {{ 'business_info.business_info_building1' |
+                                translate}} </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchbuilding" type="text" [(ngModel)]="BUILDING" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="5" nzOffset="1">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon> {{ 'business_info.business_info_landmark1' |
+                                translate}}</nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchlandmark" type="text" [(ngModel)]="LANDMARK" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="5" nzOffset="1">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_village1' | translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchvillage" type="text" [(ngModel)]="VILLAGE" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="5">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_taluka1' | translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchtaluka" type="text" [(ngModel)]="TALUKA" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="5" nzOffset="1">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_distrcict1' |
+                                translate}}</nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchdistrcict" type="text" [(ngModel)]="DISTRICT" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="5" nzOffset="1">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_state1' | translate}}
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                                <input nz-input name="branchstate" type="text" [(ngModel)]="STATE" required />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                    <div nz-col nzSpan="5" nzOffset="1">
+                        <nz-form-item>
+                            <nz-form-label nzRequired nzNoColon>{{ 'business_info.business_info_pincode1' | translate}}
+                            </nz-form-label>
+                            <nz-form-control
+                                nzErrorTip="{{ 'business_info.business_info_pincode1_nzErrorTip' | translate}} ">
+                                <input nz-input name="branchpincode" pattern="^[1-9][0-9]{5}$" type="text"
+                                    [(ngModel)]="PINCODE" maxlength="6" minlength="6" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="1">
+                        <nz-form-item style="margin-bottom: 0px;">
+                            <button nz-button nzType="primary" style="margin-left: 2px;margin-top: 32px;"
+                                [nzLoading]="isAddSpinning" (click)="addAddress()"><i nz-icon
+                                    nzType="plus"></i></button>
+                        </nz-form-item>
+                    </div>
+
+                </div>
+
+            </div>
+            <br />
+            <div nz-row *ngIf="data.IS_ANOTHER_BRANCH">
+                <div nz-col nzSpan="24">
+                    <nz-table [nzShowPagination]="false" style="height: 250px;overflow: auto;"
+                        class="my-scroll no-wrap1" nzBordered #table [nzFrontPagination]="false"
+                        [nzData]="dataListAddress" [nzLoading]="loadingAddress" [nzTotal]="totalRecords"
+                        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+                        <thead>
+                            <tr>
+                                <th>{{ 'common_text.table_action_title'| translate}} </th>
+                                <th>{{ 'business_info.otherbranch3' | translate}}</th>
+                                <th>{{ 'business_info.otherbranch2' | translate}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of table.data">
+                                <td>
+                                    <a (click)="editAddress(data)"><i nz-icon nzType="edit" nzTheme="twotone"></i></a>
+                                </td>
+                                <td>
+                                    {{data.BRANCH_NAME}}
+                                </td>
+                                <td>
+                                    {{getAddressString(data['ADDRESS'][0])}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                </div>
+            </div>
+
+        </nz-spin>
+    </form>
+    <div style="margin-left: 900px" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false">
+        <button type="button" class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonSpinning" *ngIf="data.ID"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button>
+    </div>
+
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <!-- *ngIf="roleid == '1' && stageid == 4" -->
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false" style="float: right; margin-left: 10px; margin-right: 10px;"
+            class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonVerifySpinning" nz-popconfirm
+            [nzPopconfirmTitle]="iconTpl" (nzOnConfirm)="confirm2()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top">
+            <span>{{'basicinfo.m5'|translate}}</span>
+        </button>
+
+        <ng-template #iconTpl>
+            <h3>{{'basicinfo.m9'|translate}}</h3>
+            <nz-form-item style=" display: inline-block; width: -webkit-fill-available;">
+                <nz-form-label nzRequired nzNoColon>{{'joinbranch.lebel9'|translate}}</nz-form-label>
+                <nz-form-control nzErrorTip="{{'common.nzErrorTip'| translate}}">
+                    <input nz-input name="name" type="text" [(ngModel)]="extraApplicantInformation.REMARK" required />
+                </nz-form-control>
+            </nz-form-item>
+        </ng-template>
+
+        <button type="button" *ngIf="CURRENT_STAGE_ID == 9 && extraApplicantInformation.IS_APPROVED == false" style="float: right; margin-left: 10px; margin-right: 10px;"
+            class="ant-btn ant-btn-primary" nz-button [nzLoading]="isButtonVerifySpinning" nz-popconfirm
+            nzPopconfirmTitle="Are you sure?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+            nzPopconfirmPlacement="top"><span>{{'basicinfo.m8'|translate}}</span></button>
+
+
+
+        <!-- <button type="button" *ngIf="CURRENT_STAGE_ID == 8 && extraApplicantInformation.IS_APPROVED == false" style="float: right;" class="ant-btn ant-btn-primary"
+            nz-button [nzLoading]="isButtonSpinning"
+            (click)="save()"><span>{{'common.Save'|translate}}</span></button> -->
+    </div>
+</div>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="500" [nzVisible]="drawerVisible1" [nzTitle]="drawerTitle1"
+    (nzOnClose)="drawerClose1()" (nzKeyboard)="true">
+    <app-manufacturing-info [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" [drawerClose1]="closeCallback1" [data1]="drawerData1">
+    </app-manufacturing-info>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="340" [nzVisible]="drawerVisible2" [nzTitle]="drawerTitle2"
+    (nzOnClose)="drawerClose2()" (nzKeyboard)="true">
+    <app-sister-concern-info [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" [drawerClose2]="closeCallback2" [data2]="drawerData2">
+    </app-sister-concern-info>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="450" [nzVisible]="drawerVisible3" [nzTitle]="drawerTitle3"
+    (nzOnClose)="drawerClose3()" (nzKeyboard)="true">
+    <app-partners-info [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" [drawerClose3]="closeCallback3" [data3]="drawerData3" [iscompany]="is_company">
+    </app-partners-info>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="440" [nzVisible]="drawerVisible4" [nzTitle]="drawerTitle4"
+    (nzOnClose)="drawerClose4()" (nzKeyboard)="true">
+    <app-factory-unit-info [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" [drawerClose4]="closeCallback4" [data4]="drawerData4">
+    </app-factory-unit-info>
+</nz-drawer>
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="340" [nzVisible]="drawerVisible5" [nzTitle]="drawerTitle5"
+    (nzOnClose)="drawerClose5()" (nzKeyboard)="true">
+    <app-employee-info [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" [drawerClose5]="closeCallback5" [data5]="drawerData5">
+    </app-employee-info>
+</nz-drawer>
+
+<nz-drawer [nzBodyStyle]="{ height: 'calc(100%)', overflow: 'auto', 'padding-bottom': '53px' }" [nzClosable]="true"
+    [nzMask]="true" [nzMaskClosable]="false" [nzWidth]="350" [nzVisible]="drawerVisibleConstitutes"
+    [nzTitle]="drawerTitleConstitutes" (nzOnClose)="drawerCloseConstitutes()" (nzKeyboard)="true">
+    <app-constitutes [CURRENT_STAGE_ID]="CURRENT_STAGE_ID" [extraApplicantInformation]="extraApplicantInformation" [drawerCloseConstitues]="closeCallbackConstitutes" [data]="drawerDataConstitutes">
+    </app-constitutes>
+</nz-drawer>
